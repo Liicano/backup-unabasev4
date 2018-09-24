@@ -185,7 +185,7 @@
       <br>
      <div class="md-layout">
        <div class="md-layout-item md-small-size-45 md-size-45">
-         <md-field>
+         <md-field> 
             <label>Nombre</label>
             <md-input type="text"></md-input>
          </md-field>
