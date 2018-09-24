@@ -5,7 +5,7 @@
   "author": "Dragos Ct <dragos@creative-tim.com>",
   "private": true,
   "scripts": {
-    "postinstall": "npm run build",
+    "postinstall": "npm install && npm run build",
     "start": "node server.js",
     "serve": "vue-cli-service serve --open",
     "dev": "npm run serve",
@@ -46,12 +46,26 @@
     "babel-plugin-module-resolver": "3.1.1",
     "babel-plugin-syntax-dynamic-import": "6.18.0",
     "babel-plugin-transform-runtime": "6.23.0",
-    "body-parser": "^1.18.3",
     "chai": "4.1.2",
     "express": "^4.16.3",
     "lint-staged": "7.2.2",
     "node-sass": "4.9.3",
     "sass-loader": "7.1.0",
+    "serve-static": "^1.13.2",
+    "vue-template-compiler": "2.5.17"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "lint-staged": {
+    "*.js": [
     "serve-static": "^1.13.2",
     "vue-template-compiler": "2.5.17"
   },
