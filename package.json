@@ -1,11 +1,10 @@
 {
-  "name": "vue-material-dashboard-pro",
+  "name": "unabasev4",
   "version": "1.0.1",
-  "description": "Vue Material Dashboard PRO",
-  "author": "Dragos Ct <dragos@creative-tim.com>",
-  "private": true,
+  "description": "unabasev4 sistema de gestion",
+  "author": "una sistemas",
+  "private": false,
   "scripts": {
-    "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build",
     "start": "node server.js",
     "serve": "vue-cli-service serve --open",
     "dev": "npm run serve",
