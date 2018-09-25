@@ -6,11 +6,11 @@
 
         </edit-profile-form>
       </div>
-      <div class="md-layout-item md-medium-size-100 md-size-33">
+      <!-- <div class="md-layout-item md-medium-size-100 md-size-33">
         <user-card button-color="success">
 
         </user-card>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

@@ -5,7 +5,7 @@
   "author": "Dragos Ct <dragos@creative-tim.com>",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --open",
+    "serve": "vue-cli-service serve",
     "dev": "npm run serve",
     "build": "vue-cli-service build",
     "test": "vue-cli-service test --watch",
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@tweenjs/tween.js": "16.6.0",
+    "axios": "^0.18.0",
     "chartist": "0.11.0",
     "es6-promise": "4.2.4",
     "fullcalendar": "3.9.0",
@@ -28,9 +29,11 @@
     "vee-validate": "2.1.0-beta.8",
     "vue": "2.5.17",
     "vue-clickaway": "2.2.2",
+    "vue-google-signin-button": "^1.0.2",
     "vue-material": "1.0.0-beta-10.2",
     "vue-router": "3.0.1",
-    "vue2-transitions": "0.2.2"
+    "vue2-transitions": "0.2.2",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "3.0.1",
