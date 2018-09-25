@@ -4,7 +4,7 @@
     class="md-transparent"
     :class="{'md-toolbar-absolute md-white md-fixed-top': $route.meta.navbarAbsolute}">
     <div class="md-toolbar-row">
-      <div class="md-toolbar-section-start" v-if="$route.path == '/ventas'">
+      <!-- <div class="md-toolbar-section-start" v-if="$route.path == '/ventas'">
         <md-list>
             <md-list-item>  
                <md-menu md-size="big" md-direction="top-start" :md-active.sync="toggleCard">
@@ -31,7 +31,7 @@
       </md-menu-content>
     </md-menu>
 
-    <!-- <md-menu>
+    <md-menu>
       <md-button class="md-icon-button md-info"> 
         <md-icon>send</md-icon>
       </md-button> -->
@@ -72,11 +72,11 @@
       </md-menu-content> -->
     <!-- </md-menu> -->
 
-            </md-list-item>
+            <!-- </md-list-item>
            
           </md-list>
-        
-      </div>
+         -->
+      </div> 
       <div class="md-toolbar-section-end">
         <md-button class="md-just-icon md-round md-simple md-toolbar-toggle" :class="{toggled: $sidebar.showSidebar}" @click="toggleSidebar">
           <span class="icon-bar"></span>
@@ -84,11 +84,10 @@
           <span class="icon-bar"></span>
         </md-button>
 
-        <div class="md-collapse md-success">
-          <div class="md-autocomplete md-success green" >
-            <md-autocomplete class="search md-success" style="width:100%;" v-model="selectedEmployee" :md-options="employees" :md-open-on-focus="false">
-              <label v-if="$route.meta.rtlActive">بحث...</label>
-              <label v-else>Buscar</label>
+        <div class="md-collapse">
+          <div class="md-autocomplete" >
+            <md-autocomplete class="search" style="width:100%;" v-model="selectedEmployee" :md-options="employees" :md-open-on-focus="false">
+              <label>Buscar</label>
             </md-autocomplete>
           </div>
           <md-list>
@@ -122,7 +121,7 @@
           </md-list>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
 
   </md-toolbar>
 </template>

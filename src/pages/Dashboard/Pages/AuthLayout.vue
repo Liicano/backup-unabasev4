@@ -46,7 +46,7 @@
             <router-view></router-view>
           </zoom-center-transition>
         </div>
-        <footer class="footer">
+        <!-- <footer class="footer">
           <div class="container md-offset">
               <nav>
                   <ul>
@@ -74,7 +74,7 @@
                 &copy; {{ new Date().getFullYear() }} <a href="https://www.creative-tim.com/?ref=mdf-vuejs" target="_blank">Creative Tim</a>, made with <i class="fa fa-heart heart"></i> for a better web
               </div>
           </div>
-        </footer>
+        </footer> -->
       </div>
     </div>
   </div>

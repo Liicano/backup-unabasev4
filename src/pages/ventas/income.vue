@@ -18,7 +18,7 @@
           <div class="md-layout-item md-xsmall-size-100 md-medium-size-50 md-small-size-50 md-size-50">
               <div class="md-layout">
                 <div class="md-layout-item md-small-size-70 md-size-80">
-                        <div class="md-autocomplete md-success green">
+                        <div class="md-autocomplete md-success">
                           <md-autocomplete id="autocompletadoUsers" class="search md-success"  style="" v-model="ventaObject.responsable" :md-options="employees" :md-open-on-focus="false">
                             <label v-if="$route.meta.rtlActive">Responsable</label>
                             <label v-else>Responsable</label>
@@ -98,7 +98,7 @@
                 <div class="md-layout" v-if="!showInputs">
                   <div class="md-layout-item md-size-55">
                   
-                  <div class="md-autocomplete md-success green">
+                  <div class="md-autocomplete md-success">
                     <md-autocomplete class="search md-success" style="" v-model="itemToAdd.nombre" :md-options="itemsModel" :md-open-on-focus="false">
                       <label v-if="$route.meta.rtlActive">Nombre del item</label>
                       <label v-else>Nombre del item</label>
@@ -397,6 +397,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
   .md-list {
     width: 320px;
     max-width: 100%;

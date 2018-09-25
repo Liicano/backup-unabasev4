@@ -1,5 +1,5 @@
-<template>
-  <footer class="footer">
+ <!-- <template> -->
+  <!-- <footer class="footer">
     <div class="container">
         <nav>
             <ul>
@@ -30,13 +30,13 @@
           &copy; {{ new Date().getFullYear() }} <a href="https://www.creative-tim.com/?ref=mdp-vuejs" target="_blank">Creative Tim</a>, made with <i class="fa fa-heart heart"></i> for a better web
         </div>
     </div>
-  </footer>
+  </footer> -->
 
-</template>
-<script>
-export default {}
+<!--</template>-->
+<!--<script>
+// export default {}
 
-</script>
-<style>
+// </script>
+// <style>
 
-</style>
+// </style>

@@ -1,77 +1,94 @@
 <template>
-  <div class="md-layout" style="margin-top: -5%;">
+  <div>
+  <div class="md-layout">
+    
+    <!-- BOTON NUEVA VENTA -->
+  <router-link :to="{path:'/income'}">
+     <div class="fixed-action-btn">
+        <a class="btn-floating btn-large green">
+          <i class="large material-icons">add</i>
+        </a>
+      </div>
+  </router-link>
 
-<!-- LISTA DE VENTAS REALIZADAS -->
-<div class="md-layout-item md-medium-size-30 md-xsmall-size-100 md-size-100 ">
+      <!-- LISTA DE VENTAS REALIZADAS  (MOBIL) -->
+      <div class="md-layout-item md-medium-size-30 md-xsmall-size-100 md-size-100 " id="lista_ventas">
+        <md-list class="md-triple-line" style="border-radius:15px;">
 
-  <md-list class="md-triple-line" style="border-radius:15px;">
+        <div v-for="venta in users" :key="venta.id">
+              <router-link :to="{path:'/sale/details/'+venta.id, params:{venta:venta}}">
+            <md-list-item style="padding: 0px 0px;">
+              <md-avatar>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2ZYxbsw4kHRFbhU9KQtnLu7TtmYITTNH58sVGKDKsq78MWo9Z" alt="People">
+              </md-avatar>
 
+              <div class="md-list-item-text">
+                <span>{{venta.asunto}}</span>
+                <span>{{venta.receptor.nombre}} {{venta.receptor.apellido}}</span>
+                <p><b>$ {{venta.monto_total}} CLP</b></p>
+              </div>
 
-     
-      <div v-for="venta in users" :key="venta.id">
-        <router-link :to="{path:'/sale/details/'+venta.id, params:{venta:venta}}">
-      <md-list-item style="padding: 0px 0px;">
-        <md-avatar>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2ZYxbsw4kHRFbhU9KQtnLu7TtmYITTNH58sVGKDKsq78MWo9Z" alt="People">
-        </md-avatar>
+              
+                <small>21 Sept</small>
+            
+            </md-list-item>
+              <md-divider class="md-inset"></md-divider>
+              </router-link>
+        </div>
+          </md-list>
+          </div>
 
-        <div class="md-list-item-text">
-          <span>{{venta.asunto}}</span>
-          <span>{{venta.receptor.nombre}} {{venta.receptor.apellido}}</span>
-          <p><b>$ {{venta.monto_total}} CLP</b></p>
         </div>
 
-        
-          <small>21 Sept</small>
-       
-      </md-list-item>
-        <md-divider class="md-inset"></md-divider>
-        </router-link>
-  </div>
-    
-       
-       
+    <!-- TABLA DE VENTAS (ESCRITORIO) -->
+        <div id="tabla_ventas">
+          
+            <div class="md-layout">
+              <div class="md-layout-item md-size-100">
+                <md-card>
+                  <md-card-header class="md-card-header-icon md-card-header-green">
+                    <div class="card-icon">
+                      <md-icon>monetization_on</md-icon>
+                    </div>
+                    <h4 class="title">VENTAS</h4>
+                  </md-card-header>
+                  <md-card-content>
+                    <md-table v-model="users" table-header-color="green">
+                      <md-table-row slot="md-table-row" slot-scope="{ item }">
+                        <md-table-cell md-label="ID">{{ item.id }}</md-table-cell>
+                        <md-table-cell md-label="Referencia">{{ item.asunto }}</md-table-cell>
+                        <md-table-cell md-label="Cliente">{{ item.receptor.nombre }} {{ item.receptor.apellido }}</md-table-cell>
+                        <md-table-cell md-label="Fecha">{{ item.fecha }}</md-table-cell>
+                        <md-table-cell md-label="Ubicacion"><center><a href=""> <md-icon>map</md-icon></a></center></md-table-cell>
+                        <md-table-cell md-label="Total"><b>$ </b>{{ item.monto_total }} CLP</md-table-cell>
+                        <md-table-cell md-label="Opciones"><router-link :to="{path:'/sale/details/'+item.id, params:{venta:item}}"><center><md-button class="md-warning md-just-icon md-round"><md-icon >edit</md-icon></md-button></center></router-link></md-table-cell>
+                      </md-table-row>
+                    </md-table>
+                  </md-card-content>
+                </md-card>
+              </div>
+            </div>
 
-      
-    </md-list>
 
+        </div>
 
-  
-</div>
-
-    
   </div>
 </template>
 
 <script>
 // LIBRERIAS EXTERNAS
 import users from "@/pages/Dashboard/Tables/users.js";
-import Fuse from "fuse.js";
 import swal from "sweetalert2";
+// import $ from 'jquery'
 
 
 //COMPONENTES
 import {
-  StatsCard,
-  NavTabsCard,
-  TimeLine,
-  TimeLineItem,
-  PricingCard,
-  TestimonialCard,
-  Pagination,
-  
   
 } from "@/components";
 
 export default {
   components: {
-    StatsCard,
-    NavTabsCard,
-    PricingCard,
-    TimeLine,
-    TimeLineItem,
-    TestimonialCard,
-    Pagination,
     
   },
   props: {},
@@ -79,48 +96,10 @@ export default {
     return {
       users: users,
       checkbox1: null,
-      currentSort: "Comprador",
-      currentSortOrder: "asc",
-      pagination: {
-        perPage: 5,
-        currentPage: 1,
-        perPageOptions: [5, 10, 25, 50],
-        total: 0,
-         bottomPosition: 'md-bottom-left'
-      },
-      // footerTable: ["Name", "Email", "Age", "Salary", "Actions"],
-      searchQuery: "",
-      propsToSearch: ["Comprador", "Asunto", "total", "fecha"],
-      tableData: users,
-      searchedData: [],
-      fuseSearch: null
+      
     };
   },
   methods: {
-    customSort(value) {
-      return value.sort((a, b) => {
-        const sortBy = this.currentSort;
-        if (this.currentSortOrder === "desc") {
-          return a[sortBy].localeCompare(b[sortBy]);
-        }
-        return b[sortBy].localeCompare(a[sortBy]);
-      });
-    },
-    handleLike(item) {
-      swal({
-        title: `You liked ${item.name}`,
-        buttonsStyling: false,
-        type: "success",
-        confirmButtonClass: "md-button md-success"
-      });
-    },
-    handleEdit(item) {
-      swal({
-        title: `You want to edit ${item.name}`,
-        buttonsStyling: false,
-        confirmButtonClass: "md-button md-info"
-      });
-    },
     handleDelete(item) {
       swal({
         title: "Are you sure?",
@@ -143,73 +122,37 @@ export default {
           });
         }
       });
-    },
-    deleteRow(item) {
-      let indexToDelete = this.tableData.findIndex(
-        tableRow => tableRow.id === item.id
-      );
-      if (indexToDelete >= 0) {
-        this.tableData.splice(indexToDelete, 1);
-      }
     }
   },
   mounted() {
-    this.onResponsiveInverted();
-    window.addEventListener("resize", this.onResponsiveInverted);
-    // Fuse search initialization.
-    this.fuseSearch = new Fuse(this.tableData, {
-      keys: ["name", "email"],
-      threshold: 0.3
-    });
+     
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.onResponsiveInverted);
   },
   computed: {
-    /***
-     * Returns a page from the searched data or the whole data. Search is performed in the watch section below
-     */
-    queriedData() {
-      let result = this.tableData;
-      if (this.searchedData.length > 0) {
-        result = this.searchedData;
-      }
-      return result.slice(this.from, this.to);
-    },
-    to() {
-      let highBound = this.from + this.pagination.perPage;
-      if (this.total < highBound) {
-        highBound = this.total;
-      }
-      return highBound;
-    },
-    from() {
-      return this.pagination.perPage * (this.pagination.currentPage - 1);
-    },
-    total() {
-      return this.searchedData.length > 0
-        ? this.searchedData.length
-        : this.tableData.length;
-    }
+    
   },
   watch: {
-    /**
-     * Searches through the table data by a given query.
-     * NOTE: If you have a lot of data, it's recommended to do the search on the Server Side and only display the results here.
-     * @param value of the query
-     */
-    searchQuery(value) {
-      let result = this.tableData;
-      if (value !== "") {
-        result = this.fuseSearch.search(this.searchQuery);
-      }
-      this.searchedData = result;
-    }
+   
   }
 };
 </script>
 <style lang="scss" scoped>
   small {
     display: block;
+  }
+  #tabla_ventas{
+    display: none;
+  }
+  // CAMBIOS AL ENTRAR EN PANTALLA MOVIL
+  @media (min-width: 992px) {
+    #lista_ventas{
+      display:none;
+    }
+    #tabla_ventas{
+      display:block;
+    }
+
   }
 </style>
