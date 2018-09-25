@@ -5,7 +5,7 @@
       <user-menu></user-menu>
       <mobile-menu></mobile-menu>
       <template slot-scope="props" slot="links">
-        <sidebar-item v-if="$route.meta.rtlActive" :link="{name: 'لوحة القيادةة', icon: 'dashboard', path: '/dashboard'}">
+        <!-- <sidebar-item v-if="$route.meta.rtlActive" :link="{name: 'لوحة القيادةة', icon: 'dashboard', path: '/dashboard'}">
         </sidebar-item>
         <sidebar-item v-else :link="{name: 'Dashboard', icon: 'dashboard', path: '/dashboard'}">
         </sidebar-item>
@@ -95,14 +95,27 @@
         <sidebar-item
           v-else
           :link="{name: 'Calendar', icon: 'date_range', path: '/calendar'}"></sidebar-item>
-        
+         -->
+
+
         <!-- LINKS DE UNABASE -->
+
+
+        <!-- VENTAS -->
        <sidebar-item
           v-if="$route.meta.rtlActive"
           :link="{name: 'Ventas', icon: 'monetization_on', path: '/ventas'}"></sidebar-item>
         <sidebar-item
           v-else
           :link="{name: 'Ventas', icon: 'monetization_on', path: '/ventas'}"></sidebar-item>
+
+      <!-- COMPRAS -->
+          <sidebar-item
+          v-if="$route.meta.rtlActive"
+          :link="{name: 'Compras', icon: 'locall_mall', path: '/Compras'}"></sidebar-item>
+        <sidebar-item
+          v-else
+          :link="{name: 'Compras', icon: 'local_mall', path: '/Compras'}"></sidebar-item>
 
       </template>
     </side-bar>

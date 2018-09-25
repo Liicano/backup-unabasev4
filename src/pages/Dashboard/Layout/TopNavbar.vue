@@ -1,82 +1,10 @@
 <template>
-  <md-toolbar
+<div>
+   <md-toolbar
     md-elevation=""
     class="md-transparent"
-    :class="{'md-toolbar-absolute md-white md-fixed-top': $route.meta.navbarAbsolute}">
-    <div class="md-toolbar-row">
-      <!-- <div class="md-toolbar-section-start" v-if="$route.path == '/ventas'">
-        <md-list>
-            <md-list-item>  
-               <md-menu md-size="big" md-direction="top-start" :md-active.sync="toggleCard">
-      <md-button class="md-icon-button md-success" md-menu-trigger>
-        <md-icon>add</md-icon>
-      </md-button>
-      <md-menu-content>
-
-        <center>
-          <div class="author-card">
-           <div class="author-card-info">
-            <span>Metodo de entrada</span>
-            <center>
-               <md-divider></md-divider><br>
-              <div class="author-card-links text-center"> 
-               
-               <router-link :to="{path:'/income'}">Manual</router-link>
-               <a href="/" target="_blank" rel="noopener">Fotografia</a>
-            </div>
-            </center>
-          </div>
-        </div>
-        </center>
-      </md-menu-content>
-    </md-menu>
-
-    <md-menu>
-      <md-button class="md-icon-button md-info"> 
-        <md-icon>send</md-icon>
-      </md-button> -->
-
-      <!-- <md-menu-content>
-        <md-menu-item>
-          <md-icon>phone</md-icon>
-          <span>My Item 1</span>
-        </md-menu-item>
-
-        <md-menu-item>
-          <md-icon>phone</md-icon>
-          <span>My Item 2</span>
-        </md-menu-item>
-
-        <md-menu-item>
-          <md-icon>phone</md-icon>
-          <span>My Item 3</span>
-        </md-menu-item>
-      </md-menu-content> -->
-    <!-- </md-menu> -->
-
-    <!-- <md-menu md-size="big" md-direction="bottom-end">
-      <md-button class="md-icon-button md-primary" md-menu-trigger>
-        <md-icon>share</md-icon>
-      </md-button> -->
-
-      <!-- <md-menu-content>
-        <md-menu-item>
-          <span>Find on map</span>
-          <md-icon>near_me</md-icon>
-        </md-menu-item>
-
-        <md-menu-item>
-          <span>Call</span>
-          <md-icon>phone</md-icon>
-        </md-menu-item>
-      </md-menu-content> -->
-    <!-- </md-menu> -->
-
-            <!-- </md-list-item>
-           
-          </md-list>
-         -->
-      </div> 
+    :class="{'md-toolbar-absolute md-white md-fixed-top': $route.meta.navbarAbsolute}" style="margin-bottom:0px;">
+    
       <div class="md-toolbar-section-end">
         <md-button class="md-just-icon md-round md-simple md-toolbar-toggle" :class="{toggled: $sidebar.showSidebar}" @click="toggleSidebar">
           <span class="icon-bar"></span>
@@ -124,7 +52,9 @@
     <!-- </div> -->
 
   </md-toolbar>
+</div>
 </template>
+
 
 <script>
 
@@ -161,7 +91,7 @@ export default{
 <style lang="scss" scoped>
   .md-menu,
   .toggle {
-    margin: 24px;
+    margin: 0px;
   }
 
   .author-card {
