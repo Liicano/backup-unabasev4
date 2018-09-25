@@ -98,7 +98,7 @@
                 <div class="md-layout" v-if="!showInputs">
                   <div class="md-layout-item md-size-55">
                   
-                  <div class="md-autocomplete md-success green" >
+                  <div class="md-autocomplete md-success green">
                     <md-autocomplete class="search md-success" style="" v-model="itemToAdd.nombre" :md-options="itemsModel" :md-open-on-focus="false">
                       <label v-if="$route.meta.rtlActive">Nombre del item</label>
                       <label v-else>Nombre del item</label>
@@ -155,7 +155,7 @@
     <template slot="body">
       <div class="md-layout">
        <div class="md-layout-item md-small-size-55 md-size-55">
-         <h4><span><i class="fa fa-credit-card"></i></span>  Documento de identidad </h4>
+         <h4><span><i class="fa fa-credit-card"></i></span>  RUT </h4>
        </div>
         <div class="md-layout-item md-small-size-40 md-size-40">
            
@@ -178,7 +178,7 @@
      </div>
 
      
-      <h4><span><i class="fa fa-user"></i></span>  Nombres y apellidos</h4>
+      <h4><span><i class="fa fa-user"></i></span>  Nombre</h4>
       <hr>
       <br>
      <div class="md-layout">
@@ -351,7 +351,7 @@ export default {
     notifyVue (verticalAlign, horizontalAlign, state) {
       this.$notify(
         {
-          message: '¡NUEVO ITEM AL CARRITO!',
+          message: '¡ITEM AGREGADO A LA COMPRA!',
           icon: 'add_alert',
           horizontalAlign: horizontalAlign,
           verticalAlign: verticalAlign,
@@ -366,7 +366,7 @@ export default {
             showCancelButton: true,
             confirmButtonClass: 'md-button md-success',
             cancelButtonClass: 'md-button md-info',
-            confirmButtonText: 'ok',
+            confirmButtonText: 'VISUALIZAR',
             cancelButtonText: 'enviar',
             buttonsStyling: false
       }).then((result) => {
