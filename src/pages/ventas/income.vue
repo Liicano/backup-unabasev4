@@ -33,9 +33,7 @@
           </div>
 
             
-          <!-- <div class="md-layout-item md-xsmall-size-85 md-medium-size-40 md-small-size-40 md-size-40">
-            <h5 class="title pull-right" style=""><b> <md-icon>calendar_today</md-icon>  15/09/2018</b></h5>
-          </div> -->
+          
 
           </div>
         

@@ -46,7 +46,7 @@
     props: {
       title: {
         type: String,
-        default: 'Vue MD PRO'
+        default: 'UNABASE V4'
       },
       rtlTitle: {
         type: String,
@@ -62,14 +62,14 @@
       },
       backgroundImage: {
         type: String,
-        default: './img/sidebar-2.jpg'
+        default: ''
       },
       backgroundColor: {
         type: String,
         default: 'black',
         validator: (value) => {
           let acceptedValues = ['', 'black','white', 'red']
-          return acceptedValues.indexOf(value) !== -1
+          return acceptedValues.indexOf(value) == 1;
         }
       },
       logo: {
