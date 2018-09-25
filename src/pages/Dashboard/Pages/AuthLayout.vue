@@ -2,10 +2,10 @@
   <div class="full-page" :class="{'nav-open': $sidebar.showSidebar}">
     <md-toolbar md-elevation="0" class="md-transparent md-toolbar-absolute">
       <div class="md-toolbar-row md-offset">
-        <div class="md-toolbar-section-start">
+        <!-- <div class="md-toolbar-section-start">
           <h3 class="md-title">{{$route.name}}</h3>
-        </div>
-        <div class="md-toolbar-section-end">
+        </div> -->
+        <!-- <div class="md-toolbar-section-end">
           <md-button class="md-just-icon md-simple md-round md-toolbar-toggle" :class="{toggled: $sidebar.showSidebar}" @click="toggleSidebar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -24,11 +24,11 @@
               </md-list-item>
               <md-list-item to="/register" @click="linkClick">
                 <md-icon>person_add</md-icon>
-                Register
+                {{ lg.login.register }}
               </md-list-item>
               <md-list-item to="/login" @click="linkClick">
                 <md-icon>fingerprint</md-icon>
-                login
+                {{ lg.login.login }}
               </md-list-item>
               <md-list-item to="/lock" @click="linkClick">
                 <md-icon>lock_open</md-icon>
@@ -36,7 +36,7 @@
               </md-list-item>
             </md-list>
           </div>
-        </div>
+        </div> -->
       </div>
     </md-toolbar>
     <div class="wrapper wrapper-full-page" @click="toggleSidebarPage">
@@ -49,7 +49,7 @@
         <footer class="footer">
           <div class="container md-offset">
               <nav>
-                  <ul>
+                  <!-- <ul>
                     <li>
                       <router-link :to="{path:'/dashboard'}">Home</router-link>
                     </li>
@@ -68,10 +68,10 @@
                               Blog
                           </a>
                       </li>
-                  </ul>
+                  </ul> -->
               </nav>
               <div class="copyright text-center">
-                &copy; {{ new Date().getFullYear() }} <a href="https://www.creative-tim.com/?ref=mdf-vuejs" target="_blank">Creative Tim</a>, made with <i class="fa fa-heart heart"></i> for a better web
+                &copy; {{ new Date().getFullYear() }} <a href="https://www.unabase.cl" target="_blank">Unabase</a>
               </div>
           </div>
         </footer>

@@ -13,19 +13,24 @@ export default {
       login: 'login'
 
     },
-    login:{
-      enter: 'enter',
-      register: 'register',
-      lost: 'forgot password',
-      username: 'username',
-      password: 'password',
-      profile: 'profile',
+    user: {
       name: 'name',
       email: 'email',
-      login: 'log in',
       classic: 'or be classical',
-      logingo: `let's go`
-    },
+      login:{
+        enter: 'enter',
+        lost: 'forgot password',
+        username: 'username',
+        password: 'password',
+        profile: 'profile',
+        l: 'login',
+        loginGo: `let's go`
+      },
+      register:{
+        r: 'register',
+        signup: 'get started'
+      }
+    },    
     income:{
       
     },
