@@ -64,8 +64,8 @@
         </li>
     <li class="tab col s12">
       <div class="container-fluid">
-       <md-autocomplete class="" style="width:100%;" v-model="itemSearch" :md-options="employees" :md-open-on-focus="false">
-              <label>Buscar</label>
+       <md-autocomplete placeholder="Buscar" class="" style="width:100%;" v-model="itemSearch" :md-options="employees" :md-open-on-focus="false">
+              
        </md-autocomplete>
        </div>
     </li>
