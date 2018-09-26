@@ -45,6 +45,7 @@
           <zoom-center-transition :duration="pageTransitionDuration" mode="out-in">
             <router-view></router-view>
           </zoom-center-transition>
+         
         </div>
         <!-- <footer class="footer">
           <div class="container md-offset">
@@ -202,5 +203,17 @@
   }
   .wrapper-full-page .zoomOut {
     animation-name: zoomOut8;
+  }
+
+  .phone-viewport {
+    height: 200px;
+    display: inline-flex;
+    align-items: flex-end;
+    overflow: hidden;
+    border: 1px solid rgba(#000, .26);
+    background: rgba(#000, .06);
+     position: fixed;
+    bottom: 0;
+    width: 100%;
   }
 </style>

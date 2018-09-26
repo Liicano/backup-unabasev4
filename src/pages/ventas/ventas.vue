@@ -4,16 +4,18 @@
     
     <!-- BOTON NUEVA VENTA -->
   <router-link :to="{path:'/income'}">
-     <div class="fixed-action-btn">
+     <div class="fixed-action-btn" id="new_venta_btn">
         <a class="btn-floating btn-large green">
           <i class="large material-icons">add</i>
         </a>
+        <md-tooltip direction="left">Nueva venta</md-tooltip>
       </div>
   </router-link>
 
       <!-- LISTA DE VENTAS REALIZADAS  (MOBIL) -->
-      <div class="md-layout-item md-medium-size-30 md-xsmall-size-100 md-size-100 " id="lista_ventas">
-        <md-list class="md-triple-line" style="border-radius:15px;">
+      <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100 " id="lista_ventas">
+        
+        <md-list class="md-triple-line">
 
         <div v-for="venta in users" :key="venta.id">
               <router-link :to="{path:'/sale/details/'+venta.id, params:{venta:venta}}">
@@ -71,7 +73,7 @@
 
 
         </div>
-
+  
   </div>
 </template>
 
@@ -145,14 +147,31 @@ export default {
   #tabla_ventas{
     display: none;
   }
+  #lista_ventas{
+  margin-top: 5%;
+  }
   // CAMBIOS AL ENTRAR EN PANTALLA MOVIL
+    #new_venta_btn{
+      margin-bottom: 12%;
+    }
+    
   @media (min-width: 992px) {
     #lista_ventas{
       display:none;
+       #new_venta_btn{
+          margin-bottom: 0% !important;
+        }
     }
+    
     #tabla_ventas{
       display:block;
     }
 
   }
+  
+  .md-layout-item{
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
 </style>

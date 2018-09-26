@@ -4,6 +4,7 @@
       <!-- your content here -->
       <router-view></router-view>
     </FadeTransition>
+    
   </div>
 </template>
 <script>
@@ -15,4 +16,15 @@
   }
 </script>
 <style>
+.phone-viewport {
+    height: 200px;
+    display: inline-flex;
+    align-items: flex-end;
+    overflow: hidden;
+    border: 1px solid rgba(#000, .26);
+    background: rgba(#000, .06);
+     position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
 </style>

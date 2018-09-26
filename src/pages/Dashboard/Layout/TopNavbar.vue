@@ -65,7 +65,6 @@
     <li class="tab col s12">
       <div class="container-fluid">
        <md-autocomplete placeholder="Buscar" class="" style="width:100%;" v-model="itemSearch" :md-options="employees" :md-open-on-focus="false">
-              
        </md-autocomplete>
        </div>
     </li>
@@ -113,12 +112,21 @@ export default {
 
 
 <style lang="scss" scoped>
+#mobile_navbar{
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: white;
+  border-radius: 5px;
+}
 #desktop_navbar{
   display:none;
 }
 @media (min-width: 992px) {
-  #mobile_navbar {
-    display: none;
+ #mobile_navbar {
+      display: none;
   }
   #desktop_navbar {
     display: block;
@@ -133,5 +141,11 @@ export default {
 #profile_img {
  width: 85%;
   margin-right: -50%;
+}
+
+
+textarea:focus {
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 </style>
