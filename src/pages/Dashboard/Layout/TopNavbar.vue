@@ -1,16 +1,17 @@
 <template>
 <div>
    <md-toolbar
+   id="desktop_navbar"
     md-elevation=""
     class="md-transparent"
-    :class="{'md-toolbar-absolute md-white md-fixed-top': $route.meta.navbarAbsolute}" style="margin-bottom:0px;">
+    :class="{'md-toolbar-absolute md-white md-fixed-top': $route.meta.navbarAbsolute}">
     
       <div class="md-toolbar-section-end">
-        <md-button class="md-just-icon md-round md-simple md-toolbar-toggle" :class="{toggled: $sidebar.showSidebar}" @click="toggleSidebar">
+        <!-- <md-button class="md-just-icon md-round md-simple md-toolbar-toggle" :class="{toggled: $sidebar.showSidebar}" @click="toggleSidebar">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-        </md-button>
+        </md-button> -->
 
         <div class="md-collapse">
           <div class="md-autocomplete" >
@@ -49,76 +50,88 @@
           </md-list>
         </div>
       </div>
-    <!-- </div> -->
+   
 
   </md-toolbar>
+  <div class="">
+    <div class="">
+      <ul id="mobile_navbar" class="tabs">
+
+        <li class="tab col s1" style="width:10%">
+          <a href="#/ventas">
+            <a href="#/dashboard"><md-icon>home</md-icon></a>
+          </a>
+        </li>
+    <li class="tab col s12">
+      <div class="container-fluid">
+       <md-autocomplete class="" style="width:100%;" v-model="itemSearch" :md-options="employees" :md-open-on-focus="false">
+              <label>Buscar</label>
+       </md-autocomplete>
+       </div>
+    </li>
+    <li class="tab col s1" style="width:10%;">
+      <a href="#/ventas">
+      <img id="profile_img" src="https://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img">
+      </a>
+    </li>
+  </ul>
+    </div>
+  </div>
 </div>
 </template>
 
 
 <script>
-
-export default{
-  data () {
+export default {
+  data() {
     return {
-      selectedEmployee: '',
+      selectedEmployee: "",
       employees: [
-        'Jim Halpert',
-        'Dwight Schrute',
-        'Michael Scott',
-        'Pam Beesly',
-        'Angela Martin',
-        'Kelly Kapoor',
-        'Ryan Howard',
-        'Kevin Malone'
+        "Jim Halpert",
+        "Dwight Schrute",
+        "Michael Scott",
+        "Pam Beesly",
+        "Angela Martin",
+        "Kelly Kapoor",
+        "Ryan Howard",
+        "Kevin Malone"
       ]
-    }
+    };
   },
   methods: {
-    toggleSidebar () {
-      this.$sidebar.displaySidebar(!this.$sidebar.showSidebar)
+    toggleSidebar() {
+      this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
     },
-    minimizeSidebar () {
+    minimizeSidebar() {
       if (this.$sidebar) {
-        this.$sidebar.toggleMinimize()
+        this.$sidebar.toggleMinimize();
       }
     }
   }
-}
+};
 </script>
 
 
 <style lang="scss" scoped>
-  .md-menu,
-  .toggle {
-    margin: 0px;
+#desktop_navbar{
+  display:none;
+}
+@media (min-width: 992px) {
+  #mobile_navbar {
+    display: none;
   }
-
-  .author-card {
-    padding: 8px 16px;
-    display: flex;
-    align-items: center;
-
-    .md-avatar {
-      margin-right: 16px;
-    }
-
-    .author-card-info {
-      display: flex;
-      flex-flow: column;
-      flex: 1;
-    }
-
-    span {
-      font-size: 16px;
-    }
-
-    .author-card-links {
-      display: flex;
-
-      a + a {
-        margin-left: 8px;
-      }
-    }
+  #desktop_navbar {
+    display: block;
   }
+}
+
+.md-menu,
+.toggle {
+  margin: 0px;
+}
+
+#profile_img {
+ width: 85%;
+  margin-right: -50%;
+}
 </style>
