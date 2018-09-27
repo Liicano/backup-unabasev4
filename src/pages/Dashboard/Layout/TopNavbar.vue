@@ -54,26 +54,22 @@
 
   </md-toolbar>
   <div class="">
-    <div class="">
-      <ul id="mobile_navbar" class="tabs">
+      
+    <div class="container-fluid" id="mobile_navbar">
+        <nav class="nav-extended white">
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo right"><img src="../../../../public/img/logotipo36x36.png" alt=""></a>
+            <a href="#" class="sidenav-trigger"></a>
+          </div>
+        
+        </nav>
 
-        <li class="tab col s1" style="width:10%">
-          <a href="#/ventas">
-            <a href="#/dashboard"><md-icon>home</md-icon></a>
-          </a>
-        </li>
-    <li class="tab col s12">
-      <div class="container-fluid">
-       <md-autocomplete placeholder="Buscar" class="" style="width:100%;" v-model="itemSearch" :md-options="employees" :md-open-on-focus="false">
-       </md-autocomplete>
-       </div>
-    </li>
-    <li class="tab col s1" style="width:10%;">
-      <a href="#/ventas">
-      <img id="profile_img" src="https://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img">
-      </a>
-    </li>
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="sass.html">Sass</a></li>
+    <li><a href="badges.html">Components</a></li>
+    <li><a href="collapsible.html">JavaScript</a></li>
   </ul>
+    
     </div>
   </div>
 </div>
@@ -112,21 +108,21 @@ export default {
 
 
 <style lang="scss" scoped>
-#mobile_navbar{
+#mobile_navbar {
   overflow: hidden;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 100;
-  background: white;
-  border-radius: 5px;
+  height: 9%;
+  background: rgb(231, 231, 231);
 }
-#desktop_navbar{
-  display:none;
+#desktop_navbar {
+  display: none;
 }
 @media (min-width: 992px) {
- #mobile_navbar {
-      display: none;
+  #mobile_navbar {
+    display: none;
   }
   #desktop_navbar {
     display: block;
@@ -139,10 +135,10 @@ export default {
 }
 
 #profile_img {
- width: 85%;
+  width: 4%;
+  float: left;
   margin-right: -50%;
 }
-
 
 textarea:focus {
   border-bottom: none !important;

@@ -83,22 +83,16 @@ import users from "@/pages/Dashboard/Tables/users.js";
 import swal from "sweetalert2";
 // import $ from 'jquery'
 
-
 //COMPONENTES
-import {
-  
-} from "@/components";
+import {} from "@/components";
 
 export default {
-  components: {
-    
-  },
+  components: {},
   props: {},
   data() {
     return {
       users: users,
-      checkbox1: null,
-      
+      checkbox1: null
     };
   },
   methods: {
@@ -126,52 +120,42 @@ export default {
       });
     }
   },
-  mounted() {
-     
-  },
+  mounted() {},
   beforeDestroy() {
     window.removeEventListener("resize", this.onResponsiveInverted);
   },
-  computed: {
-    
-  },
-  watch: {
-   
-  }
+  computed: {},
+  watch: {}
 };
 </script>
 <style lang="scss" scoped>
-  small {
+small {
+  display: block;
+}
+#tabla_ventas {
+  display: none;
+}
+
+// CAMBIOS AL ENTRAR EN PANTALLA MOVIL
+#new_venta_btn {
+  margin-bottom: 12%;
+}
+
+@media (min-width: 992px) {
+  #lista_ventas {
+    display: none;
+    #new_venta_btn {
+      margin-bottom: 0% !important;
+    }
+  }
+
+  #tabla_ventas {
     display: block;
   }
-  #tabla_ventas{
-    display: none;
-  }
-  #lista_ventas{
-  margin-top: 5%;
-  }
-  // CAMBIOS AL ENTRAR EN PANTALLA MOVIL
-    #new_venta_btn{
-      margin-bottom: 12%;
-    }
-    
-  @media (min-width: 992px) {
-    #lista_ventas{
-      display:none;
-       #new_venta_btn{
-          margin-bottom: 0% !important;
-        }
-    }
-    
-    #tabla_ventas{
-      display:block;
-    }
+}
 
-  }
-  
-  .md-layout-item{
-    padding-right: 0px;
-    padding-left: 0px;
-  }
-
+.md-layout-item {
+  padding-right: 0px;
+  padding-left: 0px;
+}
 </style>
