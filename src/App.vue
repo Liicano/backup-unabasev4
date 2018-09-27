@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div>
 
     <div>
@@ -66,11 +65,6 @@
 }
   
 </style>
-=======
-
-  <router-view></router-view>
-</template>
->>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
 
 <script>
 

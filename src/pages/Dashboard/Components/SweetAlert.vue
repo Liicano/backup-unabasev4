@@ -98,13 +98,8 @@
           })
         } else if (type === 'success-message') {
           swal({
-<<<<<<< HEAD
             title: `Venta registrada!`,
             text: '$ 200.000 CLP',
-=======
-            title: `Good job!`,
-            text: 'You clicked the button!',
->>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
             buttonsStyling: false,
             confirmButtonClass: 'md-button md-success',
             type: 'success'
@@ -122,13 +117,8 @@
           }).then((result) => {
             if (result.value) {
               swal({
-<<<<<<< HEAD
                 title: 'Correo enviado!',
                 text: 'hectorluisgonzalezlarreal@gmail.com',
-=======
-                title: 'Deleted!',
-                text: 'Your file has been deleted.',
->>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
                 type: 'success',
                 confirmButtonClass: 'md-button md-success',
                 buttonsStyling: false

@@ -18,7 +18,6 @@
         </div>
         <div class="md-layout-item md-size-50 md-medium-size-50 md-small-size-100 mr-auto" slot="content-right">
           <div class="social-line text-center">
-<<<<<<< HEAD
             <md-button class="md-just-icon md-round md-twitter">
               <i class="fab fa-twitter"></i>
             </md-button>
@@ -29,12 +28,6 @@
               <i class="fab fa-facebook-f"></i>
             </md-button>
             <h4 class="mt-3"> or be classical </h4>
-=======
-            <md-button class="md-just-icon md-round md-google" :href="getUrls.google.auth">
-              <i class="fab fa-google"></i>
-            </md-button>
-            <h4 class="mt-3">{{ lg.user.classic }}</h4>
->>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
           </div>
           <md-field class="md-form-group" v-for="item in inputs" :key="item.name">
             <md-icon>{{item.icon}}</md-icon>
@@ -43,11 +36,7 @@
           </md-field>
           <md-checkbox v-model="boolean">I agree to the <a>terms and conditions</a>.</md-checkbox>
           <div class="button-container">
-<<<<<<< HEAD
             <md-button href class="md-success md-round mt-4" slot="footer">Get Started</md-button>
-=======
-            <md-button href class="md-success md-round mt-4" slot="footer">{{lg.user.register.signup}}</md-button>
->>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
           </div>
         </div>
       </signup-card>
@@ -56,10 +45,6 @@
 </template>
 <script>
   import {SignupCard} from '@/components'
-<<<<<<< HEAD
-=======
-  import { mapGetters } from 'vuex'
->>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
   export default {
     components: {
       SignupCard
@@ -97,27 +82,12 @@
             nameAttr: 'email',
             type: 'email'},
 
-<<<<<<< HEAD
           { icon: 'lock_outline',
             name: 'Password..',
             nameAttr: 'password',
             type: 'password' }
         ]
       }
-=======
-          // { icon: 'lock_outline',
-          //   name: 'Password..',
-          //   nameAttr: 'password',
-          //   type: 'password' }
-        ]
-      }
-    },
-    computed: {
-      ...mapGetters([
-        // eslint-disable-next-line
-        'getUrls'
-      ])
->>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
     }
   }
 </script>

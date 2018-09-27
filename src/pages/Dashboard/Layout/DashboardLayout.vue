@@ -5,11 +5,7 @@
       <user-menu></user-menu>
       <mobile-menu></mobile-menu>
       <template slot-scope="props" slot="links">
-<<<<<<< HEAD
         <!-- <sidebar-item v-if="$route.meta.rtlActive" :link="{name: 'لوحة القيادةة', icon: 'dashboard', path: '/dashboard'}">
-=======
-        <sidebar-item v-if="$route.meta.rtlActive" :link="{name: 'لوحة القيادةة', icon: 'dashboard', path: '/dashboard'}">
->>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
         </sidebar-item>
         <sidebar-item v-else :link="{name: 'Dashboard', icon: 'dashboard', path: '/dashboard'}">
         </sidebar-item>
@@ -99,7 +95,6 @@
         <sidebar-item
           v-else
           :link="{name: 'Calendar', icon: 'date_range', path: '/calendar'}"></sidebar-item>
-<<<<<<< HEAD
          -->
 
 
@@ -122,8 +117,6 @@
           v-else
           :link="{name: 'Compras', icon: 'local_mall', path: '/Compras'}"></sidebar-item>
 
-=======
->>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
       </template>
     </side-bar>
     <div class="main-panel">
@@ -134,7 +127,6 @@
           <!-- your content here -->
           <router-view></router-view>
         </zoom-center-transition>
-<<<<<<< HEAD
           
       </div>
 
@@ -142,11 +134,6 @@
       <!-- <content-footer v-if="!$route.meta.hideFooter"></content-footer> -->
     </div>
      
-=======
-      </div>
-      <content-footer v-if="!$route.meta.hideFooter"></content-footer>
-    </div>
->>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
   </div>
 </template>
 <script>

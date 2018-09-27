@@ -104,7 +104,7 @@ export default {
   methods: {
     handleDelete(item) {
       swal({
-        title: "Are you sure?",
+        title: "Are you sure to da that?",
         text: `You won't be able to revert this!`,
         type: "warning",
         showCancelButton: true,
