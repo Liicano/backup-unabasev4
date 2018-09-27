@@ -1,7 +1,7 @@
 {
   "name": "Unabase V4",
   "short_name": "Unabase",
-  "start_url": "/?dashboard=true",
+  "start_url": "https://www.unabasev4.tk/#/dashboard",
   "icons": [
     {
       "src": "/icons/icon36.png",
