@@ -6,21 +6,21 @@ import store from "./store/store";
 import App from "./App.vue";
 import Chartist from "chartist";
 import router from "./routes/routes";
-// router setup
+
 import axios from "axios";
 import Notifications from "./components/NotificationPlugin";
 Vue.use(Notifications);
-import GSignInButton from "vue-google-signin-button";
-Vue.use(GSignInButton);
 
+// LANGUAGES
 const navigatorLanguage = navigator.language.slice(0, 2);
 import language from "./languages/main";
-//@ts-ignore
 Vue.prototype.lg = language[navigatorLanguage];
+
 // plugin setup
 Vue.use(VueRouter);
 Vue.use(DashboardPlugin);
 
+// AXIOS CONFIG
 axios.defaults.withCredentials = true;
 
 // configure router

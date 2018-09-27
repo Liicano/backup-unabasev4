@@ -1,5 +1,4 @@
 import axios from "axios";
-import { setCookie } from "../../assets/js/cookie";
 
 // import { mapGetters } from 'vuex'
 export default {
@@ -11,14 +10,11 @@ export default {
   mutations: {
     setLogin(state, payload) {
       state.user = payload;
-      setCookie("access_token", state.user, 1);
     }
   },
   actions: {
     fetchLogin({ commit, rootGetters }, payload) {
       return new Promise((resolve, reject) => {
-        // console.log('payload')
-        // console.log(payload)
         axios
           .post(rootGetters.getUrls.login, {
             username: payload.username,
@@ -31,8 +27,6 @@ export default {
             if (res.status === 200 && res.statusText === "authenticated") {
               commit("setLogin", res.data.token);
               resolve(res);
-              // this.$router.push('/')
-              // window.location.replace('/')
             }
           })
           .catch(err => {
@@ -45,8 +39,6 @@ export default {
     },
     fetchUser({ rootGetters }, payload) {
       return new Promise((resolve, reject) => {
-        // console.log('payload')
-        // console.log(payload)
         axios
           .get(rootGetters.getUrls.getUser + payload._id)
           .then(res => {

@@ -50,6 +50,13 @@ const Charts = () => import("@/pages/Dashboard/Charts.vue");
 import Widgets from "@/pages/Dashboard/Widgets.vue";
 import VueRouter from "vue-router";
 
+// INCOME
+// const Ventas = () => import('@/pages/ventas/ventas.vue');
+// const Income = () => import('@/pages/ventas/income.vue');
+// const Details = () => import('@/pages/ventas/details.vue');
+const Incomes = () => import("@/pages/income/incomes.vue");
+const Income = () => import("@/pages/income/income.vue");
+
 let componentsMenu = {
   path: "/components",
   component: DashboardLayout,
@@ -265,6 +272,16 @@ const routes = [
         path: "widgets",
         name: "Widgets",
         components: { default: Widgets }
+      },
+      {
+        path: "incomes/:id",
+        name: "Income",
+        components: { default: Income }
+      },
+      {
+        path: "incomes",
+        name: "Incomes",
+        components: { default: Incomes }
       }
     ]
   }
