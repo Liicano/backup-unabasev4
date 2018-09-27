@@ -5,13 +5,23 @@ import DashboardPlugin from "./material-dashboard";
 // Plugins
 import App from "./App.vue";
 import Chartist from "chartist";
-
-// router setup
 import routes from "./routes/routes";
+
+import axios from "axios";
+import Notifications from "./components/NotificationPlugin";
+Vue.use(Notifications);
+
+// LANGUAGES
+const navigatorLanguage = navigator.language.slice(0, 2);
+import language from "./languages/main";
+Vue.prototype.lg = language[navigatorLanguage];
 
 // plugin setup
 Vue.use(VueRouter);
 Vue.use(DashboardPlugin);
+
+// AXIOS CONFIG
+axios.defaults.withCredentials = true;
 
 // configure router
 const router = new VueRouter({

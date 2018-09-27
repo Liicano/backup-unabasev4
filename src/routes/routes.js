@@ -54,7 +54,7 @@ import Widgets from "@/pages/Dashboard/Widgets.vue";
 // VENTAS
 const Ventas = () => import("@/pages/ventas/ventas.vue");
 const Income = () => import("@/pages/ventas/income.vue");
-const Details = () => import("@/pages/ventas/details.vue");
+const Incomes = () => import("@/pages/ventas/income.vue");
 
 let componentsMenu = {
   path: "/components",
@@ -285,9 +285,14 @@ const routes = [
         components: { default: Income }
       },
       {
-        path: "sale/details/:id",
-        name: "income",
-        components: { default: Details }
+        path: "incomes/:id",
+        name: "Income",
+        components: { default: Income }
+      },
+      {
+        path: "incomes",
+        name: "Incomes",
+        components: { default: Incomes }
       }
     ]
   }
