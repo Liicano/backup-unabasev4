@@ -1,7 +1,7 @@
 {
-  "name": "My Progressive Web Application",
-  "short_name": "Progressive",
-  "start_url": "/?home=true",
+  "name": "Unabase V4",
+  "short_name": "Unabase",
+  "start_url": "/?dashboard=true",
   "icons": [
     {
       "src": "/icons/icon36.png",
