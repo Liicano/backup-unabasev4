@@ -48,13 +48,14 @@ const Calendar = () => import("@/pages/Dashboard/Calendar.vue");
 // Charts
 const Charts = () => import("@/pages/Dashboard/Charts.vue");
 import Widgets from "@/pages/Dashboard/Widgets.vue";
+import VueRouter from "vue-router";
 
-// Unabase
-
-// VENTAS
-const Ventas = () => import("@/pages/ventas/ventas.vue");
-const Income = () => import("@/pages/ventas/income.vue");
-const Incomes = () => import("@/pages/ventas/income.vue");
+// INCOME
+// const Ventas = () => import('@/pages/ventas/ventas.vue');
+// const Income = () => import('@/pages/ventas/income.vue');
+// const Details = () => import('@/pages/ventas/details.vue');
+// const Incomes = () => import("@/pages/income/incomes.vue");
+// const Income = () => import("@/pages/income/income.vue");
 
 let componentsMenu = {
   path: "/components",
@@ -236,8 +237,6 @@ let authPages = {
   ]
 };
 
-// RUTAS INDIVIDUALES (SIN DROPDOWNS)
-
 const routes = [
   {
     path: "/",
@@ -273,29 +272,28 @@ const routes = [
         path: "widgets",
         name: "Widgets",
         components: { default: Widgets }
-      },
-      {
-        path: "ventas",
-        name: "ventas",
-        components: { default: Ventas }
-      },
-      {
-        path: "income",
-        name: "income",
-        components: { default: Income }
-      },
-      {
-        path: "incomes/:id",
-        name: "Income",
-        components: { default: Income }
-      },
-      {
-        path: "incomes",
-        name: "Incomes",
-        components: { default: Incomes }
       }
+      // {
+      //   path: "incomes/:id",
+      //   name: "Income",
+      //   components: { default: Income }
+      // },
+      // {
+      //   path: "incomes",
+      //   name: "Incomes",
+      //   components: { default: Incomes }
+      // }
     ]
   }
 ];
 
-export default routes;
+let router = new VueRouter({
+  mode: "history",
+  routes,
+  linkExactActiveClass: "nav-item active"
+});
+
+router.beforeEach((to, from, next) => {
+  next();
+});
+export default router;
