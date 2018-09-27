@@ -1,6 +1,10 @@
 <template>
+<<<<<<< HEAD
 <div></div>
   <!-- <ul class="nav nav-mobile-menu">
+=======
+  <ul class="nav nav-mobile-menu">
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
     <li>
       <md-field>
         <label>Search</label>
@@ -31,7 +35,11 @@
       <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="material-icons">person</i>
       <p>Account</p></a>
     </li>
+<<<<<<< HEAD
   </ul> -->
+=======
+  </ul>
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
 </template>
 <script>
 export default {

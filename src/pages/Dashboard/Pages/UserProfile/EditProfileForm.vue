@@ -80,6 +80,10 @@
   </form>
 </template>
 <script>
+<<<<<<< HEAD
+=======
+import { mapGetters } from 'vuex'
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
 export default {
   name: 'edit-profile-form',
   props: {
@@ -102,10 +106,29 @@ export default {
       aboutme: "Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
     }
   },
+<<<<<<< HEAD
+=======
+  computed:{
+    ...mapGetters({
+      getUser: 'users/getUser'
+    })
+  },
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
   methods: {
     getClass: function(headerColor){
       return 'md-card-header-'+ headerColor + ''
     }
+<<<<<<< HEAD
+=======
+  },
+  created(){
+    this.$store.dispatch('users/fetchUser', {
+      _id: this.getUser._id
+    })
+    .then(res =>{
+      console.log(res)
+    })
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
   }
 }
 

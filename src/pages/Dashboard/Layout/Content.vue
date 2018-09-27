@@ -4,7 +4,10 @@
       <!-- your content here -->
       <router-view></router-view>
     </FadeTransition>
+<<<<<<< HEAD
     
+=======
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
   </div>
 </template>
 <script>
@@ -16,6 +19,7 @@
   }
 </script>
 <style>
+<<<<<<< HEAD
 .phone-viewport {
     height: 200px;
     display: inline-flex;
@@ -27,4 +31,6 @@
     bottom: 0;
     width: 100%;
   }
+=======
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
 </style>

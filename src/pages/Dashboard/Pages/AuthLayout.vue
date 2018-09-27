@@ -2,10 +2,17 @@
   <div class="full-page" :class="{'nav-open': $sidebar.showSidebar}">
     <md-toolbar md-elevation="0" class="md-transparent md-toolbar-absolute">
       <div class="md-toolbar-row md-offset">
+<<<<<<< HEAD
         <div class="md-toolbar-section-start">
           <h3 class="md-title">{{$route.name}}</h3>
         </div>
         <div class="md-toolbar-section-end">
+=======
+        <!-- <div class="md-toolbar-section-start">
+          <h3 class="md-title">{{$route.name}}</h3>
+        </div> -->
+        <!-- <div class="md-toolbar-section-end">
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
           <md-button class="md-just-icon md-simple md-round md-toolbar-toggle" :class="{toggled: $sidebar.showSidebar}" @click="toggleSidebar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -24,11 +31,19 @@
               </md-list-item>
               <md-list-item to="/register" @click="linkClick">
                 <md-icon>person_add</md-icon>
+<<<<<<< HEAD
                 Register
               </md-list-item>
               <md-list-item to="/login" @click="linkClick">
                 <md-icon>fingerprint</md-icon>
                 login
+=======
+                {{ lg.login.register }}
+              </md-list-item>
+              <md-list-item to="/login" @click="linkClick">
+                <md-icon>fingerprint</md-icon>
+                {{ lg.login.login }}
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
               </md-list-item>
               <md-list-item to="/lock" @click="linkClick">
                 <md-icon>lock_open</md-icon>
@@ -36,7 +51,11 @@
               </md-list-item>
             </md-list>
           </div>
+<<<<<<< HEAD
         </div>
+=======
+        </div> -->
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
       </div>
     </md-toolbar>
     <div class="wrapper wrapper-full-page" @click="toggleSidebarPage">
@@ -45,12 +64,20 @@
           <zoom-center-transition :duration="pageTransitionDuration" mode="out-in">
             <router-view></router-view>
           </zoom-center-transition>
+<<<<<<< HEAD
          
         </div>
         <!-- <footer class="footer">
           <div class="container md-offset">
               <nav>
                   <ul>
+=======
+        </div>
+        <footer class="footer">
+          <div class="container md-offset">
+              <nav>
+                  <!-- <ul>
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
                     <li>
                       <router-link :to="{path:'/dashboard'}">Home</router-link>
                     </li>
@@ -69,6 +96,7 @@
                               Blog
                           </a>
                       </li>
+<<<<<<< HEAD
                   </ul>
               </nav>
               <div class="copyright text-center">
@@ -76,6 +104,15 @@
               </div>
           </div>
         </footer> -->
+=======
+                  </ul> -->
+              </nav>
+              <div class="copyright text-center">
+                &copy; {{ new Date().getFullYear() }} <a href="https://www.unabase.cl" target="_blank">Unabase</a>
+              </div>
+          </div>
+        </footer>
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
       </div>
     </div>
   </div>
@@ -204,6 +241,7 @@
   .wrapper-full-page .zoomOut {
     animation-name: zoomOut8;
   }
+<<<<<<< HEAD
 
   .phone-viewport {
     height: 200px;
@@ -216,4 +254,6 @@
     bottom: 0;
     width: 100%;
   }
+=======
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
 </style>

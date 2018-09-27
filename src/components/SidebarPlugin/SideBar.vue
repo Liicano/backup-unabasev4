@@ -1,6 +1,9 @@
 <template>
+<<<<<<< HEAD
 <div>
   
+=======
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
   <div class="sidebar"
        :data-color="activeColor"
        :data-image="backgroundImage"
@@ -10,12 +13,20 @@
     <div class="logo">
       <a href="https://www.creative-tim.com" class="simple-text logo-mini" target="_blank">
         <div class="logo-img">
+<<<<<<< HEAD
           <img :src="logo" class="logoimagen">
+=======
+          <img :src="logo">
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
         </div>
       </a>
       <a href="https://www.creative-tim.com" class="simple-text logo-normal" target="_blank">
         <template v-if="$route.meta.rtlActive">{{rtlTitle}}</template>
+<<<<<<< HEAD
         <template v-else>{{title}}   </template>   <small>      V4</small>
+=======
+        <template v-else>{{title}}</template>
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
       </a>
       <div class="navbar-minimize">
         <md-button id="minimizeSidebar" class="md-round md-just-icon md-transparent" @click="minimizeSidebar">
@@ -41,6 +52,7 @@
       </md-list>
     </div>
   </div>
+<<<<<<< HEAD
   
 </div>
 </template>
@@ -130,4 +142,86 @@ export default {
     display: none;
   }
 }
+=======
+</template>
+<script>
+  export default {
+    name: 'sidebar',
+    props: {
+      title: {
+        type: String,
+        default: 'Vue MD PRO'
+      },
+      rtlTitle: {
+        type: String,
+        default: 'توقيت الإبداعية'
+      },
+      activeColor: {
+        type: String,
+        default: 'green',
+        validator: (value) => {
+          let acceptedValues = ['', 'primary', 'azure', 'green', 'orange', 'danger', 'rose']
+          return acceptedValues.indexOf(value) !== -1
+        }
+      },
+      backgroundImage: {
+        type: String,
+        default: './img/sidebar-2.jpg'
+      },
+      backgroundColor: {
+        type: String,
+        default: 'black',
+        validator: (value) => {
+          let acceptedValues = ['', 'black','white', 'red']
+          return acceptedValues.indexOf(value) !== -1
+        }
+      },
+      logo: {
+        type: String,
+        default: './img/vue-logo.png'
+      },
+      sidebarLinks: {
+        type: Array,
+        default: () => []
+      },
+      autoClose: {
+        type: Boolean,
+        default: true
+      }
+    },
+    provide () {
+      return {
+        autoClose: this.autoClose
+      }
+    },
+    methods: {
+      minimizeSidebar () {
+        if (this.$sidebar) {
+          this.$sidebar.toggleMinimize()
+        }
+      }
+    },
+    computed: {
+      sidebarStyle () {
+        return {
+          backgroundImage: `url(${this.backgroundImage})`
+        }
+      }
+    },
+    beforeDestroy () {
+      if (this.$sidebar.showSidebar) {
+        this.$sidebar.showSidebar = false
+      }
+    }
+  }
+
+</script>
+<style>
+  @media (min-width: 992px) {
+    .navbar-search-form-mobile,
+    .nav-mobile-menu{
+      display: none;
+    }
+  }
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
 </style>

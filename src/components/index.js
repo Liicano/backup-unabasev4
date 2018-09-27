@@ -8,6 +8,10 @@ import Modal from './Modal.vue';
 
 // Tables
 import GlobalSalesTable from './Tables/GlobalSalesTable.vue';
+<<<<<<< HEAD
+=======
+import Gauth from './Gauth.vue';
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
 
 import PricingCard from './Cards/PricingCard.vue';
 import SignupCard from './Cards/SignupCard.vue';
@@ -36,6 +40,10 @@ import SidebarPlugin from './SidebarPlugin';
 import AnimatedNumber from './AnimatedNumber';
 
 export {
+<<<<<<< HEAD
+=======
+  Gauth,
+>>>>>>> d754a8d13470abe52e3087916789f80a920e4a26
   IconCheckbox,
   Badge,
   Modal,
