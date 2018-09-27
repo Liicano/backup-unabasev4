@@ -1,5 +1,5 @@
 {
-  "name": "Unabase V4",
+  "name": "Unabase",
   "short_name": "Unabase",
   "start_url": "/",
   "icons": [
@@ -60,7 +60,7 @@
     }
   ],
   "theme_color": "#43AF7C",
-  "background_color": "#FFFFFF",
+  "background_color": "#43AF7C",
   "display": "standalone",
   "orientation": "portrait"
   
