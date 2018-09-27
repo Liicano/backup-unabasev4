@@ -1,70 +1,72 @@
-import axios from 'axios'
+import axios from "axios";
+import { setCookie } from "../../assets/js/cookie";
 
 // import { mapGetters } from 'vuex'
 export default {
   namespaced: true,
   state: {
     users: Object,
-    user: Object 
+    user: Object
   },
   mutations: {
-    setLogin(state, payload){
-      state.user = payload
+    setLogin(state, payload) {
+      state.user = payload;
+      setCookie("access_token", state.user, 1);
     }
   },
   actions: {
-    fetchLogin({ commit, rootGetters } , payload){
-      return new Promise((resolve, reject)=>{
+    fetchLogin({ commit, rootGetters }, payload) {
+      return new Promise((resolve, reject) => {
         // console.log('payload')
         // console.log(payload)
-        axios.post(rootGetters.getUrls.login, {
-          username: payload.username,
-          password: payload.password
-        })
-        .then(res => {
-          //eslint-disable-next-line
-          console.log('res')
-          console.log(res)
-          if(res.status === 200 && res.data.message === 'authenticated'){
-            commit('setLogin', res.data.user)
-            resolve(res)
-            // this.$router.push('/')
-            // window.location.replace('/')
-          }
-
-        })
-        .catch(err => {
-          const res = err.response;
-          reject(res)
-        })
-
-      })
+        axios
+          .post(rootGetters.getUrls.login, {
+            username: payload.username,
+            password: payload.password
+          })
+          .then(res => {
+            //eslint-disable-next-line
+            console.log("res");
+            console.log(res);
+            if (res.status === 200 && res.statusText === "authenticated") {
+              commit("setLogin", res.data.token);
+              resolve(res);
+              // this.$router.push('/')
+              // window.location.replace('/')
+            }
+          })
+          .catch(err => {
+            const res = err.response;
+            console.log("err");
+            console.log(err);
+            reject(res);
+          });
+      });
     },
-    fetchUser({  rootGetters }, payload ){
-      return new Promise((resolve, reject)=>{
+    fetchUser({ rootGetters }, payload) {
+      return new Promise((resolve, reject) => {
         // console.log('payload')
         // console.log(payload)
-        axios.get(rootGetters.getUrls.getUser+payload._id)
-        .then(res => {
-          //eslint-disable-next-line
-          console.log('res')
-          console.log(res)
-          // if(res.status === 200 && res.data.message === 'authenticated'){
-          //   commit('setLogin', res.data.user)
-          //   resolve(res)
-          //   // this.$router.push('/')
-          //   // window.location.replace('/')
-          // }
-
-        })
-        .catch(err => {
-          const res = err.response;
-          reject(res)
-        })
-
-      })
+        axios
+          .get(rootGetters.getUrls.getUser + payload._id)
+          .then(res => {
+            //eslint-disable-next-line
+            console.log("res");
+            console.log(res);
+            // if(res.status === 200 && res.data.message === 'authenticated'){
+            //   commit('setLogin', res.data.user)
+            //   resolve(res)
+            //   // this.$router.push('/')
+            //   // window.location.replace('/')
+            // }
+          })
+          .catch(err => {
+            const res = err.response;
+            reject(res);
+          });
+      });
     }
-    
+
     // login({ commit } : any, payload: Object){
     //   commit('login', payload)
     // }
@@ -77,4 +79,4 @@ export default {
       return state.user;
     }
   }
-}
+};

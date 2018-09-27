@@ -7,7 +7,7 @@ import App from "./App.vue";
 import Chartist from "chartist";
 import router from "./routes/routes";
 // router setup
-
+import axios from "axios";
 import Notifications from "./components/NotificationPlugin";
 Vue.use(Notifications);
 import GSignInButton from "vue-google-signin-button";
@@ -20,6 +20,8 @@ Vue.prototype.lg = language[navigatorLanguage];
 // plugin setup
 Vue.use(VueRouter);
 Vue.use(DashboardPlugin);
+
+axios.defaults.withCredentials = true;
 
 // configure router
 // const router = new VueRouter({

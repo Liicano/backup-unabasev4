@@ -1,5 +1,6 @@
 <template>
   <div class="md-layout">
+    <button @click="logout">Logout</button>
     <div class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25">
       <stats-card header-color="blue">
         <template slot="header">
@@ -308,17 +309,21 @@
 </template>
 
 <script>
-import AsyncWorldMap from '@/components/WorldMap/AsyncWorldMap.vue'
+import AsyncWorldMap from "@/components/WorldMap/AsyncWorldMap.vue";
 import {
   StatsCard,
   ChartCard,
   ProductCard,
   AnimatedNumber,
   GlobalSalesCard,
-  GlobalSalesTable,
-} from '@/components'
+  GlobalSalesTable
+} from "@/components";
+// import axios from "axios";
+import { mapGetters } from "vuex";
+import axios from "axios";
 
-export default{
+axios.defaults.withCredentials = true;
+export default {
   components: {
     StatsCard,
     ChartCard,
@@ -328,31 +333,29 @@ export default{
     GlobalSalesTable,
     AsyncWorldMap
   },
-  data () {
+  data() {
     return {
-      product1: './img/card-2.jpg',
-      product2: './img/card-3.jpg',
-      product3: './img/card-1.jpg',
+      product1: "./img/card-2.jpg",
+      product2: "./img/card-3.jpg",
+      product3: "./img/card-1.jpg",
       seq2: 0,
       mapData: {
-        'AU': 760,
-        'BR': 550,
-        'CA': 120,
-        'DE': 1300,
-        'FR': 540,
-        'GB': 690,
-        'GE': 200,
-        'IN': 200,
-        'RO': 600,
-        'RU': 300,
-        'US': 2920
+        AU: 760,
+        BR: 550,
+        CA: 120,
+        DE: 1300,
+        FR: 540,
+        GB: 690,
+        GE: 200,
+        IN: 200,
+        RO: 600,
+        RU: 300,
+        US: 2920
       },
       dailySalesChart: {
         data: {
-          labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-          series: [
-            [12, 17, 7, 17, 23, 18, 38]
-          ]
+          labels: ["M", "T", "W", "T", "F", "S", "S"],
+          series: [[12, 17, 7, 17, 23, 18, 38]]
         },
         options: {
           lineSmooth: this.$Chartist.Interpolation.cardinal({
@@ -370,10 +373,8 @@ export default{
       },
       dataCompletedTasksChart: {
         data: {
-          labels: ['12am', '3pm', '6pm', '9pm', '12pm', '3am', '6am', '9am'],
-          series: [
-            [230, 750, 450, 300, 280, 240, 200, 190]
-          ]
+          labels: ["12am", "3pm", "6pm", "9pm", "12pm", "3am", "6am", "9am"],
+          series: [[230, 750, 450, 300, 280, 240, 200, 190]]
         },
 
         options: {
@@ -392,11 +393,21 @@ export default{
       },
       emailsSubscriptionChart: {
         data: {
-          labels: ['Ja', 'Fe', 'Ma', 'Ap', 'Mai', 'Ju', 'Jul', 'Au', 'Se', 'Oc', 'No', 'De'],
-          series: [
-            [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-
-          ]
+          labels: [
+            "Ja",
+            "Fe",
+            "Ma",
+            "Ap",
+            "Mai",
+            "Ju",
+            "Jul",
+            "Au",
+            "Se",
+            "Oc",
+            "No",
+            "De"
+          ],
+          series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]]
         },
         options: {
           axisX: {
@@ -412,18 +423,93 @@ export default{
           }
         },
         responsiveOptions: [
-          ['screen and (max-width: 640px)', {
-            seriesBarDistance: 5,
-            axisX: {
-              labelInterpolationFnc: function (value) {
-                return value[0]
+          [
+            "screen and (max-width: 640px)",
+            {
+              seriesBarDistance: 5,
+              axisX: {
+                labelInterpolationFnc: function(value) {
+                  return value[0];
+                }
               }
             }
-          }]
+          ]
         ]
       }
+    };
+  },
+  computed: {
+    ...mapGetters(["getUrls"])
+  },
+  methods: {
+    logout() {
+      debugger;
+      axios
+        .get(this.getUrls.users.logout)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
-  }
+  },
+  mounted() {
+    // ufetch({ url: this.getUrls.users.gets })
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
 
-}
+    // ufetch({
+    //   url: this.getUrls.users.gets,
+    //   data: { page: 3, limit: 5 },
+    //   method: "POST"
+    // })
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+
+    // axios
+    //   .get(this.getUrls.users.gets)
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+
+    // axios
+    //   .post(this.getUrls.users.gets, {
+    //     page: 3,
+    //     limit: 5
+    //   })
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+
+    axios(this.getUrls.users.gets, {
+      method: "POST",
+      withCredentials: true,
+      data: {
+        page: 3,
+        limit: 5
+      }
+    })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+};
 </script>
