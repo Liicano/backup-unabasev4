@@ -1,6 +1,32 @@
 <template>
 <div>
-  <div id="">
+  <!-- MODAL DE CLIENTES -->
+  <modal v-if="modalClientes" @close="modalClientesHide">
+    <template slot="header">
+      <md-button class="md-simple md-just-icon md-round modal-default-button" @click="modalClientesHide">
+        <md-icon>clear</md-icon>
+      </md-button>
+    </template>
+
+    <template slot="body">
+     <div class="row">
+       <div class="col s12">
+          <ul class="collection with-header" style="border-style: none;">
+        <li class="collection-item"><div><a style="color: inherit;" class="">Hector Gonzalez</a></div></li>
+      </ul>
+       </div>
+     </div>
+    </template>
+
+    <template slot="footer">
+      <md-button class="md-simple" @click="modalClientesHide">Salir</md-button>
+      
+    </template>
+  </modal>
+<!-- Modal de clientes -->
+
+  <div class="form_desktop">
+  
   <div class="md-layout">
       <div class="md-layout-item md-small-size-100 md-medium-size-60 md-small-size-60 md-size-60">
       <md-card>
@@ -144,86 +170,6 @@
       </md-card>
     </div>
 
-
-  <!-- MODAL DE CLIENTES -->
-  <modal v-if="modalClientes" @close="modalClientesHide">
-    <template slot="header">
-      <md-button class="md-simple md-just-icon md-round modal-default-button" @click="modalClientesHide">
-        <md-icon>clear</md-icon>
-      </md-button>
-    </template>
-
-    <template slot="body">
-      <div class="md-layout">
-       <div class="md-layout-item md-small-size-55 md-size-55">
-         <h4><span><i class="fa fa-credit-card"></i></span>  RUT </h4>
-       </div>
-        <div class="md-layout-item md-small-size-40 md-size-40">
-           
-        </div>
-      </div>
-      <hr>
-     <div class="md-layout">
-       <div class="md-layout-item md-small-size-60 md-size-60">
-         <md-field>
-            <label>RUT</label>
-            <md-input type="text" minlength="1" maxlength="8"></md-input>
-         </md-field>
-       </div>
-       <div class="md-layout-item md-small-size-30 md-size-30">
-         <md-field>
-            <label>DV</label>
-            <md-input type="text" minlength="1" maxlength="1"></md-input>
-         </md-field>
-       </div>
-     </div>
-
-     
-      <h4><span><i class="fa fa-user"></i></span>  Nombre</h4>
-      <hr>
-      <br>
-     <div class="md-layout">
-       <div class="md-layout-item md-small-size-45 md-size-45">
-         <md-field> 
-            <label>Nombre</label>
-            <md-input type="text"></md-input>
-         </md-field>
-       </div>
-       <div class="md-layout-item md-small-size-45 md-size-45">
-          <md-field>
-            <label>Apellido</label>
-          <md-input type="text"></md-input>
-          </md-field>
-       </div>
-     </div>
-
-     
-      <h4><span><i class="fa fa-map"></i></span>Direccion</h4>
-      <hr>
-      <br>
-     <div class="md-layout">
-       <div class="md-layout-item md-small-size-45 md-size-35">
-         <md-field>
-            <label>Comuna</label>
-            <md-input type="text"></md-input>
-         </md-field>
-       </div>
-       <div class="md-layout-item md-small-size-45 md-size-55">
-          <md-field>
-            <label>Direccion</label>
-          <md-input type="text"></md-input>
-          </md-field>
-       </div>
-     </div>
-    </template>
-
-    <template slot="footer">
-      <md-button class="md-simple" @click="modalClientesHide">Salir</md-button>
-      <md-button class="md-success md-simple" >Guardar</md-button>
-    </template>
-  </modal>
-<!-- Modal de clientes -->
-
     <div class="md-layout-item md-small-size-100 md-medium-size-40 md-small-size-40 md-size-40">
           <pricing-card icon-color="icon-success">
             <md-list class="md-triple-line" slot="description" style="border-style:none;width: 100%;">
@@ -259,7 +205,6 @@
               </div>
           </pricing-card>
           <md-card-actions>
-                      
           </md-card-actions>
 
           <!-- Total -->
@@ -279,9 +224,109 @@
 
   </div>
 
+</div>
+
+
+<div class="form_mobile">
+
+   <div class="card horizontal"> 
+     
+      <div class="card-stacked">
+        <div class="card-content">
+          
+
+           <div class="row valign-wrapper">
+             <div class="input-field col s12">
+               <input placeholder="Asunto" id="" type="text" class="validate">
+             </div>
+           
+            </div>
+
+
+          <div class="row valign-wrapper">
+             <div class="input-field col s10">
+               <input placeholder="Cliente" id="" type="text" class="validate">
+             </div>
+             <div class="col s2">
+               <center>
+               <a class="btn-floating btn-small waves-effect waves-light blue" @click="modalClientes = true;"><i class="material-icons">person_add</i></a>
+               </center>
+             </div>
+            </div>
+
+             <div class="row valign-wrapper">
+             <div class="input-field col s5">
+               <input placeholder="Item" v-model="itemToAdd.nombre" id="" type="text" class="validate">
+             </div>
+              <div class="input-field col s2">
+               <input placeholder="#" v-model="itemToAdd.cantidad" value="1" id="" type="number" class="validate">
+             </div>
+
+              <div class="input-field col s3">
+               <input placeholder="$" v-model="itemToAdd.precio" id="" type="number" class="validate">
+             </div>
+
+
+             <div class="col s2">
+               <center>
+               <a class="btn-floating btn-small waves-effect waves-light green" @click="saveItem(itemToAdd);notifyVue('top', 'center','success') "><i class="material-icons">add</i></a>
+               </center>
+             </div>
+            </div>
+
+
+          <div class="row">
+             <div class="col s12">
+               <center>
+               <a class=" btn-floating  waves-effect waves-light green" @click="showSwal('success-message', ventaObject.total)"><i class="material-icons">save_alt</i></a>
+               </center>
+             </div>
+          </div>
+
+            
+            <br>
+     
+            <div class="row">
+
+              <div class="col s3">
+               <center>
+                 <!-- <hr> -->
+                 <small class="text-green">Items</small>
+                  <h1><b>{{ventaObject.item.length}}</b></h1>
+                  <hr>
+               </center>
+              </div>
+
+              
+              <div class="col s8">
+               <center>
+                 <!-- <hr> -->
+                 <small>Total</small>
+                  <h1><b>$</b>{{ventaObject.total}}</h1>
+                  <hr>
+               </center>
+              </div>
+
+              
+            </div>
+
+
+            
+        </div>
+        <div class="card-action">
+         
+         
+        </div>
+      </div>
+    </div>
   
 
-  </div>
+
+</div>
+
+
+
+
 </div>
 </template>
 <script>
@@ -334,6 +379,8 @@ export default {
       // Introduciendo al total
       this.ventaObject.total =
         parseInt(this.ventaObject.total) + parseInt(precioProdcuto);
+
+      this.itemToAdd = {};
     },
     changeBtnStatus() {
       this.itemToAdd = {};
@@ -399,5 +446,20 @@ export default {
 }
 .total {
   top: -15%;
+}
+
+// MEDIA QUERYES
+.form_desktop {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .form_mobile {
+    display: none;
+  }
+
+  .form_desktop {
+    display: block;
+  }
 }
 </style>
