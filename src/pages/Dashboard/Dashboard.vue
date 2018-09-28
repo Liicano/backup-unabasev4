@@ -321,6 +321,7 @@ import {
 // import axios from "axios";
 import { mapGetters } from "vuex";
 import axios from "axios";
+import ufetch from "../../assets/js/ufetch.js";
 
 axios.defaults.withCredentials = true;
 export default {
@@ -443,7 +444,7 @@ export default {
   },
   methods: {
     logout() {
-      debugger;
+      // debugger;
       axios
         .get(this.getUrls.users.logout)
         .then(res => {
@@ -462,19 +463,17 @@ export default {
     //   .catch(err => {
     //     console.log(err);
     //   });
-
-    // ufetch({
-    //   url: this.getUrls.users.gets,
-    //   data: { page: 3, limit: 5 },
-    //   method: "POST"
-    // })
-    //   .then(res => {
-    //     console.log(res);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-
+    ufetch({
+      url: this.getUrls.users.gets,
+      data: { page: 3, limit: 5 },
+      method: "POST"
+    })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
     // axios
     //   .get(this.getUrls.users.gets)
     //   .then(res => {
@@ -483,7 +482,6 @@ export default {
     //   .catch(err => {
     //     console.log(err);
     //   });
-
     // axios
     //   .post(this.getUrls.users.gets, {
     //     page: 3,
@@ -495,21 +493,20 @@ export default {
     //   .catch(err => {
     //     console.log(err);
     //   });
-
-    axios(this.getUrls.users.gets, {
-      method: "POST",
-      withCredentials: true,
-      data: {
-        page: 3,
-        limit: 5
-      }
-    })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    // axios(this.getUrls.users.gets, {
+    //   method: "POST",
+    //   withCredentials: true,
+    //   data: {
+    //     page: 3,
+    //     limit: 5
+    //   }
+    // })
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   }
 };
 </script>

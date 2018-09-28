@@ -22,7 +22,7 @@ export default ({ url = "", data, method = "GET" }) => {
   };
 
   return new Promise((resolve, reject) => {
-    debugger;
+    // debugger;
     fetch(url, options)
       .then(res => res.json())
       .then(data => {

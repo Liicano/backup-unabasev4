@@ -54,8 +54,8 @@ import VueRouter from "vue-router";
 // const Ventas = () => import('@/pages/ventas/ventas.vue');
 // const Income = () => import('@/pages/ventas/income.vue');
 // const Details = () => import('@/pages/ventas/details.vue');
-const Incomes = () => import("@/pages/income/incomes.vue");
-const Income = () => import("@/pages/income/income.vue");
+// const Incomes = () => import("@/pages/income/incomes.vue");
+// const Income = () => import("@/pages/income/income.vue");
 
 let componentsMenu = {
   path: "/components",
@@ -272,17 +272,17 @@ const routes = [
         path: "widgets",
         name: "Widgets",
         components: { default: Widgets }
-      },
-      {
-        path: "incomes/:id",
-        name: "Income",
-        components: { default: Income }
-      },
-      {
-        path: "incomes",
-        name: "Incomes",
-        components: { default: Incomes }
       }
+      // {
+      //   path: "incomes/:id",
+      //   name: "Income",
+      //   components: { default: Income }
+      // },
+      // {
+      //   path: "incomes",
+      //   name: "Incomes",
+      //   components: { default: Incomes }
+      // }
     ]
   }
 ];
