@@ -1,7 +1,8 @@
 <template>
-  <div>
+<div>
+  <div id="venta_escritorio">
   <div class="md-layout">
-   <div class="md-layout-item md-small-size-100 md-medium-size-60 md-small-size-60 md-size-60">
+      <div class="md-layout-item md-small-size-100 md-medium-size-60 md-small-size-60 md-size-60">
       <md-card>
         <md-card-header class="md-card-header-icon md-card-header-green">
           <div class="card-icon">
@@ -281,47 +282,36 @@
   
 
   </div>
-  
+</div>
 </template>
 <script>
-import {Tabs} from '@/components'
-import {Collapse, PricingCard} from '@/components'
-import itemsPrueba from '@/pages/ventas/items.json'
-import vMoney from '@/components/vMoney.vue'
-import swal from 'sweetalert2'
-import {Modal} from '@/components'
-
+import { Tabs } from "@/components";
+import { Collapse, PricingCard } from "@/components";
+import itemsPrueba from "@/pages/incomes/items.json";
+import vMoney from "@/components/vMoney.vue";
+import swal from "sweetalert2";
+import { Modal } from "@/components";
 
 export default {
-   data () {
+  data() {
     return {
       modalClientes: false,
       itemsPrueba: itemsPrueba,
-      itemToAdd:{},
-      ventaObject:{
-        'responsable':'',
-        'asunto':'',
-        'nota':'',
-        'item':[],
-        'total': 0,
-        'fecha':''
+      itemToAdd: {},
+      ventaObject: {
+        responsable: "",
+        asunto: "",
+        nota: "",
+        item: [],
+        total: 0,
+        fecha: ""
       },
-      selectedEmployee: '',
-      employees: [
-        'Hector Gonzalez',
-        'Simon Gomez',
-        'Victor Espinoza'
-      ],
-      itemSelectedToAdd: '',
-      itemsModel: [
-          'Telefono lg k10',
-          'papa',
-          'laptop',
-          'polera azul adidas'
-      ],
-      showInputs: false,
-      
-    }
+      selectedEmployee: "",
+      employees: ["Hector Gonzalez", "Simon Gomez", "Victor Espinoza"],
+      itemSelectedToAdd: "",
+      itemsModel: ["Telefono lg k10", "papa", "laptop", "polera azul adidas"],
+      showInputs: false
+    };
   },
   components: {
     Tabs,
@@ -329,89 +319,85 @@ export default {
     PricingCard,
     vMoney,
     Modal
-},
-  methods:{
-    modalClientesHide(){
+  },
+  methods: {
+    modalClientesHide() {
       this.modalClientes = false;
     },
-    saveItem(itemToAdd){
+    saveItem(itemToAdd) {
       // Cambiando el estado del boton
-     this.showInputs = !this.showInputs;
-    //  Haciendo push del item al arreglo VENTA! 
+      this.showInputs = !this.showInputs;
+      //  Haciendo push del item al arreglo VENTA!
       this.ventaObject.item.push(itemToAdd);
-    // Formula calculadora de cantidad * el precio del item
-    var precioProdcuto = (this.itemToAdd.cantidad * this.itemToAdd.precio);
-    // Introduciendo al total
-      this.ventaObject.total= parseInt(this.ventaObject.total) + parseInt(precioProdcuto);
+      // Formula calculadora de cantidad * el precio del item
+      var precioProdcuto = this.itemToAdd.cantidad * this.itemToAdd.precio;
+      // Introduciendo al total
+      this.ventaObject.total =
+        parseInt(this.ventaObject.total) + parseInt(precioProdcuto);
     },
-    changeBtnStatus(){
-      this.itemToAdd = {}
+    changeBtnStatus() {
+      this.itemToAdd = {};
       this.showInputs = !this.showInputs;
     },
-    notifyVue (verticalAlign, horizontalAlign, state) {
-      this.$notify(
-        {
-          message: '¡ITEM AGREGADO A LA COMPRA!',
-          icon: 'add_alert',
-          horizontalAlign: horizontalAlign,
-          verticalAlign: verticalAlign,
-          type: state
-        })
+    notifyVue(verticalAlign, horizontalAlign, state) {
+      this.$notify({
+        message: "¡ITEM AGREGADO A LA COMPRA!",
+        icon: "add_alert",
+        horizontalAlign: horizontalAlign,
+        verticalAlign: verticalAlign,
+        type: state
+      });
     },
     showSwal(type, totalVenta) {
       swal({
-            title: 'Venta registrada!',
-            text: '$ '+totalVenta+' CLP',
-            type: 'success',
-            showCancelButton: true,
-            confirmButtonClass: 'md-button md-success',
-            cancelButtonClass: 'md-button md-info',
-            confirmButtonText: 'VISUALIZAR',
-            cancelButtonText: 'enviar',
+        title: "Venta registrada!",
+        text: "$ " + totalVenta + " CLP",
+        type: "success",
+        showCancelButton: true,
+        confirmButtonClass: "md-button md-success",
+        cancelButtonClass: "md-button md-info",
+        confirmButtonText: "VISUALIZAR",
+        cancelButtonText: "enviar",
+        buttonsStyling: false
+      }).then(result => {
+        if (!result.value) {
+          swal({
+            title: "Correo enviado!",
+            text: "hectorluisgonzalezlarreal@gmail.com",
+            type: "success",
+            confirmButtonClass: "md-button md-success",
             buttonsStyling: false
-      }).then((result) => {
-            if (!result.value) {
-              swal({
-                title: 'Correo enviado!',
-                text: 'hectorluisgonzalezlarreal@gmail.com',
-                type: 'success',
-                confirmButtonClass: 'md-button md-success',
-                buttonsStyling: false
-              }).then(() => {
-                this.$router.push('ventas') 
-              })
-            }else{
-              this.ventaObject = {};
-              this.$router.push('ventas') 
-            }
-          })
+          }).then(() => {
+            this.$router.push("incomes");
+          });
+        } else {
+          this.ventaObject = {};
+          this.$router.push("incomes");
+        }
+      });
     },
     facturar_venta(venta) {
       alert(venta.asunto);
-    
     }
-   
-  },
-  
-}
+  }
+};
 </script>
 
 <style lang="scss" scoped>
+.md-list {
+  width: 320px;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid rgba(#000, 0.12);
+}
 
-  .md-list {
-    width: 320px;
-    max-width: 100%;
-    display: inline-block;
-    vertical-align: top;
-    border: 1px solid rgba(#000, .12);
-  }
-
-  .md-content {
-    max-width: 500px;
-    max-height: 200px;
-    overflow: auto;
-  }
-  .total {
-    top: -15%;
-  }
+.md-content {
+  max-width: 500px;
+  max-height: 200px;
+  overflow: auto;
+}
+.total {
+  top: -15%;
+}
 </style>

@@ -101,13 +101,13 @@
         <!-- LINKS DE UNABASE -->
 
 
-        <!-- VENTAS -->
+        <!-- INCOME -->
        <sidebar-item
           v-if="$route.meta.rtlActive"
-          :link="{name: 'Ventas', icon: 'monetization_on', path: '/ventas'}"></sidebar-item>
+          :link="{name: 'Ventas', icon: 'monetization_on', path: '/incomes'}"></sidebar-item>
         <sidebar-item
           v-else
-          :link="{name: 'Ventas', icon: 'monetization_on', path: '/ventas'}"></sidebar-item>
+          :link="{name: 'Ventas', icon: 'monetization_on', path: '/incomes'}"></sidebar-item>
 
       <!-- COMPRAS -->
           <sidebar-item

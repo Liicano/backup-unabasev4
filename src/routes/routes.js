@@ -52,9 +52,9 @@ import Widgets from "@/pages/Dashboard/Widgets.vue";
 // Unabase
 
 // VENTAS
-const Ventas = () => import("@/pages/ventas/ventas.vue");
-const Income = () => import("@/pages/ventas/income.vue");
-const Incomes = () => import("@/pages/ventas/income.vue");
+const Ventas = () => import("@/pages/incomes/incomes.vue");
+const Income = () => import("@/pages/incomes/income.vue");
+const Incomes = () => import("@/pages/incomes/income.vue");
 
 let componentsMenu = {
   path: "/components",

@@ -13,10 +13,10 @@
             <md-bottom-bar md-sync-route style="background-color: rgb(67,175,124);">
              
               <md-bottom-bar-item to="/dashboard" md-label="Inicio" md-icon="home"></md-bottom-bar-item>
-              <md-bottom-bar-item to="/ventas" md-label="Compras" md-icon="local_mall"></md-bottom-bar-item>
-              <md-bottom-bar-item to="/ventas" md-label="Ventas" md-icon="monetization_on"></md-bottom-bar-item>
+              <md-bottom-bar-item to="/incomes" md-label="Compras" md-icon="local_mall"></md-bottom-bar-item>
+              <md-bottom-bar-item to="/incomes" md-label="Ventas" md-icon="monetization_on"></md-bottom-bar-item>
               <md-badge class="md-primary md-square left" md-content="4" md-dense style="">
-              <md-bottom-bar-item to="/ventas" md-label="Bandeja" md-icon="message"></md-bottom-bar-item>
+              <md-bottom-bar-item to="/incomes" md-label="Bandeja" md-icon="message"></md-bottom-bar-item>
               </md-badge>
             </md-bottom-bar>
       </div>
