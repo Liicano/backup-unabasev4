@@ -38,59 +38,68 @@
   </div>
 </template>
 <script>
-  import {SignupCard} from '@/components'
-  import { mapGetters } from 'vuex'
-  export default {
-    components: {
-      SignupCard
-    },
-    data () {
-      return {
-        firstname: null,
-        boolean: false,
-        email: null,
-        password: null,
-        contentLeft: [
-          { colorIcon :'icon-success',
-            icon: 'timeline',
-            title: 'Marketing',
-            description: "We've created the marketing campaign of the website. It was a very interesting collaboration."},
-
-          { colorIcon :'icon-danger',
-            icon: 'code',
-            title: 'Fully Coded in HTML5',
-            description: "We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub."},
-
-          { colorIcon :'icon-info',
-            icon: 'group',
-            title: 'Built Audience',
-            description: "There is also a Fully Customizable CMS Admin Dashboard for this product."}
-        ],
-        inputs: [
-          { icon: 'face',
-            name: 'First Name...',
-            nameAttr: 'firstname',
-            type: 'text'},
-
-          { icon: 'email',
-            name: 'Email...',
-            nameAttr: 'email',
-            type: 'email'},
-
-          // { icon: 'lock_outline',
-          //   name: 'Password..',
-          //   nameAttr: 'password',
-          //   type: 'password' }
-        ]
-      }
-    },
-    computed: {
-      ...mapGetters([
-        // eslint-disable-next-line
-        'getUrls'
-      ])
-    }
+import { SignupCard } from "@/components";
+import { mapGetters } from "vuex";
+export default {
+  components: {
+    SignupCard
+  },
+  data() {
+    return {
+      firstname: null,
+      boolean: false,
+      email: null,
+      password: null,
+      contentLeft: [
+        {
+          colorIcon: "icon-success",
+          icon: "timeline",
+          title: "Marketing",
+          description:
+            "We've created the marketing campaign of the website. It was a very interesting collaboration."
+        },
+        {
+          colorIcon: "icon-danger",
+          icon: "code",
+          title: "Fully Coded in HTML5",
+          description:
+            "We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub."
+        },
+        {
+          colorIcon: "icon-info",
+          icon: "group",
+          title: "Built Audience",
+          description:
+            "There is also a Fully Customizable CMS Admin Dashboard for this product."
+        }
+      ],
+      inputs: [
+        {
+          icon: "face",
+          name: "First Name...",
+          nameAttr: "firstname",
+          type: "text"
+        },
+        {
+          icon: "email",
+          name: "Email...",
+          nameAttr: "email",
+          type: "email"
+        }
+        // { icon: 'lock_outline',
+        //   name: 'Password..',
+        //   nameAttr: 'password',
+        //   type: 'password' }
+      ]
+    };
+  },
+  computed: {
+    ...mapGetters([
+      // eslint-disable-next-line
+      "getUrls"
+    ])
   }
+};
 </script>
 <style>
 </style>

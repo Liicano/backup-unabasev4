@@ -1,5 +1,6 @@
 <template>
-  <ul class="nav nav-mobile-menu">
+<div></div>
+  <!-- <ul class="nav nav-mobile-menu">
     <li>
       <md-field>
         <label>Search</label>
@@ -30,7 +31,7 @@
       <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="material-icons">person</i>
       <p>Account</p></a>
     </li>
-  </ul>
+  </ul> -->
 </template>
 <script>
 export default {

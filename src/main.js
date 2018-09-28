@@ -1,11 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import DashboardPlugin from "./material-dashboard";
-import store from "./store/store";
+
 // Plugins
 import App from "./App.vue";
 import Chartist from "chartist";
 import router from "./routes/routes";
+import store from "./store/store";
 
 import axios from "axios";
 import Notifications from "./components/NotificationPlugin";
@@ -23,12 +24,6 @@ Vue.use(DashboardPlugin);
 // AXIOS CONFIG
 axios.defaults.withCredentials = true;
 
-// configure router
-// const router = new VueRouter({
-//   routes, // short for routes: routes
-//   linkExactActiveClass: 'nav-item active',
-//   mode: 'history'
-// });
 
 // global library setup
 Object.defineProperty(Vue.prototype, "$Chartist", {
