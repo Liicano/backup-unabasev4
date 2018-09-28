@@ -25,8 +25,8 @@
                       <span class="sidebar-normal">ملف</span>
                     </a>
                     <a v-else href="#vue">
-                      <span class="sidebar-mini">MP</span>
-                      <span class="sidebar-normal">My Profile</span>
+                      <md-icon>person</md-icon>
+                      <span class="sidebar-normal">Mi perfil</span>
                     </a>
                   </li>
                   <li>
@@ -35,8 +35,8 @@
                       <span class="sidebar-normal">تعديل الملف الشخصي</span>
                     </a>
                     <a v-else href="#vue">
-                      <span class="sidebar-mini">EP</span>
-                      <span class="sidebar-normal">Edit Profile</span>
+                      <md-icon>edit</md-icon>
+                      <span class="sidebar-normal">Editar</span>
                     </a>
                   </li>
                   <li>
@@ -45,8 +45,8 @@
                       <span class="sidebar-normal">إعدادات</span>
                     </a>
                     <a v-else href="#vue">
-                      <span class="sidebar-mini">S</span>
-                      <span class="sidebar-normal">Settings</span>
+                      <md-icon>people</md-icon>
+                      <span class="sidebar-normal">Empresas</span>
                     </a>
                   </li>
                 </slot>
@@ -66,7 +66,7 @@
     props: {
       title: {
         type: String,
-        default: 'Tania Andrew'
+        default: 'Hector Gonzalez'
       },
       rtlTitle: {
         type: String,

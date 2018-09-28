@@ -50,17 +50,15 @@
   </div>
 </template>
 <script>
-import { LoginCard, Gauth } from "@/components";
+import { LoginCard } from "@/components";
 import { mapGetters } from "vuex";
-
 import Vue from "vue";
 import Notifications from "../../../components/NotificationPlugin";
 Vue.use(Notifications);
 // import axios from 'axios'
 export default {
   components: {
-    LoginCard,
-    Gauth
+    LoginCard
   },
   data() {
     return {

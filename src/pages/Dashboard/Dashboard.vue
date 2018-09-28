@@ -1,6 +1,8 @@
 <template>
   <div class="md-layout">
-    <button @click="logout">Logout</button>
+    <!-- <button @click="logout">Logout</button> -->
+
+    
     <div class="md-layout-item md-medium-size-50 md-xsmall-size-100 md-size-25">
       <stats-card header-color="blue">
         <template slot="header">

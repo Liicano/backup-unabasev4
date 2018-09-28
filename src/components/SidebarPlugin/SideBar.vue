@@ -1,4 +1,6 @@
 <template>
+<div>
+  
   <div class="sidebar"
        :data-color="activeColor"
        :data-image="backgroundImage"
@@ -8,12 +10,12 @@
     <div class="logo">
       <a href="https://www.creative-tim.com" class="simple-text logo-mini" target="_blank">
         <div class="logo-img">
-          <img :src="logo">
+          <img :src="logo" class="logoimagen">
         </div>
       </a>
       <a href="https://www.creative-tim.com" class="simple-text logo-normal" target="_blank">
         <template v-if="$route.meta.rtlActive">{{rtlTitle}}</template>
-        <template v-else>{{title}}</template>
+        <template v-else>{{title}}   </template>   <small>      V4</small>
       </a>
       <div class="navbar-minimize">
         <md-button id="minimizeSidebar" class="md-round md-just-icon md-transparent" @click="minimizeSidebar">
@@ -39,84 +41,93 @@
       </md-list>
     </div>
   </div>
+  
+</div>
 </template>
 <script>
-  export default {
-    name: 'sidebar',
-    props: {
-      title: {
-        type: String,
-        default: 'Vue MD PRO'
-      },
-      rtlTitle: {
-        type: String,
-        default: 'توقيت الإبداعية'
-      },
-      activeColor: {
-        type: String,
-        default: 'green',
-        validator: (value) => {
-          let acceptedValues = ['', 'primary', 'azure', 'green', 'orange', 'danger', 'rose']
-          return acceptedValues.indexOf(value) !== -1
-        }
-      },
-      backgroundImage: {
-        type: String,
-        default: './img/sidebar-2.jpg'
-      },
-      backgroundColor: {
-        type: String,
-        default: 'black',
-        validator: (value) => {
-          let acceptedValues = ['', 'black','white', 'red']
-          return acceptedValues.indexOf(value) !== -1
-        }
-      },
-      logo: {
-        type: String,
-        default: './img/vue-logo.png'
-      },
-      sidebarLinks: {
-        type: Array,
-        default: () => []
-      },
-      autoClose: {
-        type: Boolean,
-        default: true
+export default {
+  name: "sidebar",
+  props: {
+    title: {
+      type: String,
+      default: "UNABASE"
+    },
+    rtlTitle: {
+      type: String,
+      default: "توقيت الإبداعية"
+    },
+    activeColor: {
+      type: String,
+      default: "green",
+      validator: value => {
+        let acceptedValues = [
+          "",
+          "primary",
+          "azure",
+          "green",
+          "orange",
+          "danger",
+          "rose"
+        ];
+        return acceptedValues.indexOf(value) !== -1;
       }
     },
-    provide () {
-      return {
-        autoClose: this.autoClose
+    backgroundImage: {
+      type: String,
+      default: ""
+    },
+    backgroundColor: {
+      type: String,
+      default: "black",
+      validator: value => {
+        let acceptedValues = ["", "black", "white", "red"];
+        return acceptedValues.indexOf(value) == 1;
       }
     },
-    methods: {
-      minimizeSidebar () {
-        if (this.$sidebar) {
-          this.$sidebar.toggleMinimize()
-        }
-      }
+    logo: {
+      type: String,
+      default: "./img/logotipo.png"
     },
-    computed: {
-      sidebarStyle () {
-        return {
-          backgroundImage: `url(${this.backgroundImage})`
-        }
-      }
+    sidebarLinks: {
+      type: Array,
+      default: () => []
     },
-    beforeDestroy () {
-      if (this.$sidebar.showSidebar) {
-        this.$sidebar.showSidebar = false
+    autoClose: {
+      type: Boolean,
+      default: true
+    }
+  },
+  provide() {
+    return {
+      autoClose: this.autoClose
+    };
+  },
+  methods: {
+    minimizeSidebar() {
+      if (this.$sidebar) {
+        this.$sidebar.toggleMinimize();
       }
     }
+  },
+  computed: {
+    sidebarStyle() {
+      return {
+        backgroundImage: `url(${this.backgroundImage})`
+      };
+    }
+  },
+  beforeDestroy() {
+    if (this.$sidebar.showSidebar) {
+      this.$sidebar.showSidebar = false;
+    }
   }
-
+};
 </script>
 <style>
-  @media (min-width: 992px) {
-    .navbar-search-form-mobile,
-    .nav-mobile-menu{
-      display: none;
-    }
+@media (min-width: 992px) {
+  .navbar-search-form-mobile,
+  .nav-mobile-menu {
+    display: none;
   }
+}
 </style>

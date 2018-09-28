@@ -80,7 +80,6 @@
   </form>
 </template>
 <script>
-import { mapGetters } from 'vuex'
 export default {
   name: 'edit-profile-form',
   props: {
@@ -103,23 +102,10 @@ export default {
       aboutme: "Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
     }
   },
-  computed:{
-    ...mapGetters({
-      getUser: 'users/getUser'
-    })
-  },
   methods: {
     getClass: function(headerColor){
       return 'md-card-header-'+ headerColor + ''
     }
-  },
-  created(){
-    this.$store.dispatch('users/fetchUser', {
-      _id: this.getUser._id
-    })
-    .then(res =>{
-      console.log(res)
-    })
   }
 }
 

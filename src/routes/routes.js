@@ -50,12 +50,11 @@ const Charts = () => import("@/pages/Dashboard/Charts.vue");
 import Widgets from "@/pages/Dashboard/Widgets.vue";
 import VueRouter from "vue-router";
 
-// INCOME
-// const Ventas = () => import('@/pages/ventas/ventas.vue');
-// const Income = () => import('@/pages/ventas/income.vue');
-// const Details = () => import('@/pages/ventas/details.vue');
-const Incomes = () => import("@/pages/income/incomes.vue");
-const Income = () => import("@/pages/income/income.vue");
+// Unabase
+
+// VENTAS
+const Income = () => import("@/pages/incomes/income.vue");
+const Incomes = () => import("@/pages/incomes/incomes.vue");
 
 let componentsMenu = {
   path: "/components",
@@ -275,6 +274,11 @@ const routes = [
       },
       {
         path: "incomes/:id",
+        name: "Income",
+        components: { default: Income }
+      },
+      {
+        path: "income",
         name: "Income",
         components: { default: Income }
       },

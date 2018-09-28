@@ -1,18 +1,18 @@
-<template>
-  <footer class="footer">
+ <!-- <template> -->
+  <!-- <footer class="footer">
     <div class="container">
         <nav>
             <ul>
               <li>
                 <router-link v-if="$route.meta.rtlActive" :to="{path:'/dashboard'}">منزل</router-link>
-                <router-link v-else :to="{path:'/dashboard'}">Home</router-link>
+                <router-link v-else :to="{path:'/dashboard'}">Dashboard</router-link>
               </li>
                 <li>
                     <a v-if="$route.meta.rtlActive" href="#">
                         شركة
                     </a>
                     <a v-else href="#">
-                        Company
+                        Sobre nosotros
                     </a>
                 </li>
                 <li>
@@ -20,30 +20,23 @@
                         محفظة
                     </a>
                     <a v-else href="#">
-                        Portfolio
+                        Ayuda
                     </a>
                 </li>
-                <li>
-                    <a v-if="$route.meta.rtlActive" href="#">
-                        بلوق
-                    </a>
-                    <a v-else href="#">
-                        Blog
-                    </a>
-                </li>
+               
             </ul>
         </nav>
         <div class="copyright text-center">
           &copy; {{ new Date().getFullYear() }} <a href="https://www.creative-tim.com/?ref=mdp-vuejs" target="_blank">Creative Tim</a>, made with <i class="fa fa-heart heart"></i> for a better web
         </div>
     </div>
-  </footer>
+  </footer> -->
 
-</template>
-<script>
-export default {}
+<!--</template>-->
+<!--<script>
+// export default {}
 
-</script>
-<style>
+// </script>
+// <style>
 
-</style>
+// </style>

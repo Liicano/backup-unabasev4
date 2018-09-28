@@ -98,8 +98,8 @@
           })
         } else if (type === 'success-message') {
           swal({
-            title: `Good job!`,
-            text: 'You clicked the button!',
+            title: `Venta registrada!`,
+            text: '$ 200.000 CLP',
             buttonsStyling: false,
             confirmButtonClass: 'md-button md-success',
             type: 'success'
@@ -117,8 +117,8 @@
           }).then((result) => {
             if (result.value) {
               swal({
-                title: 'Deleted!',
-                text: 'Your file has been deleted.',
+                title: 'Correo enviado!',
+                text: 'hectorluisgonzalezlarreal@gmail.com',
                 type: 'success',
                 confirmButtonClass: 'md-button md-success',
                 buttonsStyling: false

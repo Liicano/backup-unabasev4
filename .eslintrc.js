@@ -8,8 +8,8 @@ module.exports = {
   "parserOptions": {
     "parser": "babel-eslint",
     "sourceType": "module"
-  },
-  "rules": {
+  },	
+  "rules": {	
     "no-console": "off"
   }
 }
