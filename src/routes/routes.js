@@ -287,6 +287,16 @@ const routes = [
         name: "Incomes",
         components: { default: Incomes }
       }
+      // {
+      //   path: "incomes/:id",
+      //   name: "Income",
+      //   components: { default: Income }
+      // },
+      // {
+      //   path: "incomes",
+      //   name: "Incomes",
+      //   components: { default: Incomes }
+      // }
     ]
   }
 ];
