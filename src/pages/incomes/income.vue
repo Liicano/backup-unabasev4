@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div id="venta_escritorio">
+  <div id="">
   <div class="md-layout">
       <div class="md-layout-item md-small-size-100 md-medium-size-60 md-small-size-60 md-size-60">
       <md-card>

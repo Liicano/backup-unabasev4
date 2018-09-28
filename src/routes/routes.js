@@ -48,13 +48,13 @@ const Calendar = () => import("@/pages/Dashboard/Calendar.vue");
 // Charts
 const Charts = () => import("@/pages/Dashboard/Charts.vue");
 import Widgets from "@/pages/Dashboard/Widgets.vue";
+import VueRouter from "vue-router";
 
 // Unabase
 
 // VENTAS
-const Ventas = () => import("@/pages/incomes/incomes.vue");
 const Income = () => import("@/pages/incomes/income.vue");
-const Incomes = () => import("@/pages/incomes/income.vue");
+const Incomes = () => import("@/pages/incomes/incomes.vue");
 
 let componentsMenu = {
   path: "/components",
@@ -236,8 +236,6 @@ let authPages = {
   ]
 };
 
-// RUTAS INDIVIDUALES (SIN DROPDOWNS)
-
 const routes = [
   {
     path: "/",
@@ -275,17 +273,12 @@ const routes = [
         components: { default: Widgets }
       },
       {
-        path: "ventas",
-        name: "ventas",
-        components: { default: Ventas }
-      },
-      {
-        path: "income",
-        name: "income",
+        path: "incomes/:id",
+        name: "Income",
         components: { default: Income }
       },
       {
-        path: "incomes/:id",
+        path: "income",
         name: "Income",
         components: { default: Income }
       },
@@ -298,4 +291,13 @@ const routes = [
   }
 ];
 
-export default routes;
+let router = new VueRouter({
+  mode: "history",
+  routes,
+  linkExactActiveClass: "nav-item active"
+});
+
+router.beforeEach((to, from, next) => {
+  next();
+});
+export default router;
