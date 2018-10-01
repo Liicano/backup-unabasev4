@@ -1,0 +1,12 @@
+# 1/tT6sNE3iJ_tjax8nUxOWm36E4kQJI-RV6w4C1k5QwUo
+
+
+language: node_js
+node_js:
+ — “8”
+script:
+ — echo “Deploy!!”
+install:
+ — npm install -g firebase-tools
+after_success:
+ — firebase deploy — project managmentv3 — 1/tT6sNE3iJ_tjax8nUxOWm36E4kQJI-RV6w4C1k5QwUo $FIREBASE_TOKEN.
