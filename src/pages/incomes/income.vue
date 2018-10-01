@@ -1,5 +1,6 @@
 <template>
 <div>
+  
   <!-- MODAL DE CLIENTES -->
   <modal v-if="modalClientes" @close="modalClientesHide">
     <template slot="header">
@@ -228,12 +229,10 @@
 
 
 <div class="form_mobile">
-
    <div class="card horizontal"> 
      
       <div class="card-stacked">
         <div class="card-content">
-          
 
            <div class="row valign-wrapper">
              <div class="input-field col s12">
@@ -278,7 +277,8 @@
           <div class="row">
              <div class="col s12">
                <center>
-               <a class=" btn-floating  waves-effect waves-light green" @click="showSwal('success-message', ventaObject.total)"><i class="material-icons">save_alt</i></a>
+               <!-- <a class=" btn-floating  waves-effect waves-light green" @click="showSwal('success-message', ventaObject.total)"><i class="material-icons">save_alt</i></a> -->
+                
                </center>
              </div>
           </div>
@@ -306,17 +306,28 @@
                   <hr>
                </center>
               </div>
+          
+                   <md-speed-dial class="md-just-icon md-round md-bottom-right" md-event="click"  md-direction="bottom">
+                  <md-speed-dial-target class="md-success md-just-icon md-round">
+                    <md-icon>save</md-icon>
+                  </md-speed-dial-target>
 
-              
+                  <md-speed-dial-content>
+                    <md-button class=" md-just-icon md-round md-warning">
+                      <md-icon>save_alt</md-icon>
+                    </md-button>
+
+                   <md-button class=" md-just-icon md-round md-info">
+                      <md-icon>send</md-icon>
+                    </md-button>
+                  </md-speed-dial-content>
+                </md-speed-dial>  
             </div>
 
-
+       
             
         </div>
-        <div class="card-action">
-         
-         
-        </div>
+        
       </div>
     </div>
   

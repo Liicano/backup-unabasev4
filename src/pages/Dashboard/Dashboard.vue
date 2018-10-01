@@ -444,17 +444,17 @@ export default {
     ...mapGetters(["getUrls"])
   },
   methods: {
-    logout() {
-      debugger;
-      axios
-        .get(this.getUrls.users.logout)
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
+    // logout() {
+    //   debugger;
+    //   axios
+    //     .get(this.getUrls.users.logout)
+    //     .then(res => {
+    //       console.log(res);
+    //     })
+    //     .catch(err => {
+    //       console.log(err);
+    //     });
+    // }
   },
   mounted() {
     // ufetch({ url: this.getUrls.users.gets })
