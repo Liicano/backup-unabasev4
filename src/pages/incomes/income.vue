@@ -229,16 +229,42 @@
 
 
 <div class="form_mobile">
+  
    <div class="card horizontal"> 
-     
+      <div class="fixed-action-btn" id="new_venta_btn_mobile" style="margin-bottom: 12% !important;">
+                <a class="btn-floating btn-large green waves-effect">
+                  <i class="large material-icons">save</i>
+                </a>
+            </div>
+      <!-- <md-speed-dial class="fixed-action-btn  md-top-right" md-event="click"  md-direction="bottom">
+                      <md-speed-dial-target class="md-success md-just-icon md-round md-elevation-16">
+                        <md-icon>save</md-icon>
+                      </md-speed-dial-target>
+
+                      <md-speed-dial-content>
+                        
+                        <md-button class=" md-just-icon md-round md-warning">
+                        <md-tooltip md-direction="right">Guardar</md-tooltip>
+
+                          <md-icon>save_alt</md-icon>
+                        </md-button>
+
+                      <md-button class=" md-just-icon md-round md-info">
+                          <md-icon>send</md-icon>
+                        </md-button>
+                      </md-speed-dial-content>
+      </md-speed-dial>   -->
       <div class="card-stacked">
+        
         <div class="card-content">
 
+            <h6>Datos de la venta</h6>
+              <md-divider></md-divider>
            <div class="row valign-wrapper">
              <div class="input-field col s12">
                <input placeholder="Asunto" id="" type="text" class="validate">
              </div>
-           
+            
             </div>
 
 
@@ -253,6 +279,8 @@
              </div>
             </div>
 
+              <h6>Agregar items</h6>
+              <md-divider></md-divider>
              <div class="row valign-wrapper">
              <div class="input-field col s5">
                <input placeholder="Item" v-model="itemToAdd.nombre" id="" type="text" class="validate">
@@ -275,10 +303,10 @@
 
 
           <div class="row">
-             <div class="col s12">
+             <div class="col s12 right">
                <center>
-               <!-- <a class=" btn-floating  waves-effect waves-light green" @click="showSwal('success-message', ventaObject.total)"><i class="material-icons">save_alt</i></a> -->
-                
+                  <!-- <a class=" btn-floating  waves-effect waves-light green" @click="showSwal('success-message', ventaObject.total)"><i class="material-icons">save_alt</i></a> -->
+               
                </center>
              </div>
           </div>
@@ -306,22 +334,8 @@
                   <hr>
                </center>
               </div>
-          
-                   <md-speed-dial class="md-just-icon md-round md-bottom-right" md-event="click"  md-direction="bottom">
-                  <md-speed-dial-target class="md-success md-just-icon md-round">
-                    <md-icon>save</md-icon>
-                  </md-speed-dial-target>
-
-                  <md-speed-dial-content>
-                    <md-button class=" md-just-icon md-round md-warning">
-                      <md-icon>save_alt</md-icon>
-                    </md-button>
-
-                   <md-button class=" md-just-icon md-round md-info">
-                      <md-icon>send</md-icon>
-                    </md-button>
-                  </md-speed-dial-content>
-                </md-speed-dial>  
+            
+                   
             </div>
 
        

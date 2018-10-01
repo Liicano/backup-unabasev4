@@ -321,8 +321,9 @@ import {
   GlobalSalesTable
 } from "@/components";
 // import axios from "axios";
-import { mapGetters } from "vuex";
 import axios from "axios";
+import ufetch from "../../assets/js/ufetch.js";
+import api from "../../config/api.js";
 
 axios.defaults.withCredentials = true;
 export default {
@@ -440,78 +441,20 @@ export default {
       }
     };
   },
-  computed: {
-    ...mapGetters(["getUrls"])
-  },
+  computed: {},
   methods: {
-    // logout() {
-    //   debugger;
-    //   axios
-    //     .get(this.getUrls.users.logout)
-    //     .then(res => {
-    //       console.log(res);
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     });
-    // }
+    logout() {
+      // debugger;
+      // axios
+      //   .get(api.users.logout)
+      //   .then(res => {
+      //     console.log(res);
+      //   })
+      //   .catch(err => {
+      //     console.log(err);
+      //   });
+    }
   },
-  mounted() {
-    // ufetch({ url: this.getUrls.users.gets })
-    //   .then(res => {
-    //     console.log(res);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-
-    // ufetch({
-    //   url: this.getUrls.users.gets,
-    //   data: { page: 3, limit: 5 },
-    //   method: "POST"
-    // })
-    //   .then(res => {
-    //     console.log(res);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-
-    // axios
-    //   .get(this.getUrls.users.gets)
-    //   .then(res => {
-    //     console.log(res);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-
-    // axios
-    //   .post(this.getUrls.users.gets, {
-    //     page: 3,
-    //     limit: 5
-    //   })
-    //   .then(res => {
-    //     console.log(res);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-
-    axios(this.getUrls.users.gets, {
-      method: "POST",
-      withCredentials: true,
-      data: {
-        page: 3,
-        limit: 5
-      }
-    })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+  mounted() {}
 };
 </script>

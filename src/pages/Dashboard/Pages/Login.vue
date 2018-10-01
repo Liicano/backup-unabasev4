@@ -11,13 +11,13 @@
         <md-button slot="buttons" to="#twitter" class="md-just-icon md-simple md-white">
           <i class="fab fa-twitter"></i>
         </md-button> -->
-        <!-- <md-button slot="buttons" :href="getUrls.google.auth" class="md-just-icon md-simple md-white">
+        <md-button slot="buttons" :href="getUrls.google.auth" class="md-just-icon md-simple md-white">
           <i class="fab fa-google-plus-g"></i>
-        </md-button> -->
-        <md-button slot="buttons" data-onsuccess="onSignin" class="g-signin2 md-just-icon md-simple md-white">
+        </md-button>
+        <!-- <md-button slot="buttons" data-onsuccess="onSignin" class="g-signin2 md-just-icon md-simple md-white">
           
           <Gauth></Gauth>
-        </md-button>
+        </md-button> -->
         <!-- <md-field class="md-form-group" slot="buttons">
           
           <Gauth></Gauth>
