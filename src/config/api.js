@@ -1,7 +1,8 @@
 // const mainApi = "http://35.231.73.122:3000/";
 // const mainApi = "http://localhost:3000/";
 // const mainApi = "http://192.168.0.196:3000/";
-const mainApi = "https://unabase.net/";
+// const mainApi = "https://unabase.net/";
+const mainApi = "https://unabase.es/";
 
 export default {
   auth: {
