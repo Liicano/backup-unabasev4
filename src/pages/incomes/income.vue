@@ -77,7 +77,7 @@
               <div class="md-list-item-text">
                 <span><b>{{itemInSale.nombre | uppercase}}</b> * {{itemInSale.cantidad}}</span>
                 <span><b>SUBTOTAL: $ </b>{{(itemInSale.precio * itemInSale.cantidad | currency)}}</span>
-                <!-- <p><b>$ {{venta.monto_total}} CLP</b></p> -->
+              
               </div>
 
               
