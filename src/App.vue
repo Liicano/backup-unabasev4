@@ -42,7 +42,7 @@
   z-index: 100;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 618px) {
   #bottom_navbar {
     display: none;
   }
