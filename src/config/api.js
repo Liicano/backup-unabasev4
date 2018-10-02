@@ -37,5 +37,18 @@ export default {
      * name: string
      */
     update: `${mainApi}incomes/update`
+  },
+  outcomes: {
+    /**
+     *  GET/  get doc list params: [name(STRING), isActive(boolean)]
+     *  GET/:id    get doc info
+     *  POST/  create income
+     */
+    get: `${mainApi}outcomes/`,
+    /**
+     * PATCH/
+     * name: string
+     */
+    update: `${mainApi}outcomes/update`
   }
 };
