@@ -24,14 +24,26 @@ export default {
     update: `${mainApi}users/update`,
     logout: `${mainApi}users/logout`
   },
-  business: {},
+  business: {
+    /**
+     * GET/  get doc list ... params: [name(STRING), isActive(boolean)]
+     * GET/:id    get doc info
+     * POST/  create income
+     */
+    get: `${mainApi}business/`
+    /**
+     * PATCH/
+     * name: string
+     */
+    update: `${mainApi}business/update`
+  },
   incomes: {
     /**
-     *  GET/  get doc list params: [name(STRING), isActive(boolean)]
-     *  GET/:id    get doc info
-     *  POST/  create income
+     * GET/  get doc list params: [name(STRING), isActive(boolean)]
+     * GET/:id    get doc info
+     * POST/  create income
      */
-    get: `${mainApi}incomes/`,
+    get: `${mainApi}incomes/`
     /**
      * PATCH/
      * name: string
@@ -44,7 +56,7 @@ export default {
      *  GET/:id    get doc info
      *  POST/  create income
      */
-    get: `${mainApi}outcomes/`,
+    get: `${mainApi}outcomes/`
     /**
      * PATCH/
      * name: string
