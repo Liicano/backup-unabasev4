@@ -11,9 +11,8 @@ export default {
   },
   users: {
     /**
-     *  GET/  get doc list
+     *  GET/  get doc list params: [name(STRING), isActive(boolean), ]
      *  GET/:id    get doc info
-     *  POST/    filter doc list
      */
     get: `${mainApi}users/`,
     /**
@@ -28,12 +27,13 @@ export default {
   business: {},
   incomes: {
     /**
-     *  GET/  get doc list
+     *  GET/  get doc list params: [name(STRING), isActive(boolean)]
      *  GET/:id    get doc info
-     *  POST/    filter doc list
+     *  POST/  create income
      */
     get: `${mainApi}incomes/`,
     /**
+     * PATCH/
      * name: string
      */
     update: `${mainApi}incomes/update`
