@@ -7,6 +7,8 @@ import App from "./App.vue";
 import Chartist from "chartist";
 import router from "./routes/routes";
 import store from "./store/store";
+import Vue2Filters from "vue2-filters";
+Vue.use(Vue2Filters);
 
 import axios from "axios";
 import Notifications from "./components/NotificationPlugin";
@@ -23,7 +25,6 @@ Vue.use(DashboardPlugin);
 
 // AXIOS CONFIG
 axios.defaults.withCredentials = true;
-
 
 // global library setup
 Object.defineProperty(Vue.prototype, "$Chartist", {
