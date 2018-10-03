@@ -6,7 +6,9 @@
               <router-link :to="{path:'/incomes/'+venta.id, params:{venta:venta}}">
             <md-list-item style="padding: 0px 0px;">
               <md-avatar>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2ZYxbsw4kHRFbhU9KQtnLu7TtmYITTNH58sVGKDKsq78MWo9Z" alt="People">
+                 <md-avatar class="md-avatar-icon teal">
+                 <md-icon>attach_money</md-icon>
+             </md-avatar>
               </md-avatar>
 
               <div class="md-list-item-text">

@@ -331,23 +331,19 @@
         
         <div class="card-content">
 
-            <h6>Datos de la venta</h6>
-              <md-divider></md-divider>
            <div class="row valign-wrapper">
              <div class="input-field col s12">
-               <input placeholder="Asunto" id="" type="text" class="validate">
+               <input placeholder="Asunto" id="" type="text">
              </div>
-            
             </div>
-
-
-          <div class="row valign-wrapper">
+            
+            <div class="row valign-wrapper">
              <div class="input-field col s10">
                <input placeholder="Cliente" id="" type="text" class="validate">
              </div>
              <div class="col s2">
                <center>
-               <a class="btn-floating btn-small waves-effect waves-light black" @click="modalClientes = true;"><i class="material-icons">person_add</i></a>
+               <a class="btn-floating btn-small waves-effect waves-light" @click="modalClientes = true;"><i class="material-icons">person_add</i></a>
                </center>
              </div>
             </div>
@@ -359,7 +355,7 @@
                <input placeholder="Item" v-model="itemToAdd.nombre" id="" type="text" class="validate">
              </div>
              <div class="col s2">
-               <a class="btn-floating btn-small waves-effect waves-light black" @click="modalItems = true;"><i class="material-icons">list</i></a>
+               <a class="btn-floating btn-small waves-effect waves-light" @click="modalItems = true;"><i class="material-icons">list</i></a>
 
              </div>
              </div>
@@ -375,22 +371,18 @@
 
              <div class="col s2">
                <center>
-               <a class="btn-floating btn-small waves-effect waves-light black" @click="saveItem(itemToAdd);notifyVue('top', 'center','success') "><i class="material-icons">add</i></a>
+               <a class="btn-floating btn-small waves-effect waves-light" @click="saveItem(itemToAdd);notifyVue('top', 'center','success') "><i class="material-icons">add</i></a>
                </center>
              </div>
             </div>
 
 
-          
-
-            
             <br>
      
             <div class="row">
 
               <div class="col s3" @click="modalSaleItems = true;">
                <center>
-                 <!-- <hr> -->
                  <small class="text-green">Items</small>
                   <h1><b>{{ventaObject.item.length}}</b></h1>
                   <hr>
@@ -400,13 +392,11 @@
               
               <div class="col s9">
                <center>
-                 <!-- <hr> -->
                  <small>Total</small>
                   <h1><b></b>{{ventaObject.total | currency}}</h1>
                   <hr>
                </center>
               </div>
-            
                    
             </div>
 

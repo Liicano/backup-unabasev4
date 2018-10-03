@@ -11,11 +11,11 @@
       <div class="phone-viewport" id="bottom_navbar">
             <md-bottom-bar md-sync-route>
              
-              <md-bottom-bar-item class="md-success" to="/dashboard" md-label="Inicio" md-icon="home"></md-bottom-bar-item>
-              <md-bottom-bar-item class="md-success" to="/" md-label="Compras" md-icon="local_mall"></md-bottom-bar-item>
-              <md-bottom-bar-item class="md-success" to="/incomes" md-label="Ventas" md-icon="monetization_on"></md-bottom-bar-item>
+              <md-bottom-bar-item class="" style="background-color: #43AF7C !important;" to="/dashboard" md-label="Inicio" md-icon="home"></md-bottom-bar-item>
+              <md-bottom-bar-item class="" style="background-color: #43AF7C !important;" to="/" md-label="Compras" md-icon="local_mall"></md-bottom-bar-item>
+              <md-bottom-bar-item class="" style="background-color: #43AF7C !important;" to="/incomes" md-label="Ventas" md-icon="monetization_on"></md-bottom-bar-item>
               <md-badge class="md-primary md-square left" md-content="4" md-dense style="">
-              <md-bottom-bar-item class="md-success" to="/" md-label="Bandeja" md-icon="message"></md-bottom-bar-item>
+              <md-bottom-bar-item class="" style="background-color: #43AF7C !important;" to="/" md-label="Bandeja" md-icon="message"></md-bottom-bar-item>
               </md-badge>
             </md-bottom-bar>
       </div>
