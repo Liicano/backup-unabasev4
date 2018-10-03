@@ -63,3 +63,6 @@ typings/
 .DS_Store
 
 .vscode
+.firebaserc
+firebase.json
+.firebase

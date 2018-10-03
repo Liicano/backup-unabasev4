@@ -5,18 +5,17 @@
        <router-view></router-view>
     </div>
    
-  
   <div>
     <br>
     <!-- FOOTER MENU -->
       <div class="phone-viewport" id="bottom_navbar">
-            <md-bottom-bar md-sync-route style="background-color: rgb(67,175,124);">
+            <md-bottom-bar md-sync-route>
              
-              <md-bottom-bar-item to="/dashboard" md-label="Inicio" md-icon="home"></md-bottom-bar-item>
-              <md-bottom-bar-item to="/incomes" md-label="Compras" md-icon="local_mall"></md-bottom-bar-item>
-              <md-bottom-bar-item to="/incomes" md-label="Ventas" md-icon="monetization_on"></md-bottom-bar-item>
+              <md-bottom-bar-item class="md-success" to="/dashboard" md-label="Inicio" md-icon="home"></md-bottom-bar-item>
+              <md-bottom-bar-item class="md-success" to="/" md-label="Compras" md-icon="local_mall"></md-bottom-bar-item>
+              <md-bottom-bar-item class="md-success" to="/incomes" md-label="Ventas" md-icon="monetization_on"></md-bottom-bar-item>
               <md-badge class="md-primary md-square left" md-content="4" md-dense style="">
-              <md-bottom-bar-item to="/incomes" md-label="Bandeja" md-icon="message"></md-bottom-bar-item>
+              <md-bottom-bar-item class="md-success" to="/" md-label="Bandeja" md-icon="message"></md-bottom-bar-item>
               </md-badge>
             </md-bottom-bar>
       </div>
@@ -43,7 +42,7 @@
   z-index: 100;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 618px) {
   #bottom_navbar {
     display: none;
   }

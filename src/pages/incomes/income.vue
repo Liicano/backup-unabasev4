@@ -1,6 +1,108 @@
 <template>
 <div>
-  <div id="">
+  
+  <!-- MODAL DE CLIENTES -->
+  <modal v-if="modalClientes" @close="modalClientesHide">
+    <template slot="header">
+      <md-button class="md-simple md-just-icon md-round modal-default-button" @click="modalClientesHide">
+        <md-icon>clear</md-icon>
+      </md-button>
+    </template>
+
+    <template slot="body">
+     <div class="row">
+       <div class="col s12">
+          <ul class="collection with-header" style="border-style: none;">
+        <li class="collection-item"><div><a style="color: inherit;" class="">Hector Gonzalez</a></div></li>
+      </ul>
+       </div>
+     </div>
+    </template>
+
+    <template slot="footer">
+      <md-button class="md-simple" @click="modalClientesHide">Salir</md-button>
+      
+    </template>
+  </modal>
+<!-- Modal de clientes -->
+
+<!-- MODAL DE ITEMS -->
+  <modal v-if="modalItems" @close="modalItemsHide">
+    <template slot="header">
+      <md-button class="md-simple md-just-icon md-round modal-default-button" @click="modalItemsHide">
+        <md-icon>clear</md-icon>
+      </md-button>
+    </template>
+
+    <template slot="body">
+     <div class="row">
+       <div class="col s12">
+          <ul class="collection with-header" style="border-style: none;">
+            <li class="collection-item"><div><a style="color: inherit;" class="">PAPA</a></div></li>
+            <li class="collection-item"><div><a style="color: inherit;" class="">ZANAHORIA</a></div></li>
+            <li class="collection-item"><div><a style="color: inherit;" class="">PANTALON</a></div></li>
+            <li class="collection-item"><div><a style="color: inherit;" class="">SERVICIO DE REPARACION DE PC</a></div></li>
+          </ul>
+       </div>
+     </div>
+    </template>
+
+    <template slot="footer">
+      <md-button class="md-simple" @click="modalItemsHide">Salir</md-button>
+    </template>
+  </modal>
+<!-- Modal de ITEMS -->
+
+
+<!-- MODAL DE VER ITEMS DE LA VENTA -->
+  <modal v-if="modalSaleItems" @close="modalSaleItemsHide">
+    <template slot="header">
+      <md-button class="md-simple md-just-icon md-round  modal-default-button" @click="modalSaleItemsHide">
+        <md-icon>clear</md-icon>
+      </md-button>
+    </template>
+
+    <template slot="body">
+     <div class="row">
+       <div class="col s12">
+          <ul class="collection with-header" style="border-style: none; padding: 0px 0px;">
+            <li class="" v-for="itemInSale in ventaObject.item" :key="itemInSale.id">
+
+               <md-list-item style="padding: 0px 0px;">
+              <md-avatar class="md-avatar-icon md-accent">
+                <md-icon>attach_money</md-icon>
+              </md-avatar>
+
+
+              <div class="md-list-item-text">
+                <span><b>{{itemInSale.nombre | uppercase}}</b> * {{itemInSale.cantidad}}</span>
+                <span><b>SUBTOTAL: $ </b>{{(itemInSale.precio * itemInSale.cantidad | currency)}}</span>
+              
+              </div>
+
+              
+            
+            </md-list-item>
+
+            </li>
+          </ul>
+       </div>
+     </div>
+    </template>
+
+    <template slot="footer">
+      <md-button class="md-simple" @click="modalSaleItemsHide">Salir</md-button>
+      
+    </template>
+  </modal>
+<!-- Modal de VER ITEMS DE LA VENTA -->
+
+
+
+
+
+  <div class="form_desktop">
+  
   <div class="md-layout">
       <div class="md-layout-item md-small-size-100 md-medium-size-60 md-small-size-60 md-size-60">
       <md-card>
@@ -21,8 +123,8 @@
                 <div class="md-layout-item md-small-size-70 md-size-80">
                         <div class="md-autocomplete md-success">
                           <md-autocomplete id="autocompletadoUsers" class="search md-success"  style="" v-model="ventaObject.responsable" :md-options="employees" :md-open-on-focus="false">
-                            <label v-if="$route.meta.rtlActive">Responsable</label>
-                            <label v-else>Responsable</label>
+                            <label v-if="$route.meta.rtlActive">Cliente</label>
+                            <label v-else>Cliente</label>
                           </md-autocomplete>
                         </div> 
                 </div>
@@ -144,86 +246,6 @@
       </md-card>
     </div>
 
-
-  <!-- MODAL DE CLIENTES -->
-  <modal v-if="modalClientes" @close="modalClientesHide">
-    <template slot="header">
-      <md-button class="md-simple md-just-icon md-round modal-default-button" @click="modalClientesHide">
-        <md-icon>clear</md-icon>
-      </md-button>
-    </template>
-
-    <template slot="body">
-      <div class="md-layout">
-       <div class="md-layout-item md-small-size-55 md-size-55">
-         <h4><span><i class="fa fa-credit-card"></i></span>  RUT </h4>
-       </div>
-        <div class="md-layout-item md-small-size-40 md-size-40">
-           
-        </div>
-      </div>
-      <hr>
-     <div class="md-layout">
-       <div class="md-layout-item md-small-size-60 md-size-60">
-         <md-field>
-            <label>RUT</label>
-            <md-input type="text" minlength="1" maxlength="8"></md-input>
-         </md-field>
-       </div>
-       <div class="md-layout-item md-small-size-30 md-size-30">
-         <md-field>
-            <label>DV</label>
-            <md-input type="text" minlength="1" maxlength="1"></md-input>
-         </md-field>
-       </div>
-     </div>
-
-     
-      <h4><span><i class="fa fa-user"></i></span>  Nombre</h4>
-      <hr>
-      <br>
-     <div class="md-layout">
-       <div class="md-layout-item md-small-size-45 md-size-45">
-         <md-field> 
-            <label>Nombre</label>
-            <md-input type="text"></md-input>
-         </md-field>
-       </div>
-       <div class="md-layout-item md-small-size-45 md-size-45">
-          <md-field>
-            <label>Apellido</label>
-          <md-input type="text"></md-input>
-          </md-field>
-       </div>
-     </div>
-
-     
-      <h4><span><i class="fa fa-map"></i></span>Direccion</h4>
-      <hr>
-      <br>
-     <div class="md-layout">
-       <div class="md-layout-item md-small-size-45 md-size-35">
-         <md-field>
-            <label>Comuna</label>
-            <md-input type="text"></md-input>
-         </md-field>
-       </div>
-       <div class="md-layout-item md-small-size-45 md-size-55">
-          <md-field>
-            <label>Direccion</label>
-          <md-input type="text"></md-input>
-          </md-field>
-       </div>
-     </div>
-    </template>
-
-    <template slot="footer">
-      <md-button class="md-simple" @click="modalClientesHide">Salir</md-button>
-      <md-button class="md-success md-simple" >Guardar</md-button>
-    </template>
-  </modal>
-<!-- Modal de clientes -->
-
     <div class="md-layout-item md-small-size-100 md-medium-size-40 md-small-size-40 md-size-40">
           <pricing-card icon-color="icon-success">
             <md-list class="md-triple-line" slot="description" style="border-style:none;width: 100%;">
@@ -256,10 +278,9 @@
 
           <div slot="footer" class="md-group">
                 <md-button slot="footer" class="md-success md-lg" md-alignment="left" @click.native="showSwal('success-message', ventaObject.total)">FACTURAR</md-button>
-              </div>
+          </div>
           </pricing-card>
           <md-card-actions>
-                      
           </md-card-actions>
 
           <!-- Total -->
@@ -275,26 +296,159 @@
 
     </div>
 
-
-
   </div>
 
+</div>
+
+
+<div class="form_mobile">
+  
+   <div class="card horizontal"> 
+      <div class="fixed-action-btn" id="new_venta_btn_mobile" style="margin-bottom: 12% !important;">
+                <a class="btn-floating btn-large green waves-effect" @click="showSwal(null, ventaObject.total)">
+                  <i class="large material-icons">save</i>
+                </a>
+            </div>
+      <!-- <md-speed-dial class="fixed-action-btn  md-top-right" md-event="click"  md-direction="bottom">
+                      <md-speed-dial-target class="md-success md-just-icon md-round md-elevation-16">
+                        <md-icon>save</md-icon>
+                      </md-speed-dial-target>
+
+                      <md-speed-dial-content>
+                        
+                        <md-button class=" md-just-icon md-round md-warning">
+                        <md-tooltip md-direction="right">Guardar</md-tooltip>
+
+                          <md-icon>save_alt</md-icon>
+                        </md-button>
+
+                      <md-button class=" md-just-icon md-round md-info">
+                          <md-icon>send</md-icon>
+                        </md-button>
+                      </md-speed-dial-content>
+      </md-speed-dial>   -->
+      <div class="card-stacked">
+        
+        <div class="card-content">
+
+            <h6>Datos de la venta</h6>
+              <md-divider></md-divider>
+           <div class="row valign-wrapper">
+             <div class="input-field col s12">
+               <input placeholder="Asunto" id="" type="text" class="validate">
+             </div>
+            
+            </div>
+
+
+          <div class="row valign-wrapper">
+             <div class="input-field col s10">
+               <input placeholder="Cliente" id="" type="text" class="validate">
+             </div>
+             <div class="col s2">
+               <center>
+               <a class="btn-floating btn-small waves-effect waves-light black" @click="modalClientes = true;"><i class="material-icons">person_add</i></a>
+               </center>
+             </div>
+            </div>
+
+              <h6>Agregar items</h6>
+              <md-divider></md-divider>
+             <div class="row valign-wrapper">
+             <div class="input-field col s10">
+               <input placeholder="Item" v-model="itemToAdd.nombre" id="" type="text" class="validate">
+             </div>
+             <div class="col s2">
+               <a class="btn-floating btn-small waves-effect waves-light black" @click="modalItems = true;"><i class="material-icons">list</i></a>
+
+             </div>
+             </div>
+             <div class="row valign-wrapper">
+              <div class="input-field col s3">
+               <input placeholder="#" v-model.number="itemToAdd.cantidad" value="1" id="" type="number" class="validate">
+             </div>
+
+              <div class="input-field col s7">
+                <input v-model.number="itemToAdd.precio" type="number" class="form-input" />
+             </div>
+
+
+             <div class="col s2">
+               <center>
+               <a class="btn-floating btn-small waves-effect waves-light black" @click="saveItem(itemToAdd);notifyVue('top', 'center','success') "><i class="material-icons">add</i></a>
+               </center>
+             </div>
+            </div>
+
+
+          
+
+            
+            <br>
+     
+            <div class="row">
+
+              <div class="col s3" @click="modalSaleItems = true;">
+               <center>
+                 <!-- <hr> -->
+                 <small class="text-green">Items</small>
+                  <h1><b>{{ventaObject.item.length}}</b></h1>
+                  <hr>
+               </center>
+              </div>
+
+              
+              <div class="col s9">
+               <center>
+                 <!-- <hr> -->
+                 <small>Total</small>
+                  <h1><b></b>{{ventaObject.total | currency}}</h1>
+                  <hr>
+               </center>
+              </div>
+            
+                   
+            </div>
+
+       
+            
+        </div>
+        
+      </div>
+    </div>
   
 
-  </div>
+
+</div>
+
+
+
+
 </div>
 </template>
 <script>
 import { Tabs } from "@/components";
 import { Collapse, PricingCard } from "@/components";
 import itemsPrueba from "@/pages/incomes/items.json";
-import vMoney from "@/components/vMoney.vue";
+// import { Money } from "v-money";
+// import vMoney from "@/components/vMoney.vue";
 import swal from "sweetalert2";
 import { Modal } from "@/components";
 
 export default {
   data() {
     return {
+      // money: {
+      //   decimal: ",",
+      //   thousands: ".",
+      //   prefix: "$ ",
+      //   suffix: " CLP",
+      //   precision: 0,
+      //   masked: false,
+      //   min: 0
+      // },
+      modalSaleItems: false,
+      modalItems: false,
       modalClientes: false,
       itemsPrueba: itemsPrueba,
       itemToAdd: {},
@@ -317,12 +471,19 @@ export default {
     Tabs,
     Collapse,
     PricingCard,
-    vMoney,
+    // vMoney,
+    // Money,
     Modal
   },
   methods: {
+    modalSaleItemsHide() {
+      this.modalSaleItems = false;
+    },
     modalClientesHide() {
       this.modalClientes = false;
+    },
+    modalItemsHide() {
+      this.modalItems = false;
     },
     saveItem(itemToAdd) {
       // Cambiando el estado del boton
@@ -334,6 +495,7 @@ export default {
       // Introduciendo al total
       this.ventaObject.total =
         parseInt(this.ventaObject.total) + parseInt(precioProdcuto);
+      this.itemToAdd = {};
     },
     changeBtnStatus() {
       this.itemToAdd = {};
@@ -399,5 +561,24 @@ export default {
 }
 .total {
   top: -15%;
+}
+
+// MEDIA QUERYES
+.form_desktop {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .form_mobile {
+    display: none;
+  }
+
+  .form_desktop {
+    display: block;
+  }
+}
+.md-layout-item {
+  padding-right: 0px;
+  padding-left: 0px;
 }
 </style>
