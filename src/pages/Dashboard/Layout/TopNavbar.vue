@@ -7,11 +7,7 @@
     :class="{'md-toolbar-absolute md-white md-fixed-top': $route.meta.navbarAbsolute}">
     
       <div class="md-toolbar-section-end">
-        <!-- <md-button class="md-just-icon md-round md-simple md-toolbar-toggle" :class="{toggled: $sidebar.showSidebar}" @click="toggleSidebar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </md-button> -->
+      
 
         <div class="md-collapse">
           <div class="md-autocomplete" >
@@ -55,21 +51,23 @@
   </md-toolbar>
   <div class="">
       
-    <div class="container-fluid" id="mobile_navbar">
-        <nav class="nav-extended white">
-          <div class="nav-wrapper">
-            <a href="#" class="brand-logo right"><img src="../../../../public/img/logotipo36x36.png" alt=""></a>
-            <a href="#" class="sidenav-trigger"></a>
-          </div>
-        
-        </nav>
+    <div class="container-fluid navbar-fixed" id="mobile_navbar">
+      <nav>
+        <div class="nav-wrapper white">
+         
+          <ul class="left">
+            <li v-if="this.$route.path == '/income'"><a class=""><i class="material-icons text-success">attach_file</i></a></li>
+            <li v-if="this.$route.path == '/income'"><a class=""><i class="material-icons text-info">share</i></a></li>
 
-  <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">JavaScript</a></li>
-  </ul>
-    
+            <li><a href="/incomes" class="brand-logo right">
+               <md-avatar>
+               <img src="../../../../public/img/new_logo.png" alt="Avatar">
+              </md-avatar>
+            </a></li>
+            
+          </ul>
+        </div>
+      </nav>
     </div>
   </div>
 </div>
@@ -113,7 +111,6 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
   height: 9%;
   background: rgb(231, 231, 231);
 }
@@ -143,5 +140,11 @@ export default {
 textarea:focus {
   border-bottom: none !important;
   box-shadow: none !important;
+}
+
+.navbarImg {
+  max-width: 36px;
+  max-height: 36px;
+  border-radius: 50px;
 }
 </style>

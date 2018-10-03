@@ -1,7 +1,8 @@
 // const mainApi = "http://35.231.73.122:3000/";
 // const mainApi = "http://localhost:3000/";
 // const mainApi = "http://192.168.0.196:3000/";
-const mainApi = "https://unabase.net/";
+// const mainApi = "https://unabase.net/";
+const mainApi = "https://unabase.es/";
 
 export default {
   auth: {
@@ -10,9 +11,8 @@ export default {
   },
   users: {
     /**
-     *  GET/  get doc list
+     *  GET/  get doc list params: [name(STRING), isActive(boolean), ]
      *  GET/:id    get doc info
-     *  POST/    filter doc list
      */
     get: `${mainApi}users/`,
     /**
@@ -24,17 +24,43 @@ export default {
     update: `${mainApi}users/update`,
     logout: `${mainApi}users/logout`
   },
-  business: {},
+  business: {
+    /**
+     * GET/  get doc list ... params: [name(STRING), isActive(boolean)]
+     * GET/:id    get doc info
+     * POST/  create income
+     */
+    get: `${mainApi}business/`
+    /**
+     * PATCH/
+     * name: string
+     */
+    update: `${mainApi}business/update`
+  },
   incomes: {
     /**
-     *  GET/  get doc list
-     *  GET/:id    get doc info
-     *  POST/    filter doc list
+     * GET/  get doc list params: [name(STRING), isActive(boolean)]
+     * GET/:id    get doc info
+     * POST/  create income
      */
-    get: `${mainApi}incomes/`,
+    get: `${mainApi}incomes/`
     /**
+     * PATCH/
      * name: string
      */
     update: `${mainApi}incomes/update`
+  },
+  outcomes: {
+    /**
+     *  GET/  get doc list params: [name(STRING), isActive(boolean)]
+     *  GET/:id    get doc info
+     *  POST/  create income
+     */
+    get: `${mainApi}outcomes/`
+    /**
+     * PATCH/
+     * name: string
+     */
+    update: `${mainApi}outcomes/update`
   }
 };
