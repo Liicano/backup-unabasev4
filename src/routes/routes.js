@@ -49,6 +49,7 @@ const Calendar = () => import("@/pages/Dashboard/Calendar.vue");
 const Charts = () => import("@/pages/Dashboard/Charts.vue");
 import Widgets from "@/pages/Dashboard/Widgets.vue";
 import VueRouter from "vue-router";
+import auth from "./auth";
 
 // Unabase
 
@@ -255,7 +256,8 @@ const routes = [
       {
         path: "dashboard",
         name: "Dashboard",
-        components: { default: Dashboard }
+        components: { default: Dashboard },
+        beforeEnter: auth
       },
       {
         path: "calendar",

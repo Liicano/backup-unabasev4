@@ -1,13 +1,14 @@
 // const mainApi = "http://35.231.73.122:3000/";
-// const mainApi = "http://localhost:3000/";
+const mainApi = "http://localhost:3000/";
 // const mainApi = "http://192.168.0.196:3000/";
 // const mainApi = "https://unabase.net/";
-const mainApi = "https://unabase.es/";
+// const mainApi = "https://unabase.es/";
 
 export default {
   auth: {
     google: `${mainApi}auth/google`,
-    login: `${mainApi}auth/login`
+    login: `${mainApi}auth/login`,
+    gauth: `${mainApi}auth/gauth`
   },
   users: {
     /**
@@ -30,7 +31,7 @@ export default {
      * GET/:id    get doc info
      * POST/  create income
      */
-    get: `${mainApi}business/`
+    get: `${mainApi}business/`,
     /**
      * PATCH/
      * name: string
@@ -43,7 +44,7 @@ export default {
      * GET/:id    get doc info
      * POST/  create income
      */
-    get: `${mainApi}incomes/`
+    get: `${mainApi}incomes/`,
     /**
      * PATCH/
      * name: string
@@ -56,7 +57,7 @@ export default {
      *  GET/:id    get doc info
      *  POST/  create income
      */
-    get: `${mainApi}outcomes/`
+    get: `${mainApi}outcomes/`,
     /**
      * PATCH/
      * name: string

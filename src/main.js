@@ -26,6 +26,9 @@ Vue.use(DashboardPlugin);
 // AXIOS CONFIG
 axios.defaults.withCredentials = true;
 
+import GSignInButton from "vue-google-signin-button";
+Vue.use(GSignInButton);
+
 // global library setup
 Object.defineProperty(Vue.prototype, "$Chartist", {
   get() {
