@@ -65,4 +65,4 @@ typings/
 .vscode
 .firebaserc
 firebase.json
-.firebase
+.firebase/
