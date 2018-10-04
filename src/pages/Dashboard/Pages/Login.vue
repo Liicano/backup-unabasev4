@@ -4,24 +4,24 @@
     <notifications></notifications>
     <div class="md-layout-item md-size-33 md-medium-size-50 md-small-size-70 md-xsmall-size-100">
       <login-card header-color="green">
-        <h4 slot="title" class="title">{{ lg.user.login.l }}</h4>
+        <h4 slot="title" class="title">{{ lg.user.login }}</h4>
         <!-- <md-button slot="buttons" to="#facebook" class="md-just-icon md-simple md-white">
           <i class="fab fa-facebook-square"></i>
         </md-button>
         <md-button slot="buttons" to="#twitter" class="md-just-icon md-simple md-white">
           <i class="fab fa-twitter"></i>
         </md-button> -->
-        <md-button slot="buttons" :href="getUrls.google.auth" class="md-just-icon md-simple md-white">
+        <md-button slot="buttons" :href="url.google" class="md-just-icon md-simple md-white">
           <i class="fab fa-google-plus-g"></i>
         </md-button>
         <!-- <md-button slot="buttons" data-onsuccess="onSignin" class="g-signin2 md-just-icon md-simple md-white">
           
           <Gauth></Gauth>
         </md-button> -->
-        <!-- <md-field class="md-form-group" slot="buttons">
+        <md-field class="md-form-group" slot="buttons">
           
           <Gauth></Gauth>
-        </md-field> -->
+        </md-field>
 
         <p slot="description" class="description">{{ lg.user.classic }}</p>
         <!-- <md-field class="md-form-group" slot="inputs">
@@ -40,10 +40,10 @@
           <md-input v-model="password"></md-input>
         </md-field>
         <md-button slot="footer" class="md-simple md-success md-lg" @click="login">
-          {{ lg.user.login.loginGo }}
+          {{ lg.user.loginGo }}
         </md-button>
         <md-button slot="footer" class="md-simple md-success md-lg" to="/register">
-          {{ lg.user.register.r }}
+          {{ lg.user.register }}
         </md-button>
       </login-card>
     </div>
@@ -54,18 +54,25 @@ import { LoginCard } from "@/components";
 import { mapGetters } from "vuex";
 import Vue from "vue";
 import Notifications from "../../../components/NotificationPlugin";
+import api from "../../../config/api";
+import Gauth from "../../../components/Gauth";
+
 Vue.use(Notifications);
 // import axios from 'axios'
 export default {
   components: {
-    LoginCard
+    LoginCard,
+    Gauth
   },
   data() {
     return {
       user: null,
       firstname: null,
       email: null,
-      password: null
+      password: null,
+      url: {
+        google: api.auth.google
+      }
     };
   },
   computed: {

@@ -9,38 +9,49 @@
  
 <script>
 export default {
-  name: 'Gauth',
-  data () {
+  name: "Gauth",
+  data() {
     return {
       /**
        * The Auth2 parameters, as seen on
        * https://developers.google.com/identity/sign-in/web/reference#gapiauth2initparams.
        * As the very least, a valid client_id must present.
-       * @type {Object} 
+       * @type {Object}
        */
       googleSignInParams: {
-        client_id: '911992056725-uno0u77p6vc770gnv30jmr9t7bl6hhk8.apps.googleusercontent.com',
-        scope: 'https://www.googleapis.com/auth/drive profile'
+        client_id:
+          "911992056725-uno0u77p6vc770gnv30jmr9t7bl6hhk8.apps.googleusercontent.com",
+        scope:
+          "https://www.googleapis.com/auth/drive profile email https://www.googleapis.com/auth/calendar openid"
       }
-    }
+    };
   },
   methods: {
-    onSignInSuccess (googleUser) {
+    onSignInSuccess(googleUser) {
       // `googleUser` is the GoogleUser object that represents the just-signed-in user.
       // See https://developers.google.com/identity/sign-in/web/reference#users
-        //eslint-disable-next-line
-      const profile = googleUser.getBasicProfile() // etc etc
-      const id_token = googleUser.getAuthResponse().id_token
+      //eslint-disable-next-line
+      const profile = googleUser.getBasicProfile(); // etc etc
+      const id_token = googleUser.getAuthResponse().id_token;
       // eslint-disable-next-line
-      console.log(id_token)
+      console.log(id_token);
+      console.log(profile);
+      console.log(profile.getEmail());
+      console.log(profile.getFamilyName());
+      console.log(profile.getGivenName());
+      console.log(profile.getId());
+      console.log(profile.getImageUrl());
+      console.log(profile.getName());
+      console.log(googleUser);
+      this.$store.dispatch("users/setGoogle", { token: id_token });
     },
-    onSignInError (error) {
+    onSignInError(error) {
       // `error` contains any error occurred.
       // eslint-disable-next-line
-      console.log('OH NOES', error)
+      console.log("OH NOES", error);
     }
   }
-}
+};
 </script> 
  
 <style>

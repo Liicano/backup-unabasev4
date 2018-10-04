@@ -20,10 +20,9 @@ export default {
     classic: "or be classical",
     enter: "enter",
     lost: "forgot password",
-    username: "username",
     password: "password",
     profile: "profile",
-    l: "login",
+    login: "login",
     loginGo: `let's go`,
     register: "register",
     signup: "get started"

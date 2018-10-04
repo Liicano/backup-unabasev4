@@ -1,22 +1,45 @@
 import axios from "axios";
+import api from "../../config/api";
 
 // import { mapGetters } from 'vuex'
 export default {
   namespaced: true,
   state: {
     users: Object,
-    user: Object
+    user: {
+      access: {},
+      name: null,
+      email: null,
+      id: null,
+      activeScope: Object
+    }
   },
   mutations: {
     setLogin(state, payload) {
       state.user = payload;
+    },
+    setUser(state, payload) {
+      this.user = payload;
     }
   },
   actions: {
+    setGoogle({ commit }, payload) {
+      axios
+        .post(api.auth.gauth, {
+          token: payload.token
+        })
+        .then(data => {
+          console.log(data);
+        })
+        .catch(err => {
+          console.log("err");
+          console.log(err);
+        });
+    },
     fetchLogin({ commit, rootGetters }, payload) {
       return new Promise((resolve, reject) => {
         axios
-          .post(rootGetters.getUrls.login, {
+          .post(api.auth.login, {
             username: payload.username,
             password: payload.password
           })
@@ -25,7 +48,7 @@ export default {
             console.log("res");
             console.log(res);
             if (res.status === 200 && res.statusText === "authenticated") {
-              commit("setLogin", res.data.token);
+              commit("setLogin", res.data);
               resolve(res);
             }
           })
@@ -40,7 +63,7 @@ export default {
     fetchUser({ rootGetters }, payload) {
       return new Promise((resolve, reject) => {
         axios
-          .get(rootGetters.getUrls.getUser + payload._id)
+          .get(api.users.get + payload._id)
           .then(res => {
             //eslint-disable-next-line
             console.log("res");
