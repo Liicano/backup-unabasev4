@@ -79,4 +79,9 @@ export default {
     display: block;
   }
 }
+
+.md-layout-item {
+  padding-right: 0px;
+  padding-left: 0px;
+}
 </style>

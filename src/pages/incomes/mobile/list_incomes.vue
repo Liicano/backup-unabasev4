@@ -2,14 +2,16 @@
     <div>
         <md-list class="md-triple-line">
 
-        <div v-for="venta in incomes" :key="venta.id">
+        <div v-for="venta in incomes" :key="venta.id" id="mobile_list">
               <router-link :to="{path:'/incomes/'+venta.id, params:{venta:venta}}">
             <md-list-item style="padding: 0px 0px;">
               <md-avatar>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2ZYxbsw4kHRFbhU9KQtnLu7TtmYITTNH58sVGKDKsq78MWo9Z" alt="People">
+                 <md-avatar class="md-avatar-icon teal">
+                 <md-icon>attach_money</md-icon>
+             </md-avatar>
               </md-avatar>
 
-              <div class="md-list-item-text">
+              <div class="md-list-item-text"> 
                 <span>{{venta.asunto}}</span>
                 <span>{{venta.receptor.nombre}} {{venta.receptor.apellido}}</span>
                 <p><b>$ {{venta.monto_total}} CLP</b></p>
@@ -41,7 +43,7 @@ export default {
 </script>
 
 <style>
-.md-layout-item {
+#mobile_list.md-layout-item {
   padding-right: 0px;
   padding-left: 0px;
 }
