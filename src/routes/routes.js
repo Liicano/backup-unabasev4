@@ -1,3 +1,5 @@
+import store from "../store/store";
+
 import DashboardLayout from "@/pages/Dashboard/Layout/DashboardLayout.vue";
 import AuthLayout from "@/pages/Dashboard/Pages/AuthLayout.vue";
 
@@ -217,12 +219,18 @@ let authPages = {
     {
       path: "/login",
       name: "Login",
-      component: Login
+      component: Login,
+      meta: {
+        guestOnly: true
+      }
     },
     {
       path: "/register",
       name: "Register",
-      component: Register
+      component: Register,
+      meta: {
+        guestOnly: true
+      }
     },
     {
       path: "/pricing",
@@ -257,12 +265,17 @@ const routes = [
         path: "dashboard",
         name: "Dashboard",
         components: { default: Dashboard },
-        beforeEnter: auth
+        meta: {
+          requireAuth: true
+        }
       },
       {
         path: "calendar",
         name: "Calendar",
-        components: { default: Calendar }
+        components: { default: Calendar },
+        meta: {
+          requireAuth: true
+        }
       },
       {
         path: "charts",
@@ -310,6 +323,34 @@ let router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  next();
+  if (to.matched.some(record => record.meta.requireAuth)) {
+    console.log("is auth from auth", store.getters["users/isLogged"]);
+    if (!store.getters["users/isLogged"]) {
+      console.log("next fail login");
+      next({
+        path: "/login",
+        query: {
+          redirect: to.fullPath
+        }
+      });
+    } else {
+      console.log("next succces login");
+      next();
+    }
+  } else if (to.matched.some(record => record.meta.guestOnly)) {
+    console.log("is auth from guest", store.getters["users/isLogged"]);
+    if (store.getters["users/isLogged"]) {
+      next({
+        path: "/",
+        query: {
+          redirect: to.fullPath
+        }
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 export default router;

@@ -32,18 +32,29 @@ export default {
       // See https://developers.google.com/identity/sign-in/web/reference#users
       //eslint-disable-next-line
       const profile = googleUser.getBasicProfile(); // etc etc
-      const id_token = googleUser.getAuthResponse().id_token;
+      const token = googleUser.getAuthResponse().id_token;
+      const access_token = googleUser.getAuthResponse().access_token;
       // eslint-disable-next-line
-      console.log(id_token);
-      console.log(profile);
-      console.log(profile.getEmail());
-      console.log(profile.getFamilyName());
-      console.log(profile.getGivenName());
-      console.log(profile.getId());
-      console.log(profile.getImageUrl());
-      console.log(profile.getName());
-      console.log(googleUser);
-      this.$store.dispatch("users/setGoogle", { token: id_token });
+      // console.log(id_token);
+      // console.log(profile);
+      // console.log(profile.getEmail());
+      // console.log(profile.getFamilyName());
+      // console.log(profile.getGivenName());
+      // console.log(profile.getId());
+      // console.log(profile.getImageUrl());
+      // console.log(profile.getName());
+      // console.log(googleUser.getAuthResponse().access_token);
+      // console.log(googleUser);
+      console.log({ token, access_token });
+      let router = this.$router;
+      this.$store
+        .dispatch("users/google", { token, access_token })
+        .then(data => {
+          router.push("/");
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
     onSignInError(error) {
       // `error` contains any error occurred.
