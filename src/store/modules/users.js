@@ -6,37 +6,57 @@ export default {
   namespaced: true,
   state: {
     users: Object,
-    user: {
-      access: {},
-      name: null,
-      email: null,
-      id: null,
-      activeScope: Object
-    }
+    user: Object,
+    token: localStorage.getItem("token") || "",
+    status: ""
   },
   mutations: {
-    setLogin(state, payload) {
-      state.user = payload;
+    auth_request(state) {
+      state.status = "loading";
+    },
+    auth_success(state, payload) {
+      state.status = "success";
+      state.user = payload.user;
+      state.token = payload.token;
     },
     setUser(state, payload) {
-      this.user = payload;
+      state.user = payload;
+    },
+    auth_error(state) {
+      state.status = "error";
+    },
+    logout(state) {
+      state.status = "";
+      state.token = "";
     }
   },
   actions: {
-    setGoogle({ commit }, payload) {
-      axios
-        .post(api.auth.gauth, {
-          token: payload.token
-        })
-        .then(data => {
-          console.log(data);
-        })
-        .catch(err => {
-          console.log("err");
-          console.log(err);
-        });
+    google({ commit }, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .post(api.auth.gauth, {
+            token: payload.token,
+            access_token: payload.access_token
+          })
+          .then(data => {
+            console.log("data from setgoogle");
+            console.log(data);
+            localStorage.setItem("token", data.data.token);
+
+            axios.defaults.headers.common["Authorization"] = data.data.token;
+            commit("auth_success", data.data);
+            resolve(payload.user);
+          })
+          .catch(err => {
+            console.log("err");
+            console.log(err);
+            commit("auth_error");
+            localStorage.removeItem("token");
+            reject(err);
+          });
+      });
     },
-    fetchLogin({ commit, rootGetters }, payload) {
+    login({ commit }, payload) {
       return new Promise((resolve, reject) => {
         axios
           .post(api.auth.login, {
@@ -48,7 +68,10 @@ export default {
             console.log("res");
             console.log(res);
             if (res.status === 200 && res.statusText === "authenticated") {
-              commit("setLogin", res.data);
+              localStorage.setItem("token", res.data.token);
+
+              axios.defaults.headers.common["Authorization"] = res.data.token;
+              commit("auth_success", res.data);
               resolve(res);
             }
           })
@@ -56,8 +79,17 @@ export default {
             const res = err.response;
             console.log("err");
             console.log(err);
+            commit("auth_error");
+            localStorage.removeItem("token");
             reject(res);
           });
+      });
+    },
+    logout({ commit }) {
+      return new Promise((resolve, reject) => {
+        commit("logout");
+        delete axios.defaults.headers.common["Authorization"];
+        resolve();
       });
     },
     fetchUser({ rootGetters }, payload) {
@@ -87,11 +119,9 @@ export default {
     // }
   },
   getters: {
-    getUsers: function(state) {
-      return state.users;
-    },
-    getUser: function(state) {
-      return state.user;
-    }
+    getUsers: state => state.users,
+    getUser: state => state.user,
+    isLogged: state => !!state.token,
+    authStatus: state => state.status
   }
 };

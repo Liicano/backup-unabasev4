@@ -84,7 +84,7 @@ export default {
   methods: {
     login() {
       this.$store
-        .dispatch("users/fetchLogin", {
+        .dispatch("users/login", {
           username: this.email,
           password: this.password
         })
