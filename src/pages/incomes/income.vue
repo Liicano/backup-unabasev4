@@ -331,14 +331,10 @@
 <div class="form_mobile">
   
    <div class="card horizontal"> 
-      <!-- <div class="fixed-action-btn" id="new_venta_btn_mobile" style="margin-bottom: 12% !important;">
-                <a class="btn-floating btn-large green waves-effect" @click="showSwal(null, ventaObject.total)">
-                  <i class="large material-icons">save</i>
-      </a>
-            </div> -->
-      <md-speed-dial class="fixed-action-btn  md-bottom-right md-mode-fling" md-event="click"  style="margin-bottom: 12% !important; position:fixed;">
+  
+      <md-speed-dial class="  md-bottom-left md-mode-fling" md-event="click" md-direction="top"  style="margin-bottom: 12% !important; position:fixed; z-index: 997;">
         <md-speed-dial-target class="md-success md-just-icon md-round md-elevation-16">
-          <md-icon>arrow_upward</md-icon> 
+          <md-icon>expand_less</md-icon> 
         </md-speed-dial-target>
 
         <md-speed-dial-content>
@@ -420,7 +416,9 @@
              </div>
             </div>
           
+            <br> <br>
             <br>
+            <br> 
      
             <div class="row">
 
@@ -467,6 +465,7 @@ import itemsPrueba from "@/pages/incomes/items.json";
 import swal from "sweetalert2";
 import { Modal } from "@/components";
 import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 
 export default {
   data() {
@@ -614,14 +613,12 @@ export default {
     },
 
     dowmloadPdf() {
-      var imgData =
-        "data:image/jpeg;base64,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";
-
-      let pdfName = "OC";
       var doc = new jsPDF();
-      doc.text("PDF DE PRUEBA", 10, 10);
-      doc.addImage(imgData, "JPG", 15, 40, 180, 160);
-
+      let pdfName = "OC";
+      doc.text(20, 20, "Hello world!");
+      doc.text(20, 30, "This is client-side Javascript, pumping out a PDF.");
+      doc.addPage();
+      doc.text(20, 20, "Do you like that?");
       doc.save(pdfName + ".pdf");
     }
   }
