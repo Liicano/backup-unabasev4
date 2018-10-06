@@ -9,8 +9,27 @@ import router from "./routes/routes";
 import store from "./store/store";
 import Vue2Filters from "vue2-filters";
 Vue.use(Vue2Filters);
+
+// VALIDATION CONFIG
 import VeeValidate from "vee-validate";
-Vue.use(VeeValidate);
+const veeconfig = {
+  aria: true,
+  classNames: {},
+  classes: false,
+  delay: 0,
+  dictionary: null,
+  errorBagName: "errors", // cambiar si veo algun conflicto.
+  events: "blur", //Eventos para disparar la validacion
+  fieldsBagName: "fields",
+  i18n: null,
+  i18nRootKey: "validations", // aca estan los mensajes de validacion.
+  inject: true,
+  locale: "en",
+  strict: true,
+  validity: false
+};
+
+Vue.use(VeeValidate, veeconfig);
 
 import axios from "axios";
 import Notifications from "./components/NotificationPlugin";

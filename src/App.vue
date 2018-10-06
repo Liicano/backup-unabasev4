@@ -40,6 +40,7 @@
   bottom: 0;
   width: 100%;
   z-index: 100;
+  height: 60px !important;
 }
 
 @media (min-width: 618px) {

@@ -125,7 +125,7 @@
                         
                            <span :class="{ 'control': true }">
 
-                              <md-autocomplete id="autocompletadoUsers" name="cliente" class="search md-success"  style="" v-model="ventaObject.cliente" :md-options="employees" :md-open-on-focus="false" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('cliente') }">
+                              <md-autocomplete id="autocompletadoUsers" name="cliente" class="search md-success"  style="" v-model="ventaObject.cliente" :md-options="employees" :md-open-on-focus="false" v-validate="'required'" :class="{'is-danger': errors.has('cliente') }">
                                 <label v-if="$route.meta.rtlActive">Cliente</label>
                                 <label v-else>Cliente</label>
                               </md-autocomplete>
@@ -137,7 +137,7 @@
                         </div> 
                 </div>
                 <div class="md-layout-item md-small-size-10 md-size-10">
-                  <md-button class="md-info md-just-icon md-round" @click.native="modalClientes = true;"><md-icon >person_add</md-icon></md-button>
+                  <md-button class=" md-just-icon md-round" @click.native="modalClientes = true;"><md-icon >person_add</md-icon></md-button>
                   <md-tooltip direction="bottom">Agregar cliente</md-tooltip>
                 </div>
               </div>
@@ -161,7 +161,7 @@
               <div class="md-layout-item">
                 <md-field>
                   <span :class="{ 'control': true }">
-                  <md-input v-model="ventaObject.asunto" type="text" name="asunto" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('asunto') }"></md-input>
+                  <md-input v-model="ventaObject.asunto" type="text" name="asunto" v-validate="'required'" :class="{'is-danger': errors.has('asunto') }"></md-input>
                     <i v-show="errors.has('asunto')" class="fa fa-warning"></i>
                     <span v-show="errors.has('asunto')" class="help text-danger">Vacio</span>
                 </span>
@@ -179,13 +179,8 @@
               </label>
               <div class="md-layout-item">
                 <md-field>
-                   <span :class="{ 'control': true }">
-                      <md-input v-model="ventaObject.nota"  type="text" name="nota" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('nota') }"></md-input>
-                        <i v-show="errors.has('nota')" class="fa fa-warning"></i>
-                    <span v-show="errors.has('nota')" class="help text-danger">Vacio</span>
-              </span>
-                 
-                </md-field>
+                 <md-input v-model="ventaObject.nota"  type="text" name="nota"></md-input>
+               </md-field>
               </div>
             </div>
 
@@ -195,9 +190,76 @@
         </div>
 
         <br>
-       
           
-          <center><h3>Agregar items</h3></center>
+          <span>
+            
+            
+            <h3 v-if="!showInputs" class="pull-left">Agregar items</h3>
+
+            <md-card-expand-trigger class="pull-right">
+            <md-button class="md-icon-button md-success md-just-icon md-dense md-mini" @click="changeBtnStatus()">
+              <md-icon>keyboard_arrow_down</md-icon>
+            </md-button>
+          </md-card-expand-trigger>
+            </span>
+
+          <br><br><br>
+          <md-divider></md-divider>
+
+
+ <md-card-expand-content>
+          <md-card-content>
+          <div class="md-layout">
+            <div class="md-layout-item md-size-85 md-small-size-100" >
+                <div class="md-layout" v-if="!showInputs">
+                  <div class="md-layout-item md-size-55">
+                  
+                  <div class="md-autocomplete md-success">
+                     <md-autocomplete class="search md-success" style="" v-model="itemToAdd.nombre" :md-options="itemsModel" :md-open-on-focus="false" name="itemDesktop">
+                      <label v-if="$route.meta.rtlActive">Nombre del item</label>
+                      <label v-else>Nombre del item</label>
+                    </md-autocomplete>
+                 </div>
+
+                  </div>
+                 
+
+                  <div class="md-layout-item md-size-15">
+                   <md-field>
+                        <md-input type="number" placeholder="#" v-model="itemToAdd.cantidad" name="itemQuantityDesktop"></md-input>
+                   </md-field>
+                  </div>
+
+                  <div class="md-layout-item md-size-30">
+                   <md-field>
+                    <md-input placeholder="Precio"  type="number" v-model="itemToAdd.precio" name="itemCostDesktop"></md-input>
+                  </md-field>
+                  </div>
+                  
+                </div>
+            </div>
+          <div class="md-layout-item md-size-15 md-small-size-100" md-alignment="right">
+                
+
+               <div class="pull-right" align="left">
+                <center class="pull-right">
+                  
+                  <div v-if="!showInputs">
+                  <md-button class="md-success md-dense md-mini md-just-icon" @click="saveItem(itemToAdd);"><md-icon >add</md-icon></md-button>
+                  <md-tooltip md-direction="left">Guardar item</md-tooltip>
+                </div>
+                </center>
+             </div>
+            
+          </div>
+          </div>
+         
+          </md-card-content>
+        </md-card-expand-content>
+
+
+
+
          <div class="md-layout">
 
               <div class="md-layout-item md-xsmall-size-20 md-medium-size-25 md-small-size-25 md-size-25">
@@ -209,74 +271,7 @@
         <!-- /Formulario -->
         </md-card-content>
 
-        <md-card-actions md-alignment="right">
-          <form @submit.prevent="itemValidationHandler">
-          <div class="md-layout">
-            <div class="md-layout-item md-size-85 md-small-size-100" >
-                <div class="md-layout" v-if="!showInputs">
-                  <div class="md-layout-item md-size-55">
-                  
-                  <div class="md-autocomplete md-success">
-                     
-                <span :class="{ 'control': true }">
-                    <md-autocomplete class="search md-success" style="" v-model="itemToAdd.nombre" :md-options="itemsModel" :md-open-on-focus="false" name="itemDesktop" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('itemDesktop') }">
-                      <label v-if="$route.meta.rtlActive">Nombre del item</label>
-                      <label v-else>Nombre del item</label>
-                    </md-autocomplete>
-                        <i v-show="errors.has('itemDesktop')" class="fa fa-warning"></i>
-                        <span v-show="errors.has('itemDesktop')" class="help text-danger">Vacio</span>
-                </span>
-
-                 </div>
-
-                  </div>
-                 
-
-                  <div class="md-layout-item md-size-15">
-                   <md-field>
-                    <span :class="{ 'control': true }">
-                        <md-input type="number" placeholder="#" v-model="itemToAdd.cantidad" name="itemQuantityDesktop" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('itemQuantityDesktop') }"></md-input>
-                        <i v-show="errors.has('itemQuantityDesktop')" class="fa fa-warning"></i>
-                        <span v-show="errors.has('itemQuantityDesktop')" class="help text-danger">Vacio</span>
-                    </span>
-                  </md-field>
-                  </div>
-
-                  <div class="md-layout-item md-size-30">
-                   <md-field>
-                    
-                   <span :class="{ 'control': true }">
-                    <md-input placeholder="Precio"  type="number" v-model="itemToAdd.precio" name="itemCostDesktop" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('itemCostDesktop') }"></md-input>
-                        <i v-show="errors.has('itemCostDesktop')" class="fa fa-warning"></i>
-                        <span v-show="errors.has('itemCostDesktop')" class="help text-danger">Vacio</span>
-                  </span>
-                  </md-field>
-                  </div>
-                  
-                </div>
-            </div>
-          <div class="md-layout-item md-size-15 md-small-size-100" md-alignment="right">
-                
-               <div class="pull-right" align="left">
-              <center>
-                <div v-if="showInputs">
-                <md-button class="md-warning md-just-icon" @click="changeBtnStatus()" style="width: 100%;"><md-icon >add</md-icon></md-button>
-                <md-tooltip md-direction="left">Nuevo item</md-tooltip>
-                </div>
-              </center>
-              <center>
-                <div v-if="!showInputs">
-                <md-button type="submit" class="md-success md-just-icon "><md-icon >check</md-icon></md-button>
-                <md-tooltip md-direction="left">Guardar item</md-tooltip>
-
-              </div>
-              </center>
-             </div>
-            
-          </div>
-          </div>
-          </form>
-        </md-card-actions>
+       
       </md-card>
     </div>
 
@@ -286,10 +281,10 @@
             <md-content class="md-scrollbar" v-if="ventaObject.item.length > 0">
               <md-list-item v-for="itemS in ventaObject.item" :key="itemS" style="padding: 0;">
                <div class="md-list-item-text">
-                    <span>{{itemS.nombre}} <b>x</b> {{itemS.cantidad}} </span>
-                    <span><b>Precio:  {{itemS.precio}}</b> </span>
+                    <span>{{(itemS.nombre) | uppercase}} <b>x</b> {{itemS.cantidad}} </span>
+                    <span><b>Precio:  {{(itemS.precio) | currency}}</b> </span>
                   </div>
-                  <div class="md-list-action">  <h4><b>Subtotal:     $ {{itemS.cantidad * itemS.precio}}</b></h4> </div>
+                  <div class="md-list-action">  <h4><b>Subtotal:     $ {{(itemS.cantidad * itemS.precio) | currency}}</b></h4> </div>
               </md-list-item>
             </md-content>
 
@@ -301,9 +296,7 @@
                     </center>
                   </div>
               </md-list-item>
-              <md-list-item style="padding: 0;">
-               
-              </md-list-item>
+             
             </md-content>
 
              
@@ -321,7 +314,7 @@
           <center>
             <div class="total">
               <h6>Total</h6>
-              <h2><b>$</b> {{ventaObject.total}}</h2>
+              <h2><b>$</b> {{(ventaObject.total) | currency}}</h2>
               <hr style="margin-top: -4%;">
             </div>
             
@@ -338,35 +331,31 @@
 <div class="form_mobile">
   
    <div class="card horizontal"> 
-      <!-- <div class="fixed-action-btn" id="new_venta_btn_mobile" style="margin-bottom: 12% !important;">
-                <a class="btn-floating btn-large green waves-effect" @click="showSwal(null, ventaObject.total)">
-                  <i class="large material-icons">save</i>
-      </a>
-            </div> -->
-      <md-speed-dial class="fixed-action-btn  md-bottom-right md-mode-fling" md-event="click"  style="margin-bottom: 12% !important; position:fixed;">
-                      <md-speed-dial-target class="md-success md-just-icon md-round md-elevation-16">
-                        <md-icon>settings</md-icon> 
-                      </md-speed-dial-target>
+  
+      <md-speed-dial class="  md-bottom-left md-mode-fling" md-event="click" md-direction="top"  style="margin-bottom: 12% !important; position:fixed; z-index: 997;">
+        <md-speed-dial-target class="md-success md-just-icon md-round md-elevation-16">
+          <md-icon>expand_less</md-icon> 
+        </md-speed-dial-target>
 
-                      <md-speed-dial-content>
-                        
-                        <md-button class=" md-just-icon md-round md-info">
-                        <md-tooltip md-direction="right" style="">Enviar</md-tooltip>
+        <md-speed-dial-content>
+          
+          <md-button class=" md-just-icon md-round md-info">
+          <md-tooltip md-direction="right">Enviar</md-tooltip>
 
-                          <md-icon>send</md-icon>
-                        </md-button>
+            <md-icon>send</md-icon>
+          </md-button>
 
-                      <md-button class=" md-just-icon md-round md-warning">
-                        <md-tooltip md-direction="right">Visualizar</md-tooltip>
-                        <md-icon>assignment</md-icon>
-                        </md-button>
+        <md-button class=" md-just-icon md-round md-warning" @click="dowmloadPdf()">
+          <md-icon>assignment</md-icon>
+          </md-button>
 
-                         <md-button class=" md-just-icon md-round md-success">
-                        <md-tooltip md-direction="right">Guardar</md-tooltip>
-                        <md-icon>save</md-icon>
-                        </md-button>
+            <md-button @click="validationHandler()" class=" md-just-icon md-round md-success">
+          <md-tooltip md-direction="right">Guardar</md-tooltip>
+          <md-icon>save</md-icon>
+          </md-button>
 
-                      </md-speed-dial-content>
+
+        </md-speed-dial-content>
       </md-speed-dial>  
       <div class="card-stacked">
         
@@ -376,7 +365,7 @@
              <div class="input-field col s12">
                
                <span :class="{ 'control': true }">
-               <input placeholder="Asunto"  type="text" v-model="ventaObject.asunto" name="asuntoMobile" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('asuntoMobile') }">
+               <input placeholder="Asunto"  type="text" v-model="ventaObject.asunto" name="asuntoMobile" v-validate="'required'" :class="{'is-danger': errors.has('asuntoMobile') }">
                <i v-show="errors.has('asuntoMobile')" class="fa fa-warning"></i>
                <span v-show="errors.has('asuntoMobile')" class="help text-danger">Vacio</span>
                </span>
@@ -385,7 +374,11 @@
             
             <div class="row valign-wrapper">
              <div class="input-field col s10">
-               <input placeholder="Cliente" id="" type="text" class="validate" v-model="ventaObject.cliente">
+                <span :class="{ 'control': true }">
+                  <input placeholder="Cliente" id="" type="text" class="validate" name="clienteMobile" v-validate="'required'"  v-model="ventaObject.cliente">
+                  <i v-show="errors.has('clienteMobile')" class="fa fa-warning"></i>
+                  <span v-show="errors.has('clienteMobile')" class="help text-danger">Vacio</span>
+                </span>
              </div>
              <div class="col s2">
                <center>
@@ -396,9 +389,10 @@
 
               <h6>Agregar items</h6>
               <md-divider></md-divider>
+              
              <div class="row valign-wrapper">
              <div class="input-field col s10">
-               <input placeholder="Item" v-model="itemToAdd.nombre" id="" type="text" class="validate">
+               <input placeholder="Item" v-model="itemToAdd.nombre" id="" type="text" class="validate" name="itemMobile">
              </div>
              <div class="col s2">
                <a class="btn-floating btn-small waves-effect waves-light" @click="modalItems = true;"><i class="material-icons">list</i></a>
@@ -407,22 +401,24 @@
              </div>
              <div class="row valign-wrapper">
               <div class="input-field col s3">
-               <input placeholder="#" v-model.number="itemToAdd.cantidad" value="1" id="" type="number" class="validate">
+               
+                  <input placeholder="#" v-model.number="itemToAdd.cantidad" id="" type="number" class="validate" name="quantityMobile">
              </div>
 
               <div class="input-field col s7">
-                <input v-model.number="itemToAdd.precio" type="number" class="form-input" />
+                <input v-model.number="itemToAdd.precio" type="number" class="form-input" name="priceMobile"/>
              </div>
 
              <div class="col s2">
                <center>
-               <a class="btn-floating btn-small waves-effect waves-light" @click="saveItem(itemToAdd);notifyVue('top', 'center','success') "><i class="material-icons">add</i></a>
+               <a class="btn-floating btn-small waves-effect waves-light" @click="saveItem(itemToAdd)"><i class="material-icons">add</i></a>
                </center>
              </div>
             </div>
-
-
+          
+            <br> <br>
             <br>
+            <br> 
      
             <div class="row">
 
@@ -433,7 +429,6 @@
                   <hr>
                </center>
               </div>
-
               
               <div class="col s9">
                <center>
@@ -469,6 +464,8 @@ import itemsPrueba from "@/pages/incomes/items.json";
 // import vMoney from "@/components/vMoney.vue";
 import swal from "sweetalert2";
 import { Modal } from "@/components";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 
 export default {
   data() {
@@ -511,9 +508,18 @@ export default {
   },
   methods: {
     validationHandler() {
-      this.$validator.validateAll().then(result => {
+      this.$validator.validate().then(result => {
         if (result) {
-          this.showSwal("success-message", this.ventaObject.total);
+          if (this.ventaObject.item.length > 0) {
+            this.showSwal("success-message", this.ventaObject.total);
+          } else {
+            this.notifyVue(
+              "top",
+              "center",
+              "danger",
+              "¡AGREGA AL MENOS 1 ITEM A LA VENTA!"
+            );
+          }
         } else {
           this.notifyVue(
             "top",
@@ -521,15 +527,6 @@ export default {
             "danger",
             "¡ERROR EN LOS CAMPOS DE LA VENTA!"
           );
-        }
-      });
-    },
-    itemValidationHandler() {
-      this.$validator.validateAll().then(result => {
-        if (result) {
-          this.saveItem(this.itemToAdd);
-        } else {
-          this.notifyVue("top", "center", "danger", "¡ERROR AL AGREGAR ITEM!");
         }
       });
     },
@@ -544,17 +541,29 @@ export default {
       this.modalItems = false;
     },
     saveItem(itemToAdd) {
-      // Cambiando el estado del boton
-      this.showInputs = !this.showInputs;
-      //  Haciendo push del item al arreglo VENTA!
-      this.ventaObject.item.push(itemToAdd);
-      // Formula calculadora de cantidad * el precio del item
-      var precioProdcuto = this.itemToAdd.cantidad * this.itemToAdd.precio;
-      // Introduciendo al total
-      this.ventaObject.total =
-        parseInt(this.ventaObject.total) + parseInt(precioProdcuto);
-      this.itemToAdd = {};
-      this.notifyVue("top", "center", "success", "¡ITEM AGREGADO CON EXITO!");
+      console.log(itemToAdd);
+      if (
+        itemToAdd.nombre != null &&
+        itemToAdd.nombre != "" &&
+        (itemToAdd.precio != null && itemToAdd.precio != "") &&
+        itemToAdd.cantidad != null &&
+        itemToAdd.cantidad != ""
+      ) {
+        this.ventaObject.item.push(itemToAdd);
+        var precioProdcuto = this.itemToAdd.cantidad * this.itemToAdd.precio;
+        this.ventaObject.total =
+          parseInt(this.ventaObject.total) + parseInt(precioProdcuto);
+        this.itemToAdd = {};
+
+        this.notifyVue(
+          "top",
+          "center",
+          "success",
+          "¡ITEM AGREGADO CORRECTAMENTE!"
+        );
+      } else {
+        this.notifyVue("top", "center", "danger", "¡ITEM INCOMPLETO!");
+      }
     },
     changeBtnStatus() {
       this.itemToAdd = {};
@@ -601,6 +610,16 @@ export default {
     },
     facturar_venta(venta) {
       alert(venta.asunto);
+    },
+
+    dowmloadPdf() {
+      var doc = new jsPDF();
+      let pdfName = "OC";
+      doc.text(20, 20, "Hello world!");
+      doc.text(20, 30, "This is client-side Javascript, pumping out a PDF.");
+      doc.addPage();
+      doc.text(20, 20, "Do you like that?");
+      doc.save(pdfName + ".pdf");
     }
   }
 };

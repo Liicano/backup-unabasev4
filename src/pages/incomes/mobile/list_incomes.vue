@@ -3,26 +3,22 @@
         <md-list class="md-triple-line">
 
         <div v-for="venta in incomes" :key="venta.id" id="mobile_list">
-              <router-link :to="{path:'/incomes/'+venta.id, params:{venta:venta}}">
-            <md-list-item style="padding: 0px 0px;">
-              <md-avatar>
-                 <md-avatar class="md-avatar-icon teal">
-                 <md-icon>attach_money</md-icon>
-             </md-avatar>
-              </md-avatar>
+         <ul class="collection" style="border-style:none; padding:0px;">
 
-              <div class="md-list-item-text"> 
-                <span>{{venta.asunto}}</span>
-                <span>{{venta.receptor.nombre}} {{venta.receptor.apellido}}</span>
-                <p><b>$ {{venta.monto_total}} CLP</b></p>
-              </div>
-
-              
-                <small>21 Sept</small>
-            
-            </md-list-item>
-              <md-divider class="md-inset"></md-divider>
-              </router-link>
+           <router-link :to="{path:'/incomes/'+venta.id, params:{venta:venta}}" tag="li">
+            <li class="collection-item avatar">
+              <img src="../../../../public/favicon.png" class="circle" alt="">
+              <span class="title"><b style="overflow:hidden;">{{venta.asunto}}</b></span>
+              <p>{{(venta.receptor.nombre) | capitalize}} {{venta.receptor.apellido}} <br>
+                {{(venta.monto_total) | currency}}
+              </p>
+              <p  class="secondary-content">21 Sept</p>
+            </li>
+           </router-link>
+    
+   
+  </ul>
+          
         </div>
           </md-list>
           
