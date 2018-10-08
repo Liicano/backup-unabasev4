@@ -10,7 +10,7 @@
  
 <script>
 export default {
-  name: "Gauth",
+  name: 'Gauth',
   data() {
     return {
       /**
@@ -21,9 +21,9 @@ export default {
        */
       googleSignInParams: {
         client_id:
-          "911992056725-uno0u77p6vc770gnv30jmr9t7bl6hhk8.apps.googleusercontent.com",
+          '911992056725-uno0u77p6vc770gnv30jmr9t7bl6hhk8.apps.googleusercontent.com',
         scope:
-          "https://www.googleapis.com/auth/drive profile email https://www.googleapis.com/auth/calendar openid"
+          'https://www.googleapis.com/auth/drive profile email https://www.googleapis.com/auth/calendar openid'
       }
     };
   },
@@ -46,13 +46,12 @@ export default {
       // console.log(profile.getName());
       // console.log(googleUser.getAuthResponse().access_token);
       // console.log(googleUser);
-      console.log({ token, access_token });
       let router = this.$router;
       this.$store
-        .dispatch("users/google", { token, access_token })
+        .dispatch('users/google', { token, access_token })
         // eslint-disable-next-line
         .then(data => {
-          router.push("/");
+          router.push('/');
         })
         .catch(err => {
           console.log(err);
@@ -61,7 +60,7 @@ export default {
     onSignInError(error) {
       // `error` contains any error occurred.
       // eslint-disable-next-line
-      console.log("OH NOES", error);
+      console.log('OH NOES', error);
     }
   }
 };

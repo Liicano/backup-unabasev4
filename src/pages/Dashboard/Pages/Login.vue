@@ -50,12 +50,12 @@
   </div>
 </template>
 <script>
-import { LoginCard } from "@/components";
-import { mapGetters } from "vuex";
-import Vue from "vue";
-import Notifications from "../../../components/NotificationPlugin";
-import api from "../../../config/api";
-import Gauth from "../../../components/Gauth";
+import { LoginCard } from '@/components';
+import { mapGetters } from 'vuex';
+import Vue from 'vue';
+import Notifications from '../../../components/NotificationPlugin';
+import api from '../../../config/api';
+import Gauth from '../../../components/Gauth';
 
 Vue.use(Notifications);
 // import axios from 'axios'
@@ -78,32 +78,31 @@ export default {
   computed: {
     ...mapGetters([
       // eslint-disable-next-line
-      "getUrls"
+      'getUrls'
     ])
   },
   methods: {
     login() {
       this.$store
-        .dispatch("users/login", {
+        .dispatch('users/login', {
           username: this.email,
           password: this.password
         })
         // eslint-disable-next-line
         .then(res => {
-          this.$router.push("/");
+          this.$router.push('/');
         })
         .catch(err => {
           //err.status  & err.statusText
-          console.log(err);
           let type = new Map();
-          type.set(403, "warning");
-          type.set(404, "danger");
-          type.set(401, "info");
+          type.set(403, 'warning');
+          type.set(404, 'danger');
+          type.set(401, 'info');
           this.$notify({
             message: err.statusText,
-            icon: "add_alert",
-            horizontalAlign: "right",
-            verticalAlign: "top",
+            icon: 'add_alert',
+            horizontalAlign: 'right',
+            verticalAlign: 'top',
             // type: this.type[color]
             type: type.get(err.status)
           });

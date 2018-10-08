@@ -311,7 +311,7 @@
 </template>
 
 <script>
-import AsyncWorldMap from "@/components/WorldMap/AsyncWorldMap.vue";
+import AsyncWorldMap from '@/components/WorldMap/AsyncWorldMap.vue';
 import {
   StatsCard,
   ChartCard,
@@ -319,11 +319,9 @@ import {
   AnimatedNumber,
   GlobalSalesCard,
   GlobalSalesTable
-} from "@/components";
+} from '@/components';
 // import axios from "axios";
-import axios from "axios";
-import ufetch from "../../assets/js/ufetch.js";
-import api from "../../config/api.js";
+import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 export default {
@@ -338,9 +336,9 @@ export default {
   },
   data() {
     return {
-      product1: "./img/card-2.jpg",
-      product2: "./img/card-3.jpg",
-      product3: "./img/card-1.jpg",
+      product1: './img/card-2.jpg',
+      product2: './img/card-3.jpg',
+      product3: './img/card-1.jpg',
       seq2: 0,
       mapData: {
         AU: 760,
@@ -357,7 +355,7 @@ export default {
       },
       dailySalesChart: {
         data: {
-          labels: ["M", "T", "W", "T", "F", "S", "S"],
+          labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
           series: [[12, 17, 7, 17, 23, 18, 38]]
         },
         options: {
@@ -376,7 +374,7 @@ export default {
       },
       dataCompletedTasksChart: {
         data: {
-          labels: ["12am", "3pm", "6pm", "9pm", "12pm", "3am", "6am", "9am"],
+          labels: ['12am', '3pm', '6pm', '9pm', '12pm', '3am', '6am', '9am'],
           series: [[230, 750, 450, 300, 280, 240, 200, 190]]
         },
 
@@ -397,18 +395,18 @@ export default {
       emailsSubscriptionChart: {
         data: {
           labels: [
-            "Ja",
-            "Fe",
-            "Ma",
-            "Ap",
-            "Mai",
-            "Ju",
-            "Jul",
-            "Au",
-            "Se",
-            "Oc",
-            "No",
-            "De"
+            'Ja',
+            'Fe',
+            'Ma',
+            'Ap',
+            'Mai',
+            'Ju',
+            'Jul',
+            'Au',
+            'Se',
+            'Oc',
+            'No',
+            'De'
           ],
           series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]]
         },
@@ -427,7 +425,7 @@ export default {
         },
         responsiveOptions: [
           [
-            "screen and (max-width: 640px)",
+            'screen and (max-width: 640px)',
             {
               seriesBarDistance: 5,
               axisX: {
@@ -442,19 +440,6 @@ export default {
     };
   },
   computed: {},
-  methods: {
-    logout() {
-      // debugger;
-      // axios
-      //   .get(api.users.logout)
-      //   .then(res => {
-      //     console.log(res);
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
-    }
-  },
   mounted() {}
 };
 </script>
