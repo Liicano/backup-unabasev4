@@ -8,16 +8,16 @@
                     <h4 class="title">VENTAS</h4>
                   </md-card-header>
                   <md-card-content>
-                    <md-table v-model="incomes" table-header-color="green">
-                      <md-table-row slot="md-table-row" slot-scope="{ item }">
+                    <md-table v-model="incomes" table-header-color="green" class="showData">
+                     
+                        <router-link style="cursor:pointer;" class="md-table-row" :to="{path:'/income', params:{venta:item}}" v-for="item in incomes" :key="item.id" tag="tr">
                         <md-table-cell md-label="ID">{{ item.id }}</md-table-cell>
                         <md-table-cell md-label="Referencia">{{ item.asunto }}</md-table-cell>
                         <md-table-cell md-label="Cliente">{{ item.receptor.nombre }} {{ item.receptor.apellido }}</md-table-cell>
                         <md-table-cell md-label="Fecha">{{ item.fecha }}</md-table-cell>
-                        <md-table-cell md-label="Ubicacion"><center><a href=""> <md-icon>map</md-icon></a></center></md-table-cell>
-                        <md-table-cell md-label="Total"><b>$ </b>{{ item.monto_total }} CLP</md-table-cell>
-                        <md-table-cell md-label="Opciones"><router-link :to="{path:'/sale/details/'+item.id, params:{venta:item}}"><center><md-button class="md-warning md-just-icon md-round"><md-icon >edit</md-icon></md-button></center></router-link></md-table-cell>
-                      </md-table-row>
+                       <md-table-cell md-label="Total"><b>$ </b>{{ item.monto_total }} CLP</md-table-cell>
+                        </router-link>
+                     
                     </md-table>
                   </md-card-content>
                 </md-card>
