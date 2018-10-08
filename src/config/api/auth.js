@@ -1,9 +1,9 @@
 export default api => {
   return {
-    google: `${mainApi}auth/google`,
-    googleNew: `${mainApi}auth/google/create`,
-    login: `${mainApi}auth/login`,
-    gauth: `${mainApi}auth/gauth`,
-    register: `${mainApi}auth/register`
+    google: `${api}auth/google`,
+    googleNew: `${api}auth/google/create`,
+    login: `${api}auth/login`,
+    gauth: `${api}auth/gauth`,
+    register: `${api}auth/register`
   };
 };
