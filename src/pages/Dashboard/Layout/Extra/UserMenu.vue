@@ -1,7 +1,7 @@
 <template>
   <div class="user">
     <div class="photo">
-      <img :src="avatar" alt="avatar"/>
+      <img :src="user.google.imgUrl" alt="avatar"/>
     </div>
     <div class="user-info">
       <a data-toggle="collapse" :aria-expanded="!isClosed" @click.stop="toggleMenu" @click.capture="clicked">
@@ -10,7 +10,7 @@
              <b class="caret"></b>
           </span>
            <span v-else>
-             {{title}}
+             {{user.name}}
              <b class="caret"></b>
           </span>
       </a>
@@ -20,33 +20,27 @@
               <ul class="nav" >
                 <slot>
                   <li>
-                    <a v-if="$route.meta.rtlActive" href="#vue">
-                      <span class="sidebar-mini">مع</span>
-                      <span class="sidebar-normal">ملف</span>
-                    </a>
-                    <a v-else href="#vue">
+                    <a href="#vue">
                       <md-icon>person</md-icon>
-                      <span class="sidebar-normal">Mi perfil</span>
+                      <span class="sidebar-normal">{{lg.user.profile}}</span>
                     </a>
                   </li>
                   <li>
-                    <a v-if="$route.meta.rtlActive" href="#vue">
-                      <span class="sidebar-mini">هوع</span>
-                      <span class="sidebar-normal">تعديل الملف الشخصي</span>
-                    </a>
-                    <a v-else href="#vue">
+                    <a href="#vue">
                       <md-icon>edit</md-icon>
-                      <span class="sidebar-normal">Editar</span>
+                      <span class="sidebar-normal">{{lg.user.editProfile}}</span>
                     </a>
                   </li>
                   <li>
-                    <a v-if="$route.meta.rtlActive" href="#vue">
-                      <span class="sidebar-mini">و</span>
-                      <span class="sidebar-normal">إعدادات</span>
-                    </a>
-                    <a v-else href="#vue">
+                    <a href="#vue">
                       <md-icon>people</md-icon>
-                      <span class="sidebar-normal">Empresas</span>
+                      <span class="sidebar-normal">{{lg.modules.business}}</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#vue" @click="logout">
+                      <md-icon>exit_to_app</md-icon>
+                      <span class="sidebar-normal">{{lg.user.logout}}</span>
                     </a>
                   </li>
                 </slot>
@@ -57,43 +51,61 @@
   </div>
 </template>
 <script>
-  import { CollapseTransition } from 'vue2-transitions';
+import { CollapseTransition } from 'vue2-transitions';
+import { mapGetters } from 'vuex';
 
-  export default {
-    components: {
-      CollapseTransition
+export default {
+  components: {
+    CollapseTransition
+  },
+  props: {
+    title: {
+      type: String,
+      default: ''
     },
-    props: {
-      title: {
-        type: String,
-        default: 'Hector Gonzalez'
-      },
-      rtlTitle: {
-        type: String,
-        default: 'تانيا أندرو'
-      },
-      avatar: {
-        type: String,
-        default: './img/faces/avatar.jpg'
-      }
+    rtlTitle: {
+      type: String,
+      default: 'تانيا أندرو'
     },
-    data() {
-      return {
-        isClosed: true
-      }
+    avatar: {
+      type: String,
+      default: './img/faces/avatar.jpg'
+    }
+  },
+  data() {
+    return {
+      isClosed: true,
+      name: ''
+    };
+  },
+  computed: {
+    ...mapGetters({
+      user: 'users/user'
+    })
+  },
+  methods: {
+    clicked: function(e) {
+      e.preventDefault();
     },
-    methods: {
-      clicked: function(e) {
-        e.preventDefault()
-      },
-      toggleMenu: function() {
-        this.isClosed = !this.isClosed
-      }
+    toggleMenu: function() {
+      this.isClosed = !this.isClosed;
+    },
+    logout() {
+      this.$store
+        .dispatch('users/logout')
+        // eslint-disable-next-line
+        .then(res => {
+          this.$router.push('/');
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
+};
 </script>
 <style>
-  .collapsed {
-    transition: opacity 1s;
-  }
+.collapsed {
+  transition: opacity 1s;
+}
 </style>

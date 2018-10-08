@@ -1,4 +1,4 @@
-import store from "../store/store";
+import store from '../store/store';
 // const auth = {
 //   auth: (to, from, next) => {
 //     console.log("store.getters.user");
@@ -19,16 +19,13 @@ import store from "../store/store";
 //   }
 // };
 export default uType => (to, from, next) => {
-  console.log("store.getters.user");
-  console.log(store.getters);
-  console.log(store.getters["users/getUser"]._id);
   if (
-    uType === "auth"
-      ? store.getters["users/getUser"]._id
-      : !store.getters["users/getUser"]._id
+    uType === 'auth'
+      ? store.getters['users/getUser']._id
+      : !store.getters['users/getUser']._id
   ) {
     next();
   } else {
-    next("/login");
+    next('/login');
   }
 };

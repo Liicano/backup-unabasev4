@@ -486,11 +486,11 @@
 </div>
 </template>
 <script>
-import { Tabs } from "@/components";
-import { Collapse, PricingCard } from "@/components";
-import swal from "sweetalert2";
-import { Modal } from "@/components";
-import invoice from "../../assets/js/invoice.js";
+import { Tabs } from '@/components';
+import { Collapse, PricingCard } from '@/components';
+import swal from 'sweetalert2';
+import { Modal } from '@/components';
+import invoice from '../../assets/js/invoice.js';
 
 export default {
   data() {
@@ -500,16 +500,16 @@ export default {
       modalClientes: false,
       itemToAdd: {},
       ventaObject: {
-        cliente: "",
-        asunto: "",
+        cliente: '',
+        asunto: '',
         item: [],
         total: 0,
         fecha: new Date()
       },
-      selectedEmployee: "",
-      employees: ["Hector Gonzalez", "Simon Gomez", "Victor Espinoza"],
-      itemSelectedToAdd: "",
-      itemsModel: ["Telefono lg k10", "papa", "laptop", "polera azul adidas"],
+      selectedEmployee: '',
+      employees: ['Hector Gonzalez', 'Simon Gomez', 'Victor Espinoza'],
+      itemSelectedToAdd: '',
+      itemsModel: ['Telefono lg k10', 'papa', 'laptop', 'polera azul adidas'],
       showInputs: false
     };
   },
@@ -524,21 +524,21 @@ export default {
       this.$validator.validate().then(result => {
         if (result) {
           if (this.ventaObject.item.length > 0) {
-            this.showSwal("success-message", this.ventaObject.total);
+            this.showSwal('success-message', this.ventaObject.total);
           } else {
             this.notifyVue(
-              "top",
-              "center",
-              "danger",
-              "¡AGREGA AL MENOS 1 ITEM A LA VENTA!"
+              'top',
+              'center',
+              'danger',
+              '¡AGREGA AL MENOS 1 ITEM A LA VENTA!'
             );
           }
         } else {
           this.notifyVue(
-            "top",
-            "center",
-            "danger",
-            "¡ERROR EN LOS CAMPOS DE LA VENTA!"
+            'top',
+            'center',
+            'danger',
+            '¡ERROR EN LOS CAMPOS DE LA VENTA!'
           );
         }
       });
@@ -557,10 +557,10 @@ export default {
       console.log(itemToAdd);
       if (
         itemToAdd.nombre != null &&
-        itemToAdd.nombre != "" &&
-        (itemToAdd.precio != null && itemToAdd.precio != "") &&
+        itemToAdd.nombre != '' &&
+        (itemToAdd.precio != null && itemToAdd.precio != '') &&
         itemToAdd.cantidad != null &&
-        itemToAdd.cantidad != ""
+        itemToAdd.cantidad != ''
       ) {
         this.ventaObject.item.push(itemToAdd);
         var precioProdcuto = this.itemToAdd.cantidad * this.itemToAdd.precio;
@@ -569,13 +569,13 @@ export default {
         // this.itemToAdd = {};
 
         this.notifyVue(
-          "top",
-          "center",
-          "success",
-          "¡ITEM AGREGADO CORRECTAMENTE!"
+          'top',
+          'center',
+          'success',
+          '¡ITEM AGREGADO CORRECTAMENTE!'
         );
       } else {
-        this.notifyVue("top", "center", "danger", "¡ITEM INCOMPLETO!");
+        this.notifyVue('top', 'center', 'danger', '¡ITEM INCOMPLETO!');
       }
     },
     changeBtnStatus() {
@@ -585,7 +585,7 @@ export default {
     notifyVue(verticalAlign, horizontalAlign, state, message) {
       this.$notify({
         message: message,
-        icon: "add_alert",
+        icon: 'add_alert',
         horizontalAlign: horizontalAlign,
         verticalAlign: verticalAlign,
         type: state
@@ -593,18 +593,18 @@ export default {
     },
     showSwal() {
       swal({
-        title: "¡VENTA EXITOSA!",
-        text: "¿Visualizar factura?",
-        type: "success",
+        title: '¡VENTA EXITOSA!',
+        text: '¿Visualizar factura?',
+        type: 'success',
         showCancelButton: true,
-        confirmButtonClass: "md-button md-success",
-        cancelButtonClass: "md-button md-info",
-        confirmButtonText: "SI",
-        cancelButtonText: "Enviar",
+        confirmButtonClass: 'md-button md-success',
+        cancelButtonClass: 'md-button md-info',
+        confirmButtonText: 'SI',
+        cancelButtonText: 'Enviar',
         buttonsStyling: false
       }).then(result => {
         if (!result.value) {
-          alert("ENVIANDO...");
+          alert('ENVIANDO...');
         } else {
           this.generar_invoice(this.ventaObject);
         }
@@ -613,7 +613,7 @@ export default {
     facturar_venta(venta) {
       alert(venta.asunto);
     },
-    generar_invoice(ventaObject) {
+    generar_invoice() {
       invoice(this.ventaObject);
     }
   }

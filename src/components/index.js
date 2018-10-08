@@ -34,8 +34,10 @@ import Pagination from './Pagination.vue';
 import SidebarPlugin from './SidebarPlugin';
 
 import AnimatedNumber from './AnimatedNumber';
+import Gauth from './Gauth.vue';
 
 export {
+  Gauth,
   IconCheckbox,
   Badge,
   Modal,
