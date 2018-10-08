@@ -62,8 +62,8 @@ export default {
           .then(data => {
             router.push('/');
           })
-          .catch(err => {
-            if (err.response.status === 404) {
+          .catch((err, response) => {
+            if (response.status === 404) {
               this.$router.push('/register');
             }
           });

@@ -53,7 +53,7 @@
 </template>
 <script>
 import { SignupCard, Gauth } from '@/components';
-// import api from '../../../config/api.js';
+
 export default {
   name: 'Register',
   components: {
