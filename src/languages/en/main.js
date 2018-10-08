@@ -11,7 +11,8 @@ export default {
     tasks: "tasks",
     home: "home",
     login: "login",
-    users: "users"
+    users: "users",
+    business: "business"
   },
   user: {
     name: "name",
@@ -25,8 +26,11 @@ export default {
     login: "login",
     loginGo: `let's go`,
     register: "register",
-    signup: "get started"
+    signup: "get started",
+    logout: "logout",
+    editProfile: "edit profile"
   },
+  business: {},
   income: {
     client: "client",
     date: "date",
