@@ -20,7 +20,7 @@
         </md-button> -->
         <md-field class="md-form-group mdl-typography--text-center" slot="buttons">
           
-          <Gauth></Gauth>
+          <Gauth from="login"></Gauth>
         </md-field>
 
         <p slot="description" class="description">{{ lg.user.classic }}</p>

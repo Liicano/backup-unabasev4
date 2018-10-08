@@ -4,13 +4,16 @@
     @success="onSignInSuccess"
     @error="onSignInError">
     <i class="fab fa-google-plus-g"> </i>
-    <strong>  {{ lg.user.googleLogin }}</strong>
+    <strong> {{ from }} {{ lg.user.googleLogin }}</strong>
   </g-signin-button>
 </template>
  
 <script>
 export default {
   name: 'Gauth',
+  props: {
+    from: ''
+  },
   data() {
     return {
       /**
@@ -27,6 +30,9 @@ export default {
       }
     };
   },
+  mounted() {
+    console.log(this.from);
+  },
   methods: {
     onSignInSuccess(googleUser) {
       // `googleUser` is the GoogleUser object that represents the just-signed-in user.
@@ -38,24 +44,47 @@ export default {
       // eslint-disable-next-line
       // console.log(id_token);
       // console.log(profile);
-      // console.log(profile.getEmail());
       // console.log(profile.getFamilyName());
       // console.log(profile.getGivenName());
+
       // console.log(profile.getId());
       // console.log(profile.getImageUrl());
       // console.log(profile.getName());
+
+      // console.log(profile.getEmail());
       // console.log(googleUser.getAuthResponse().access_token);
-      // console.log(googleUser);
+
       let router = this.$router;
-      this.$store
-        .dispatch('users/google', { token, access_token })
-        // eslint-disable-next-line
-        .then(data => {
-          router.push('/');
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      if (this.from === 'login') {
+        this.$store
+          .dispatch('users/google', { token, access_token })
+          // eslint-disable-next-line
+          .then(data => {
+            router.push('/');
+          })
+          .catch(err => {
+            if (err.response.status === 404) {
+              this.$router.push('/register');
+            }
+          });
+      } else if (this.from === 'register') {
+        const googleUser = {
+          id: profile.getId(),
+          name: profile.getName(),
+          email: profile.getEmail(),
+          accessToken: access_token,
+          imgUrl: profile.getImageUrl()
+        };
+        this.$store
+          .dispatch('users/googleNew', { token, googleUser })
+          // eslint-disable-next-line
+          .then(data => {
+            router.push('/');
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
     },
     onSignInError(error) {
       // `error` contains any error occurred.
