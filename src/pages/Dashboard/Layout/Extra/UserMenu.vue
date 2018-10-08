@@ -1,7 +1,7 @@
 <template>
   <div class="user">
     <div class="photo">
-      <img :src="avatar" alt="avatar"/>
+      <img :src="user.google.imgUrl" alt="avatar"/>
     </div>
     <div class="user-info">
       <a data-toggle="collapse" :aria-expanded="!isClosed" @click.stop="toggleMenu" @click.capture="clicked">
@@ -10,7 +10,7 @@
              <b class="caret"></b>
           </span>
            <span v-else>
-             {{title}}
+             {{user.name}}
              <b class="caret"></b>
           </span>
       </a>
@@ -51,7 +51,8 @@
   </div>
 </template>
 <script>
-import { CollapseTransition } from "vue2-transitions";
+import { CollapseTransition } from 'vue2-transitions';
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -60,21 +61,27 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Hector Gonzalez"
+      default: ''
     },
     rtlTitle: {
       type: String,
-      default: "تانيا أندرو"
+      default: 'تانيا أندرو'
     },
     avatar: {
       type: String,
-      default: "./img/faces/avatar.jpg"
+      default: './img/faces/avatar.jpg'
     }
   },
   data() {
     return {
-      isClosed: true
+      isClosed: true,
+      name: ''
     };
+  },
+  computed: {
+    ...mapGetters({
+      user: 'users/user'
+    })
   },
   methods: {
     clicked: function(e) {
@@ -85,10 +92,10 @@ export default {
     },
     logout() {
       this.$store
-        .dispatch("users/logout")
+        .dispatch('users/logout')
         // eslint-disable-next-line
         .then(res => {
-          this.$router.push("/");
+          this.$router.push('/');
         })
         .catch(err => {
           console.log(err);

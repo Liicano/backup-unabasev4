@@ -3,7 +3,8 @@
     :params="googleSignInParams"
     @success="onSignInSuccess"
     @error="onSignInError">
-    <i class="fab fa-google-plus-g"></i>
+    <i class="fab fa-google-plus-g"> </i>
+    <strong>  {{ lg.user.googleLogin }}</strong>
   </g-signin-button>
 </template>
  
@@ -49,6 +50,7 @@ export default {
       let router = this.$router;
       this.$store
         .dispatch("users/google", { token, access_token })
+        // eslint-disable-next-line
         .then(data => {
           router.push("/");
         })
@@ -65,14 +67,16 @@ export default {
 };
 </script> 
  
-<style>
+<style scoped>
 .g-signin-button {
   /* This is where you control how the button looks. Be creative! */
-  /* display: inline-block;
+  display: inline-block;
   padding: 4px 8px;
   border-radius: 10px;
   background-color: #3c82f7;
   color: #fff;
-  box-shadow: 0 3px 0 #0f69ff; */
+  box-shadow: 0 3px 0 #0f69ff;
+  margin: auto;
+  cursor: pointer;
 }
 </style> 

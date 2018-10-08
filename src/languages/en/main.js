@@ -28,7 +28,8 @@ export default {
     register: "register",
     signup: "get started",
     logout: "logout",
-    editProfile: "edit profile"
+    editProfile: "edit profile",
+    googleLogin: "login with google"
   },
   business: {},
   income: {
