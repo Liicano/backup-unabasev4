@@ -15,7 +15,7 @@
       </a>
       <a href="https://www.creative-tim.com" class="simple-text logo-normal" target="_blank">
         <template v-if="$route.meta.rtlActive">{{rtlTitle}}</template>
-        <template v-else>{{title}}   </template>   <small>      V4</small>
+        <template v-else>{{title}}   </template>   <small>      </small>
       </a>
       <div class="navbar-minimize">
         <md-button id="minimizeSidebar" class="md-round md-just-icon md-transparent" @click="minimizeSidebar">
@@ -46,47 +46,47 @@
 </template>
 <script>
 export default {
-  name: "sidebar",
+  name: 'sidebar',
   props: {
     title: {
       type: String,
-      default: "UNABASE"
+      default: 'UNABASE'
     },
     rtlTitle: {
       type: String,
-      default: "توقيت الإبداعية"
+      default: 'توقيت الإبداعية'
     },
     activeColor: {
       type: String,
-      default: "green",
+      default: 'green',
       validator: value => {
         let acceptedValues = [
-          "",
-          "primary",
-          "azure",
-          "green",
-          "orange",
-          "danger",
-          "rose"
+          '',
+          'primary',
+          'azure',
+          'green',
+          'orange',
+          'danger',
+          'rose'
         ];
         return acceptedValues.indexOf(value) !== -1;
       }
     },
     backgroundImage: {
       type: String,
-      default: ""
+      default: ''
     },
     backgroundColor: {
       type: String,
-      default: "black",
+      default: 'black',
       validator: value => {
-        let acceptedValues = ["", "black", "white", "red"];
+        let acceptedValues = ['', 'black', 'white', 'red'];
         return acceptedValues.indexOf(value) == 1;
       }
     },
     logo: {
       type: String,
-      default: "./img/logotipo.png"
+      default: './img/logotipo.png'
     },
     sidebarLinks: {
       type: Array,

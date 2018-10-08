@@ -3,13 +3,14 @@
     :params="googleSignInParams"
     @success="onSignInSuccess"
     @error="onSignInError">
-    <i class="fab fa-google-plus-g"></i>
+    <i class="fab fa-google-plus-g"> </i>
+    <strong>  {{ lg.user.googleLogin }}</strong>
   </g-signin-button>
 </template>
  
 <script>
 export default {
-  name: "Gauth",
+  name: 'Gauth',
   data() {
     return {
       /**
@@ -20,9 +21,9 @@ export default {
        */
       googleSignInParams: {
         client_id:
-          "911992056725-uno0u77p6vc770gnv30jmr9t7bl6hhk8.apps.googleusercontent.com",
+          '911992056725-uno0u77p6vc770gnv30jmr9t7bl6hhk8.apps.googleusercontent.com',
         scope:
-          "https://www.googleapis.com/auth/drive profile email https://www.googleapis.com/auth/calendar openid"
+          'https://www.googleapis.com/auth/drive profile email https://www.googleapis.com/auth/calendar openid'
       }
     };
   },
@@ -45,12 +46,12 @@ export default {
       // console.log(profile.getName());
       // console.log(googleUser.getAuthResponse().access_token);
       // console.log(googleUser);
-      console.log({ token, access_token });
       let router = this.$router;
       this.$store
-        .dispatch("users/google", { token, access_token })
+        .dispatch('users/google', { token, access_token })
+        // eslint-disable-next-line
         .then(data => {
-          router.push("/");
+          router.push('/');
         })
         .catch(err => {
           console.log(err);
@@ -59,20 +60,22 @@ export default {
     onSignInError(error) {
       // `error` contains any error occurred.
       // eslint-disable-next-line
-      console.log("OH NOES", error);
+      console.log('OH NOES', error);
     }
   }
 };
 </script> 
  
-<style>
+<style scoped>
 .g-signin-button {
   /* This is where you control how the button looks. Be creative! */
-  /* display: inline-block;
+  display: inline-block;
   padding: 4px 8px;
   border-radius: 10px;
   background-color: #3c82f7;
   color: #fff;
-  box-shadow: 0 3px 0 #0f69ff; */
+  box-shadow: 0 3px 0 #0f69ff;
+  margin: auto;
+  cursor: pointer;
 }
 </style> 

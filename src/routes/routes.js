@@ -1,174 +1,173 @@
-import store from "../store/store";
+import store from '../store/store';
 
-import DashboardLayout from "@/pages/Dashboard/Layout/DashboardLayout.vue";
-import AuthLayout from "@/pages/Dashboard/Pages/AuthLayout.vue";
+import DashboardLayout from '@/pages/Dashboard/Layout/DashboardLayout.vue';
+import AuthLayout from '@/pages/Dashboard/Pages/AuthLayout.vue';
 
 // Dashboard pages
-import Dashboard from "@/pages/Dashboard/Dashboard.vue";
+import Dashboard from '@/pages/Dashboard/Dashboard.vue';
 
 // Pages
-const User = () => import("@/pages/Dashboard/Pages/UserProfile.vue");
-const Pricing = () => import("@/pages/Dashboard/Pages/Pricing.vue");
-const TimeLine = () => import("@/pages/Dashboard/Pages/TimeLinePage.vue");
-const RtlSupport = () => import("@/pages/Dashboard/Pages/RtlSupport.vue");
-const Login = () => import("@/pages/Dashboard/Pages/Login.vue");
-const Register = () => import("@/pages/Dashboard/Pages/Register.vue");
-const Lock = () => import("@/pages/Dashboard/Pages/Lock.vue");
+const User = () => import('@/pages/Dashboard/Pages/UserProfile.vue');
+const Pricing = () => import('@/pages/Dashboard/Pages/Pricing.vue');
+const TimeLine = () => import('@/pages/Dashboard/Pages/TimeLinePage.vue');
+const RtlSupport = () => import('@/pages/Dashboard/Pages/RtlSupport.vue');
+const Login = () => import('@/pages/Dashboard/Pages/Login.vue');
+const Register = () => import('@/pages/Dashboard/Pages/Register.vue');
+const Lock = () => import('@/pages/Dashboard/Pages/Lock.vue');
 
 // Components pages
-const Buttons = () => import("@/pages/Dashboard/Components/Buttons.vue");
-const GridSystem = () => import("@/pages/Dashboard/Components/GridSystem.vue");
-const Panels = () => import("@/pages/Dashboard/Components/Panels.vue");
-const SweetAlert = () => import("@/pages/Dashboard/Components/SweetAlert.vue");
+const Buttons = () => import('@/pages/Dashboard/Components/Buttons.vue');
+const GridSystem = () => import('@/pages/Dashboard/Components/GridSystem.vue');
+const Panels = () => import('@/pages/Dashboard/Components/Panels.vue');
+const SweetAlert = () => import('@/pages/Dashboard/Components/SweetAlert.vue');
 const Notifications = () =>
-  import("@/pages/Dashboard/Components/Notifications.vue");
-const Icons = () => import("@/pages/Dashboard/Components/Icons.vue");
-const Typography = () => import("@/pages/Dashboard/Components/Typography.vue");
+  import('@/pages/Dashboard/Components/Notifications.vue');
+const Icons = () => import('@/pages/Dashboard/Components/Icons.vue');
+const Typography = () => import('@/pages/Dashboard/Components/Typography.vue');
 
 // Forms pages
-const RegularForms = () => import("@/pages/Dashboard/Forms/RegularForms.vue");
-const ExtendedForms = () => import("@/pages/Dashboard/Forms/ExtendedForms.vue");
+const RegularForms = () => import('@/pages/Dashboard/Forms/RegularForms.vue');
+const ExtendedForms = () => import('@/pages/Dashboard/Forms/ExtendedForms.vue');
 const ValidationForms = () =>
-  import("@/pages/Dashboard/Forms/ValidationForms.vue");
-const Wizard = () => import("@/pages/Dashboard/Forms/Wizard.vue");
+  import('@/pages/Dashboard/Forms/ValidationForms.vue');
+const Wizard = () => import('@/pages/Dashboard/Forms/Wizard.vue');
 
 // TableList pages
 const RegularTables = () =>
-  import("@/pages/Dashboard/Tables/RegularTables.vue");
+  import('@/pages/Dashboard/Tables/RegularTables.vue');
 const ExtendedTables = () =>
-  import("@/pages/Dashboard/Tables/ExtendedTables.vue");
+  import('@/pages/Dashboard/Tables/ExtendedTables.vue');
 const PaginatedTables = () =>
-  import("@/pages/Dashboard/Tables/PaginatedTables.vue");
+  import('@/pages/Dashboard/Tables/PaginatedTables.vue');
 
 // Maps pages
-const GoogleMaps = () => import("@/pages/Dashboard/Maps/GoogleMaps.vue");
-const FullScreenMap = () => import("@/pages/Dashboard/Maps/FullScreenMap.vue");
-const VectorMaps = () => import("@/pages/Dashboard/Maps/VectorMaps.vue");
+const GoogleMaps = () => import('@/pages/Dashboard/Maps/GoogleMaps.vue');
+const FullScreenMap = () => import('@/pages/Dashboard/Maps/FullScreenMap.vue');
+const VectorMaps = () => import('@/pages/Dashboard/Maps/VectorMaps.vue');
 
 // Calendar
-const Calendar = () => import("@/pages/Dashboard/Calendar.vue");
+const Calendar = () => import('@/pages/Dashboard/Calendar.vue');
 // Charts
-const Charts = () => import("@/pages/Dashboard/Charts.vue");
-import Widgets from "@/pages/Dashboard/Widgets.vue";
-import VueRouter from "vue-router";
-import auth from "./auth";
+const Charts = () => import('@/pages/Dashboard/Charts.vue');
+import Widgets from '@/pages/Dashboard/Widgets.vue';
+import VueRouter from 'vue-router';
 
 // Unabase
 
 // VENTAS
-const Income = () => import("@/pages/incomes/income.vue");
-const Incomes = () => import("@/pages/incomes/incomes.vue");
+const Income = () => import('@/pages/incomes/income.vue');
+const Incomes = () => import('@/pages/incomes/incomes.vue');
 
 let componentsMenu = {
-  path: "/components",
+  path: '/components',
   component: DashboardLayout,
-  redirect: "/components/buttons",
-  name: "Components",
+  redirect: '/components/buttons',
+  name: 'Components',
   children: [
     {
-      path: "buttons",
-      name: "Buttons",
+      path: 'buttons',
+      name: 'Buttons',
       components: { default: Buttons }
     },
     {
-      path: "grid-system",
-      name: "Grid System",
+      path: 'grid-system',
+      name: 'Grid System',
       components: { default: GridSystem }
     },
     {
-      path: "panels",
-      name: "Panels",
+      path: 'panels',
+      name: 'Panels',
       components: { default: Panels }
     },
     {
-      path: "sweet-alert",
-      name: "Sweet Alert",
+      path: 'sweet-alert',
+      name: 'Sweet Alert',
       components: { default: SweetAlert }
     },
     {
-      path: "notifications",
-      name: "Notifications",
+      path: 'notifications',
+      name: 'Notifications',
       components: { default: Notifications }
     },
     {
-      path: "icons",
-      name: "Icons",
+      path: 'icons',
+      name: 'Icons',
       components: { default: Icons }
     },
     {
-      path: "typography",
-      name: "Typography",
+      path: 'typography',
+      name: 'Typography',
       components: { default: Typography }
     }
   ]
 };
 let formsMenu = {
-  path: "/forms",
+  path: '/forms',
   component: DashboardLayout,
-  redirect: "/forms/regular",
-  name: "Forms",
+  redirect: '/forms/regular',
+  name: 'Forms',
   children: [
     {
-      path: "regular",
-      name: "Regular Forms",
+      path: 'regular',
+      name: 'Regular Forms',
       components: { default: RegularForms }
     },
     {
-      path: "extended",
-      name: "Extended Forms",
+      path: 'extended',
+      name: 'Extended Forms',
       components: { default: ExtendedForms }
     },
     {
-      path: "validation",
-      name: "Validation Forms",
+      path: 'validation',
+      name: 'Validation Forms',
       components: { default: ValidationForms }
     },
     {
-      path: "wizard",
-      name: "Wizard",
+      path: 'wizard',
+      name: 'Wizard',
       components: { default: Wizard }
     }
   ]
 };
 
 let tablesMenu = {
-  path: "/table-list",
+  path: '/table-list',
   component: DashboardLayout,
-  redirect: "/table-list/regular",
-  name: "Tables",
+  redirect: '/table-list/regular',
+  name: 'Tables',
   children: [
     {
-      path: "regular",
-      name: "Regular Tables",
+      path: 'regular',
+      name: 'Regular Tables',
       components: { default: RegularTables }
     },
     {
-      path: "extended",
-      name: "Extended Tables",
+      path: 'extended',
+      name: 'Extended Tables',
       components: { default: ExtendedTables }
     },
     {
-      path: "paginated",
-      name: "Pagianted Tables",
+      path: 'paginated',
+      name: 'Pagianted Tables',
       components: { default: PaginatedTables }
     }
   ]
 };
 
 let mapsMenu = {
-  path: "/maps",
+  path: '/maps',
   component: DashboardLayout,
-  name: "Maps",
-  redirect: "/maps/google",
+  name: 'Maps',
+  redirect: '/maps/google',
   children: [
     {
-      path: "google",
-      name: "Google Maps",
+      path: 'google',
+      name: 'Google Maps',
       components: { default: GoogleMaps }
     },
     {
-      path: "full-screen",
-      name: "Full Screen Map",
+      path: 'full-screen',
+      name: 'Full Screen Map',
       meta: {
         hideContent: true,
         hideFooter: true,
@@ -177,32 +176,32 @@ let mapsMenu = {
       components: { default: FullScreenMap }
     },
     {
-      path: "vector-map",
-      name: "Vector Map",
+      path: 'vector-map',
+      name: 'Vector Map',
       components: { default: VectorMaps }
     }
   ]
 };
 
 let pagesMenu = {
-  path: "/pages",
+  path: '/pages',
   component: DashboardLayout,
-  name: "Pages",
-  redirect: "/pages/user",
+  name: 'Pages',
+  redirect: '/pages/user',
   children: [
     {
-      path: "user",
-      name: "User Page",
+      path: 'user',
+      name: 'User Page',
       components: { default: User }
     },
     {
-      path: "timeline",
-      name: "Timeline Page",
+      path: 'timeline',
+      name: 'Timeline Page',
       components: { default: TimeLine }
     },
     {
-      path: "rtl",
-      name: "وحة القيادة",
+      path: 'rtl',
+      name: 'وحة القيادة',
       meta: {
         rtlActive: true
       },
@@ -212,34 +211,34 @@ let pagesMenu = {
 };
 
 let authPages = {
-  path: "/",
+  path: '/',
   component: AuthLayout,
-  name: "Authentication",
+  name: 'Authentication',
   children: [
     {
-      path: "/login",
-      name: "Login",
+      path: '/login',
+      name: 'Login',
       component: Login,
       meta: {
         guestOnly: true
       }
     },
     {
-      path: "/register",
-      name: "Register",
+      path: '/register',
+      name: 'Register',
       component: Register,
       meta: {
         guestOnly: true
       }
     },
     {
-      path: "/pricing",
-      name: "Pricing",
+      path: '/pricing',
+      name: 'Pricing',
       component: Pricing
     },
     {
-      path: "/lock",
-      name: "Lock",
+      path: '/lock',
+      name: 'Lock',
       component: Lock
     }
   ]
@@ -247,9 +246,9 @@ let authPages = {
 
 const routes = [
   {
-    path: "/",
-    redirect: "/dashboard",
-    name: "Home"
+    path: '/',
+    redirect: '/dashboard',
+    name: 'Home'
   },
   componentsMenu,
   formsMenu,
@@ -258,48 +257,48 @@ const routes = [
   pagesMenu,
   authPages,
   {
-    path: "/",
+    path: '/',
     component: DashboardLayout,
     children: [
       {
-        path: "dashboard",
-        name: "Dashboard",
+        path: 'dashboard',
+        name: 'Dashboard',
         components: { default: Dashboard },
         meta: {
           requireAuth: true
         }
       },
       {
-        path: "calendar",
-        name: "Calendar",
+        path: 'calendar',
+        name: 'Calendar',
         components: { default: Calendar },
         meta: {
           requireAuth: true
         }
       },
       {
-        path: "charts",
-        name: "Charts",
+        path: 'charts',
+        name: 'Charts',
         components: { default: Charts }
       },
       {
-        path: "widgets",
-        name: "Widgets",
+        path: 'widgets',
+        name: 'Widgets',
         components: { default: Widgets }
       },
       {
-        path: "incomes/:id",
-        name: "Income",
+        path: 'incomes/:id',
+        name: 'Income',
         components: { default: Income }
       },
       {
-        path: "income",
-        name: "Income",
+        path: 'income',
+        name: 'Income',
         components: { default: Income }
       },
       {
-        path: "incomes",
-        name: "Incomes",
+        path: 'incomes',
+        name: 'Incomes',
         components: { default: Incomes }
       }
       // {
@@ -317,31 +316,27 @@ const routes = [
 ];
 
 let router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   routes,
-  linkExactActiveClass: "nav-item active"
+  linkExactActiveClass: 'nav-item active'
 });
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requireAuth)) {
-    console.log("is auth from auth", store.getters["users/isLogged"]);
-    if (!store.getters["users/isLogged"]) {
-      console.log("next fail login");
+    if (!store.getters['users/isLogged']) {
       next({
-        path: "/login",
+        path: '/login',
         query: {
           redirect: to.fullPath
         }
       });
     } else {
-      console.log("next succces login");
       next();
     }
   } else if (to.matched.some(record => record.meta.guestOnly)) {
-    console.log("is auth from guest", store.getters["users/isLogged"]);
-    if (store.getters["users/isLogged"]) {
+    if (store.getters['users/isLogged']) {
       next({
-        path: "/",
+        path: '/',
         query: {
           redirect: to.fullPath
         }
