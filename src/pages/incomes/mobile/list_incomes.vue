@@ -3,7 +3,7 @@
         <md-list class="md-triple-line">
 
         <div v-for="venta in incomes" :key="venta.id" id="mobile_list">
-         <ul class="collection" style="border-style:none; padding:0px;">
+         <ul class="collection showData" style="border-style:none; padding:0px;">
 
            <router-link :to="{path:'/incomes/'+venta.id, params:{venta:venta}}" tag="li">
             <li class="collection-item avatar">

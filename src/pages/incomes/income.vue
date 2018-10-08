@@ -226,7 +226,7 @@
 
                   <div class="md-layout-item md-size-15">
                    <md-field>
-                        <md-input type="number" placeholder="#" v-model="itemToAdd.cantidad" name="itemQuantityDesktop"></md-input>
+                        <md-input type="number" placeholder="#" v-model="itemToAdd.cantidad" value="1" name="itemQuantityDesktop"></md-input>
                    </md-field>
                   </div>
 
@@ -236,6 +236,19 @@
                   </md-field>
                   </div>
                   
+                  <br>
+                  <md-divider></md-divider>
+                  <div class="md-layout">
+                    <div class="md-layout-item md-size-100">
+                      <div class="right">
+                        <h5>
+                         <b>SUBTOTAL: </b> {{(itemToAdd.cantidad * itemToAdd.precio) | currency}}
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+
+
                 </div>
             </div>
           <div class="md-layout-item md-size-15 md-small-size-100" md-alignment="right">
@@ -263,7 +276,7 @@
          <div class="md-layout">
 
               <div class="md-layout-item md-xsmall-size-20 md-medium-size-25 md-small-size-25 md-size-25">
-
+                
               </div>
            </div>
 
@@ -273,11 +286,40 @@
 
        
       </md-card>
+  
+       <!-- Total -->
+          <center style="position:fixed;bottom:20px;width:54%;">
+            <div class="total">
+              <h6>Total</h6>
+              <h2> {{(ventaObject.total) | currency}}</h2>
+              <hr style="margin-top: -4%;">
+            </div>
+          </center>
     </div>
 
     <div class="md-layout-item md-small-size-100 md-medium-size-40 md-small-size-40 md-size-40">
-          <pricing-card icon-color="icon-success">
-            <md-list class="md-triple-line" slot="description" style="border-style:none;width: 100%;">
+      
+          <md-card icon-color="icon-success" style="height: 81vh;">
+             <md-card-header class="md-card-header-icon md-card-header-green">
+          <div class="card-icon" style="cursor:pointer;" @click="validationHandler()">
+            <md-icon>attach_money</md-icon>
+          </div>
+          <h4 class="title">Facturar</h4>
+          <br>
+          <md-divider></md-divider>
+        </md-card-header>
+            <md-list class="md-triple-line"  style="border-style:none;width: 100%;">
+              <!-- <md-card-header>
+        <div class="md-title">
+       <md-button   class="md-success" style="margin-top: -10%;" md-alignment="center">FACTURAR</md-button>
+       </div>
+       
+        <br>
+        <md-divider></md-divider>
+      </md-card-header> -->
+
+      
+      
             <md-content class="md-scrollbar" v-if="ventaObject.item.length > 0">
               <md-list-item v-for="itemS in ventaObject.item" :key="itemS" style="padding: 0;">
                <div class="md-list-item-text">
@@ -287,10 +329,10 @@
                   <div class="md-list-action">  <h4><b>Subtotal:     $ {{(itemS.cantidad * itemS.precio) | currency}}</b></h4> </div>
               </md-list-item>
             </md-content>
-
+            
             <md-content class="md-scrollbar" v-if="ventaObject.item.length <= 0">
               <md-list-item style="padding: 0;">
-               <div class="md-list-item-text">
+               <div class="md-list-item-text" style="margin-top:50%;" >
                     <center><h3 class="vlign-center md-text-danger"><b><i class="fa fa-cart-arrow-down"></i></b></h3>
                       Venta vacia
                     </center>
@@ -298,28 +340,18 @@
               </md-list-item>
              
             </md-content>
-
+          
              
             </md-list>
+            
 
 
-          <div slot="footer" class="md-group">
-                <md-button slot="footer" type="submit" class="md-success md-lg" md-alignment="left">FACTURAR</md-button>
-          </div>
-          </pricing-card>
+          
+          </md-card>
           <md-card-actions>
           </md-card-actions>
 
-          <!-- Total -->
-          <center>
-            <div class="total">
-              <h6>Total</h6>
-              <h2><b>$</b> {{(ventaObject.total) | currency}}</h2>
-              <hr style="margin-top: -4%;">
-            </div>
-            
-            
-          </center>
+         
 
     </div>
 
@@ -345,7 +377,7 @@
             <md-icon>send</md-icon>
           </md-button>
 
-        <md-button class=" md-just-icon md-round md-warning" @click="dowmloadPdf()">
+        <md-button class=" md-just-icon md-round md-warning" @click="generar_invoice(null, null, ventaObject)" >  <!--@click="dowmloadPdf()" -->
           <md-icon>assignment</md-icon>
           </md-button>
 
@@ -451,38 +483,21 @@
 
 </div>
 
-
-
-
 </div>
 </template>
 <script>
 import { Tabs } from "@/components";
 import { Collapse, PricingCard } from "@/components";
-import itemsPrueba from "@/pages/incomes/items.json";
-// import { Money } from "v-money";
-// import vMoney from "@/components/vMoney.vue";
 import swal from "sweetalert2";
 import { Modal } from "@/components";
-import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable";
+import invoice from "../../assets/js/invoice.js";
 
 export default {
   data() {
     return {
-      // money: {
-      //   decimal: ",",
-      //   thousands: ".",
-      //   prefix: "$ ",
-      //   suffix: " CLP",
-      //   precision: 0,
-      //   masked: false,
-      //   min: 0
-      // },
       modalSaleItems: false,
       modalItems: false,
       modalClientes: false,
-      itemsPrueba: itemsPrueba,
       itemToAdd: {},
       ventaObject: {
         cliente: "",
@@ -502,8 +517,6 @@ export default {
     Tabs,
     Collapse,
     PricingCard,
-    // vMoney,
-    // Money,
     Modal
   },
   methods: {
@@ -553,7 +566,7 @@ export default {
         var precioProdcuto = this.itemToAdd.cantidad * this.itemToAdd.precio;
         this.ventaObject.total =
           parseInt(this.ventaObject.total) + parseInt(precioProdcuto);
-        this.itemToAdd = {};
+        // this.itemToAdd = {};
 
         this.notifyVue(
           "top",
@@ -580,46 +593,28 @@ export default {
     },
     showSwal() {
       swal({
-        title: "Venta registrada!",
-        text: "¿QUE ACCION DESEA TOMAR?",
+        title: "¡VENTA EXITOSA!",
+        text: "¿Visualizar factura?",
         type: "success",
         showCancelButton: true,
         confirmButtonClass: "md-button md-success",
-        cancelButtonClass: "md-button md-warning",
-        confirmButtonText: "OPCION 1",
-        cancelButtonText: "OPCION 2",
+        cancelButtonClass: "md-button md-info",
+        confirmButtonText: "SI",
+        cancelButtonText: "Enviar",
         buttonsStyling: false
       }).then(result => {
         if (!result.value) {
-          swal({
-            title: "CALLBACK",
-            text: "...",
-            type: "success",
-            confirmButtonClass: "md-button md-success",
-            buttonsStyling: false
-          }).then(() => {
-            // this.$router.push("incomes");
-            console.log(this.ventaObject);
-          });
+          alert("ENVIANDO...");
         } else {
-          console.log(this.ventaObject);
-          this.ventaObject = {};
-          // this.$router.push("incomes");
+          this.generar_invoice(this.ventaObject);
         }
       });
     },
     facturar_venta(venta) {
       alert(venta.asunto);
     },
-
-    dowmloadPdf() {
-      var doc = new jsPDF();
-      let pdfName = "OC";
-      doc.text(20, 20, "Hello world!");
-      doc.text(20, 30, "This is client-side Javascript, pumping out a PDF.");
-      doc.addPage();
-      doc.text(20, 20, "Do you like that?");
-      doc.save(pdfName + ".pdf");
+    generar_invoice(ventaObject) {
+      invoice(this.ventaObject);
     }
   }
 };
@@ -636,7 +631,7 @@ export default {
 
 .md-content {
   max-width: 500px;
-  max-height: 200px;
+  max-height: 460px;
   overflow: auto;
 }
 .total {

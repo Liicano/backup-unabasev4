@@ -122,7 +122,7 @@
     <div class="main-panel">
       <top-navbar></top-navbar>
       <br>
-      <div class="container-fluid" :class="{content: !$route.meta.hideContent}" @click="toggleSidebar">
+      <div id="main_panel" class="container-fluid" :class="{content: !$route.meta.hideContent}" @click="toggleSidebar">
         <zoom-center-transition :duration="200" mode="out-in">
           <!-- your content here -->
           <router-view></router-view>
@@ -221,5 +221,8 @@ $scaleSize: 0.95;
 }
 .main-panel .zoomOut {
   animation-name: zoomOut95;
+}
+#main_panel {
+  margin-top: -5%;
 }
 </style>
