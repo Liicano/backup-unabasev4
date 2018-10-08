@@ -1,7 +1,7 @@
 import axios from 'axios';
 import api from '../../config/api';
-
 // import { mapGetters } from 'vuex'
+
 export default {
   namespaced: true,
   state: {
@@ -68,7 +68,7 @@ export default {
             commit('access_error');
             localStorage.removeItem('token');
             localStorage.removeItem('user');
-            reject(err);
+            reject(err, err.response);
           });
       });
     },
