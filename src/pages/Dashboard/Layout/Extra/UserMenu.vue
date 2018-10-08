@@ -38,7 +38,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#vue">
+                    <a href="#vue" @click="logout">
                       <md-icon>exit_to_app</md-icon>
                       <span class="sidebar-normal">{{lg.user.logout}}</span>
                     </a>
@@ -82,6 +82,17 @@ export default {
     },
     toggleMenu: function() {
       this.isClosed = !this.isClosed;
+    },
+    logout() {
+      this.$store
+        .dispatch("users/logout")
+        // eslint-disable-next-line
+        .then(res => {
+          this.$router.push("/");
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };

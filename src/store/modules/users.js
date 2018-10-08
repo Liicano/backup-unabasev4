@@ -31,6 +31,15 @@ export default {
     }
   },
   actions: {
+    logout({ commit }) {
+      // eslint-disable-next-line
+      return new Promise((resolve, reject) => {
+        commit("logout");
+        localStorage.removeItem("token");
+        delete axios.defaults.headers.common["Authorization"];
+        resolve();
+      });
+    },
     google({ commit }, payload) {
       return new Promise((resolve, reject) => {
         axios
@@ -64,7 +73,6 @@ export default {
             password: payload.password
           })
           .then(res => {
-            //eslint-disable-next-line
             console.log("res");
             console.log(res);
             if (res.status === 200 && res.statusText === "authenticated") {
@@ -84,35 +92,28 @@ export default {
             reject(res);
           });
       });
-    },
-    logout({ commit }) {
-      return new Promise((resolve, reject) => {
-        commit("logout");
-        delete axios.defaults.headers.common["Authorization"];
-        resolve();
-      });
-    },
-    fetchUser({ rootGetters }, payload) {
-      return new Promise((resolve, reject) => {
-        axios
-          .get(api.users.get + payload._id)
-          .then(res => {
-            //eslint-disable-next-line
-            console.log("res");
-            console.log(res);
-            // if(res.status === 200 && res.data.message === 'authenticated'){
-            //   commit('setLogin', res.data.user)
-            //   resolve(res)
-            //   // this.$router.push('/')
-            //   // window.location.replace('/')
-            // }
-          })
-          .catch(err => {
-            const res = err.response;
-            reject(res);
-          });
-      });
     }
+    // fetchUser({ rootGetters }, payload) {
+    //   return new Promise((resolve, reject) => {
+    //     axios
+    //       .get(api.users.get + payload._id)
+    //       .then(res => {
+    //         //eslint-disable-next-line
+    //         console.log("res");
+    //         console.log(res);
+    //         // if(res.status === 200 && res.data.message === 'authenticated'){
+    //         //   commit('setLogin', res.data.user)
+    //         //   resolve(res)
+    //         //   // this.$router.push('/')
+    //         //   // window.location.replace('/')
+    //         // }
+    //       })
+    //       .catch(err => {
+    //         const res = err.response;
+    //         reject(res);
+    //       });
+    //   });
+    // }
 
     // login({ commit } : any, payload: Object){
     //   commit('login', payload)
