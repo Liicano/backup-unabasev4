@@ -15,8 +15,8 @@ export default {
     auth_request(state) {
       state.status = 'loading';
     },
-    auth_success(state, payload) {
-      console.log('auth succes');
+    access_success(state, payload) {
+      console.log('access_success');
       console.log(payload);
       state.status = 'success';
       state.user = { ...payload.user };
@@ -25,7 +25,7 @@ export default {
     setUser(state, payload) {
       state.user = payload;
     },
-    auth_error(state) {
+    access_error(state) {
       state.status = 'error';
     },
     logout(state) {
@@ -58,13 +58,54 @@ export default {
             localStorage.setItem('user', JSON.stringify(data.data.user));
 
             axios.defaults.headers.common['Authorization'] = data.data.token;
-            commit('auth_success', data.data);
+            commit('access_success', data.data);
             resolve(payload.user);
           })
           .catch(err => {
             console.log('err');
             console.log(err);
-            commit('auth_error');
+            console.log(err.response);
+            commit('access_error');
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            reject(err);
+          });
+      });
+    },
+    register({ commit }, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .post(api.auth.register, payload)
+          .then(res => {
+            commit('access_success', res.data);
+            // localStorage.setItem('token', res.data.token);
+            // localStorage.setItem('user', JSON.stringify(res.data.user));
+            // axios.defaults.headers.common['Authorization'] = res.data.token;
+
+            resolve(payload.user);
+          })
+          .catch(err => {
+            commit('register_error');
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            reject(err);
+          });
+      });
+    },
+    googleNew({ commit }, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .post(api.auth.googleNew, payload.googleUser)
+          .then(res => {
+            commit('access_success', res.data);
+            localStorage.setItem('token', res.data.token);
+            localStorage.setItem('user', JSON.stringify(res.data.user));
+            axios.defaults.headers.common['Authorization'] = res.data.token;
+
+            resolve(payload.user);
+          })
+          .catch(err => {
+            commit('access_error');
             localStorage.removeItem('token');
             localStorage.removeItem('user');
             reject(err);
@@ -88,7 +129,7 @@ export default {
               localStorage.setItem('user', JSON.stringify(res.data.user));
 
               axios.defaults.headers.common['Authorization'] = res.data.token;
-              commit('auth_success', res.data);
+              commit('access_success', res.data);
               resolve(res);
             }
           })
@@ -96,7 +137,7 @@ export default {
             const res = err.response;
             console.log('err');
             console.log(err);
-            commit('auth_error');
+            commit('access_error');
             localStorage.removeItem('token');
             localStorage.removeItem('user');
             reject(res);

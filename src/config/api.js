@@ -1,5 +1,5 @@
 // const mainApi = "http://35.231.73.122:3000/";
-const mainApi = "http://localhost:3000/";
+const mainApi = 'http://localhost:3000/';
 // const mainApi = "http://192.168.0.196:3000/";
 // const mainApi = "https://unabase.net/";
 // const mainApi = "https://unabase.es/";
@@ -7,8 +7,10 @@ const mainApi = "http://localhost:3000/";
 export default {
   auth: {
     google: `${mainApi}auth/google`,
+    googleNew: `${mainApi}auth/google/create`,
     login: `${mainApi}auth/login`,
-    gauth: `${mainApi}auth/gauth`
+    gauth: `${mainApi}auth/gauth`,
+    register: `${mainApi}auth/register`
   },
   users: {
     /**
