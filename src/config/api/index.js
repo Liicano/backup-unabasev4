@@ -11,7 +11,7 @@ import auth from './auth';
 import business from './business';
 import outcome from './outcome';
 import income from './income';
-import task from './task';
+// import task from './task';
 
 export default {
   tax: tax(mainApi),
@@ -20,6 +20,6 @@ export default {
   auth: auth(mainApi),
   business: business(mainApi),
   outcome: outcome(mainApi),
-  income: income(mainApi),
-  task: task(mainApi)
+  income: income(mainApi)
+  // task: task(mainApi)
 };
