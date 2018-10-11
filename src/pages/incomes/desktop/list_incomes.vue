@@ -1,20 +1,20 @@
 <template>
   <div>
-        {{incomes}}
+        
        <md-table v-model="searched" md-card md-fixed-header style="padding:10px; margin-top: -0.5%;height: 98vh;">
 
               <md-table-toolbar>
                   <div class="md-toolbar-section-start">
-                  <h3 class="title text-green">Mis ventas</h3>
+                  <h3 class="title text-green">{{lg.income.salesTableTitle}}</h3>
                   </div>
                   <md-field md-clearable class="md-toolbar-section-end">
-                    <md-input placeholder="Filtrar ventas" v-model="search" @input="searchOnTable" />
+                    <md-input :placeholder="`${lg.base.Search}`" v-model="search" @input="searchOnTable" />
                   </md-field>
               </md-table-toolbar>
 
               <md-table-empty-state style="margin-top: -25%;"
-                md-label="No se encontraron resultados"
-                :md-description="`Sin resultados para '${search}'`">
+                :md-label="`${lg.base.EmptyState}`"
+                :md-description="`${lg.base.EmptyStateSub} '${search}'`">
                 <md-button class="md-success md-raised" @click="newSale">Crear venta</md-button>
               </md-table-empty-state>
 
@@ -25,12 +25,12 @@
                 query:{ item }
                 }" tag="tr">
                   
-                  <md-table-cell md-label="ID">{{ item._id }}</md-table-cell>
-                  <md-table-cell md-label="Referencia">{{ item.name }}</md-table-cell>
-                  <md-table-cell md-label="Cliente">{{(item.client == null) ? 'NO CLIENT' :item.client }}</md-table-cell>
-                  <md-table-cell md-label="Fecha">{{ item.createdAt | shortDate }}</md-table-cell>
-                  <md-table-cell md-label="Total">NO TOTAL</md-table-cell>
-                 <md-table-cell md-label="Estado">
+                  <md-table-cell :md-label="`${lg.income.Id}`">{{ item._id }}</md-table-cell>
+                  <md-table-cell :md-label="`${lg.income.Reference}`">{{ item.name }}</md-table-cell>
+                  <md-table-cell :md-label="`${lg.income.Client}`">{{(item.client == null) ? 'NULL CLIENT' :item.client }}</md-table-cell>
+                  <md-table-cell :md-label="`${lg.income.Date}`">{{ item.createdAt | shortDate }}</md-table-cell>
+                  <md-table-cell :md-label="`${lg.income.Total}`">NULL TOTAL</md-table-cell>
+                 <md-table-cell :md-label="`${lg.income.State}`">
                     <div class="chip yellow darken-1" v-if="item.state=='draft'">
                         {{lg.income.pending}}
                         <i class="close material-icons">watch_later</i>
@@ -84,6 +84,9 @@ export default {
     searchOnTable() {
       this.searched = searchByName(this.incomes.docs, this.search);
     }
+  },
+  created(){
+    this.searched = this.incomes.docs;
   },
   mounted() {
     this.searched = this.incomes.docs

@@ -5,8 +5,17 @@ export default {
   namespaced: true,
   state: {
     users: Object,
-    token: localStorage.getItem('token') || '',
-    user: JSON.parse(localStorage.getItem('user')) || '',
+    // user: Object,
+    token:
+      typeof localStorage.getItem('token') !== 'undefined' &&
+      localStorage.getItem('token') !== 'undefined'
+        ? localStorage.getItem('token')
+        : '',
+    user:
+      typeof localStorage.getItem('user') !== 'undefined' &&
+      localStorage.getItem('user') !== 'undefined'
+        ? localStorage.getItem('user')
+        : '',
     status: ''
   },
   mutations: {
@@ -172,7 +181,7 @@ export default {
   },
   getters: {
     getUsers: state => state.users,
-    user: state => state.user,
+    user: state => JSON.parse(state.user),
     isLogged: state => !!state.token,
     authStatus: state => state.status
   }
