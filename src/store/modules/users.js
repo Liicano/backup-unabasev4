@@ -23,8 +23,6 @@ export default {
       state.status = 'loading';
     },
     access_success(state, payload) {
-      console.log('access_success');
-      console.log(payload);
       state.status = 'success';
       state.user = { ...payload.user };
       state.token = payload.token;
@@ -59,8 +57,6 @@ export default {
             access_token: payload.access_token
           })
           .then(data => {
-            console.log('data from setgoogle');
-            console.log(data);
             localStorage.setItem('token', data.data.token);
             localStorage.setItem('user', JSON.stringify(data.data.user));
 
@@ -69,9 +65,6 @@ export default {
             resolve(payload.user);
           })
           .catch(err => {
-            console.log('err');
-            console.log(err);
-            console.log(err.response);
             commit('access_error');
             localStorage.removeItem('token');
             localStorage.removeItem('user');
@@ -120,8 +113,6 @@ export default {
       });
     },
     login({ commit }, payload) {
-      console.log('payload from local login');
-      console.log(payload);
       return new Promise((resolve, reject) => {
         axios
           .post(api.auth.login, {
@@ -129,9 +120,6 @@ export default {
             password: payload.password
           })
           .then(res => {
-            console.log('res');
-            console.log(res);
-
             // if (res.status === 200 && res.statusText === 'authenticated') {
             if (res.status === 200) {
               localStorage.setItem('token', res.data.token);
@@ -144,8 +132,6 @@ export default {
           })
           .catch(err => {
             const res = err.response;
-            console.log('err');
-            console.log(err);
             commit('access_error');
             localStorage.removeItem('token');
             localStorage.removeItem('user');
@@ -153,31 +139,6 @@ export default {
           });
       });
     }
-    // fetchUser({ rootGetters }, payload) {
-    //   return new Promise((resolve, reject) => {
-    //     axios
-    //       .get(api.users.get + payload._id)
-    //       .then(res => {
-    //         //eslint-disable-next-line
-    //         console.log("res");
-    //         console.log(res);
-    //         // if(res.status === 200 && res.data.message === 'authenticated'){
-    //         //   commit('setLogin', res.data.user)
-    //         //   resolve(res)
-    //         //   // this.$router.push('/')
-    //         //   // window.location.replace('/')
-    //         // }
-    //       })
-    //       .catch(err => {
-    //         const res = err.response;
-    //         reject(res);
-    //       });
-    //   });
-    // }
-
-    // login({ commit } : any, payload: Object){
-    //   commit('login', payload)
-    // }
   },
   getters: {
     getUsers: state => state.users,

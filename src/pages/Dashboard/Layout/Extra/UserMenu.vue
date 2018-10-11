@@ -88,7 +88,6 @@ export default {
     })
   },
   mounted() {
-    console.log(this.user);
     this.profile.name = this.user.name || this.user.username;
   },
   methods: {
