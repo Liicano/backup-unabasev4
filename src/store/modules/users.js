@@ -1,7 +1,6 @@
 import axios from 'axios';
 import api from '../../config/api';
 // import { mapGetters } from 'vuex'
-
 export default {
   namespaced: true,
   state: {
