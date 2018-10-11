@@ -1,31 +1,102 @@
 export default api => {
   return {
     /**
-     * GET/  get doc list query: [name(STRING), isActive(boolean)]
-     *
-     * GET/:id    get doc info  params: [id(ObjectId)]
-     *
-     * POST/  create income
+     *    GET/  list incomes
      *    params {
      *      name: string,
      *      description: string,
+     *       dates: {
+     *         expiration: Date
+     *       },
+     *      client: {
+     *       _id: ObjectId,
+     *       name: String
+     *      },
+     *      client: {
+     *       _id: ObjectId,
+     *       name: String
+     *      },
      *      state: string,
+     *      total: {
+     *        net: Number,
+     *        tax: Number
+     *      },
+     *      currency: {
+     *        name: String,
+     *        decimal: String,
+     *        throusands: String,
+     *        prefix: String,
+     *        suffix: String,
+     *        precision: Number
+     *      },
      *      item: [
-     *        {
-     *          name: string,
-     *          price: number,
-     *          tax: number,
-     *          itemId: ObjectId
-     *        }
-     *      ]
+     *         {
+     *           name: string,
+     *           price: number,
+     *           tax: number,
+     *           itemId: ObjectId
+     *          }
+     *        ],
+     *      createdAt: Date,
+     *      updatedAt: Date
+     *
      *    }
      *
      */
-    get: `${api}incomes/`,
     /**
-     * PUT/
-     * name: string
+     *   POST/  create income
+     *    params {
+     *      name: string,
+     *      description: string,
+     *       dates: {
+     *         expiration: Date
+     *       },
+     *      client: ObjectId, ref: User
+     *      client: ObjectId, ref: User
+     *      state: string,
+     *      total: {
+     *        net: Number,
+     *        tax: Number
+     *      },
+     *      currency: ObjectId, ref: currency
+     *      item: [
+     *         {
+     *           name: string,
+     *           price: number,
+     *           tax: number,
+     *           item: ObjectId, ref: Item
+     *          }
+     *        ],
+     *
+     *    }
      */
-    update: `${api}incomes/update`
+    /**
+     *   PUT/  update income
+     *    params {
+     *      name: string,
+     *      description: string,
+     *       dates: {
+     *         expiration: Date
+     *       },
+     *      client: ObjectId, ref: User
+     *      client: ObjectId, ref: User
+     *      state: string,
+     *      total: {
+     *        net: Number,
+     *        tax: Number
+     *      },
+     *      currency: ObjectId, ref: currency
+     *      item: [
+     *         {
+     *           name: string,
+     *           price: number,
+     *           tax: number,
+     *           item: ObjectId, ref: Item
+     *          }
+     *        ],
+     *
+     *    }
+     */
+    main: `${api}incomes/`
   };
 };
