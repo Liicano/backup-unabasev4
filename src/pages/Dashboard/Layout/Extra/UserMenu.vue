@@ -1,7 +1,10 @@
 <template>
   <div class="user">
-    <div class="photo">
+    <div class="photo" v-if="user.google.imgUrl">
       <img :src="user.google.imgUrl" alt="avatar"/>
+    </div>
+    <div class="photo" v-else>
+      <img src="../../../../../public/img/profile.png" alt="avatar"/>
     </div>
     <div class="user-info">
       <a data-toggle="collapse" :aria-expanded="!isClosed" @click.stop="toggleMenu" @click.capture="clicked">
@@ -10,7 +13,7 @@
              <b class="caret"></b>
           </span>
            <span v-else>
-             {{user.name}}
+             {{profile.name}}
              <b class="caret"></b>
           </span>
       </a>
@@ -75,13 +78,18 @@ export default {
   data() {
     return {
       isClosed: true,
-      name: ''
+      name: '',
+      profile: {}
     };
   },
   computed: {
     ...mapGetters({
       user: 'users/user'
     })
+  },
+  mounted() {
+    console.log(this.user);
+    this.profile.name = this.user.name || this.user.username;
   },
   methods: {
     clicked: function(e) {
@@ -107,5 +115,8 @@ export default {
 <style>
 .collapsed {
   transition: opacity 1s;
+}
+.photo {
+  background-color: white;
 }
 </style>
