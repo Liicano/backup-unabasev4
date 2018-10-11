@@ -8,6 +8,8 @@
                   <i class="large material-icons">add</i>
                 </a>
             </div>
+                 
+
           </router-link>
           <router-link :to="{path:'/income'}">
             <div class="fixed-action-btn" id="new_venta_btn_desktop" style=" margin-bottom: 1% !important;">
@@ -15,6 +17,8 @@
                   <i class="large material-icons">add</i>
                 </a>
             </div>
+                  
+
           </router-link>
 
 
@@ -39,15 +43,17 @@
 </template>
 
 <script>
+// VUEX
+import { mapGetters } from 'vuex';
+
 // LIBRERIAS EXTERNAS
-import users from "@/pages/Dashboard/Tables/users.js";
+import users from '@/pages/Dashboard/Tables/users.js';
 
 // COMPONENTES INTERNOS
-import listmobile from "@/pages/incomes/mobile/list_incomes.vue";
-import listdesktop from "@/pages/incomes/desktop/list_incomes.vue";
+import listmobile from '@/pages/incomes/mobile/list_incomes.vue';
+import listdesktop from '@/pages/incomes/desktop/list_incomes.vue';
 
-//COMPONENTES
-import {} from "@/components";
+
 
 export default {
   components: {
@@ -58,12 +64,29 @@ export default {
   data() {
     return {
       users: users,
-      checkbox1: null
+      checkbox1: null,
+      incomes: []
     };
+  },
+  mounted(){
+    this.incomes = this.getIncomes;
+    console.log(this.incomes);
+  },
+  computed:{
+     ...mapGetters([
+        'getIncomes'
+    ])
   }
 };
 </script>
 <style lang="scss" scoped>
+#tabla_ventas {
+    display: none;
+  }
+   #new_venta_btn_desktop {
+    display: none;
+  }
+
 @media (min-width: 992px) {
   #lista_ventas {
     display: none;

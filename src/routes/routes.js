@@ -287,7 +287,7 @@ const routes = [
         components: { default: Widgets }
       },
       {
-        path: 'incomes/:id',
+        path: 'income/:id',
         name: 'Income',
         components: { default: Income }
       },

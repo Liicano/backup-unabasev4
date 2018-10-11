@@ -86,7 +86,7 @@ export default {
     },
     logo: {
       type: String,
-      default: './img/logotipo.png'
+      default: '../img/logotipo.png'
     },
     sidebarLinks: {
       type: Array,
