@@ -107,7 +107,7 @@
           :link="{name: 'Ventas', icon: 'monetization_on', path: '/incomes'}"></sidebar-item>
         <sidebar-item
           v-else
-          :link="{name: 'Ventas', icon: 'monetization_on', path: '/incomes'}"></sidebar-item>
+          :link="{name: `${lg.modules.income}`, icon: 'monetization_on', path: '/incomes'}"></sidebar-item>
 
       <!-- COMPRAS -->
           <sidebar-item
@@ -115,7 +115,7 @@
           :link="{name: 'Compras', icon: 'locall_mall', path: '/Compras'}"></sidebar-item>
         <sidebar-item
           v-else
-          :link="{name: 'Compras', icon: 'local_mall', path: '/Compras'}"></sidebar-item>
+          :link="{name: `${lg.modules.outcome}`, icon: 'local_mall', path: '/Compras'}"></sidebar-item>
 
       </template>
     </side-bar>

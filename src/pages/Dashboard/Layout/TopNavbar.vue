@@ -1,6 +1,7 @@
 <template>
 <div>
-   <md-toolbar
+  <br>
+   <!-- <md-toolbar
    id="desktop_navbar"
     md-elevation=""
     class="md-transparent"
@@ -48,7 +49,7 @@
       </div>
    
 
-  </md-toolbar>
+  </md-toolbar> -->
   <div class="">
       
     <div class="container-fluid navbar-fixed" id="mobile_navbar">

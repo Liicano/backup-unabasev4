@@ -4,7 +4,8 @@
     <notifications></notifications>
     <div class="md-layout-item md-size-33 md-medium-size-50 md-small-size-70 md-xsmall-size-100">
       <login-card header-color="green">
-        <!-- <h4 slot="title" class="title">{{ lg.user.login }}</h4> -->
+        
+        <h4 slot="title" class="title">{{ lg.user.login }}</h4>
         <!-- <md-button slot="buttons" to="#facebook" class="md-just-icon md-simple md-white">
           <i class="fab fa-facebook-square"></i>
         </md-button>
@@ -19,8 +20,13 @@
           <Gauth></Gauth>
         </md-button> -->
         <md-field class="md-form-group mdl-typography--text-center" slot="buttons">
-          
-          <Gauth from="login"></Gauth>
+          <div class="row">
+            <div class="col s1"></div>
+            <div class="col s4"> 
+            <Gauth class=" btn-floating red" from="login"></Gauth> 
+            </div>
+            <div class="col s4"></div>
+          </div>
         </md-field>
 
         <p slot="description" class="description">{{ lg.user.classic }}</p>

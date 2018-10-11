@@ -31,6 +31,14 @@ const veeconfig = {
 
 Vue.use(VeeValidate, veeconfig);
 
+// DATE FILTER TO TABLES AND LIST
+import moment from 'moment';
+Vue.filter('shortDate', function(value) {
+  if (value) {
+    return moment(String(value)).format('DD/MM/YYYY')
+  }
+});
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';

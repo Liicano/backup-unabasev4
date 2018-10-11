@@ -4,7 +4,7 @@
     @success="onSignInSuccess"
     @error="onSignInError">
     <i class="fab fa-google-plus-g"> </i>
-    <strong> {{ from }} {{ lg.user.googleLogin }}</strong>
+    <!-- <strong> {{ from }} {{ lg.user.googleLogin }}</strong> -->
   </g-signin-button>
 </template>
  

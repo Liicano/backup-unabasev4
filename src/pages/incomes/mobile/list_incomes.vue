@@ -5,7 +5,7 @@
         <div v-for="venta in incomes" :key="venta.id" id="mobile_list">
          <ul class="collection showData" style="border-style:none; padding:0px;">
 
-           <router-link :to="{path:'/incomes/'+venta.id, params:{venta:venta}}" tag="li">
+           <router-link :to="{path:'/income/'+venta.id, params:{venta:venta}}" tag="li">
             <li class="collection-item avatar">
               <img src="../../../../public/favicon.png" class="circle" alt="">
               <span class="title"><b style="overflow:hidden;">{{venta.asunto}}</b></span>
