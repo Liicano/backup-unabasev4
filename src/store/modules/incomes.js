@@ -4,22 +4,21 @@ import api from '../../config/api';
 export default {
   namespaced: true,
   state: {
-    incomes: [],
+    incomes: Array(),
     income:  []
   },
   mutations: {
-   
-    setIncomes(state, payload) {
+   setIncomes(state, payload) {
       state.incomes = payload;
     },
    
   },
   actions: {
     
-    Incomes({ commit }, payload) {
+    getAllIncomes({ commit }, payload) {
       return new Promise((resolve, reject) => {
         axios
-          .get(api.income.get)
+          .get(api.income.main)
           .then(data => {
             console.log('INCOMES -> ',data.data);
             commit('setIncomes', data.data);

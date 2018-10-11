@@ -5,7 +5,6 @@ export default {
   namespaced: true,
   state: {
     users: Object,
-    // user: Object,
     token: localStorage.getItem('token') || '',
     user: JSON.parse(localStorage.getItem('user')) || '',
     status: ''

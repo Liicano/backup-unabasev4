@@ -38,7 +38,11 @@ export default {
   income: {
     client: 'cliente',
     date: 'fecha',
-    total: 'total'
+    total: 'total',
+    pending: 'pendiente',
+    sold: 'vendido',
+    id: 'id',
+    
   },
   outcome: {}
 };

@@ -31,6 +31,14 @@ const veeconfig = {
 
 Vue.use(VeeValidate, veeconfig);
 
+// DATE FILTER TO TABLES AND LIST
+import moment from 'moment';
+Vue.filter('shortDate', function(value) {
+  if (value) {
+    return moment(String(value)).format('DD/MM/YYYY')
+  }
+});
+
 import axios from 'axios';
 import Notifications from './components/NotificationPlugin';
 Vue.use(Notifications);

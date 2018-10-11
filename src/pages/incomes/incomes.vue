@@ -33,7 +33,7 @@
     <div id="tabla_ventas">
         <div class="md-layout">
           <div class="md-layout-item md-size-100">
-            <listdesktop :incomes="users"></listdesktop>
+            <listdesktop :incomes="getIncomes"></listdesktop>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
 
 <script>
 // VUEX
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 // LIBRERIAS EXTERNAS
 import users from '@/pages/Dashboard/Tables/users.js';
@@ -68,15 +68,23 @@ export default {
       incomes: []
     };
   },
+  methods:{
+     ...mapActions({
+         getAllIncomes: 'incomes/getAllIncomes'
+    })
+  },
+  created(){
+     this.getAllIncomes();
+  },
   mounted(){
-    this.incomes = this.getIncomes;
-    console.log(this.incomes);
+    this.getAllIncomes();
   },
   computed:{
-     ...mapGetters([
-        'getIncomes'
-    ])
-  }
+     ...mapGetters({
+       getIncomes: 'incomes/getIncomes'
+     })
+  },
+  
 };
 </script>
 <style lang="scss" scoped>

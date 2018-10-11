@@ -1,8 +1,6 @@
 <template>
   <div>
-   
- 
-
+        {{incomes}}
        <md-table v-model="searched" md-card md-fixed-header style="padding:10px; margin-top: -0.5%;height: 98vh;">
 
               <md-table-toolbar>
@@ -20,22 +18,25 @@
                 <md-button class="md-success md-raised" @click="newSale">Crear venta</md-button>
               </md-table-empty-state>
 
+              
+
               <router-link style="cursor:pointer;" slot="md-table-row" slot-scope="{ item }" :to="{
-                path:'/income/'+item.id,
+                path:'/income/'+item._id,
                 query:{ item }
                 }" tag="tr">
-                  <md-table-cell md-label="ID">{{ item.id }}</md-table-cell>
-                  <md-table-cell md-label="Referencia">{{ item.asunto }}</md-table-cell>
-                  <md-table-cell md-label="Cliente">{{ item.receptor.nombre }} {{ item.receptor.apellido }}</md-table-cell>
-                  <md-table-cell md-label="Fecha">{{ item.fecha }}</md-table-cell>
-                  <md-table-cell md-label="Total">{{ item.monto_total | currency }}</md-table-cell>
+                  
+                  <md-table-cell md-label="ID">{{ item._id }}</md-table-cell>
+                  <md-table-cell md-label="Referencia">{{ item.name }}</md-table-cell>
+                  <md-table-cell md-label="Cliente">{{(item.client == null) ? 'NO CLIENT' :item.client }}</md-table-cell>
+                  <md-table-cell md-label="Fecha">{{ item.createdAt | shortDate }}</md-table-cell>
+                  <md-table-cell md-label="Total">NO TOTAL</md-table-cell>
                  <md-table-cell md-label="Estado">
-                    <div class="chip yellow darken-1" v-if="item.status=='pendiente'">
-                        Pendiente
+                    <div class="chip yellow darken-1" v-if="item.state=='draft'">
+                        {{lg.income.pending}}
                         <i class="close material-icons">watch_later</i>
                     </div>
-                    <div class="chip green" v-if="item.status=='vendido'">
-                        Vendido
+                    <div class="chip green" v-if="item.state=='sold'">
+                        {{lg.income.sold}}
                         <i class="close material-icons">check</i>
                     </div>
                   </md-table-cell>
@@ -56,7 +57,7 @@ const toLower = text => {
 const searchByName = (items, term) => {
   if (term) {
     return items.filter(item =>
-      toLower(item.asunto).includes(
+      toLower(item.name).includes(
         toLower(term)
       )
     );
@@ -67,38 +68,25 @@ const searchByName = (items, term) => {
 export default {
   props: {
     incomes: {
-      type: Array,
       required: true
     }
   },
-  name: 'TableSearch',
-  data: () => ({
+  name: 'IncomesTable',
+  data: () => ({  
     search: null,
     searched: [],
     selected: []
   }),
   methods: {
-     onSelect (items) {
-        this.selected = items
-      },
-      getAlternateLabel (count) {
-        let plural = ''
-
-        if (count > 1) {
-          plural = 's'
-        }
-
-        return `${count} user${plural} selected`
-      },
     newSale() {
       this.$router.push('income');
     },
     searchOnTable() {
-      this.searched = searchByName(this.incomes, this.search);
+      this.searched = searchByName(this.incomes.docs, this.search);
     }
   },
-  created() {
-    this.searched = this.incomes;
+  mounted() {
+    this.searched = this.incomes.docs
   }
 };
 </script>
