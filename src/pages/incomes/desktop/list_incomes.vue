@@ -1,9 +1,7 @@
 <template>
   <div>
-        
-       <md-table v-model="searched" md-card md-fixed-header style="padding:10px; margin-top: -0.5%;height: 98vh;">
-
-              <md-table-toolbar>
+       <md-table v-model="incomes.docs" md-card md-fixed-header style="padding:10px; margin-top: -0.5%;height: 98vh;">
+          <md-table-toolbar>
                   <div class="md-toolbar-section-start">
                   <h3 class="title text-green">{{lg.income.salesTableTitle}}</h3>
                   </div>
@@ -20,7 +18,7 @@
 
               
 
-              <router-link style="cursor:pointer;" slot="md-table-row" slot-scope="{ item }" :to="{
+              <router-link style="cursor:pointer;" slot="md-table-row" slot-scope="{ item }"  :to="{
                 path:'/income/'+item._id,
                 query:{ item }
                 }" tag="tr">
@@ -55,7 +53,7 @@ const toLower = text => {
 };
 
 const searchByName = (items, term) => {
-  if (term) {
+  if (term != null || term != undefined) {
     return items.filter(item =>
       toLower(item.name).includes(
         toLower(term)
@@ -74,23 +72,22 @@ export default {
   name: 'IncomesTable',
   data: () => ({  
     search: null,
-    searched: [],
-    selected: []
+    sales: []
+    
   }),
   methods: {
     newSale() {
       this.$router.push('income');
     },
     searchOnTable() {
-      this.searched = searchByName(this.incomes.docs, this.search);
+      this.sales = searchByName(this.sales, this.search);
     }
   },
-  created(){
-    this.searched = this.incomes.docs;
+  mounted(){
+    this.sales = this.incomes.docs
+    console.log("SALES ->",this.sales);
   },
-  mounted() {
-    this.searched = this.incomes.docs
-  }
+ 
 };
 </script>
 

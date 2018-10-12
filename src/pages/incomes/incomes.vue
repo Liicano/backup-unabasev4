@@ -53,8 +53,6 @@ import users from '@/pages/Dashboard/Tables/users.js';
 import listmobile from '@/pages/incomes/mobile/list_incomes.vue';
 import listdesktop from '@/pages/incomes/desktop/list_incomes.vue';
 
-
-
 export default {
   components: {
     listmobile,
@@ -68,16 +66,15 @@ export default {
       incomes: []
     };
   },
+
   methods:{
      ...mapActions({
          getAllIncomes: 'incomes/getAllIncomes'
     })
   },
+  
   created(){
      this.getAllIncomes();
-  },
-  mounted(){
-    this.getAllIncomes();
   },
   computed:{
      ...mapGetters({
