@@ -28,12 +28,11 @@
             </div>
 
   </div>
-
 <!-- TABLA DE VENTAS (ESCRITORIO) -->
     <div id="tabla_ventas">
         <div class="md-layout">
           <div class="md-layout-item md-size-100">
-            <listdesktop :incomes="getIncomes"></listdesktop>
+            <listdesktop :incomes="getIncomes.docs"></listdesktop>
           </div>
         </div>
       </div>

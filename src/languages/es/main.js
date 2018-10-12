@@ -29,10 +29,11 @@ export default {
     income: 'Ventas',
     accounting: 'contabilidad',
     tasks: 'tareas',
-    home: 'home',
+    home: 'Inicio',
     login: 'login',
     users: 'users',
-    business: 'business'
+    business: 'business',
+    messages: 'Bandeja'
   },
   user: {
     enter: 'ingresar',
