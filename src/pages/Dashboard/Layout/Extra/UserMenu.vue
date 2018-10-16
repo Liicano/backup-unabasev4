@@ -101,8 +101,8 @@ export default {
       this.$store
         .dispatch('users/logout')
         // eslint-disable-next-line
-        .then(res => {
-          window.location.href = '/'; 
+        .then(res => {         
+          this.$router.push('/');
         })
         .catch(err => {
           console.log(err);
