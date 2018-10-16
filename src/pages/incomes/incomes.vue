@@ -24,7 +24,7 @@
 
             <!-- LISTA DE VENTAS REALIZADAS  (MOBILE) -->
             <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100 ">
-              <listmobile id="lista_ventas" :incomes="users"></listmobile>
+              <listmobile id="lista_ventas" :incomes="getIncomes.docs"></listmobile>
             </div>
 
   </div>

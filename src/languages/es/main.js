@@ -14,7 +14,8 @@ export default {
     Send: 'Enviar',
     Empty: 'Vacio',
     Exit: 'Salir',
-    Search: 'Buscar'
+    Search: 'Buscar',
+    tax: "%"
   },
   validations: {
     // INCOMES
@@ -37,18 +38,18 @@ export default {
   },
   user: {
     enter: 'ingresar',
-    register: 'registrarse',
+    register: 'registrarme',
     lost: 'olvidaste tu contraseña',
-    username: 'nombre de usuario',
-    password: 'contraseña',
+    username: 'Nombre de usuario',
+    password: 'Contraseña',
     profile: 'perfil',
 
     name: 'name',
-    email: 'correo electrónico',
-    classic: 'o se clasico',
+    email: 'Correo',
+    classic: 'Ó Ingresa con tu cuenta',
     login: 'Ingresa con',
-    loginGo: `empecemos`,
-    signup: 'empecemos',
+    loginGo: `Ingresar`,
+    signup: 'Ingresar',
     logout: 'cerrar sesión',
     editProfile: 'editar perfil',
     googleLogin: 'con google'

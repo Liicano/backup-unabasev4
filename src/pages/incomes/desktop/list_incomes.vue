@@ -1,6 +1,6 @@
 }<template>
   <div>
-       <md-table v-model="incomes" md-card md-fixed-header style="padding:10px; margin-top: -0.5%;height: 98vh;">
+       <md-table v-model="incomes" md-card  style="padding:10px; margin-top: -0.5%;height: 98vh;">
           <md-table-toolbar>
                   <div class="md-toolbar-section-start">
                   <h3 class="title text-green">{{lg.income.salesTableTitle}}</h3>
@@ -9,15 +9,15 @@
                     <md-input :placeholder="`${lg.base.Search}`" id="search" @input="searchOnTable()" />
                   </md-field>
               </md-table-toolbar>
-
+ 
               <!-- <md-table-empty-state style="margin-top: -25%;"
-                :md-label="`${lg.base.EmptyState}`"
+                :md-label="`${lg.base.EmptyState}`" 
                 :md-description="`${lg.base.EmptyStateSub} '${search}'`">
                 <md-button class="md-success md-raised" @click="newSale">Crear venta</md-button>
               </md-table-empty-state> -->
-
+  
                 <md-table-row slot="md-table-row">
-                  <md-table-head>{{lg.income.Id}}</md-table-head>
+                  <!-- <md-table-head>{{lg.income.Id}}</md-table-head> -->
                   <md-table-head>{{lg.income.Reference}}</md-table-head>
                   <md-table-head>{{lg.income.Client}}</md-table-head>
                   <md-table-head>{{lg.income.Date}}</md-table-head>
@@ -28,10 +28,10 @@
 
                 <router-link id="tablaSales" class="tableRow" style="cursor:pointer;" slot="md-table-row" v-for="item in incomes" 
                 :key="item.name"  
-                :to="{path:'/income/'+item._id, query:{ item }}" 
+                :to="{path:'/income/'+item._id}" 
                  tag="tr">
 
-                  <md-table-cell>{{ item._id }}</md-table-cell>
+                  <!-- <md-table-cell>{{ item._id }}</md-table-cell> -->
                   <md-table-cell>{{ item.name }}</md-table-cell>
                   <md-table-cell>{{(item.client == null) ? 'NULL CLIENT' :item._id }}</md-table-cell>
                   <md-table-cell>{{ item.createdAt | shortDate }}</md-table-cell>

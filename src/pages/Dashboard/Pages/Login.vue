@@ -25,24 +25,24 @@
             <div class="col s4"> 
             <Gauth class=" btn-floating red" from="login"></Gauth> 
             </div>
-            <div class="col s4"></div>
+            <div class="col s4">
+             <!-- <button class=" btn-floating blue darken-3">
+               <i class="fab fa-facebook"></i>
+             </button> -->
+            </div>
           </div>
         </md-field>
 
         <p slot="description" class="description">{{ lg.user.classic }}</p>
-        <!-- <md-field class="md-form-group" slot="inputs">
-          <md-icon>face</md-icon>
-          <label>First Name...</label>
-          <md-input v-model="firstname"></md-input>
-        </md-field> -->
+     
         <md-field class="md-form-group" slot="inputs">
           <md-icon>email</md-icon>
-          <label>{{ lg.user.email }} or {{ lg.user.username }}...</label>
+          <label>{{ lg.user.email }} / {{ lg.user.username }}</label>
           <md-input v-model="email" type="email"></md-input>
         </md-field>
         <md-field class="md-form-group" slot="inputs">
           <md-icon>lock_outline</md-icon>
-          <label>{{ lg.user.password }}...</label>
+          <label>{{ lg.user.password }}</label>
           <md-input v-model="password"></md-input>
         </md-field>
         <md-button slot="footer" class="md-simple md-success md-lg" @click="login">

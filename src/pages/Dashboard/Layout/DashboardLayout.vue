@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" :class="[{'nav-open': $sidebar.showSidebar}, {'rtl': $route.meta.rtlActive}]">
-    <notifications></notifications>
+   
     <side-bar>
       <user-menu></user-menu>
       <mobile-menu></mobile-menu>
@@ -99,9 +99,8 @@
 
 
         <!-- LINKS DE UNABASE -->
-
-
-        <!-- INCOME -->
+        <div class="container-fluid">
+           <!-- INCOME -->
        <sidebar-item
           v-if="$route.meta.rtlActive"
           :link="{name: 'Ventas', icon: 'monetization_on', path: '/incomes'}"></sidebar-item>
@@ -110,14 +109,29 @@
           :link="{name: `${lg.modules.income}`, icon: 'monetization_on', path: '/incomes'}"></sidebar-item>
 
       <!-- COMPRAS -->
-          <sidebar-item
+          <!-- <sidebar-item
           v-if="$route.meta.rtlActive"
           :link="{name: 'Compras', icon: 'locall_mall', path: '/Compras'}"></sidebar-item>
         <sidebar-item
           v-else
           :link="{name: `${lg.modules.outcome}`, icon: 'local_mall', path: '/Compras'}"></sidebar-item>
+          
+           -->
+
+        </div>
+
+        <!-- ESPACIADO -->
+        <br>
+        <md-divider></md-divider>
+        <br>
+
+        <!-- MENU DE HERRAMIENTAS -->
+       <div class="container-fluid">
+          <tools-menu></tools-menu>
+       </div>
 
       </template>
+      
     </side-bar>
     <div class="main-panel">
       <top-navbar></top-navbar>
@@ -161,6 +175,8 @@ import ContentFooter from "./ContentFooter.vue";
 import DashboardContent from "./Content.vue";
 import MobileMenu from "./Extra/MobileMenu.vue";
 import UserMenu from "./Extra/UserMenu.vue";
+import ToolsMenu from "./Extra/toolsMenu.vue";
+
 import { SlideYDownTransition, ZoomCenterTransition } from "vue2-transitions";
 
 export default {
@@ -170,6 +186,7 @@ export default {
     DashboardContent,
     MobileMenu,
     UserMenu,
+    ToolsMenu,
     SlideYDownTransition,
     ZoomCenterTransition
   },

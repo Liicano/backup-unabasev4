@@ -1,18 +1,21 @@
 <template>
     <div>
-        <md-list class="md-triple-line">
+        <md-list class="md-triple-line" style="height: 89vh;">
 
-        <div v-for="venta in incomes" :key="venta.id" id="mobile_list">
+        <div v-for="item in incomes" :key="item.id" id="mobile_list">
          <ul class="collection showData" style="border-style:none; padding:0px;">
 
-           <router-link :to="{path:'/income/'+venta.id, params:{venta:venta}}" tag="li">
+           <router-link :to="{path:'/income/'+item._id}" tag="li">
             <li class="collection-item avatar">
-              <img src="../../../../public/favicon.png" class="circle" alt="">
-              <span class="title"><b style="overflow:hidden;">{{venta.asunto}}</b></span>
-              <p>{{(venta.receptor.nombre) | capitalize}} {{venta.receptor.apellido}} <br>
-                {{(venta.monto_total) | currency}}
+
+             <i class="material-icons circle yellow darken-3" v-if="item.state == 'draft'">access_time</i>
+             <i class="material-icons circle green" v-else>check</i>
+
+              <span class="title"><b style="overflow:hidden;">{{item.name}}</b></span>
+              <p>{{(item.client) | capitalize}} <br>
+                {{ (item.total == null) || (item.total == undefined) ? 0 : (item.total.net) | currency }}
               </p>
-              <p  class="secondary-content">21 Sept</p>
+              <p  class="secondary-content">{{item.createdAt | shortDate}}</p>
             </li>
            </router-link>
     
