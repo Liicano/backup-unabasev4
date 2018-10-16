@@ -142,7 +142,8 @@ export default {
   },
   getters: {
     getUsers: state => state.users,
-    user: state => JSON.parse(state.user),
+    user: state =>
+      typeof state.user !== 'object' ? JSON.parse(state.user) : state.user,
     isLogged: state => !!state.token,
     authStatus: state => state.status
   }
