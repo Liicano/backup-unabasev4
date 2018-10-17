@@ -1,4 +1,5 @@
-export default function isMobile() {
+function isMobile() {
+  var isMobileVar = false;
   if (
     navigator.userAgent.match(/Android/i) ||
     navigator.userAgent.match(/webOS/i) ||
@@ -9,8 +10,11 @@ export default function isMobile() {
     navigator.userAgent.match(/Windows Phone/i) ||
     navigator.userAgent.match(/mobile/i)
   ) {
-    return true;
+    isMobileVar = true
   } else {
-    return false;
+    isMobileVar = false;
   }
+  return isMobileVar
 }
+
+export default isMobile();

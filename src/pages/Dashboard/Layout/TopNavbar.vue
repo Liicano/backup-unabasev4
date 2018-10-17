@@ -57,15 +57,13 @@
         <div class="nav-wrapper white">
          
           <ul class="left">
-            <li v-if="this.$route.path == '/income'"><a class=""><i class="material-icons text-success">attach_file</i></a></li>
-            <li v-if="this.$route.path == '/income'"><a class=""><i class="material-icons text-info">share</i></a></li>
-
-            <li><a href="/incomes" class="brand-logo right">
-               <md-avatar>
-               <img src="../../../../public/img/new_logo.png" alt="Avatar">
-              </md-avatar>
-            </a></li>
-            
+           
+            <router-link :to="{path:'user/profile'}" tag="a" class="brand-logo right">
+                <md-avatar>
+                    <img :src="user.google.imgUrl" alt="Avatar">
+                </md-avatar>
+            </router-link>
+         
           </ul>
         </div>
       </nav>
@@ -76,6 +74,8 @@
 
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
@@ -101,6 +101,11 @@ export default {
         this.$sidebar.toggleMinimize();
       }
     }
+  },
+   computed: {
+    ...mapGetters({
+      user: 'users/user'
+    })
   }
 };
 </script>

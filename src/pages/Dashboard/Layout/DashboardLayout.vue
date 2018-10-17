@@ -133,7 +133,7 @@
       </template>
       
     </side-bar>
-    <div class="main-panel">
+    <div class="main-panel" style="background-color: white;">
       <top-navbar></top-navbar>
       <br>
       <div id="main_panel" class="container-fluid" :class="{content: !$route.meta.hideContent}" @click="toggleSidebar">

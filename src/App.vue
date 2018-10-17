@@ -1,20 +1,20 @@
 <template>
   <div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="background-color: white;" >
        <router-view></router-view>
     </div>
    
   <div>
     <br>
     <!-- FOOTER MENU -->
-      <div class="phone-viewport" id="bottom_navbar">
+      <div class="phone-viewport" id="bottom_navbar" style="background-color: white;">
             <md-bottom-bar md-sync-route>
               <md-bottom-bar-item class="" style="background-color: #43AF7C !important;" to="/dashboard" :md-label="`${lg.modules.home}`" md-icon="home"></md-bottom-bar-item>
               <md-bottom-bar-item class="" style="background-color: #43AF7C !important;" to="/" :md-label="`${lg.modules.outcome}`" md-icon="local_mall"></md-bottom-bar-item>
               <md-bottom-bar-item class="" style="background-color: #43AF7C !important;" to="/incomes" :md-label="`${lg.modules.income}`" md-icon="monetization_on"></md-bottom-bar-item>
               <md-badge class="md-primary md-square left" md-content="4" md-dense style="">
-              <md-bottom-bar-item class="" style="background-color: #43AF7C !important;" to="/" :md-label="`${lg.modules.messages}`" md-icon="message"></md-bottom-bar-item>
+              <md-bottom-bar-item class="" style="background-color: #43AF7C !important;" to="/" :md-label="`${lg.modules.message}`" md-icon="message"></md-bottom-bar-item>
               </md-badge>
             </md-bottom-bar>
       </div>
