@@ -264,9 +264,9 @@ const routes = [
         path: 'dashboard',
         name: 'Dashboard',
         components: { default: Dashboard },
-        meta: {
-          requireAuth: true
-        }
+         meta: {
+           requireAuth: true
+         }
       },
       {
         path: 'calendar',

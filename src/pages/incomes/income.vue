@@ -12,9 +12,9 @@
     <template slot="body">
      <div class="row">
        <div class="col s12">
-          <ul class="collection with-header" style="border-style: none;">
+          <!-- <ul class="collection with-header" style="border-style: none;">
         <li class="collection-item" style="cursor:pointer;" @click="ventaObject.cliente = (user.receptor.nombre+' '+user.receptor.apellido); modalClientes = false;" v-for="user in data" :key="user" ><div><a style="color: inherit;" class=""><b>{{user.receptor.nombre}} {{user.receptor.apellido}}</b> <span class="pull-right">{{user.receptor.rut}}</span> </a></div></li>
-      </ul>
+      </ul> -->
        </div>
      </div>
     </template>
@@ -39,7 +39,44 @@
     <div class="row">
       <div class="col s12">
 
-        {{this.$route.query.item.receptor}}
+        <center>
+          <h4>{{getIncome.client.name}}</h4>
+        </center>
+
+        <md-subheader>Correos Electronicos:</md-subheader>
+
+      <md-list-item v-for="(email, index) in getIncome.client.emails" :key="email">
+        <md-icon class="md-default">email</md-icon>
+          <div class="md-list-item-text">
+            <span>{{email}}</span>
+            <span>{{index}}</span>
+          </div>
+      </md-list-item>
+      <hr>
+      <br>
+
+      <div class="row">
+        <div class="col s4">
+          <center>
+            <button class="btn-floating green"><i class="material-icons">person</i></button><br>
+            <span>Action 1</span>
+          </center>
+        </div>
+        <div class="col s4">
+          <center>
+            <button class="btn-floating yellow darken-3"><i class="material-icons">edit</i></button><br>
+            <span>Action 2</span>
+          </center>
+        </div>
+        <div class="col s4">
+          <center>
+            <button class="btn-floating red"><i class="material-icons">delete</i></button><br>
+            <span>Action 3</span>
+          </center>
+        </div>
+      </div>
+
+
 
       </div>
     </div>
@@ -144,8 +181,8 @@
 
 
               <div class="md-list-item-text">
-                <span><b>{{itemInSale.nombre | uppercase}}</b> * {{itemInSale.cantidad}}</span>
-                <span><b>{{lg.base.SubTotal}} </b>{{(itemInSale.precio * itemInSale.cantidad) | currency}}</span>
+                <span><b>{{itemInSale.name | uppercase}}</b> * {{itemInSale.quantity}}</span>
+                <span><b>{{lg.base.SubTotal}} </b>{{(itemInSale.price * itemInSale.quantity) | currency}}</span>
               
               </div>
 
@@ -283,9 +320,9 @@
           <div class="md-layout">
             <div class="md-layout-item md-size-85 md-small-size-100" >
                 <div class="md-layout" >
-                  <div class="md-layout-item md-size-55">
+                  <div class="md-layout-item md-size-35">
                   <div class="md-autocomplete md-success">
-                     <md-autocomplete class="search md-success" style="" v-model="itemToAdd.nombre" :md-options="itemsModel" :md-open-on-focus="false" name="itemDesktop">
+                     <md-autocomplete class="search md-success" style="" v-model="itemToAdd.name" :md-options="itemsModel" :md-open-on-focus="false" name="itemDesktop">
                       <label v-if="$route.meta.rtlActive">{{lg.income.itemName}}</label>
                       <label v-else>{{lg.income.itemName}}</label>
                     </md-autocomplete>
@@ -296,23 +333,42 @@
 
                   <div class="md-layout-item md-size-15">
                    <md-field>
-                        <md-input type="number" placeholder="#" v-model="itemToAdd.cantidad" min="1" max="999" value="1" name="itemQuantityDesktop"></md-input>
+                        <md-input type="number" placeholder="#" v-model="itemToAdd.quantity" min="1" max="999" value="1" name="itemQuantityDesktop"></md-input>
                    </md-field>
                   </div>
 
                   <div class="md-layout-item md-size-30">
                    <md-field>
-                    <md-input :placeholder="`${lg.income.Price}`"  type="number" v-model="itemToAdd.precio" name="itemCostDesktop"></md-input>
+                    <md-input :placeholder="`${lg.income.Price}`"  type="number" v-model="itemToAdd.price" name="itemCostDesktop"></md-input>
                   </md-field>
                   </div>
+
+
+
+                  <div class="md-layout-item md-size-20">
                   
+                     <md-field>
+                      <label for="">{{lg.base.tax}}</label>
+                        <md-select name="" id="">
+                          <md-option value="19">19 %</md-option>
+                          <md-option value="25">25 %</md-option>
+                          
+                        </md-select>
+                    </md-field>
+
+                  </div>
+
                   <br>
                   <md-divider></md-divider>
                   <div class="md-layout">
                     <div class="md-layout-item md-size-100">
-                      <div class="left">  
+                      <div class="right">  
                         <h5>
-                         <b>{{lg.base.SubTotal}}: </b> {{(itemToAdd.cantidad * itemToAdd.precio) | currency}}
+                         <b>Neto: </b> {{(itemToAdd.quantity * itemToAdd.price) | currency}}
+                        </h5>
+                        
+                         <h5>
+                         <b>Impuesto: </b> {{(itemToAdd.quantity * itemToAdd.price) | currency}}
                         </h5>
                       </div>
                     </div>
@@ -358,7 +414,7 @@
       </md-card>
   
        <!-- Total -->
-          <center style="position:fixed;bottom:20px;width:54%;">
+          <center style="position:fixed;bottom:0px;width:54%;">
             <div class="total">
               <h6>{{lg.income.Total}}</h6>
               <h2> {{(ventaObject.total) | currency}}</h2>
@@ -442,12 +498,15 @@
             <md-list class="md-triple-line"  style="border-style:none;width: 100%;">
              
             <md-content class="md-scrollbar" v-if="ventaObject.item.length > 0">
-              <md-list-item v-for="itemS in ventaObject.item" :key="itemS" style="padding: 0;">
+              <md-list-item v-for="(itemS, index) in ventaObject.item" :key="itemS" style="padding: 0;">
                <div class="md-list-item-text">
-                    <span>{{(itemS.nombre) | uppercase}} <b>x</b> {{itemS.cantidad}} </span>
-                    <span><b>Precio:  {{(itemS.precio) | currency}}</b> </span>
-                  </div>
-                  <div class="md-list-action">  <h4><b>{{lg.base.SubTotal}}:     $ {{(itemS.cantidad * itemS.precio) | currency}}</b></h4> </div>
+                    <span>{{(itemS.name) | uppercase}} <b>x</b> {{itemS.quantity}}</span>
+                    <span><b>Precio:  {{(itemS.price) | currency}}</b> </span>
+               </div>
+                  
+                <div class="md-list-action">  <h4><b> {{(itemS.quantity * itemS.price) | currency}}</b></h4> </div>
+                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;      
+                 <a class="btn-floating btn-small red waves-effect waves-light" @click="ventaObject.item.splice(index, 1)"><i class="material-icons">delete</i></a>
               </md-list-item>
             </md-content>
             
@@ -542,7 +601,7 @@
               
              <div class="row valign-wrapper">
              <div class="input-field col s10">
-               <input :placeholder="`${lg.income.Item_s}`" v-model="itemToAdd.nombre" id="" type="text" class="validate" name="itemMobile">
+               <input :placeholder="`${lg.income.Item_s}`" v-model="itemToAdd.name" id="" type="text" class="validate" name="itemMobile">
              </div>
              <div class="col s2">
                <a class="btn-floating btn-small waves-effect waves-light" @click="modalItems = true;"><i class="material-icons">list</i></a>
@@ -552,11 +611,11 @@
              <div class="row valign-wrapper">
               <div class="input-field col s3">
                
-                  <input placeholder="#" v-model.number="itemToAdd.cantidad" id="" type="number" class="validate" name="quantityMobile">
+                  <input placeholder="#" v-model.number="itemToAdd.quantity" id="" type="number" class="validate" name="quantityMobile">
              </div>
 
               <div class="input-field col s7">
-                <input v-model.number="itemToAdd.precio" :placeholder="`${lg.income.Price}`" type="number" class="form-input" name="priceMobile"/>
+                <input v-model.number="itemToAdd.price" :placeholder="`${lg.income.Price}`" type="number" class="form-input" name="priceMobile"/>
              </div>
 
              <div class="col s2">
@@ -576,6 +635,7 @@
                <center @click="modalSaleItems = true;">
                  <small class="text-green">{{lg.income.Item_s}}s</small>
                   <h2><b>{{ventaObject.item.length}}</b></h2>
+                  
                   <hr>
                </center>
               </div>
@@ -604,6 +664,9 @@
 </div>
 </template>
 <script>
+// VUEX
+import { mapGetters, mapActions } from 'vuex';
+
 import { Tabs } from '@/components';
 import { Collapse, PricingCard } from '@/components';
 import swal from 'sweetalert2';
@@ -644,6 +707,10 @@ export default {
     Modal
   },
   methods: {
+     ...mapActions({
+         getCurrentIncome: 'incomes/getIncome'
+    }),
+
     validationHandler() {
       this.$validator.validate().then(result => {
         if (result) {
@@ -671,46 +738,53 @@ export default {
     modalSaleItemsHide() {
       this.modalSaleItems = false;
     },
+
     modalExportHide() {
       this.modalExport = false;
     },
+
     modalClientDetailsHide() {
       this.modalClientDetails = false;
     },
+
     modalClientesHide() {
       this.modalClientes = false;
     },
+
     modalItemsHide() {
       this.modalItems = false;
     },
+
     saveItem(itemToAdd) {
       console.log(itemToAdd);
       if (
-        itemToAdd.nombre != null &&
-        itemToAdd.nombre != '' &&
-        (itemToAdd.precio != null && itemToAdd.precio != '') &&
-        itemToAdd.cantidad != null &&
-        itemToAdd.cantidad != ''
+        itemToAdd.name != null &&
+        itemToAdd.name != '' &&
+        (itemToAdd.price != null && itemToAdd.price != '') &&
+        itemToAdd.quantity != null &&
+        itemToAdd.quantity != ''
       ) {
         this.ventaObject.item.push(itemToAdd);
-        var precioProdcuto = this.itemToAdd.cantidad * this.itemToAdd.precio;
+        var productPrice = this.itemToAdd.quantity * this.itemToAdd.price;
         this.ventaObject.total =
-          parseInt(this.ventaObject.total) + parseInt(precioProdcuto);
+          parseInt(this.ventaObject.total) + parseInt(productPrice);
          this.itemToAdd = {};
 
         this.notifyVue(
           'top',
           'center',
           'success',
-          this.validations.SuccessItemAdd
+          this.lg.validations.SuccessItemAdd
         );
       } else {
         this.notifyVue('top', 'center', 'danger', this.lg.validations.IncompleteItem);
       }
     },
+
     changeBtnStatus() {
       this.itemToAdd = {};
     },
+
     notifyVue(verticalAlign, horizontalAlign, state, message) {
       this.$notify({
         message: message,
@@ -720,6 +794,7 @@ export default {
         type: state
       });
     },
+
     showSwal() {
       swal({
         title: this.lg.validations.SuccessIncome,
@@ -730,25 +805,43 @@ export default {
         buttonsStyling: false
       });
     },
+
     facturar_venta(venta) {
       alert(venta.asunto);
     },
+
     generar_invoice() {
       invoice(this.ventaObject);
     }
+
   },
+
+  created(){
+     this.getCurrentIncome(this.$route.params.id);
+     console.log(this.getIncome);
+  },
+   
+   computed:{
+     ...mapGetters({
+       getIncome: 'incomes/getIncome'
+     })
+  },
+
    mounted(){
+
+
+
+
     let id =  this.$route.params.id;
-    console.log(this.$route.query.item);
     if(id){
       
       this.ventaObject = {
-        cliente: (this.$route.query.item.client == null) ? 'NULL CLIENT': this.$route.query.item.client,
-        asunto: this.$route.query.item.name,
-        nota: this.$route.query.item.description,
-        item: this.$route.query.item.items,
-        total: (this.$route.query.item.total.net == null)? 0 :this.$route.query.item.total.net,
-        fecha: this.$route.query.item.createdAt,
+        cliente: this.getIncome.client.name,
+        asunto: this.getIncome.name,
+        nota: this.getIncome.description,
+        item: this.getIncome.lines,
+        total: this.getIncome.total.net,
+        fecha: this.getIncome.createdAt,
 
       }
 

@@ -7,13 +7,16 @@
        :data-background-color="backgroundColor"
        :style="sidebarStyle">
 
+ 
+
     <div class="logo">
-      <a href="https://www.creative-tim.com" class="simple-text logo-mini" target="_blank">
+      <router-link :to="{path:'/dashboard'}"  class="simple-text logo-mini" target="_blank">
         <div class="logo-img">
           <img :src="logo" class="logoimagen">
         </div>
-      </a>
-      <a href="https://www.creative-tim.com" class="simple-text logo-normal" target="_blank">
+      </router-link>
+
+      <a href="/dashboard" class="simple-text logo-normal" target="_blank">
         <template v-if="$route.meta.rtlActive">{{rtlTitle}}</template>
         <template v-else>{{title}}   </template>   <small>      </small>
       </a>
