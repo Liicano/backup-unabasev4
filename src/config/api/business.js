@@ -5,11 +5,12 @@ export default api => {
      * GET/:id    get doc info
      * POST/  create income
      */
-    get: `${api}business/`,
+    main: `${api}business/`,
     /**
      * PATCH/
      * name: string
      */
-    update: `${api}business/update`
+    update: `${api}business/update/`,
+    user: `${api}business/user/`
   };
 };
