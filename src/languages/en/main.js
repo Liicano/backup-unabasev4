@@ -25,13 +25,13 @@ export default {
     SuccessIncome: '¡VENTA EXITOSA!'
   },
   modules: {
-    outcomes: 'expenses',
-    incomes: 'sales',
+    outcome: 'expenses',
+    income: 'sales',
     accounting: 'accounting',
-    tasks: 'tasks',
+    task: 'tasks',
     home: 'home',
     login: 'login',
-    users: 'users',
+    user: 'users',
     business: 'business'
   },
   user: {
