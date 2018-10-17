@@ -29,12 +29,12 @@ export default {
     outcome: 'Gastos',
     income: 'Ventas',
     accounting: 'contabilidad',
-    tasks: 'tareas',
+    task: 'tareas',
     home: 'Inicio',
     login: 'login',
-    users: 'users',
+    user: 'users',
     business: 'business',
-    messages: 'Bandeja'
+    message: 'Bandeja'
   },
   user: {
     enter: 'ingresar',
@@ -43,7 +43,6 @@ export default {
     username: 'Nombre de usuario',
     password: 'Contraseña',
     profile: 'perfil',
-
     name: 'name',
     email: 'Correo',
     classic: 'Ó Ingresa con tu cuenta',
@@ -76,8 +75,6 @@ export default {
     Duplicate: 'Duplicar',
     EmptySale: 'Venta vacia',
     DocumentTipe: 'Tipo de documento'
-
-   
   },
   outcome: {}
 };
