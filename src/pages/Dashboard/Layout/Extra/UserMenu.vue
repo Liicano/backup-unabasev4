@@ -87,7 +87,7 @@ export default {
       user: 'users/user'
     })
   },
-  mounted() {
+  created() {
     this.profile.name = this.user.name || this.user.username;
   },
   methods: {
