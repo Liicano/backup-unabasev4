@@ -32,6 +32,12 @@ export default api => {
      *    password: string
      */
     login: `${api}users/login`,
-    logout: `${api}users/logout`
+    logout: `${api}users/logout`,
+    /**
+     *  PUT/ change password
+     *   params: [ :id]
+     */
+    password: `${api}users/password/`,
+    business: `${api}users/business/`
   };
 };
