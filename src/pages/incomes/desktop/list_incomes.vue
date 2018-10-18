@@ -26,8 +26,8 @@
                   
                 </md-table-row>
 
-                <router-link id="tablaSales" class="tableRow" style="cursor:pointer;" slot="md-table-row" v-for="item in incomes" 
-                :key="item.name"  
+                <router-link id="tablaSales" class="tableRow" style="cursor:pointer;" slot="md-table-row" v-for="(item, i) in incomes" 
+                :key="`DESKTOP-`+ i "  
                 :to="{path:'/income/'+item._id}" 
                  tag="tr">
 

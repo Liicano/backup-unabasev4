@@ -23,7 +23,7 @@
               <ul class="nav" >
                 <slot>
                   <li>
-                    <a href="#vue">
+                    <a href="/user/profile">
                       <md-icon>person</md-icon>
                       <span class="sidebar-normal">{{lg.user.profile}}</span>
                     </a>
