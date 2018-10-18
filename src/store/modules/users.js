@@ -49,29 +49,6 @@ export default {
         resolve();
       });
     },
-    google({ commit }, payload) {
-      return new Promise((resolve, reject) => {
-        axios
-          .post(api.auth.gauth, {
-            token: payload.token,
-            access_token: payload.access_token
-          })
-          .then(data => {
-            localStorage.setItem('token', data.data.token);
-            localStorage.setItem('user', JSON.stringify(data.data.user));
-
-            axios.defaults.headers.common['Authorization'] = data.data.token;
-            commit('access_success', data.data);
-            resolve(payload.user);
-          })
-          .catch(err => {
-            commit('access_error');
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            reject(err, err.response);
-          });
-      });
-    },
     register({ commit }, payload) {
       return new Promise((resolve, reject) => {
         axios
@@ -92,10 +69,35 @@ export default {
           });
       });
     },
+    google({ commit }, payload) {
+      return new Promise((resolve, reject) => {
+        console.log(api.auth.google);
+        axios
+          .post(api.auth.google, {
+            token: payload.token,
+            access_token: payload.access_token,
+            google: payload.google
+          })
+          .then(data => {
+            localStorage.setItem('token', data.data.token);
+            localStorage.setItem('user', JSON.stringify(data.data.user));
+
+            axios.defaults.headers.common['Authorization'] = data.data.token;
+            commit('access_success', data.data);
+            resolve(payload.user);
+          })
+          .catch(err => {
+            commit('access_error');
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            reject(err, err.response);
+          });
+      });
+    },
     googleNew({ commit }, payload) {
       return new Promise((resolve, reject) => {
         axios
-          .post(api.auth.googleNew, payload.googleUser)
+          .post(api.auth.google.register, payload.googleUser)
           .then(res => {
             commit('access_success', res.data);
             localStorage.setItem('token', res.data.token);
