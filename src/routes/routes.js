@@ -58,6 +58,11 @@ import VueRouter from 'vue-router';
 const Income = () => import('@/pages/incomes/income.vue');
 const Incomes = () => import('@/pages/incomes/incomes.vue');
 
+// USUARIO
+  // PERFIL
+  const userProfile = () => import('@/pages/user/profile.vue');
+
+
 let componentsMenu = {
   path: '/components',
   component: DashboardLayout,
@@ -300,17 +305,13 @@ const routes = [
         path: 'incomes',
         name: 'Incomes',
         components: { default: Incomes }
+      },
+      {
+        path: 'user/profile',
+        name: 'userProfile',
+        components: { default: userProfile }
       }
-      // {
-      //   path: "incomes/:id",
-      //   name: "Income",
-      //   components: { default: Income }
-      // },
-      // {
-      //   path: "incomes",
-      //   name: "Incomes",
-      //   components: { default: Incomes }
-      // }
+     
     ]
   }
 ];

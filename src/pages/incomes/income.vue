@@ -812,27 +812,10 @@ export default {
 
     generar_invoice() {
       invoice(this.ventaObject);
-    }
+    },
 
-  },
-
-  created(){
-     this.getCurrentIncome(this.$route.params.id);
-     console.log(this.getIncome);
-  },
-   
-   computed:{
-     ...mapGetters({
-       getIncome: 'incomes/getIncome'
-     })
-  },
-
-   mounted(){
-
-
-
-
-    let id =  this.$route.params.id;
+    checkIncome(){
+      let id =  this.$route.params.id;
     if(id){
       
       this.ventaObject = {
@@ -857,7 +840,25 @@ export default {
       }
 
     }
+    }
+
+  },
+
+  created(){
+     this.getCurrentIncome(this.$route.params.id);
+     console.log(this.getIncome);
+    //  console.log(screen.width);
+    this.checkIncome();
+  },
    
+   computed:{
+     ...mapGetters({
+       getIncome: 'incomes/getIncome'
+     })
+  },
+
+   mounted(){
+      this.checkIncome();
   }
 };
 </script>
