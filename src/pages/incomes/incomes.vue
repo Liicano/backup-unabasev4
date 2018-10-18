@@ -23,18 +23,24 @@
 
 
             <!-- LISTA DE VENTAS REALIZADAS  (MOBILE) -->
-            <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100 ">
-              <listmobile id="lista_ventas" :incomes="getIncomes.docs"></listmobile>
+            <div id="lista_ventas" v-if="getIncomes.docs && isMobileLocal">
+              
+             <div class="container-fluid">
+                <div class="md-layout-item md-size-100">
+                <listmobile :incomes="getIncomes.docs"></listmobile>
+             
+              </div>
+             </div>
             </div>
 
   </div>
 <!-- TABLA DE VENTAS (ESCRITORIO) -->
-    <div id="tabla_ventas">
-        <div class="md-layout">
+    <div id="tabla_ventas" v-if="(getIncomes.docs) && (isMobileLocal == false)">
+       
           <div class="md-layout-item md-size-100">
             <listdesktop :incomes="getIncomes.docs"></listdesktop>
           </div>
-        </div>
+        
       </div>
 
 
@@ -51,6 +57,7 @@ import users from '@/pages/Dashboard/Tables/users.js';
 // COMPONENTES INTERNOS
 import listmobile from '@/pages/incomes/mobile/list_incomes.vue';
 import listdesktop from '@/pages/incomes/desktop/list_incomes.vue';
+import isMobile from '../../assets/js/isMobile.js'
 
 export default {
   components: {
@@ -62,7 +69,8 @@ export default {
     return {
       users: users,
       checkbox1: null,
-      incomes: []
+      incomes: [],
+      isMobileLocal: false
     };
   },
 
@@ -74,6 +82,7 @@ export default {
   
   created(){
      this.getAllIncomes();
+     this.isMobileLocal = isMobile;
   },
   computed:{
      ...mapGetters({

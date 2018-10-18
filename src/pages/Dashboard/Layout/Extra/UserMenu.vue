@@ -28,20 +28,10 @@
                       <span class="sidebar-normal">{{lg.user.profile}}</span>
                     </a>
                   </li>
+                 
+               
                   <li>
-                    <a href="#vue">
-                      <md-icon>edit</md-icon>
-                      <span class="sidebar-normal">{{lg.user.editProfile}}</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#vue">
-                      <md-icon>people</md-icon>
-                      <span class="sidebar-normal">{{lg.modules.business}}</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#vue" @click="logout">
+                    <a href="/login" @click="logout">
                       <md-icon>exit_to_app</md-icon>
                       <span class="sidebar-normal">{{lg.user.logout}}</span>
                     </a>
@@ -100,9 +90,10 @@ export default {
     logout() {
       this.$store
         .dispatch('users/logout')
-        // eslint-disable-next-line
+       
         .then(res => {         
           this.$router.push('/');
+          console.log(res);
         })
         .catch(err => {
           console.log(err);

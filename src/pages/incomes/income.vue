@@ -20,7 +20,7 @@
     </template>
 
     <template slot="footer">
-      <md-button class="md-simple" @click="modalClientesHide">{{lg.base.Exit}}</md-button>
+      <md-button class="md-simple" @click="modalClientesHide">{{lg.base.exit}}</md-button>
       
     </template>
   </modal>
@@ -83,7 +83,7 @@
     </template>
 
     <template slot="footer">
-      <md-button class="md-simple" @click="modalClientDetailsHide">{{lg.base.Exit}}</md-button>
+      <md-button class="md-simple" @click="modalClientDetailsHide">{{lg.base.exit}}</md-button>
       
     </template>
   </modal>
@@ -99,7 +99,7 @@
     </template>
 
     <template slot="body">
-     <center> <h6>{{lg.income.DocumentTipe}}</h6></center>
+     <center> <h6>{{lg.income.documentTipe}}</h6></center>
       <md-divider></md-divider>
       <br>
       
@@ -128,7 +128,7 @@
     </template>
 
     <template slot="footer">
-      <md-button class="md-simple" @click="modalExportHide">{{lg.base.Exit}}</md-button>
+      <md-button class="md-simple" @click="modalExportHide">{{lg.base.exit}}</md-button>
     </template>
   </modal>
 <!-- Modal de EXPORTACION -->
@@ -154,7 +154,7 @@
     </template>
 
     <template slot="footer">
-      <md-button class="md-simple" @click="modalItemsHide">{{lg.base.Exit}}</md-button>
+      <md-button class="md-simple" @click="modalItemsHide">{{lg.base.exit}}</md-button>
     </template>
   </modal>
 <!-- Modal de ITEMS -->
@@ -197,7 +197,7 @@
     </template>
 
     <template slot="footer">
-      <md-button class="md-simple" @click="modalSaleItemsHide">{{lg.base.Exit}}</md-button>
+      <md-button class="md-simple" @click="modalSaleItemsHide">{{lg.base.exit}}</md-button>
       
     </template>
   </modal>
@@ -231,11 +231,11 @@
                            <span :class="{ 'control': true }">
 
                               <md-autocomplete id="autocompletadoUsers" name="cliente" class="search md-success"  style="" v-model="ventaObject.cliente" :md-options="employees" :md-open-on-focus="false" v-validate="'required'" :class="{'is-danger': errors.has('cliente') }">
-                                <label v-if="$route.meta.rtlActive">{{lg.income.Client}}</label>
-                                <label v-else>{{lg.income.Client}}</label>
+                                <label v-if="$route.meta.rtlActive">{{lg.income.client}}</label>
+                                <label v-else>{{lg.income.client}}</label>
                               </md-autocomplete>
                               <i v-show="errors.has('cliente')" class="fa fa-warning"></i>
-                              <span v-show="errors.has('cliente')" class="help text-danger">{{lg.base.Empty}}</span>
+                              <span v-show="errors.has('cliente')" class="help text-danger">{{lg.base.empty}}</span>
                             </span>
                         
                         </div> 
@@ -264,14 +264,14 @@
 
              <div class="md-layout">
               <label class="md-layout-item md-size-25 md-form-label">
-               {{lg.income.Reference}}
+               {{lg.income.reference}}
               </label>
               <div class="md-layout-item">
                 <md-field>
                   <span :class="{ 'control': true }">
                   <md-input v-model="ventaObject.asunto" type="text" name="asunto" v-validate="'required'" :class="{'is-danger': errors.has('asunto') }"></md-input>
                     <i v-show="errors.has('asunto')" class="fa fa-warning"></i>
-                    <span v-show="errors.has('asunto')" class="help text-danger">Vacio</span>
+                    <span v-show="errors.has('asunto')" class="help text-danger">{{lg.base.empty}}</span>
                 </span>
                 </md-field>
               </div>
@@ -283,7 +283,7 @@
 
              <div class="md-layout">
               <label class="md-layout-item md-size-25 md-form-label">
-               {{lg.income.Note}}
+               {{lg.income.note}}
               </label>
               <div class="md-layout-item">
                 <md-field>
@@ -302,7 +302,7 @@
           <span>
             
             
-            <h3 v-if="!showInputs" class="pull-left">{{lg.income.New_m}} {{lg.income.Item_s}}</h3>
+            <h3 v-if="!showInputs" class="pull-left">{{lg.income.new_m}} {{lg.income.item_s}}</h3>
 
             <md-card-expand-trigger class="pull-right">
             <md-button class="md-icon-button md-success md-just-icon md-dense md-mini" @click="changeBtnStatus()">
@@ -339,7 +339,7 @@
 
                   <div class="md-layout-item md-size-30">
                    <md-field>
-                    <md-input :placeholder="`${lg.income.Price}`"  type="number" v-model="itemToAdd.price" name="itemCostDesktop"></md-input>
+                    <md-input :placeholder="`${lg.income.price}`"  type="number" v-model="itemToAdd.price" name="itemCostDesktop"></md-input>
                   </md-field>
                   </div>
 
@@ -385,7 +385,7 @@
                   
                   <div v-if="!showInputs">
                   <md-button class="md-success md-dense md-mini md-just-icon" @click="saveItem(itemToAdd);"><md-icon >add</md-icon></md-button>
-                  <md-tooltip md-direction="left">{{lg.income.Save}} item</md-tooltip>
+                  <md-tooltip md-direction="left">{{lg.income.save}} item</md-tooltip>
                 </div>
                 </center>
              </div>
@@ -416,7 +416,7 @@
        <!-- Total -->
           <center style="position:fixed;bottom:0px;width:54%;">
             <div class="total">
-              <h6>{{lg.income.Total}}</h6>
+              <h6>{{lg.income.total}}</h6>
               <h2> {{(ventaObject.total) | currency}}</h2>
               <hr style="margin-top: -4%;">
             </div>
@@ -433,7 +433,7 @@
                     <div class="card-icon" style="cursor:pointer;" @click="validationHandler()">
                       <center>  
                         <i class="material-icons">monetization_on</i>
-                        <h6 class="title" style="color:white;margin-top: -7%;"><b>{{lg.income.CheckIn}}</b></h6>
+                        <h6 class="title" style="color:white;margin-top: -7%;"><b>{{lg.income.checkIn}}</b></h6>
                       </center>
                     </div>
                       <br>
@@ -443,7 +443,7 @@
                     <div class="card-icon" style="cursor:pointer;" @click="validationHandler()">
                       <center>
                         <i class="material-icons">file_copy</i>
-                        <h6 class="title" style="color:white;margin-top: -7%;"><b>{{lg.income.Duplicate}}</b></h6>
+                        <h6 class="title" style="color:white;margin-top: -7%;"><b>{{lg.income.duplicate}}</b></h6>
                       </center>
                     </div>
                       <br>
@@ -456,7 +456,7 @@
               <div class="card-icon" style="cursor:pointer;" @click="modalExport = true;">
                 <center>
                   <i class="material-icons">import_export</i>
-                  <h6 class="title" style="color:white;margin-top: -7%;"><b>{{lg.base.Export}}</b></h6>
+                  <h6 class="title" style="color:white;margin-top: -7%;"><b>{{lg.base.export}}</b></h6>
                 </center>
               </div>
                 <br>
@@ -469,7 +469,7 @@
                     <div class="card-icon" style="cursor:pointer;">
                       <center>
                         <i class="material-icons">delete</i>
-                        <h6 class="title" style="color:white;margin-top: -7%;"><b>{{lg.base.Delete}}</b></h6>
+                        <h6 class="title" style="color:white;margin-top: -7%;"><b>{{lg.base.delete}}</b></h6>
                       </center>
                     </div>
                       <br>
@@ -481,7 +481,7 @@
                     <div class="card-icon" style="cursor:pointer;">
                       <center>
                         <i class="material-icons">send</i>
-                        <h6 class="title" style="color:white;margin-top: -7%;"><b>{{lg.base.Send}}</b></h6>
+                        <h6 class="title" style="color:white;margin-top: -7%;"><b>{{lg.base.send}}</b></h6>
                       </center>
                     </div>
                       <br>
@@ -514,7 +514,7 @@
               <md-list-item style="padding: 0;">
                <div class="md-list-item-text" style="margin-top:50%;" >
                     <center><h3 class="vlign-center md-text-danger"><b><i class="fa fa-cart-arrow-down"></i></b></h3>
-                      {{lg.income.EmptySale}}
+                      {{lg.income.emptySale}}
                     </center>
                   </div>
               </md-list-item>
@@ -574,9 +574,9 @@
              <div class="input-field col s12">
                
                <span :class="{ 'control': true }">
-               <input :placeholder="`${lg.income.Reference}`"  type="text" v-model="ventaObject.asunto" name="asuntoMobile" v-validate="'required'" :class="{'is-danger': errors.has('asuntoMobile') }">
+               <input :placeholder="`${lg.income.reference}`"  type="text" v-model="ventaObject.asunto" name="asuntoMobile" v-validate="'required'" :class="{'is-danger': errors.has('asuntoMobile') }">
                <i v-show="errors.has('asuntoMobile')" class="fa fa-warning"></i>
-               <span v-show="errors.has('asuntoMobile')" class="help text-danger">{{lg.base.Empty}}</span>
+               <span v-show="errors.has('asuntoMobile')" class="help text-danger">{{lg.base.empty}}</span>
                </span>
              </div>
             </div>
@@ -584,9 +584,9 @@
             <div class="row valign-wrapper">
              <div class="input-field col s10">
                 <span :class="{ 'control': true }">
-                  <input :placeholder="`${lg.income.Client}`" id="" type="text" class="validate" name="clienteMobile" v-validate="'required'"  v-model="ventaObject.cliente">
+                  <input :placeholder="`${lg.income.client}`" id="" type="text" class="validate" name="clienteMobile" v-validate="'required'"  v-model="ventaObject.cliente">
                   <i v-show="errors.has('clienteMobile')" class="fa fa-warning"></i>
-                  <span v-show="errors.has('clienteMobile')" class="help text-danger">{{lg.base.Empty}}</span>
+                  <span v-show="errors.has('clienteMobile')" class="help text-danger">{{lg.base.empty}}</span>
                 </span>
              </div>
              <div class="col s2">
@@ -596,12 +596,12 @@
              </div>
             </div>
 
-              <h6>{{lg.income.New_m}} {{lg.income.Item_s}}</h6>
+              <h6>{{lg.income.new_m}} {{lg.income.item_s}}</h6>
               <md-divider></md-divider>
               
              <div class="row valign-wrapper">
              <div class="input-field col s10">
-               <input :placeholder="`${lg.income.Item_s}`" v-model="itemToAdd.name" id="" type="text" class="validate" name="itemMobile">
+               <input :placeholder="`${lg.income.item_s}`" v-model="itemToAdd.name" id="" type="text" class="validate" name="itemMobile">
              </div>
              <div class="col s2">
                <a class="btn-floating btn-small waves-effect waves-light" @click="modalItems = true;"><i class="material-icons">list</i></a>
@@ -615,7 +615,7 @@
              </div>
 
               <div class="input-field col s7">
-                <input v-model.number="itemToAdd.price" :placeholder="`${lg.income.Price}`" type="number" class="form-input" name="priceMobile"/>
+                <input v-model.number="itemToAdd.price" :placeholder="`${lg.income.price}`" type="number" class="form-input" name="priceMobile"/>
              </div>
 
              <div class="col s2">
@@ -633,7 +633,7 @@
 
               <div class="col s3">
                <center @click="modalSaleItems = true;">
-                 <small class="text-green">{{lg.income.Item_s}}s</small>
+                 <small class="text-green">{{lg.income.item_s}}s</small>
                   <h2><b>{{ventaObject.item.length}}</b></h2>
                   
                   <hr>
@@ -642,7 +642,7 @@
               
               <div class="col s9">
                <center>
-                 <small>{{lg.income.Total}}</small>
+                 <small>{{lg.income.total}}</small>
                   <h2><b></b>{{ventaObject.total | currency}}</h2>
                   <hr>
                </center>
@@ -673,10 +673,13 @@ import swal from 'sweetalert2';
 import { Modal } from '@/components';
 import invoice from '../../assets/js/invoice.js';
 import users from '@/pages/Dashboard/Tables/users.js';
+import isMobile from '../../assets/js/isMobile'
+
 
 export default {
   data() {
     return {
+      isMobileCheck: false,
       data: users,
       modalExport: false,
       modalClientDetails: false,
@@ -729,7 +732,7 @@ export default {
             'top',
             'center',
             'danger',
-            this.lg.validations.EmptyFields
+            this.lg.validations.emptyFields
           );
         }
       });
@@ -847,8 +850,7 @@ export default {
   created(){
      this.getCurrentIncome(this.$route.params.id);
      console.log(this.getIncome);
-    //  console.log(screen.width);
-    this.checkIncome();
+     this.checkIncome();
   },
    
    computed:{

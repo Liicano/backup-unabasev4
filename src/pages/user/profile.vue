@@ -1,51 +1,6 @@
 <template>
 <div>
 
-<!-- MODALS -->
-<modal v-if="modalNewPhone" @close="modalNewPhoneHide">
-    <template slot="header">
-      <md-button class="md-simple md-just-icon md-round modal-default-button" @click="modalNewPhoneHide">
-        <md-icon>clear</md-icon>
-      </md-button>
-    </template>
-
-    <template slot="body">
-        <div class="row" v-for="(email, index) in userData.emails" :key="email">
-            <div class="col s4">
-                <input type="text" name="newCorreo" placeholder="Etiqueta" v-value="index" v-model="userData.emails.index[index]">
-            </div>
-            <div class="col s6">
-                <input type="text" name="newCorreo" placeholder="Correo" v-value="email" v-model="userData.emails[index]">
-            </div>
-
-        </div>
-    </template>
-
-    <template slot="footer">
-        
-         <div class="row">
-             <small>Agregar email</small>
-        <hr>
-        <br>
-
-            <div class="col s4">
-                <input type="text" name="newCorreo" placeholder="Etiqueta" >
-            </div>
-            <div class="col s6">
-                <input type="text" name="newCorreo" placeholder="Correo" v-model="newEmail">
-            </div>
-            <div class="col s2 valign-wrapper">
-                <md-button class="md-success md-just-icon md-round" @click="addEmail()"><md-icon >add</md-icon></md-button>  
-                
-            </div>
-
-        </div>
-    </template>
-
-    
-  </modal>
- <!-- / MODALS -->
-
 
 
 <!-- MOBILE -->
@@ -326,13 +281,13 @@
        <div class="col s4">
            <md-card class="md-card-profile">
                 <div class="md-card-avatar">
-                    <img class="img" :src="user.google.imgUrl">
+                    <img class="img" :src="userData.google.imgUrl">
                     <h1>2</h1>
                 </div>
 
                 <md-card-content>
                     <h6 class="category text-gray">25577270-k</h6>
-                    <h4 class="card-title">Hector Gonzalez</h4>
+                    <h4 class="card-title" style="margin-top: -1px;">Hector Gonzalez</h4>
                     <div class="card-description">
                         <div class="row">
                             <div class="col s8">
@@ -346,7 +301,7 @@
                             </div>
                         </div>
 
-                            <div class="row" style="margin-top: -10%;">
+                            <div class="row" style="margin-top: -20%;">
                                  <div class="col s12">
                                         <md-field>
                                             <label>Documento de identidad</label>
@@ -371,7 +326,7 @@
 
                     </div>
                    <div class="row">
-                         <div class="col s4">
+                         <div class="col s6">
                                   <center>
                                       <md-button class="md-success md-just-icon md-round" @click="saveProfile()">
                                       <md-icon>save</md-icon>
@@ -380,7 +335,7 @@
                                   </center>
                               </div>
 
-                              <div class="col s4">
+                              <div class="col s6">
                                   <center>
                                       <md-button class="md-info md-just-icon md-round">
                                       <md-icon>business_center</md-icon>
@@ -388,14 +343,7 @@
                                   <small>Empresas</small>
                                   </center>
                               </div>
-                              <div class="col s4">
-                                <center>
-                                       <md-button class="md-danger md-just-icon md-round">
-                                      <md-icon>logout</md-icon>
-                                  </md-button><br>
-                                  <small>Cerrar sesion</small>
-                                </center>
-                              </div>
+                           
                    </div>
                 </md-card-content>
             </md-card>
@@ -411,23 +359,33 @@
                     <md-icon>email</md-icon>
                     </div>
                     <h4 class="title">Correos</h4>
-                    <md-button class=" pull-right md-success md-mini md-dense md-just-icon md-round" @click="modalNewPhone = true;"><md-icon >edit</md-icon></md-button>  
-                 </md-card-header>
+                    <md-button class=" pull-right md-info md-mini md-dense md-just-icon md-round" v-if="!editEMail" @click="editEMail = !editEMail"><md-icon >edit</md-icon></md-button>  
+                    <md-button class=" pull-right md-success md-mini md-dense md-just-icon md-round" v-else @click="editEMail = !editEMail"><md-icon >add</md-icon></md-button>  
+
+                </md-card-header>
                     <br>
                     <md-divider class="md-inset"></md-divider>
                 <md-card-content>
                 <br>
 
                 <div v-if="(userData.emails) && (userData.emails.length > 0)">
+
                 <div class="row" style="cursor:pointer;" v-for="(email, index ) in userData.emails" :key="email">
                     <div class="col s10" style="overflow: hidden;" @click="showButton = !showButton">
-                        <h5>{{email}}</h5>
-                        <small>{{index}}</small>
+                        <div class="row">
+                            <div class="col s8">
+                                <input type="text" v-value="email">
+                            </div>
+                            <div class="col s4">
+                                <input type="text" v-value="index">
+                            </div>
+                        </div>
                     </div>
                     <div class="col s2">
                         <button class="btn-floating red btn-mini btn-small valig-wrapper" v-if="showButton"><i class="material-icons">delete</i></button><br>
                     </div>
                 </div>
+
                 </div>
                 <div  v-else>
                  <div class="row" style="cursor:pointer;">
@@ -508,7 +466,7 @@ export default {
   components: {
     EditProfileForm,
     UserCard,
-    Modal
+    Modal,
   },
   name: 'userProfile',
   props: {
@@ -521,17 +479,13 @@ export default {
         userData:{},
         isMobileLocal: false,
         showButton: false,
-        modalNewPhone : false,
+        editEMail: false,
+        editPhone: false
         
     }
   },
   methods: {
-      addEmail(){
-          
-      },
-    modalNewPhoneHide(){
-        this.modalNewPhone = false;
-      },
+    
      onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
       if (!files.length)

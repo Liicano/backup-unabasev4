@@ -6,7 +6,7 @@
                   <h3 class="title text-green">{{lg.income.salesTableTitle}}</h3>
                   </div>
                   <md-field md-clearable class="md-toolbar-section-end">
-                    <md-input :placeholder="`${lg.base.Search}`" id="search" @input="searchOnTable()" />
+                    <md-input :placeholder="`${lg.base.search}`" id="search" @input="searchOnTable()" />
                   </md-field>
               </md-table-toolbar>
  
@@ -18,11 +18,11 @@
   
                 <md-table-row slot="md-table-row">
                   <!-- <md-table-head>{{lg.income.Id}}</md-table-head> -->
-                  <md-table-head>{{lg.income.Reference}}</md-table-head>
-                  <md-table-head>{{lg.income.Client}}</md-table-head>
-                  <md-table-head>{{lg.income.Date}}</md-table-head>
-                  <md-table-head>{{lg.income.Total}}</md-table-head>
-                  <md-table-head>{{lg.income.State}}</md-table-head>
+                  <md-table-head>{{lg.income.reference}}</md-table-head>
+                  <md-table-head>{{lg.income.client}}</md-table-head>
+                  <md-table-head>{{lg.income.date}}</md-table-head>
+                  <md-table-head>{{lg.income.total}}</md-table-head>
+                  <md-table-head>{{lg.income.state}}</md-table-head>
                   
                 </md-table-row>
 
@@ -69,7 +69,10 @@ export default {
   name: 'IncomesTable',
   data: () => ({  
     search: null,
-  })
+  }),
+  created(){
+    console.log("INCOMES FROM DESKTOP -> ", this.incomes)
+  }
 };
 </script>
 
