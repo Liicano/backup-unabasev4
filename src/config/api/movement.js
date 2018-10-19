@@ -1,7 +1,7 @@
 export default api => {
   return {
     /**
-     *    GET/  list incomes
+     *    GET/  list movements
      *    params {
      *      name: string,
      *      description: string,
@@ -44,7 +44,7 @@ export default api => {
      *
      */
     /**
-     *   POST/  create income
+     *   POST/  create movement
      *    params {
      *      name: string,
      *      description: string,
@@ -71,7 +71,7 @@ export default api => {
      *    }
      */
     /**
-     *   PUT/  update income
+     *   PUT/  update movement
      *    params {
      *      name: string,
      *      description: string,
@@ -97,6 +97,6 @@ export default api => {
      *
      *    }
      */
-    main: `${api}incomes/`
+    main: `${api}movements/`
   };
 };

@@ -10,7 +10,7 @@ import user from './user';
 import auth from './auth';
 import business from './business';
 import outcome from './outcome';
-import income from './income';
+import movement from './movement';
 // import task from './task';
 
 export default {
@@ -20,6 +20,6 @@ export default {
   auth: auth(api),
   business: business(api),
   outcome: outcome(api),
-  income: income(api)
+  movement: movement(api)
   // task: task(api)
 };
