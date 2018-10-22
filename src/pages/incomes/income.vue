@@ -254,16 +254,16 @@
                 <div class="md-layout-item md-size-50">
                  <center>
                     <small>Neto</small><br>
-                  <h2>{{itemToAdd.quantity * itemToAdd.price | currency}}</h2>
-                  <h2>$ 0</h2>
+                  <h2>{{incomeObject.total.net | currency}}</h2>
+                  
                  </center>
 
                 </div>
                 <div class="md-layout-item md-size-50">
                   <center>
-                    <small>Impuesto</small><br>
-                  <h2>{{ (((itemToAdd.quantity * itemToAdd.price)*0.19)+(itemToAdd.quantity * itemToAdd.price)) | currency }}</h2>
-                  <h2>$ 0</h2>
+                    <small>Total</small><br>
+                  <h2>{{ incomeObject.total.tax | currency}}</h2>
+                 
                   </center>
                 </div>
               </div>
@@ -294,85 +294,6 @@
         <br>
        
           
- <!-- <div class="md-layout">
-            <div class="md-layout-item md-size-85 md-small-size-100" >
-                <div class="md-layout" >
-                  <div class="md-layout-item md-size-35">
-                  <div class="md-autocomplete md-success">
-                     <md-autocomplete class="search md-success" style="" v-model="itemToAdd.name" :md-options="itemsModel" :md-open-on-focus="false" name="itemDesktop">
-                      <label v-if="$route.meta.rtlActive">{{lg.income.itemName}}</label>
-                      <label v-else>{{lg.income.itemName}}</label>
-                    </md-autocomplete>
-                 </div>
-
-                  </div>
-                 
-
-                  <div class="md-layout-item md-size-15">
-                   <md-field>
-                        <md-input type="number" placeholder="#" v-model="itemToAdd.quantity" min="1" max="999" value="1" name="itemQuantityDesktop"></md-input>
-                   </md-field>
-                  </div>
-
-                  <div class="md-layout-item md-size-30">
-                   <md-field>
-                    <md-input :placeholder="`${lg.income.price}`"  type="number" v-model="itemToAdd.price" name="itemCostDesktop"></md-input>
-                  </md-field>
-                  </div>
-
-
-
-                  <div class="md-layout-item md-size-20">
-                  
-                     <md-field>
-                      <label for="">{{lg.base.tax}}</label>
-                        <md-select name="" id="">
-                          <md-option value="19">19 %</md-option>
-                          <md-option value="25">25 %</md-option>
-                          
-                        </md-select>
-                    </md-field>
-
-                  </div>
-
-                  <br>
-                  <md-divider></md-divider>
-                  <div class="md-layout">
-                    <div class="md-layout-item md-size-100">
-                      <div class="right">  
-                        <h5>
-                         <b>Neto: </b> {{(itemToAdd.quantity * itemToAdd.price) | currency}}
-                        </h5>
-                        
-                         <h5>
-                         <b>Impuesto: </b> {{(itemToAdd.quantity * itemToAdd.price) | currency}}
-                        </h5>
-                      </div>
-                    </div>
-                  </div>
-
-
-                </div>
-            </div>
-          <div class="md-layout-item md-size-15 md-small-size-100" md-alignment="right">
-                
-
-               <div class="pull-right" align="left">
-                <center class="pull-right">
-                  
-                  <div v-if="!showInputs">
-                  <md-button class="md-success md-dense md-mini md-just-icon" @click="saveItem(itemToAdd);"><md-icon >add</md-icon></md-button>
-                  <md-tooltip md-direction="left">{{lg.income.save}} item</md-tooltip>
-                </div>
-                </center>
-             </div>
-            
-          </div>
-          </div> -->
-        
-
-
-        <!-- /Formulario -->
         </md-card-content>
 
        
@@ -554,7 +475,8 @@ export default {
          getCurrentIncome: 'incomes/getIncome',
          getAllUsers: 'users/getAllUsers',
          getAllItems: 'items/getAllItems',
-         getAllTaxes: 'tax/getAllTaxes'
+         getAllTaxes: 'tax/getAllTaxes',
+         postIncome: 'incomes/postIncome'
     }),
     getNameAndId(val){
       this.itemToAdd.name = val.name;
@@ -566,6 +488,8 @@ export default {
     },
     saveIncome(){
       console.log(this.incomeObject);
+      this.postIncome(this.incomeObject);
+
     },
 
     validationHandler() {
@@ -639,10 +563,13 @@ export default {
       invoice(this.incomeObject);
     },
     saveItem(){
+       this.incomeObject.total.net += (this.itemToAdd.quantity * this.itemToAdd.price);
+       this.incomeObject.total.tax += ( (((this.itemToAdd.quantity * this.itemToAdd.price)*0.19)+(this.itemToAdd.quantity * this.itemToAdd.price)) );
+
       this.incomeObject.lines.push(this.itemToAdd);
       this.itemToAdd = {};
       this.showDialog = false;
-      console.log("this.incomeObject.lines -> ",this.incomeObject.lines);
+     
     }
 
   },

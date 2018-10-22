@@ -50,6 +50,21 @@ export default {
           });
       });
     },
+
+    postIncome(payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .post(api.movement.main, { payload }) 
+          .then(data => {
+            console.log('POST INCOME -> ',data.data);
+            resolve(payload);
+          })
+          .catch(err => {
+            console.log(err);
+            reject(err, err.response);
+          });
+      });
+    },
   
   },
   getters: {

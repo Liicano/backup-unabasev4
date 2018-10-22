@@ -62,22 +62,13 @@
 // VUEX
 import { mapGetters, mapActions } from 'vuex';
 
-// LIBRERIAS EXTERNAS
-import users from '@/pages/Dashboard/Tables/users.js';
-
-// COMPONENTES INTERNOS
-import listmobile from '@/pages/incomes/mobile/list_incomes.vue';
-import listdesktop from '@/pages/incomes/desktop/list_incomes.vue';
-// import isMobile from '../../assets/js/isMobile.js'
 export default {    
   components: {
-    listmobile,
-    listdesktop
+    
   },
 
   data() {
     return {
-      users: users,
       checkbox1: null,
       incomes: [],
       isMobileLocal: false,
