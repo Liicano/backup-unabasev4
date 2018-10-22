@@ -10,7 +10,6 @@ export default api => {
      * PATCH/
      * name: string
      */
-    update: `${api}business/update/`,
     user: `${api}business/user/`
   };
 };
