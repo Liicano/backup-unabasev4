@@ -30,6 +30,9 @@ export default {
     setUser(state, payload) {
       state.user = payload;
     },
+    setUsers(state, payload) {
+      state.users = payload;
+    },
     access_error(state) {
       state.status = 'error';
     },
@@ -140,7 +143,21 @@ export default {
             reject(res);
           });
       });
-    }
+    },
+    getAllUsers({ commit }) {
+      return new Promise((resolve, reject) => {
+        axios
+          .get(api.user.main)
+          .then(res => {
+            console.log("USERS -> ",res.data)
+            commit('setUsers', res.data);
+            resolve(res.data);
+          })
+          .catch(err => {
+            reject(err);
+          });
+      });
+    },
   },
   getters: {
     getUsers: state => state.users,

@@ -8,18 +8,21 @@
         
         <!-- LINKS DE UNABASE -->
         <div class="container-fluid">
-           <!-- INCOME -->
-       <sidebar-item :link="{name: `${lg.modules.income}`, icon: 'monetization_on', path: '/incomes'}"></sidebar-item>
+           <!-- INICIO -->
+            <sidebar-item :link="{name: `${lg.modules.home}`, icon: 'home', path: '/dashboard'}"></sidebar-item>
+          <!-- INCOME -->
+            <sidebar-item :link="{name: `${lg.modules.income}`, icon: 'monetization_on', path: '/incomes'}"></sidebar-item>
+
 
         </div>
         <!-- ESPACIADO -->
         <br>
-        <md-divider></md-divider>
+        <md-divider style="color:white"></md-divider>
         <br>
 
         <!-- MENU DE HERRAMIENTAS -->
        <div class="container-fluid">
-          <tools-menu></tools-menu>
+           <tools-menu></tools-menu>
        </div>
 
       </template>
@@ -27,17 +30,13 @@
     </side-bar>
     <div class="main-panel">
       <top-navbar></top-navbar>
-      <br>
-      <div id="main_panel" class="container-fluid" :class="{content: !$route.meta.hideContent}" @click="toggleSidebar">
+
+      <div :class="{content: !$route.meta.hideContent}" @click="toggleSidebar">
         <zoom-center-transition :duration="200" mode="out-in">
           <!-- your content here -->
           <router-view></router-view>
         </zoom-center-transition>
-          
       </div>
-
-     
-      <!-- <content-footer v-if="!$route.meta.hideFooter"></content-footer> -->
     </div>
      
   </div>
@@ -106,6 +105,18 @@ export default {
 };
 </script>
 <style lang="scss">
+@media (max-width: 992px) {
+  .espaceMobile{
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .espaceDesktop{
+    display: none;
+  }
+}
+
 $scaleSize: 0.95;
 @keyframes zoomIn95 {
   from {
