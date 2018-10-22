@@ -3,7 +3,7 @@
     md-elevation="0"
     class="md-success md-dense"
     :class="{'md-toolbar-absolute md-fixed-top': $route.meta.navbarAbsolute}">
-    <div class="md-toolbar-row">
+    <div class="md-toolbar-row" v-if="getIncomes.docs">
       <div class="md-toolbar-section-start md-small">
           <router-link :to="{path:'user/profile'}" tag="a" class="brand-logo">
            <md-avatar class="avatarMobile">
@@ -15,8 +15,8 @@
             <!-- <md-icon>menu</md-icon> -->
           </md-button>
           </div>
-          
-          <md-autocomplete v-model="selectedMovement._id" :md-options="getIncomes.docs" md-layout="box" v-if="getIncomes.docs">
+                          
+          <md-autocomplete v-model="selectedMovement._id" :md-options="getIncomes.docs" md-layout="box">
           <label>Buscar...</label>
 
           <template slot="md-autocomplete-item" slot-scope="{ item, term }">
@@ -99,6 +99,9 @@ export default {
       user: 'users/user',
       getIncomes: 'incomes/getIncomes'
     })
+  },
+  created(){
+    this.getAllIncomes();
   }
 };
 </script>

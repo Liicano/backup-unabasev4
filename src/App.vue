@@ -64,6 +64,18 @@
   pointer-events: none;
   z-index: 6;
 }
+.md-menu-content{
+  z-index: 100;
+}
+
+.md-big-hide{
+   display:none;
+}
+@media (max-width: 618px) {
+ .md-big-hide{
+   display: block;
+}
+}
 </style>
 
 <script>

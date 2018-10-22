@@ -52,14 +52,13 @@ export default api => {
      *         expiration: Date
      *       },
      *      client: ObjectId, ref: User
-     *      client: ObjectId, ref: User
      *      state: string,
      *      total: {
      *        net: Number,
      *        tax: Number
      *      },
      *      currency: ObjectId, ref: currency
-     *      item: [
+     *      lines: [
      *         {
      *           name: string,
      *           price: number,

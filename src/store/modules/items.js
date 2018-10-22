@@ -4,27 +4,27 @@ import api from '../../config/api';
 export default {
   namespaced: true,
   state: {
-    incomes: Array(),
-    income:  {}
+    items: Array(),
+    item:  {}
   },
   mutations: {
-   setIncomes(state, payload) {
-      state.incomes = payload;
+   setItems(state, payload) {
+      state.items = payload;
     },
-   setIncome(state, payload) {
-      state.income = payload;
+   setItem(state, payload) {
+      state.item = payload;
     }
    
   },
   actions: {
     
-    getAllIncomes({ commit }, payload) {
+    getAllItems({ commit }, payload) {
       return new Promise((resolve, reject) => {
         axios
-          .get(api.movement.main)
+          .get(api.item.main)
           .then(data => {
-            console.log('INCOMES -> ',data.data);
-            commit('setIncomes', data.data);
+            console.log('ITEMS -> ',data.data);
+            commit('setItems', data.data);
             resolve(payload);
           })
           .catch(err => {
@@ -35,13 +35,13 @@ export default {
     },
 
 
-    getIncome({ commit }, payload) {
+    getItem({ commit }, payload) {
       return new Promise((resolve, reject) => {
         axios
-          .get(api.movement.main + payload)
+          .get(api.item.main + payload)
           .then(data => {
-            console.log('INCOME -> ',data.data);
-            commit('setIncome', data.data);
+            console.log('ITEM -> ',data.data);
+            commit('setItem', data.data);
             resolve(payload);
           })
           .catch(err => {
@@ -53,7 +53,7 @@ export default {
   
   },
   getters: {
-    getIncomes: state => state.incomes,
-    getIncome: state => state.income,
+    getItems: state => state.items,
+    getItem: state => state.item,
   }
 };
