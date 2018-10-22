@@ -7,7 +7,7 @@ export default api => {
      */
     main: `${api}taxs/`,
     /**
-     * PATCH/
+     * PUT/
      * name: string
      */
     update: `${api}taxs/update`

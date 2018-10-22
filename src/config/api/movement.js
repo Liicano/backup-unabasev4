@@ -12,10 +12,6 @@ export default api => {
      *       _id: ObjectId,
      *       name: String
      *      },
-     *      client: {
-     *       _id: ObjectId,
-     *       name: String
-     *      },
      *      state: string,
      *      total: {
      *        net: Number,
@@ -29,7 +25,7 @@ export default api => {
      *        suffix: String,
      *        precision: Number
      *      },
-     *      item: [
+     *      lines: [
      *         {
      *           name: string,
      *           price: number,
@@ -52,14 +48,14 @@ export default api => {
      *         expiration: Date
      *       },
      *      client: ObjectId, ref: User
-     *      client: ObjectId, ref: User
+     *      responsable: ObjectId, ref: User
      *      state: string,
      *      total: {
      *        net: Number,
      *        tax: Number
      *      },
      *      currency: ObjectId, ref: currency
-     *      item: [
+     *      lines: [
      *         {
      *           name: string,
      *           price: number,
@@ -79,14 +75,14 @@ export default api => {
      *         expiration: Date
      *       },
      *      client: ObjectId, ref: User
-     *      client: ObjectId, ref: User
+     *      responsable: ObjectId, ref: User
      *      state: string,
      *      total: {
      *        net: Number,
      *        tax: Number
      *      },
      *      currency: ObjectId, ref: currency
-     *      item: [
+     *      lines: [
      *         {
      *           name: string,
      *           price: number,
