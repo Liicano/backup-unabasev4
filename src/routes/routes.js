@@ -294,17 +294,45 @@ const routes = [
       {
         path: 'income/:id',
         name: 'Income',
-        components: { default: Income }
+        components: { default: Income },
+        meta:{
+          navOptions: [
+           {
+              icon: 'share',
+              function: 'shareInvoice',
+              isLink: false
+           },
+           {
+            icon: 'delete',
+            function: null,
+            isLink: false
+         },
+           
+          ]
+        }
       },
       {
         path: 'income',
         name: 'Income',
-        components: { default: Income }
+        components: { default: Income },
       },
       {
         path: 'incomes',
         name: 'Incomes',
-        components: { default: Incomes }
+        components: { default: Incomes },
+        meta:{
+          navOptions: [
+           {
+              icon: 'add',
+              function: null,
+              isLink:{
+                route: '/income'
+              },
+           },
+           
+          ]
+        }
+        
       },
       {
         path: 'user/profile',
