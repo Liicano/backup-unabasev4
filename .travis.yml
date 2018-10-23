@@ -1,11 +1,9 @@
 language: node_js
 node_js:
- - 7
+  - 'node'
 script:
- - echo “Deploy!!”
-install:
- - npm install -g firebase-tools
-after_success:
- - firebase deploy -P unabase1 --token 1/J41_qUfTBhIklBdzORcqtov5iqR6aE3SXHfJ88fDVIY
-
-
+  -
+deploy:
+  provider: firebase
+  token:
+    secure: '1/J41_qUfTBhIklBdzORcqtov5iqR6aE3SXHfJ88fDVIY'
