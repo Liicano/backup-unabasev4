@@ -7,9 +7,10 @@ export default api => {
      */
     main: `${api}taxs/`,
     /**
-     * PUT/
-     * name: string
+     *   GET/
+     *   Query  [  query: String ]
+     *
      */
-    update: `${api}taxs/update`
+    find: `${api}taxs/find`
   };
 };
