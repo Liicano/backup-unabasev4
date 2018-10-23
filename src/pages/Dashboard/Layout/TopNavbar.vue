@@ -50,22 +50,27 @@
     </md-autocomplete>
       
        <div class="md-toolbar-section-end">
-          <md-button class="md-just-icon md-round md-simple md-white">
-            <!-- <md-icon>refresh</md-icon> -->
-          </md-button>
 
-          <router-link :to="{path:'/income'}">
-           <md-button class="md-just-icon md-round md-simple md-white">
-            <md-icon>add</md-icon>
-          </md-button>
-          </router-link>
+          <span v-if="navOptions"  v-for="nav in navOptions" :key="nav._id">
+              
+              <router-link :to="{path: nav.isLink.route}" v-if="nav.isLink">
+                <md-button class="md-just-icon md-round md-simple md-white">
+                  <md-icon>{{nav.icon}}</md-icon>
+                </md-button>
+              </router-link>
+
+              <span v-else>
+                <md-button class="md-just-icon md-round md-simple md-white" @click="call(nav.function)">
+                  <md-icon>{{nav.icon}}</md-icon>
+                </md-button>
+              </span>
+
+
+          </span>
+        
         </div>
     </div>
-
   </md-toolbar>
-
-
-
 
   
 </template>
@@ -74,14 +79,26 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 
-
 export default {
   data() {
     return {
-      selectedMovement: []
+      onDesktop: this.$route.meta.bigScreen,
+      selectedMovement: [],
+      navOptions: []
     };
   },
   methods: {
+    call(funct){
+      this[funct]();
+    },
+
+    newInvoice() {
+      this.$store.dispatch('incomes/createInvoice', this.getIncome);
+    },
+    shareInvoice(){
+      this.$store.dispatch('incomes/shareIncome', this.getIncome);
+    },
+
     toggleSidebar() {
       this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
     },
@@ -90,18 +107,28 @@ export default {
         this.$sidebar.toggleMinimize();
       }
     },
-       ...mapActions({
-         getAllIncomes: 'incomes/getAllIncomes'
+    ...mapActions({
+      getAllIncomes: 'incomes/getAllIncomes',
     })
   },
-   computed: {
+  computed: {
     ...mapGetters({
       user: 'users/user',
-      getIncomes: 'incomes/getIncomes'
+      getIncomes: 'incomes/getIncomes',
+      getIncome: 'incomes/getIncome'
     })
   },
-  created(){
+  created() {
+   this.navOptions = this.$route.meta.navOptions;
     this.getAllIncomes();
+  },
+  mounted() {
+   this.navOptions = this.$route.meta.navOptions;
+  },
+  watch: {
+    $route: function(){
+      this.navOptions = this.$route.meta.navOptions;
+    }
   }
 };
 </script>
@@ -120,7 +147,10 @@ export default {
   display: none;
 }
 @media (min-width: 992px) {
-  .avatarMobile{
+  .avatarMobile {
+    display: none;
+  }
+  .smallScreen-button{
     display: none;
   }
 }
@@ -140,8 +170,8 @@ textarea:focus {
   border-bottom: none !important;
   box-shadow: none !important;
 }
-.topNavbar{
-   overflow: hidden;
+.topNavbar {
+  overflow: hidden;
   position: fixed;
   top: 0;
   width: 100%;

@@ -5,12 +5,13 @@ Vue.use(Vuex);
 import users from "./modules/users";
 import incomes from "./modules/incomes";
 import items from "./modules/items";
-import tax from "./modules/tax";
-
+import tax from "./modules/taxes";
 
 export default new Vuex.Store({
   strict: true,
-  state: {},
+  state: {
+    nav: []
+  },
   modules: {
     users,
     incomes,

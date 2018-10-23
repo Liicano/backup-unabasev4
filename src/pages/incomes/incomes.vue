@@ -42,7 +42,7 @@
       <p>{{(income.client == null)? 'null client' : income.client.name}}<br>
         {{income.createdAt | shortDate}}
       </p>
-      <a style="text-decoration: none; color:black;" class="secondary-content valign-wrapper"><h4>{{ (income.total == null)?'null total':income.total.net | currency}}</h4></a>
+      <a style="text-decoration: none; color:black;" class="secondary-content valign-wrapper"><h4>{{ (income.total == null)?'null total':income.total.tax | currency}}</h4></a>
     
     </router-link>
     </li>
