@@ -372,7 +372,7 @@ import { Tabs } from '@/components';
 import { Collapse, PricingCard } from '@/components';
 import swal from 'sweetalert2';
 import { Modal } from '@/components';
-// import invoice from '../../assets/js/invoice.js';
+import invoice from '../../assets/js/invoice.js';
 
 export default {
   data() {

@@ -6,13 +6,13 @@ export default {
   namespaced: true,
   state: {
     incomes: Array(),
-    income:  {}
+    income: {}
   },
   mutations: {
-   setIncomes(state, payload) {
+    setIncomes(state, payload) {
       state.incomes = payload;
     },
-   setIncome(state, payload) {
+    setIncome(state, payload) {
       state.income = payload;
     },
     generateInvoice(state, payload) {
@@ -25,7 +25,6 @@ export default {
         console.log("NO HAY PAYLOAD!");
       }
     }
-   
   },
   actions: {
     
@@ -37,7 +36,7 @@ export default {
         axios
           .get(api.movement.main)
           .then(data => {
-            console.log('INCOMES -> ',data.data);
+            console.log('INCOMES -> ', data.data);
             commit('setIncomes', data.data);
             resolve(payload);
           })
@@ -48,13 +47,12 @@ export default {
       });
     },
 
-
     getIncome({ commit }, payload) {
       return new Promise((resolve, reject) => {
         axios
           .get(api.movement.main + payload)
           .then(data => {
-            console.log('INCOME -> ',data.data);
+            console.log('INCOME -> ', data.data);
             commit('setIncome', data.data);
             resolve(payload);
           })
@@ -95,6 +93,6 @@ export default {
   },
   getters: {
     getIncomes: state => state.incomes,
-    getIncome: state => state.income,
+    getIncome: state => state.income
   }
 };
