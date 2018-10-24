@@ -1,30 +1,5 @@
 <template>
   <div>
-         <!-- <router-link :to="{path:'/income'}">
-            <div class="fixed-action-btn" id="new_venta_btn_mobile" style="margin-bottom: 12% !important;">
-                <a class="btn-floating btn-large green">
-                  <i class="large material-icons">add</i>
-                </a>
-            </div>
-            </router-link> -->
-
-          <!-- <router-link :to="{path:'/income'}">
-            <div class="fixed-action-btn md-small-hide" id="new_venta_btn_desktop" style=" margin-bottom: 1% !important;">
-                <a class="btn-floating btn-large green">
-                  <i class="large material-icons">add</i>
-                </a>
-            </div>
-              </router-link>  -->
-
-<!-- TOOLBAR -->
-
-<div class="md-layout">
-  <div class="md-layout-item md-small-size-100 md-size-100">
-    <br class="md-hide-big">
-   
-  </div>
-</div>
-
 
 <!-- LISTA -->
 
@@ -32,7 +7,7 @@
 <div class="md-layout-item md-size-100 md-xsmall-size-100">
 
 <ul class="collection" style="border-radius: 15px; padding: 0;">
-    <li class="collection-item avatar" v-for="income in getIncomes.docs" :key="income._id">
+    <li class="collection-item avatar" v-for="income in incomes.docs" :key="income._id">
     <router-link :to="{path:'/income/'+income._id}" style="color: black;">
 
        <i class="material-icons circle yellow darken-2" v-if="income.state == 'draft'">alarm</i>
@@ -52,15 +27,12 @@
 
 
 
-
-
-
   </div>
 </template>
 
 <script>
 // VUEX
-import { mapGetters, mapActions } from 'vuex';
+import {mapActions, mapGetters } from 'vuex';
 
 export default {    
   components: {
@@ -71,7 +43,6 @@ export default {
     return {
       checkbox1: null,
       incomes: [],
-      isMobileLocal: false,
       value: null,
       
     };
@@ -82,16 +53,19 @@ export default {
          getAllIncomes: 'incomes/getAllIncomes'
     })
   },
+  computed:{
+    ...mapGetters({
+      getUser: 'users/user'
+    })
+  },
   
   created(){
-     this.getAllIncomes();
-    //  this.isMobileLocal = isMobile;
-  },
-  computed:{
-     ...mapGetters({
-       getIncomes: 'incomes/getIncomes'
+     this.getAllIncomes( `responsable=${this.getUser._id}&isActive=true` ).then(res => {
+        this.incomes = res;
      })
   },
+ 
+
   
 };
 </script>

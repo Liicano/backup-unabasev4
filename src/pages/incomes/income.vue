@@ -9,8 +9,6 @@
         </div>
         </span>
 
-
-
   <form>
   <div class="md-layout">
       <div class="md-layout-item md-small-size-100 md-medium-size-60 md-small-size-60 md-size-60">
@@ -367,7 +365,6 @@
 <script>
 // VUEX
 import { mapGetters, mapActions } from 'vuex';
-
 import { Tabs } from '@/components';
 import { Collapse, PricingCard } from '@/components';
 import swal from 'sweetalert2';
@@ -481,21 +478,7 @@ export default {
 
   },
 
-  created(){
-    
-     if(this.$route.params.id){
-       this.getCurrentIncome(this.$route.params.id);
-       this.incomeObject = this.getIncome;
-       this.value = this.incomeObject.client.name;
-     }
-     this.getAllItems();
-     this.getAllUsers();
-     this.getAllTaxes();
-     this.incomeObject.responsable = this.user._id;
-  },
- 
-
-   computed:{
+  computed:{
      ...mapGetters({
        getIncome: 'incomes/getIncome',
        getUsers: 'users/getUsers',
@@ -504,6 +487,21 @@ export default {
        user: 'users/user',
      })
   },
+  
+  created(){
+    
+     if(this.$route.params.id){
+       this.getCurrentIncome(this.$route.params.id).then( res => {
+          this.incomeObject = res;
+          this.value = this.incomeObject.client.name;
+       })
+     }
+     this.getAllItems();
+     this.getAllUsers();
+     this.getAllTaxes();
+     this.incomeObject.responsable = this.user._id;
+  },
+ 
   
 };
 </script>

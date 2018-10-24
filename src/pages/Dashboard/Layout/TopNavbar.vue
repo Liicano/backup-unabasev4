@@ -65,27 +65,29 @@
                 </md-button>
               </span>
 
-
           </span>
         
         </div>
     </div>
   </md-toolbar>
 
-  
 </template>
 
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import swal from 'sweetalert2';
 
 export default {
   data() {
     return {
-      onDesktop: this.$route.meta.bigScreen,
       selectedMovement: [],
       navOptions: []
     };
+  },
+
+  components:{
+    swal
   },
   methods: {
     call(funct){
@@ -97,6 +99,27 @@ export default {
     },
     shareInvoice(){
       this.$store.dispatch('incomes/shareIncome', this.getIncome);
+    },
+    deleteIncome(){
+      this.$store.dispatch('incomes/anulateIncome', this.getIncome).then(res => {
+        
+           if(res == true){
+             swal({
+              title: '¡Venta anulada con exito!',
+              text:'',
+              type: 'success',
+              showCancelButton: false,
+                  confirmButtonText: 'OK',
+                  confirmButtonClass: 'md-button md-success',
+                  buttonsStyling: false
+                }).then((result) => {
+                  if (result.value) {
+                    this.$router.push('/incomes');
+                  }
+              })
+           }
+          
+      })
     },
 
     toggleSidebar() {

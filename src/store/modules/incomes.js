@@ -1,6 +1,6 @@
 import axios from 'axios';
 import api from '../../config/api';
-import invoice from '../../assets/js/invoice'
+import invoice_generator from '../../assets/js/invoice'
 
 export default {
   namespaced: true,
@@ -9,36 +9,43 @@ export default {
     income: {}
   },
   mutations: {
-    setIncomes(state, payload) {
+    SET_INCOMES(state, payload) {
       state.incomes = payload;
     },
-    setIncome(state, payload) {
+    SET_INCOME(state, payload) {
       state.income = payload;
     },
-    generateInvoice(state, payload) {
-      invoice(payload);
+    INVOICE(payload) {
+      invoice_generator(payload);
     },
-    share(state, payload){
+     ANULATE(state){
+       state.income.isActive = false;
+     },
+     CLEAN(state){
+      state.income = {}
+     },
+    SHARE(state, payload){
       if(payload.name){
-        console.log("compartiendo invoice !!", payload)
+        console.log("SHARE!")
       }else{
-        console.log("NO HAY PAYLOAD!");
+        console.log("¡NO PAYLOAD!");
       }
     }
   },
   actions: {
     
     createInvoice({ commit }, payload) {
-      commit("generateInvoice", payload)
+      commit("INVOICE", payload)
     },
     getAllIncomes({ commit }, payload) {
+      console.log("payload -> ",payload)
       return new Promise((resolve, reject) => {
         axios
-          .get(api.movement.main)
+          .get(api.movement.main + '?' + payload)
           .then(data => {
             console.log('INCOMES -> ', data.data);
-            commit('setIncomes', data.data);
-            resolve(payload);
+            commit('SET_INCOMES', data.data);
+            resolve(data.data);
           })
           .catch(err => {
             console.log(err);
@@ -53,8 +60,8 @@ export default {
           .get(api.movement.main + payload)
           .then(data => {
             console.log('INCOME -> ', data.data);
-            commit('setIncome', data.data);
-            resolve(payload);
+            commit('SET_INCOME', data.data);
+            resolve(data.data);
           })
           .catch(err => {
             console.log(err);
@@ -65,7 +72,7 @@ export default {
 
     postIncome({ commit }, payload) {
       return new Promise((resolve, reject) => {
-        commit('setIncome', payload)
+        commit('SET_INCOME', payload)
          axios
            .post(api.movement.main, payload) 
            .then(data => {
@@ -81,10 +88,26 @@ export default {
            });
       });
     },
+
+    anulateIncome({ commit }, payload) {
+      return new Promise((resolve, reject) => {
+           commit('ANULATE', payload);
+           axios
+             .put(api.movement.main + payload._id, payload) 
+             .then(data => {
+              commit('CLEAN');
+              resolve(true);
+             })
+             .catch(err => {
+               console.log("ERROR -> ",err);
+               reject(err, err.response);
+             });
+      });
+    },
     
     shareIncome({ commit }, payload) {
       return new Promise((resolve) => {
-        commit('share', payload);
+        commit('SHARE', payload);
         resolve(payload);
       });
 

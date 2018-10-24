@@ -25,7 +25,7 @@ export default {
           .then(data => {
             console.log('ITEMS -> ',data.data);
             commit('setItems', data.data);
-            resolve(payload);
+            resolve(data.data);
           })
           .catch(err => {
             console.log(err);
@@ -42,7 +42,7 @@ export default {
           .then(data => {
             console.log('ITEM -> ',data.data);
             commit('setItem', data.data);
-            resolve(payload);
+            resolve(data.data);
           })
           .catch(err => {
             console.log(err);
