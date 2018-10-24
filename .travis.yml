@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - '8'
+deploy:
+  skip_cleanup: true
 script:
   - vue-cli-service build --dest public
 deploy:
