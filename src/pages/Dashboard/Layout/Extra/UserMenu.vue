@@ -4,7 +4,7 @@
       <img :src="user.google.imgUrl" alt="avatar"/>
     </div>
     <div class="photo" v-else>
-      <img src="../../../../../static/img/profile.png" alt="avatar"/>
+      <img src="../../../../../public/img/profile.png" alt="avatar"/>
     </div>
     <div class="user-info">
       <a data-toggle="collapse" :aria-expanded="!isClosed" @click.stop="toggleMenu" @click.capture="clicked">
