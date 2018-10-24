@@ -17,15 +17,15 @@
 </template>
 <script>
 export default {
-  name: "user-card",
+  name: 'user-card',
   props: {
     cardUserImage: {
       type: String,
-      default: "../../../../../public/img/faces/marc.jpg"
+      default: '../../../../../public/img/faces/marc.jpg'
     },
     buttonColor: {
       type: String,
-      default: ""
+      default: ''
     }
   },
   data() {
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     getColorButton: function(buttonColor) {
-      return "md-" + buttonColor + "";
+      return 'md-' + buttonColor + '';
     }
   }
 };

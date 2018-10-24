@@ -90,8 +90,8 @@ export default {
     logout() {
       this.$store
         .dispatch('users/logout')
-       
-        .then(res => {         
+
+        .then(res => {
           this.$router.push('/');
           console.log(res);
         })
