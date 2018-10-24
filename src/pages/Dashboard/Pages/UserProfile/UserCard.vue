@@ -1,7 +1,7 @@
 <template>
   <md-card class="md-card-profile">
     <div class="md-card-avatar">
-       <img class="img" src="../../../../../public/img/faces/marc.jpg">
+       <img class="img" src="../../../../../static/img/faces/marc.jpg">
        <h1>2</h1>
     </div>
 
@@ -17,15 +17,15 @@
 </template>
 <script>
 export default {
-  name: "user-card",
+  name: 'user-card',
   props: {
     cardUserImage: {
       type: String,
-      default: "../../../../../public/img/faces/marc.jpg"
+      default: '../../../../../static/img/faces/marc.jpg'
     },
     buttonColor: {
       type: String,
-      default: ""
+      default: ''
     }
   },
   data() {
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     getColorButton: function(buttonColor) {
-      return "md-" + buttonColor + "";
+      return 'md-' + buttonColor + '';
     }
   }
 };
