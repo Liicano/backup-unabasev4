@@ -25,22 +25,28 @@
             </md-button> -->
             <h4 class="mt-3">{{ lg.user.classic }}</h4>
           </div>
-          <md-field class="md-form-group" >
+          <!-- <md-field class="md-form-group" >
             <md-icon>face</md-icon>
-            <!-- <label>{{lg.user.name}}</label> -->
             <md-input v-model="name" type="email" :placeholder="lg.user.name"></md-input>
           </md-field>
           
           <md-field class="md-form-group" >
             <md-icon>edit</md-icon>
-            <!-- <label>{{lg.user.username}}</label> -->
             <md-input v-model="username" type="text" :placeholder="lg.user.username"></md-input>
-          </md-field>
+          </md-field> -->
+
+
           <md-field class="md-form-group" >
             <md-icon>email</md-icon>
-            <!-- <label>{{lg.user.email}}</label> -->
             <md-input v-model="email" type="email" :placeholder="lg.user.email"></md-input>
           </md-field>
+
+
+          <md-field class="md-form-group" >
+            <md-icon>lock</md-icon>
+            <md-input v-model="password" type="password" :placeholder="lg.user.password"></md-input>
+          </md-field>
+
           <md-checkbox v-model="boolean">{{ lg.base.term1 }} <a to='/terms'>{{ lg.base.term2 }}</a>.</md-checkbox>
           <div class="button-container">
             <md-button href class="md-success md-round mt-4" slot="footer" to='/login' >{{lg.user.login}}</md-button>
@@ -113,12 +119,39 @@ export default {
   methods: {
     register() {
       if (this.boolean) {
-        let { email, name, username } = this;
-        this.$store.dispatch('users/register', { email, name, username });
+        let { email, name, username, password } = this;
+        this.$store
+          .dispatch('users/register', {
+            email,
+            name,
+            username,
+            password
+          })
+          .then(r => {
+            this.$router.push('/');
+          })
+          .catch(err => {
+            //err.status  & err.statusText
+            let type = new Map();
+            type.set(403, 'warning');
+            type.set(404, 'danger');
+            type.set(401, 'info');
+            this.$notify({
+              message: err.statusText,
+              icon: 'add_alert',
+              horizontalAlign: 'right',
+              verticalAlign: 'top',
+              // type: this.type[color]
+              type: type.get(err.status)
+            });
+          });
       }
     }
   }
 };
 </script>
-<style>
+<style scoped>
+.u-icon-container {
+  padding: 8px;
+}
 </style>

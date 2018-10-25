@@ -321,9 +321,8 @@ import {
   GlobalSalesTable
 } from '@/components';
 // import axios from "axios";
-import axios from 'axios';
-
-axios.defaults.withCredentials = true;
+// import axios from 'axios';
+// import api from '../../config/api';
 export default {
   components: {
     StatsCard,

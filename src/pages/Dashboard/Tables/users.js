@@ -14,8 +14,8 @@ export default [
     items: [
       {
         nombre: "telefono LG K10",
-        categoria: "tecnologia",
-        monto: "200000"
+        cantidad: 2,
+        precio: 32000
       }
     ],
     moneda: "CLP",
@@ -23,7 +23,9 @@ export default [
     asunto: "Venta de mi telefono",
     descripcion:
       "Vendi mi telefono porque me iba a comprar otro mejor, borrador.",
-    monto_total: "150000"
+    monto_total: "150000",
+    status: 'pendiente'
+
   },
 
   {
@@ -50,7 +52,9 @@ export default [
     asunto: "Renovacion de mi televisor",
     descripcion:
       "Vendi mi televisor porque me iba a comprar otro mejor, borrador.",
-    monto_total: "300000"
+    monto_total: "300000",
+    status: 'pendiente'
+
   },
   {
     id: 3,
@@ -75,7 +79,9 @@ export default [
     fecha: "03/09/2018",
     asunto: "Notebook",
     descripcion: "Notebook",
-    monto_total: "300000"
+    monto_total: "300000",
+    status: 'pendiente'
+
   },
   {
     id: 4,
@@ -100,7 +106,36 @@ export default [
     fecha: "03/09/2018",
     asunto: "Mesa de jardin",
     descripcion: "Mesa",
-    monto_total: "300000"
+    monto_total: "300000",
+    status: 'pendiente'
+
+  },
+  {
+    id: 5,
+    receptor: {
+      nombre: "Jose",
+      apellido: "Rodriguez",
+      rut: "255450-9",
+      direccion: "independencia, inglaterra 1144"
+    },
+    ubicacion: {
+      lat: "-33.3333",
+      lng: "-72.57939"
+    },
+    items: [
+      {
+        nombre: "Servicio de limpieza",
+        categoria: "tecnologia",
+        monto: "95000",
+        status: 'pendiente'
+      }
+    ],
+    moneda: "CLP",
+    fecha: "03/09/2018",
+    asunto: "Servicio de limpieza",
+    descripcion: "Limpie la casa",
+    monto_total: "570000",
+    status: 'vendido'
   },
   {
     id: 5,
@@ -125,7 +160,8 @@ export default [
     fecha: "03/09/2018",
     asunto: "Servicio de limpieza",
     descripcion: "Limpie la casa",
-    monto_total: "570000"
+    monto_total: "570000",
+    status: 'vendido'
   },
   {
     id: 5,
@@ -150,7 +186,8 @@ export default [
     fecha: "03/09/2018",
     asunto: "Servicio de limpieza",
     descripcion: "Limpie la casa",
-    monto_total: "570000"
+    monto_total: "570000",
+    status: 'vendido'
   },
   {
     id: 5,
@@ -175,7 +212,8 @@ export default [
     fecha: "03/09/2018",
     asunto: "Servicio de limpieza",
     descripcion: "Limpie la casa",
-    monto_total: "570000"
+    monto_total: "570000",
+    status: 'vendido'
   },
   {
     id: 5,
@@ -200,7 +238,8 @@ export default [
     fecha: "03/09/2018",
     asunto: "Servicio de limpieza",
     descripcion: "Limpie la casa",
-    monto_total: "570000"
+    monto_total: "570000",
+    status: 'vendido'
   },
   {
     id: 5,
@@ -225,7 +264,8 @@ export default [
     fecha: "03/09/2018",
     asunto: "Servicio de limpieza",
     descripcion: "Limpie la casa",
-    monto_total: "570000"
+    monto_total: "570000",
+    status: 'vendido'
   },
   {
     id: 5,
@@ -250,7 +290,8 @@ export default [
     fecha: "03/09/2018",
     asunto: "Servicio de limpieza",
     descripcion: "Limpie la casa",
-    monto_total: "570000"
+    monto_total: "570000",
+    status: 'vendido'
   },
   {
     id: 5,
@@ -275,6 +316,319 @@ export default [
     fecha: "03/09/2018",
     asunto: "Servicio de limpieza",
     descripcion: "Limpie la casa",
-    monto_total: "570000"
+    monto_total: "570000",
+    status: 'vendido'
+  },
+  {
+    id: 5,
+    receptor: {
+      nombre: "Jose",
+      apellido: "Rodriguez",
+      rut: "255450-9",
+      direccion: "independencia, inglaterra 1144"
+    },
+    ubicacion: {
+      lat: "-33.3333",
+      lng: "-72.57939"
+    },
+    items: [
+      {
+        nombre: "Servicio de limpieza",
+        categoria: "tecnologia",
+        monto: "95000"
+      }
+    ],
+    moneda: "CLP",
+    fecha: "03/09/2018",
+    asunto: "Servicio de limpieza",
+    descripcion: "Limpie la casa",
+    monto_total: "570000",
+    status: 'vendido'
+  },
+  {
+    id: 5,
+    receptor: {
+      nombre: "Jose",
+      apellido: "Rodriguez",
+      rut: "255450-9",
+      direccion: "independencia, inglaterra 1144"
+    },
+    ubicacion: {
+      lat: "-33.3333",
+      lng: "-72.57939"
+    },
+    items: [
+      {
+        nombre: "Servicio de limpieza",
+        categoria: "tecnologia",
+        monto: "95000"
+      }
+    ],
+    moneda: "CLP",
+    fecha: "03/09/2018",
+    asunto: "Servicio de limpieza",
+    descripcion: "Limpie la casa",
+    monto_total: "570000",
+    status: 'vendido'
+  },
+  {
+    id: 5,
+    receptor: {
+      nombre: "Jose",
+      apellido: "Rodriguez",
+      rut: "255450-9",
+      direccion: "independencia, inglaterra 1144"
+    },
+    ubicacion: {
+      lat: "-33.3333",
+      lng: "-72.57939"
+    },
+    items: [
+      {
+        nombre: "Servicio de limpieza",
+        categoria: "tecnologia",
+        monto: "95000"
+      }
+    ],
+    moneda: "CLP",
+    fecha: "03/09/2018",
+    asunto: "Servicio de limpieza",
+    descripcion: "Limpie la casa",
+    monto_total: "570000",
+    status: 'vendido'
+  },
+  {
+    id: 5,
+    receptor: {
+      nombre: "Jose",
+      apellido: "Rodriguez",
+      rut: "255450-9",
+      direccion: "independencia, inglaterra 1144"
+    },
+    ubicacion: {
+      lat: "-33.3333",
+      lng: "-72.57939"
+    },
+    items: [
+      {
+        nombre: "Servicio de limpieza",
+        categoria: "tecnologia",
+        monto: "95000"
+      }
+    ],
+    moneda: "CLP",
+    fecha: "03/09/2018",
+    asunto: "Servicio de limpieza",
+    descripcion: "Limpie la casa",
+    monto_total: "570000",
+    status: 'vendido'
+  },
+  {
+    id: 5,
+    receptor: {
+      nombre: "Jose",
+      apellido: "Rodriguez",
+      rut: "255450-9",
+      direccion: "independencia, inglaterra 1144"
+    },
+    ubicacion: {
+      lat: "-33.3333",
+      lng: "-72.57939"
+    },
+    items: [
+      {
+        nombre: "Servicio de limpieza",
+        categoria: "tecnologia",
+        monto: "95000"
+      }
+    ],
+    moneda: "CLP",
+    fecha: "03/09/2018",
+    asunto: "Servicio de limpieza",
+    descripcion: "Limpie la casa",
+    monto_total: "570000",
+    status: 'vendido'
+  },
+  {
+    id: 5,
+    receptor: {
+      nombre: "Jose",
+      apellido: "Rodriguez",
+      rut: "255450-9",
+      direccion: "independencia, inglaterra 1144"
+    },
+    ubicacion: {
+      lat: "-33.3333",
+      lng: "-72.57939"
+    },
+    items: [
+      {
+        nombre: "Servicio de limpieza",
+        categoria: "tecnologia",
+        monto: "95000"
+      }
+    ],
+    moneda: "CLP",
+    fecha: "03/09/2018",
+    asunto: "Servicio de limpieza",
+    descripcion: "Limpie la casa",
+    monto_total: "570000",
+    status: 'vendido'
+  },
+  {
+    id: 5,
+    receptor: {
+      nombre: "Jose",
+      apellido: "Rodriguez",
+      rut: "255450-9",
+      direccion: "independencia, inglaterra 1144"
+    },
+    ubicacion: {
+      lat: "-33.3333",
+      lng: "-72.57939"
+    },
+    items: [
+      {
+        nombre: "Servicio de limpieza",
+        categoria: "tecnologia",
+        monto: "95000"
+      }
+    ],
+    moneda: "CLP",
+    fecha: "03/09/2018",
+    asunto: "Servicio de limpieza",
+    descripcion: "Limpie la casa",
+    monto_total: "570000",
+    status: 'vendido'
+  },
+  {
+    id: 5,
+    receptor: {
+      nombre: "Jose",
+      apellido: "Rodriguez",
+      rut: "255450-9",
+      direccion: "independencia, inglaterra 1144"
+    },
+    ubicacion: {
+      lat: "-33.3333",
+      lng: "-72.57939"
+    },
+    items: [
+      {
+        nombre: "Servicio de limpieza",
+        categoria: "tecnologia",
+        monto: "95000"
+      }
+    ],
+    moneda: "CLP",
+    fecha: "03/09/2018",
+    asunto: "Servicio de limpieza",
+    descripcion: "Limpie la casa",
+    monto_total: "570000",
+    status: 'vendido'
+  },
+  {
+    id: 5,
+    receptor: {
+      nombre: "Jose",
+      apellido: "Rodriguez",
+      rut: "255450-9",
+      direccion: "independencia, inglaterra 1144"
+    },
+    ubicacion: {
+      lat: "-33.3333",
+      lng: "-72.57939"
+    },
+    items: [
+      {
+        nombre: "Servicio de limpieza",
+        categoria: "tecnologia",
+        monto: "95000"
+      }
+    ],
+    moneda: "CLP",
+    fecha: "03/09/2018",
+    asunto: "Servicio de limpieza",
+    descripcion: "Limpie la casa",
+    monto_total: "570000",
+    status: 'vendido'
+  },
+  {
+    id: 5,
+    receptor: {
+      nombre: "Jose",
+      apellido: "Rodriguez",
+      rut: "255450-9",
+      direccion: "independencia, inglaterra 1144"
+    },
+    ubicacion: {
+      lat: "-33.3333",
+      lng: "-72.57939"
+    },
+    items: [
+      {
+        nombre: "Servicio de limpieza",
+        categoria: "tecnologia",
+        monto: "95000"
+      }
+    ],
+    moneda: "CLP",
+    fecha: "03/09/2018",
+    asunto: "Servicio de limpieza",
+    descripcion: "Limpie la casa",
+    monto_total: "570000",
+    status: 'vendido'
+  },
+  {
+    id: 5,
+    receptor: {
+      nombre: "Jose",
+      apellido: "Rodriguez",
+      rut: "255450-9",
+      direccion: "independencia, inglaterra 1144"
+    },
+    ubicacion: {
+      lat: "-33.3333",
+      lng: "-72.57939"
+    },
+    items: [
+      {
+        nombre: "Servicio de limpieza",
+        categoria: "tecnologia",
+        monto: "95000"
+      }
+    ],
+    moneda: "CLP",
+    fecha: "03/09/2018",
+    asunto: "Servicio de limpieza",
+    descripcion: "Limpie la casa",
+    monto_total: "570000",
+    status: 'vendido'
+  },
+  {
+    id: 5,
+    receptor: {
+      nombre: "Jose",
+      apellido: "Rodriguez",
+      rut: "255450-9",
+      direccion: "independencia, inglaterra 1144"
+    },
+    ubicacion: {
+      lat: "-33.3333",
+      lng: "-72.57939"
+    },
+    items: [
+      {
+        nombre: "Servicio de limpieza",
+        categoria: "tecnologia",
+        monto: "95000"
+      }
+    ],
+    moneda: "CLP",
+    fecha: "03/09/2018",
+    asunto: "Servicio de limpieza",
+    descripcion: "Limpie la casa",
+    monto_total: "570000",
+    status: 'vendido'
   }
 ];

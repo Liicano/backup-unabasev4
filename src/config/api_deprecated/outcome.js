@@ -3,13 +3,13 @@ export default api => {
     /**
      *  GET/  get doc list params: [name(STRING), isActive(boolean)]
      *  GET/:id    get doc info
-     *  POST/  create income
+     *  POST/  create movement
      */
-    get: `${mainApi}outcomes/`,
+    get: `${api}outcomes/`,
     /**
      * PATCH/
      * name: string
      */
-    update: `${mainApi}outcomes/update`
+    update: `${api}outcomes/update`
   };
 };

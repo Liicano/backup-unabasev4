@@ -5,11 +5,12 @@ export default api => {
      * GET/:id    get doc info params [id(ObjectId)]
      * POST/  create item
      */
-    get: `${api}taxs/`,
+    main: `${api}taxs/`,
     /**
-     * PATCH/
-     * name: string
+     *   GET/
+     *   Query  [  query: String ]
+     *
      */
-    update: `${api}taxs/update`
+    find: `${api}taxs/find`
   };
 };

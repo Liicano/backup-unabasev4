@@ -58,6 +58,11 @@ import VueRouter from 'vue-router';
 const Income = () => import('@/pages/incomes/income.vue');
 const Incomes = () => import('@/pages/incomes/incomes.vue');
 
+// USUARIO
+  // PERFIL
+  const userProfile = () => import('@/pages/user/profile.vue');
+
+
 let componentsMenu = {
   path: '/components',
   component: DashboardLayout,
@@ -264,9 +269,9 @@ const routes = [
         path: 'dashboard',
         name: 'Dashboard',
         components: { default: Dashboard },
-        meta: {
-          requireAuth: true
-        }
+         meta: {
+           requireAuth: true
+         }
       },
       {
         path: 'calendar',
@@ -287,30 +292,54 @@ const routes = [
         components: { default: Widgets }
       },
       {
-        path: 'incomes/:id',
+        path: 'income/:id',
         name: 'Income',
-        components: { default: Income }
+        components: { default: Income },
+        meta:{
+          navOptions: [
+           {
+              icon: 'share',
+              function: 'shareInvoice',
+              isLink: false
+           },
+           {
+            icon: 'delete',
+            function: null,
+            isLink: false
+         },
+           
+          ]
+        }
       },
       {
         path: 'income',
         name: 'Income',
-        components: { default: Income }
+        components: { default: Income },
       },
       {
         path: 'incomes',
         name: 'Incomes',
-        components: { default: Incomes }
+        components: { default: Incomes },
+        meta:{
+          navOptions: [
+           {
+              icon: 'add',
+              function: null,
+              isLink:{
+                route: '/income'
+              },
+           },
+           
+          ]
+        }
+        
+      },
+      {
+        path: 'user/profile',
+        name: 'userProfile',
+        components: { default: userProfile }
       }
-      // {
-      //   path: "incomes/:id",
-      //   name: "Income",
-      //   components: { default: Income }
-      // },
-      // {
-      //   path: "incomes",
-      //   name: "Incomes",
-      //   components: { default: Incomes }
-      // }
+     
     ]
   }
 ];

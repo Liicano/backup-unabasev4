@@ -4,7 +4,7 @@
     @success="onSignInSuccess"
     @error="onSignInError">
     <i class="fab fa-google-plus-g"> </i>
-    <strong> {{ from }} {{ lg.user.googleLogin }}</strong>
+    <!-- <strong> {{ from }} {{ lg.user.googleLogin }}</strong> -->
   </g-signin-button>
 </template>
  
@@ -54,10 +54,17 @@ export default {
       // console.log(profile.getEmail());
       // console.log(googleUser.getAuthResponse().access_token);
 
+      const google = {
+        id: profile.getId(),
+        name: profile.getName(),
+        email: profile.getEmail(),
+        accessToken: access_token,
+        imgUrl: profile.getImageUrl()
+      };
       let router = this.$router;
       if (this.from === 'login') {
         this.$store
-          .dispatch('users/google', { token, access_token })
+          .dispatch('users/google', { token, access_token, google })
           // eslint-disable-next-line
           .then(data => {
             router.push('/');
@@ -68,13 +75,6 @@ export default {
             }
           });
       } else if (this.from === 'register') {
-        const googleUser = {
-          id: profile.getId(),
-          name: profile.getName(),
-          email: profile.getEmail(),
-          accessToken: access_token,
-          imgUrl: profile.getImageUrl()
-        };
         this.$store
           .dispatch('users/googleNew', { token, googleUser })
           // eslint-disable-next-line
