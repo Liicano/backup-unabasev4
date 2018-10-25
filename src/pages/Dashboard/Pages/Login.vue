@@ -59,11 +59,11 @@
 import { LoginCard } from '@/components';
 import { mapGetters } from 'vuex';
 import Vue from 'vue';
-import Notifications from '../../../components/NotificationPlugin';
+// import Notifications from '../../../components/NotificationPlugin';
 import api from '../../../config/api';
 import Gauth from '../../../components/Gauth';
 
-Vue.use(Notifications);
+// Vue.use(Notifications);
 // import axios from 'axios'
 export default {
   components: {
