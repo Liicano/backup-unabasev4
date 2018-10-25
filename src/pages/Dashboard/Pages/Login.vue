@@ -1,7 +1,6 @@
 <template>
   <div class="md-layout text-center">
 
-    <notifications></notifications>
     <div class="md-layout-item md-size-33 md-medium-size-50 md-small-size-70 md-xsmall-size-100">
       <login-card header-color="green">
         
