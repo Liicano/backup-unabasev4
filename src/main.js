@@ -30,12 +30,16 @@ const veeconfig = {
 };
 
 Vue.use(VeeValidate, veeconfig);
+import Notify from 'vue2-notify';
+
+// Use Notify
+Vue.use(Notify);
 
 // DATE FILTER TO TABLES AND LIST
 import moment from 'moment';
 Vue.filter('shortDate', function(value) {
   if (value) {
-    return moment(String(value)).format('DD/MM/YYYY')
+    return moment(String(value)).format('DD/MM/YYYY');
   }
 });
 
