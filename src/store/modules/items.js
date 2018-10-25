@@ -8,10 +8,10 @@ export default {
     item:  {}
   },
   mutations: {
-   setItems(state, payload) {
+   SET_ITEMS(state, payload) {
       state.items = payload;
     },
-   setItem(state, payload) {
+    SET_ITEM(state, payload) {
       state.item = payload;
     }
    
@@ -24,7 +24,7 @@ export default {
           .get(api.item.main)
           .then(data => {
             console.log('ITEMS -> ',data.data);
-            commit('setItems', data.data);
+            commit('SET_ITEMS', data.data);
             resolve(data.data);
           })
           .catch(err => {
@@ -41,7 +41,7 @@ export default {
           .get(api.item.main + payload)
           .then(data => {
             console.log('ITEM -> ',data.data);
-            commit('setItem', data.data);
+            commit('SET_ITEM', data.data);
             resolve(data.data);
           })
           .catch(err => {
@@ -50,6 +50,12 @@ export default {
           });
       });
     },
+
+    setItem({ commit }, payload) {
+      return new Promise((resolve, reject) => {
+        commit('SET_ITEM', payload)
+      });
+    }
   
   },
   getters: {

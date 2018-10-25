@@ -5,8 +5,16 @@ import invoice_generator from '../../assets/js/invoice'
 export default {
   namespaced: true,
   state: {
-    incomes: Array(),
-    income: {}
+    incomes: [],
+    income: {
+      lines: [],
+      total: {
+        net: this.getTotal().net,
+        tax: this.getTotal().tax
+      }
+
+    },
+    errors: null
   },
   mutations: {
     SET_INCOMES(state, payload) {
@@ -30,6 +38,24 @@ export default {
       }else{
         console.log("¡NO PAYLOAD!");
       }
+    },
+    DELETE_LINE(state, payload){
+      state.income.lines.forEach(function callback(line, index) {
+        if(line._id == payload){
+          state.income.total.net -= (line.quantity * line.price);
+          state.income.total.tax -= ( (((line.quantity * line.price)*0.19)+(line.quantity * line.price)) );
+          state.income.lines.splice(index, 1);
+        }  
+    });
+      
+    },
+    ADD_LINE(state, payload){
+        state.income.total.net += (payload.quantity * payload.price);
+        state.income.total.tax += ( (((payload.quantity * payload.price)*0.19)+(payload.quantity * payload.price)) );
+       state.income.lines.push(payload);
+    },
+    ERRORS(state, payload){
+      state.errors = payload;
     }
   },
   actions: {
@@ -48,7 +74,7 @@ export default {
             resolve(data.data);
           })
           .catch(err => {
-            console.log(err);
+            commit('ERRORS', err);
             reject(err, err.response);
           });
       });
@@ -89,6 +115,12 @@ export default {
       });
     },
 
+    newLine({ commit }, payload) {
+      return new Promise((resolve, reject) => {
+        commit('ADD_LINE', payload)
+      });
+    },
+
     anulateIncome({ commit }, payload) {
       return new Promise((resolve, reject) => {
            commit('ANULATE', payload);
@@ -111,11 +143,34 @@ export default {
         resolve(payload);
       });
 
+    },
+
+    deleteLine({ commit }, payload) {
+      return new Promise((resolve) => {
+        commit('DELETE_LINE', payload);
+        resolve(true);
+      });
+
     }
   
   },
   getters: {
     getIncomes: state => state.incomes,
-    getIncome: state => state.income
+    getIncome: state => state.income,
+    getErrors: state => state.errors
+  },
+  methods: {
+
+    getTotal: state => {
+      let tax, net = 0
+      if(state.income.lines.length){
+        state.income.forEach(i => {
+          let t = i.price * i.quantity
+          net = t
+          tax = t * i.tax
+        })
+      }
+      return { tax, net}
+    }
   }
 };

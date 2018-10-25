@@ -1,6 +1,6 @@
 <template>
 <div>
- 
+
         <span v-if="this.$route.path == '/income'">
           <div class="fixed-action-btn md-big-hide" style=" margin-bottom: 12% !important;" v-if="showDialog == false">
             <a class="btn-floating btn-large green" @click="saveIncome">
@@ -97,11 +97,29 @@
                
             <md-dialog :md-active.sync="showDialog" :md-backdrop="false">
               <md-dialog-title>
-                 <md-button class="md-simple md-just-icon md-round pull-right" @click="showDialog = false">
-                <md-icon>
-                  <i class="material-icons">close</i>
-                </md-icon>
-              </md-button>
+                 <div class="md-layout">
+                   <div class="md-layout-item md-size-25">
+                     <md-button class="md-simple md-just-icon md-round pull-right" @click="deleteItem(itemToAdd._id)">
+                      <md-icon>
+                        delete
+                      </md-icon>
+                     </md-button>
+                   </div>
+
+                   <div class="md-layout-item md-size-25">
+                   </div>
+
+                   <div class="md-layout-item md-size-25">
+                   </div>
+
+                   <div class="md-layout-item md-size-25">
+                     <md-button class="md-simple md-just-icon md-round pull-right" @click="showDialog = false">
+                      <md-icon>
+                        <i class="material-icons">close</i>
+                      </md-icon>
+                     </md-button>
+                   </div>
+                 </div>
               </md-dialog-title>
             
               <div class="md-layout">
@@ -131,8 +149,8 @@
               <div class="md-layout">
                 <div class="md-layout-item md-size-30 md-small-size-50">
                   <md-field>
-                    <label for="">Cantidad</label>
-                    <md-input type="number" v-model="itemToAdd.quantity"></md-input>
+                    <!-- <label for="">Cantidad</label> -->
+                    <md-input type="number" :value="1" v-model="itemToAdd.quantity"></md-input>
                   </md-field>
                 </div>
 
@@ -181,14 +199,11 @@
               <div class="md-layout-item md-size 30"></div>
               <div class="md-layout-item md-size 30">
                 <center>
-                    <md-button class="md-success md-just-icon md-round" @click="saveItem">
-                      <md-icon>
-                        <i class="material-icons">add</i>
-                      </md-icon>
+                    <md-button class="md-success md-lg" @click="addItem(itemToAdd)">
+                     AGREGAR
                     </md-button>
-                    <br>
-                    <small>Agregar</small>
                 </center>
+                <br>
               </div>
               <div class="md-layout-item md-size 30"></div>
             </div>
@@ -211,7 +226,7 @@
                 <div class="md-layout-item md-size-50">
                  <center>
                     <small>Neto</small><br>
-                  <h2>{{incomeObject.total.net | currency}}</h2>
+                  <h4>{{incomeObject.total.net | currency}}</h4>
                   
                  </center>
 
@@ -219,7 +234,7 @@
                 <div class="md-layout-item md-size-50">
                   <center>
                     <small>Total</small><br>
-                  <h2>{{ incomeObject.total.tax | currency}}</h2>
+                  <h4>{{ incomeObject.total.tax | currency}}</h4>
                  
                   </center>
                 </div>
@@ -233,7 +248,7 @@
           <div class="md-layout md-big-hide">
                 <div class="md-layout-item md-size-100">
                    <ul class="collection" style="border-style:none; padding: 0;">
-                      <li class="collection-item avatar" style="padding: 0;" v-for="item in incomeObject.lines" :key="item._id">
+                      <li class="collection-item avatar" style="padding: 0;cursor:pointer;" v-for="item in  getIncome.lines" :key="item._id" @click="showItem(item)">
                         <span class="title"><b>{{item.name}}</b></span>
                         <p>{{item.quantity}} x {{item.price | currency}} <br>
                          Impuesto: 19%
@@ -260,7 +275,7 @@
 
     <div class="md-layout-item md-small-size-100 md-medium-size-40 md-small-size-40 md-size-40 md-small-hide">
       
-          <md-card icon-color="icon-success" style="height: 81vh;">
+          <md-card icon-color="icon-success">
             <div class="md-layout" align="center" style="max-height: 18%;">
 
               <div class="md-layout-item md-size-25">
@@ -317,7 +332,7 @@
             <md-list class="md-triple-line"  style="border-style:none;width: 100%;">
              
             <md-content class="md-scrollbar" v-if="(incomeObject) && (incomeObject.lines.length > 0)">
-              <md-list-item v-for="(itemS, index) in incomeObject.lines" :key="itemS._id" style="padding: 0;">
+              <md-list-item v-for="(itemS) in getIncome.lines" :key="itemS._id" style="padding: 0;">
                <div class="md-list-item-text">
                     <span>{{(itemS.name) | uppercase}} <b>x</b> {{itemS.quantity}}</span>
                     <span><b>Precio:  {{(itemS.price) | currency}}</b> </span>
@@ -325,17 +340,19 @@
                   
                 <div class="md-list-action">  <h4><b> {{(itemS.quantity * itemS.price) | currency}}</b></h4> </div>
                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;      
-                 <a class="btn-floating btn-small red waves-effect waves-light" @click="incomeObject.lines.splice(index, 1)"><i class="material-icons">delete</i></a>
+                 <a class="btn-floating btn-small btn-round red waves-effect waves-light" @click="deleteItem(itemS._id)"><i class="material-icons">delete</i></a>
               </md-list-item>
             </md-content>
             
             <md-content class="md-scrollbar" v-if="(incomeObject != undefined) && (incomeObject.lines.length <= 0)">
               <md-list-item style="padding: 0;">
-               <div class="md-list-item-text" style="margin-top:50%;" >
+               <div class="md-list-item-text">
                     <center><h3 class="vlign-center md-text-danger"><b><i class="fa fa-cart-arrow-down"></i></b></h3>
                       {{lg.income.emptySale}}
                     </center>
-                  </div>
+                    <br>
+                    <md-divider></md-divider>
+                </div>
               </md-list-item>
              
             </md-content>
@@ -369,7 +386,7 @@ import { Tabs } from '@/components';
 import { Collapse, PricingCard } from '@/components';
 import swal from 'sweetalert2';
 import { Modal } from '@/components';
-import invoice from '../../assets/js/invoice.js';
+
 
 export default {
   data() {
@@ -397,8 +414,6 @@ export default {
         currency: ''
       },
       
-     
-    
       
     };
   },
@@ -411,14 +426,19 @@ export default {
   methods: {
     // ACTIONS DEL STORE
      ...mapActions({
+        // GETTERS
          getCurrentIncome: 'incomes/getIncome',
          getAllUsers: 'users/getAllUsers',
          getAllItems: 'items/getAllItems',
          getAllTaxes: 'tax/getAllTaxes',
-         postIncome: 'incomes/postIncome',
-         createInvoice: 'incomes/createInvoice'
+        // SETTERS
+         postIncome:  'incomes/postIncome',
+         createInvoice: 'incomes/createInvoice',
+         setItem: 'items/setItem',
+         deleteLine: 'incomes/deleteLine',
+         newLine: 'incomes/newLine'
     }),
-
+      
     // OBTENER VALORES E ID'S
     getNameAndId(val){
       this.itemToAdd.name = val.name;
@@ -428,19 +448,30 @@ export default {
       this.value = val.name;
       this.incomeObject.client = val._id;
     },
-   
 
-  // NOTIFICACIONES DE LAS VALIDACIONES
-    notifyVue(verticalAlign, horizontalAlign, state, message) {
-      this.$notify({
-        message: message,
-        icon: 'add_alert',
-        horizontalAlign: horizontalAlign,
-        verticalAlign: verticalAlign,
-        type: state
-      });
+    // MOSTRAR DATA DEL ITEM
+    showItem(item){
+        this.setItem(item);
+        this.itemToAdd = this.getItem;
+        this.showDialog = true;
+       },
+
+    // ELIMINAR ITEM DE LA VENTA
+    deleteItem(id){
+       this.deleteLine(id).then(res => {
+         this.$notify({
+             message: 'ITEM ELIMINADO CON EXITO',
+             icon: 'add_alert',
+             horizontalAlign: 'center',
+             verticalAlign: 'top',
+             type: 'success'
+         });
+         this.itemToAdd = {}
+         this.showDialog = false;
+       })
     },
 
+ 
 // GUARDAR INCOME
     saveIncome() {
       this.postIncome(this.incomeObject);
@@ -466,14 +497,18 @@ export default {
     },
 
   // GUARDAR ITEM EN LA VENTA
-    saveItem(){
-       this.incomeObject.total.net += (this.itemToAdd.quantity * this.itemToAdd.price);
-       this.incomeObject.total.tax += ( (((this.itemToAdd.quantity * this.itemToAdd.price)*0.19)+(this.itemToAdd.quantity * this.itemToAdd.price)) );
-
-      this.incomeObject.lines.push(this.itemToAdd);
-      this.itemToAdd = {};
-      this.showDialog = false;
-     
+    addItem(item){
+      this.newLine(item).then(res => {
+         this.$notify({
+             message: 'ITEM AGREGADO CON EXITO',
+             icon: 'add_alert',
+             horizontalAlign: 'center',
+             verticalAlign: 'top',
+             type: 'success'
+         });
+      })
+        this.showDialog = false;
+        
     }
 
   },
@@ -485,21 +520,24 @@ export default {
        getItems: 'items/getItems',
        getTaxes: 'tax/getTaxes',
        user: 'users/user',
+       getItem: 'items/getItem'
      })
   },
   
   created(){
-    
      if(this.$route.params.id){
        this.getCurrentIncome(this.$route.params.id).then( res => {
           this.incomeObject = res;
           this.value = this.incomeObject.client.name;
        })
      }
+     this.incomeObject = this.incomeObject;
      this.getAllItems();
      this.getAllUsers();
      this.getAllTaxes();
      this.incomeObject.responsable = this.user._id;
+
+     console.log("this.incomeObject  ", this.incomeObject)
   },
  
   
