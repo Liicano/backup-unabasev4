@@ -9807,10 +9807,10 @@ umask@^1.1.0, umask@~1.1.0:
   resolved "https://registry.yarnpkg.com/umask/-/umask-1.1.0.tgz#f29cebf01df517912bb58ff9c4e50fde8e33320d"
   integrity sha1-8pzr8B31F5ErtY/5xOUP3o4zMg0=
 
-unabase_api_doc@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/unabase_api_doc/-/unabase_api_doc-1.0.2.tgz#15e4a8023bc0092a1c894ff600bdb18e4c6609d5"
-  integrity sha512-LMLC/ye5/Wc+E+MfVxNk8Ne9ICgCHelYEUoqduXApbtVH/oriyeDIT7Il8nIW9BVaQKBsWSXldOHRM2G6apGoA==
+unabase_api_doc@*:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/unabase_api_doc/-/unabase_api_doc-1.0.8.tgz#06d3028c3dc414e588eb150c7bc800fb9558af61"
+  integrity sha512-LNCVQq6GwDYWlfWXqb8YinQN9Zs+uG/EkSbcwY5Q2XRTRhu1NcBzDDaI9+YwlJRwgErRzYCixsMyNzeXjtpajA==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
@@ -10061,6 +10061,11 @@ vee-validate@^2.1.0-beta.9:
   resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-2.1.0-beta.9.tgz#2a838177cd2ab6efc1f5352d6854e889ecb883cf"
   integrity sha512-c5oKINWG1X++aeEoHjLihYFM0ycobfDJMl6/iJhwVtAzRZdr5jH1h5hbajAI3gF+Y7052g49F6EFu7ZY19P1zQ==
 
+velocity-animate@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/velocity-animate/-/velocity-animate-1.5.2.tgz#5a351d75fca2a92756f5c3867548b873f6c32105"
+  integrity sha512-m6EXlCAMetKztO1ppBhGU1/1MR3IiEevO6ESq6rcrSQ3Q77xYSW13jkfXW88o4xMrkXJhy/U7j4wFR/twMB0Eg==
+
 vendors@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/vendors/-/vendors-1.0.2.tgz#7fcb5eef9f5623b156bcea89ec37d63676f21801"
@@ -10175,6 +10180,11 @@ vue2-filters@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/vue2-filters/-/vue2-filters-0.3.0.tgz#3d6b71169fb14b32a2ddbfa45f94d9a0fdee1094"
   integrity sha512-/i2gHtSfedzbgaC6rHuWTggCW9G6mLWZQ8TQgYciE2ei9iOlyB4iobubNr/7APjoYmupFtXv125yZfXygPV2+A==
+
+vue2-notify@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/vue2-notify/-/vue2-notify-1.4.0.tgz#1ac9002be35b55b488951ae56a80ddc61a65ece1"
+  integrity sha1-GskAK+NbVbSIlRrlaoDdxhpl7OE=
 
 vue2-transitions@0.2.2:
   version "0.2.2"

@@ -17,14 +17,11 @@
           </div>
         </div>
         <div class="md-layout-item md-size-50 md-medium-size-50 md-small-size-100 mr-auto" slot="content-right">
-          <div class="social-line text-center">
+          <!-- <div class="social-line text-center">
             <Gauth from="register"></Gauth>
-            <!-- <md-button class="md-just-icon md-round md-google" href="">
-              <i class="fab fa-google"></i>
-          
-            </md-button> -->
+    
             <h4 class="mt-3">{{ lg.user.classic }}</h4>
-          </div>
+          </div> -->
           <!-- <md-field class="md-form-group" >
             <md-icon>face</md-icon>
             <md-input v-model="name" type="email" :placeholder="lg.user.name"></md-input>
@@ -35,6 +32,16 @@
             <md-input v-model="username" type="text" :placeholder="lg.user.username"></md-input>
           </md-field> -->
 
+          <md-field class="md-form-group" >
+            <md-icon>person</md-icon>
+            <md-input v-model="name" type="text" :placeholder="lg.user.name"></md-input>
+          </md-field>
+
+
+          <md-field class="md-form-group" >
+            <md-icon>sort_by_alpha</md-icon>
+            <md-input v-model="username" type="text" :placeholder="lg.user.username"></md-input>
+          </md-field>
 
           <md-field class="md-form-group" >
             <md-icon>email</md-icon>
@@ -42,10 +49,10 @@
           </md-field>
 
 
-          <md-field class="md-form-group" >
+          <!-- <md-field class="md-form-group" >
             <md-icon>lock</md-icon>
             <md-input v-model="password" type="password" :placeholder="lg.user.password"></md-input>
-          </md-field>
+          </md-field> -->
 
           <md-checkbox v-model="boolean">{{ lg.base.term1 }} <a to='/terms'>{{ lg.base.term2 }}</a>.</md-checkbox>
           <div class="button-container">
@@ -135,6 +142,7 @@ export default {
             let type = new Map();
             type.set(403, 'warning');
             type.set(404, 'danger');
+            type.set(500, 'danger');
             type.set(401, 'info');
             this.$notify({
               message: err.statusText,

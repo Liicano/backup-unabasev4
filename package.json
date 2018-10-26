@@ -48,7 +48,6 @@
     "vue-router": "3.0.1",
     "vue2-bootstrap-table2": "^1.1.13",
     "vue2-filters": "^0.3.0",
-    "vue2-notify": "^1.4.0",
     "vue2-transitions": "0.2.2",
     "vuex": "^3.0.1"
   },

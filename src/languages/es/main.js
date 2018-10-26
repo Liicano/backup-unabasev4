@@ -15,7 +15,7 @@ export default {
     empty: 'Vacio',
     exit: 'Salir',
     search: 'Buscar',
-    tax: "%"
+    tax: '%'
   },
   validations: {
     // INCOMES
@@ -23,7 +23,9 @@ export default {
     shoppingCartLength: '¡LA VENTA NO PRESENTA ITEMS!',
     incompleteItem: '¡ITEM INCOMPLETO!',
     successItemAdd: '¡ITEM AGREGADO CORRECTAMENTE!',
-    successIncome: '¡VENTA EXITOSA!'
+    successIncome: '¡VENTA EXITOSA!',
+    verifyAccount: 'cuenta verificada',
+    notVerifyAccount: 'la cuenta no se ha podido verificar'
   },
   modules: {
     outcome: 'Gastos',

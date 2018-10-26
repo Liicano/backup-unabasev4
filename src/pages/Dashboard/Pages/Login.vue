@@ -1,7 +1,6 @@
 <template>
   <div class="md-layout text-center">
 
-    <notifications></notifications>
     <div class="md-layout-item md-size-33 md-medium-size-50 md-small-size-70 md-xsmall-size-100">
       <login-card header-color="green">
         
@@ -59,11 +58,11 @@
 import { LoginCard } from '@/components';
 import { mapGetters } from 'vuex';
 import Vue from 'vue';
-import Notifications from '../../../components/NotificationPlugin';
+// import Notifications from '../../../components/NotificationPlugin';
 import api from '../../../config/api';
 import Gauth from '../../../components/Gauth';
 
-Vue.use(Notifications);
+// Vue.use(Notifications);
 // import axios from 'axios'
 export default {
   components: {
