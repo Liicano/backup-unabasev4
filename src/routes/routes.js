@@ -304,7 +304,7 @@ const routes = [
            },
            {
             icon: 'delete',
-            function: null,
+            function: 'deleteIncome',
             isLink: false
          },
            
