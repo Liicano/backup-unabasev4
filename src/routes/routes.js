@@ -58,10 +58,13 @@ import VueRouter from 'vue-router';
 const Income = () => import('@/pages/incomes/income.vue');
 const Incomes = () => import('@/pages/incomes/incomes.vue');
 
-// USUARIO
-  // PERFIL
-  const userProfile = () => import('@/pages/user/profile.vue');
+// verify user
 
+const Verify = () => import('@/pages/auth/verify.vue');
+
+// USUARIO
+// PERFIL
+const userProfile = () => import('@/pages/user/profile.vue');
 
 let componentsMenu = {
   path: '/components',
@@ -237,6 +240,14 @@ let authPages = {
       }
     },
     {
+      path: '/verify/:hash',
+      name: 'Verify',
+      component: Verify,
+      meta: {
+        guestOnly: true
+      }
+    },
+    {
       path: '/pricing',
       name: 'Pricing',
       component: Pricing
@@ -269,9 +280,9 @@ const routes = [
         path: 'dashboard',
         name: 'Dashboard',
         components: { default: Dashboard },
-         meta: {
-           requireAuth: true
-         }
+        meta: {
+          requireAuth: true
+        }
       },
       {
         path: 'calendar',
@@ -295,51 +306,47 @@ const routes = [
         path: 'income/:id',
         name: 'Income',
         components: { default: Income },
-        meta:{
+        meta: {
           navOptions: [
-           {
+            {
               icon: 'share',
               function: 'shareInvoice',
               isLink: false
-           },
-           {
-            icon: 'delete',
-            function: 'deleteIncome',
-            isLink: false
-         },
-           
+            },
+            {
+              icon: 'delete',
+              function: 'deleteIncome',
+              isLink: false
+            }
           ]
         }
       },
       {
         path: 'income',
         name: 'Income',
-        components: { default: Income },
+        components: { default: Income }
       },
       {
         path: 'incomes',
         name: 'Incomes',
         components: { default: Incomes },
-        meta:{
+        meta: {
           navOptions: [
-           {
+            {
               icon: 'add',
               function: null,
-              isLink:{
+              isLink: {
                 route: '/income'
-              },
-           },
-           
+              }
+            }
           ]
         }
-        
       },
       {
         path: 'user/profile',
         name: 'userProfile',
         components: { default: userProfile }
       }
-     
     ]
   }
 ];

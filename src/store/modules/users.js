@@ -1,5 +1,6 @@
 import axios from 'axios';
 import api from '../../config/api';
+import languages from '../../languages';
 // import { mapGetters } from 'vuex'
 export default {
   namespaced: true,
@@ -36,6 +37,12 @@ export default {
     access_error(state) {
       state.status = 'error';
     },
+    register_error(state) {
+      state.status = 'error';
+    },
+    verify_error(state) {
+      state.status = 'error';
+    },
     logout(state) {
       state.status = '';
       state.token = '';
@@ -69,6 +76,21 @@ export default {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
             reject(err);
+          });
+      });
+    },
+    verify: function({ commit }, payload) {
+      return new Promise((resolve, reject) => {
+        axios
+          .put(api.auth.verify + payload.id, {
+            hash: payload.hash
+          })
+          .then(res => {
+            resolve({ message: languages.validations.verifyAccount });
+          })
+          .catch(err => {
+            commit('verify_error');
+            reject({ message: languages.validations.notVerifyAccount });
           });
       });
     },
@@ -149,7 +171,7 @@ export default {
         axios
           .get(api.user.main)
           .then(res => {
-            console.log("USERS -> ",res.data)
+            console.log('USERS -> ', res.data);
             commit('setUsers', res.data);
             resolve(res.data);
           })
@@ -157,7 +179,7 @@ export default {
             reject(err);
           });
       });
-    },
+    }
   },
   getters: {
     getUsers: state => state.users,

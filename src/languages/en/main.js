@@ -22,7 +22,9 @@ export default {
     ShoppingCartLength: '¡LA VENTA NO PRESENTA ITEMS!',
     IncompleteItem: '¡ITEM INCOMPLETO!',
     SuccessItemAdd: '¡ITEM AGREGADO CORRECTAMENTE!',
-    SuccessIncome: '¡VENTA EXITOSA!'
+    SuccessIncome: '¡VENTA EXITOSA!',
+    verifyAccount: 'account verified',
+    notVerifyAccount: 'user could not be verified'
   },
   modules: {
     outcome: 'expenses',
