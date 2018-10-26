@@ -12,7 +12,8 @@ export default {
       state.items = payload;
     },
     SET_ITEM(state, payload) {
-      state.item = payload;
+      // state.item = payload;
+      console.log(payload);
     }
    
   },

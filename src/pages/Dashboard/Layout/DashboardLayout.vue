@@ -28,7 +28,7 @@
       </template>
       
     </side-bar>
-    <div class="main-panel">
+    <div class="main-panel" style="background: #fafafa">
       <top-navbar></top-navbar>
 
       <div :class="{content: !$route.meta.hideContent}" @click="toggleSidebar">

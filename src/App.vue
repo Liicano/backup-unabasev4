@@ -2,7 +2,7 @@
   <div>
     <notifications></notifications>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="background: #fafafa;">
        <router-view></router-view>
     </div>
    
