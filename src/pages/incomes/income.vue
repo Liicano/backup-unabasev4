@@ -113,7 +113,7 @@
                    </div>
 
                    <div class="md-layout-item md-size-25">
-                     <md-button class="md-simple md-just-icon md-round pull-right" @click="showDialog = false">
+                     <md-button class="md-simple md-just-icon md-round pull-right" @click="handleItem(itemToAdd, false)">
                       <md-icon>
                         <i class="material-icons">close</i>
                       </md-icon>
@@ -211,7 +211,7 @@
     </md-dialog>
 
             <center>
-              <md-button class="md-success md-raised md-dense" @click="showDialog = true">Agregar items</md-button>
+              <md-button class="md-success md-raised md-dense" @click="handleItem(itemToAdd, true)">Agregar items</md-button>
             </center>
 
              </div>
@@ -248,7 +248,7 @@
           <div class="md-layout md-big-hide">
                 <div class="md-layout-item md-size-100">
                    <ul class="collection" style="border-style:none; padding: 0;">
-                      <li class="collection-item avatar" style="padding: 0;cursor:pointer;" v-for="item in  getIncome.lines" :key="item._id" @click="showItem(item)">
+                      <li class="collection-item avatar" style="padding: 0;cursor:pointer;" v-for="item in  getIncome.lines" :key="item._id" @click="handleItem(item, true)">
                         <span class="title"><b>{{item.name}}</b></span>
                         <p>{{item.quantity}} x {{item.price | currency}} <br>
                          Impuesto: 19%
@@ -394,25 +394,7 @@ export default {
       value:'',
       showDialog: false,
       itemToAdd: {},
-      incomeObject: {
-        name: '',
-        description: '',
-        dates: {
-          expiration: new Date()
-        },
-        client: '',
-        creator: '',
-        responsable: '',
-
-        lines: [],
-        total: {
-          net: 0,
-          tax: 0
-        },
-        state: 'draft',
-        isActive: true,
-        currency: ''
-      },
+      incomeObject: {},
       
       
     };
@@ -450,12 +432,22 @@ export default {
     },
 
     // MOSTRAR DATA DEL ITEM
-    showItem(item){
-        this.setItem(item);
-        this.itemToAdd = this.getItem;
-        this.showDialog = true;
-       },
+    handleItem(item, event){
 
+          if(event){
+            this.setItem(item).then(res =>{
+                this.itemToAdd = this.getItem;
+                this.showDialog = event;
+              })
+          }else{
+            this.setItem({}).then(res =>{
+                this.itemToAdd = this.getItem;
+                this.showDialog = event;
+              })
+          }
+                  
+       },
+      
     // ELIMINAR ITEM DE LA VENTA
     deleteItem(id){
        this.deleteLine(id).then(res => {
@@ -467,7 +459,7 @@ export default {
              type: 'success'
          });
          this.itemToAdd = {}
-         this.showDialog = false;
+         this.handleItem(itemToAdd, false);
        })
     },
 
@@ -507,7 +499,8 @@ export default {
              type: 'success'
          });
       })
-        this.showDialog = false;
+
+        this.handleItem(itemToAdd, false);
         
     }
 
@@ -531,13 +524,13 @@ export default {
           this.value = this.incomeObject.client.name;
        })
      }
-     this.incomeObject = this.incomeObject;
+     this.incomeObject = this.getIncome;
      this.getAllItems();
      this.getAllUsers();
      this.getAllTaxes();
-     this.incomeObject.responsable = this.user._id;
+    //  this.incomeObject.responsable = this.user._id;
 
-     console.log("this.incomeObject  ", this.incomeObject)
+    //  console.log("this.incomeObject  ", this.incomeObject)
   },
  
   

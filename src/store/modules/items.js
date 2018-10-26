@@ -54,6 +54,7 @@ export default {
     setItem({ commit }, payload) {
       return new Promise((resolve, reject) => {
         commit('SET_ITEM', payload)
+        resolve(payload);
       });
     }
   

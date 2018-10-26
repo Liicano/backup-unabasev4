@@ -7,12 +7,23 @@ export default {
   state: {
     incomes: [],
     income: {
+      name: '',
+      description: '',
+      dates: {
+        expiration: new Date()
+      },
+      client: '',
+      creator: '',
+      responsable: '',
+
       lines: [],
       total: {
-        net: this.getTotal().net,
-        tax: this.getTotal().tax
-      }
-
+        net: 0,
+        tax: 0
+      },
+      state: 'draft',
+      isActive: true,
+      currency: ''
     },
     errors: null
   },
@@ -52,7 +63,7 @@ export default {
     ADD_LINE(state, payload){
         state.income.total.net += (payload.quantity * payload.price);
         state.income.total.tax += ( (((payload.quantity * payload.price)*0.19)+(payload.quantity * payload.price)) );
-       state.income.lines.push(payload);
+        state.income.lines.push(payload);
     },
     ERRORS(state, payload){
       state.errors = payload;
@@ -158,19 +169,5 @@ export default {
     getIncomes: state => state.incomes,
     getIncome: state => state.income,
     getErrors: state => state.errors
-  },
-  methods: {
-
-    getTotal: state => {
-      let tax, net = 0
-      if(state.income.lines.length){
-        state.income.forEach(i => {
-          let t = i.price * i.quantity
-          net = t
-          tax = t * i.tax
-        })
-      }
-      return { tax, net}
-    }
   }
 };
