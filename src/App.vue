@@ -1,5 +1,6 @@
 <template>
   <div>
+    <notifications></notifications>
 
     <div class="container-fluid">
        <router-view></router-view>
@@ -25,6 +26,9 @@
   
   </div>
 </template>
+<script>
+</script>
+
 <style>
 .md-field:after,
 .md-field:before {

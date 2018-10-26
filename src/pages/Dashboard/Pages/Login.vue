@@ -109,7 +109,6 @@ export default {
             icon: 'add_alert',
             horizontalAlign: 'right',
             verticalAlign: 'top',
-            // type: this.type[color]
             type: type.get(err.status)
           });
         });
